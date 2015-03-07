@@ -1,0 +1,386 @@
+
+
+.hidden {
+    display: none;
+}
+
+html {
+    overflow-y : scroll;
+}
+
+@media screen and (max-width: 1027px) {
+    #area1 {
+        width: 1027px;
+    }
+    #area2 {
+        width: 1027px;
+    }
+    #area3 {
+        width: 1027px;
+    }
+    #area4 {
+        width: 1027px;
+    }
+    #footer{
+        width: 1027px;
+    }
+}
+
+
+/* Nav
+*****************************************************************/
+
+nav#primary {
+	position: fixed;
+	top: 50%;
+	left: 16px;
+	margin-top: -40px;
+    z-index:1;
+}
+nav#primary li {
+	position: relative;
+	height: 20px;
+}
+nav#primary a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	text-indent: -9999px;
+	background: transparent url('../images/nav-dot.png') 4px 4px no-repeat;
+}
+
+nav#primary a:hover, nav#primary a.active {
+	background: transparent url('../images/nav-dot.png') 4px -16px no-repeat;
+}
+
+/****************************************** area1 ****************************************************/
+
+#area1 .separator {
+    min-width:100%;
+    height: 150px;
+    background:#e0ebe8;
+}
+
+#area1 {
+    min-width: 100%;
+    background: #e0ebe8;
+}
+
+#area1 article {
+    text-align: center;
+}
+
+#visual-vill {
+    height: 310px;
+    background:url("../images/village.PNG") center no-repeat;
+}
+
+#visual-bar {
+    display: table;   
+    width: 100%;
+    height: 45px;
+    background: #21a97e;
+}
+
+#visual-bar-vertical {
+     display:table-cell;
+     vertical-align:middle;
+     text-align: center;
+     cursor:pointer;
+}
+
+#visual-cloud {
+    position: absolute;
+    margin-left: 15%;
+    width: 184px;
+    height: 58px;
+    background: url(../images/cloud1.PNG) no-repeat;
+}
+
+#visual-cloud2 {
+    position: absolute;
+    margin-left: 75%;
+    width: 154px;
+    height: 49px;
+    background: url(../images/cloud2.PNG) no-repeat;
+}
+
+#reg-box {
+    display: none;
+    position:absolute;
+    top: 0px;
+    width: 100%;
+    height: 785px;
+    background: url("../images/reg_background.PNG") repeat-x;
+}
+
+#reg-close-box {
+    float: right;
+    padding: 40px;
+}
+
+#reg-close-box a {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: url("../images/close.png") no-repeat;
+}
+
+#reg-close-box a:hover {   
+    background: url("../images/close_rollover.PNG") no-repeat;
+}
+
+#reg-form {
+    width: 500px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 130px;
+    background: #fff;
+}
+
+/********************* area2 **************************/
+
+#area2 {
+    position: relative;    
+    min-width: 100%;
+    height: 1300px;
+    background: #e0ebe8;
+    padding-top:90px;
+}
+
+#area2-title {    
+    padding-bottom:50px;
+    text-align: center;
+}
+
+.visual-box {   
+    display:block;
+    width: 994px;
+    height: 344px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+#pic-ratio-box1 {
+    float:left;
+    display:block;
+    width:655px;
+    height:inherit;
+    overflow: hidden;
+}
+
+#pic-ratio-box2 {
+    float:right;
+    display: block;    
+    width: 314px;
+    height: inherit;
+    overflow: hidden;
+}
+
+#pic-ratio-box3 {
+    float:left;
+    display: block;    
+    width: 314px;
+    height: inherit;
+    overflow: hidden;    
+}
+
+#pic-ratio-box4 {
+    float:left;
+    display: block;    
+    width: 314px;
+    height: inherit;
+    overflow: hidden;
+    margin-left:27px;
+}
+
+#pic-ratio-box5 {
+    float:left;
+    display: block;    
+    width: 314px;
+    height: inherit;
+    overflow: hidden;
+    margin-left:25px;
+    background: black;
+}
+
+#pic-ratio-box6 {
+    float:left;
+    display: block;    
+    width: 314px;
+    height: inherit;
+    overflow: hidden;
+    margin-right:25px;
+    background: black;
+}
+
+#pic-ratio-box7 {
+    float:left;
+    display:block;
+    width:655px;
+    height:inherit;
+    overflow: hidden;
+}
+
+#pic-ratio-box1 > img {   
+    float:left;
+    width:655px;
+    height: auto;
+}
+
+#pic-ratio-box2 > img {
+    float:right;
+    width: auto;
+    height: 344px;
+    transform: translate(25px);
+    -webkit-transform: translate(25px, 0px);
+    -moz-transform: translate(25px, 0px);
+    -o-transform: translate(25px, 0px);
+    -ms-transform: translate(25px, 0px);
+}
+
+#pic-ratio-box3 > img {
+    float:left;
+    width: auto;
+    height:344px;
+}
+
+#pic-ratio-box4 > img {
+    float:left;
+    width: 314px;
+    height: auto;
+    transform:translate(0px, -70px);
+}
+
+#pic-ratio-box5 > img {
+    float:left;
+    width: 314px;
+    height: auto;
+    transform: translate(0px, -40px);
+    -webkit-transform: translate(0px, -40px);
+    -moz-transform: translate(0px, -40px);
+    -o-transform: translate(0px, -40px);
+    -ms-transform: translate(0px, -40px);
+}
+
+#pic-ratio-box6 > img {
+    float:left;
+    width: auto;
+    height: 344px;
+}
+
+#pic-ratio-box7 > img {
+    float:right;
+    width:655px;
+    height:auto;
+    transform: translate(0px, -50px);
+}
+/********************* area3 **************************/
+
+#area3 {
+   position: relative;
+   min-width: 100%;
+   height: 777px;
+   overflow: hidden;
+   border-top: 2px solid #fff;
+}
+
+#pic-ratio-box8 {
+    float:left;
+    display:block;
+    width:inherit;
+    height:inherit;
+    overflow: hidden;
+}
+
+#pic-ratio-box8 > img {
+  width: 100%;
+  height: 777px;
+}
+
+#area3-title {
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+
+#area3-title h1 {
+    margin-top:340px;
+    text-align: center;
+}
+/********************* area4 **************************/
+
+#area4 {
+   position: relative;
+   min-width: 100%;
+   height: 700px;
+   overflow: hidden;
+   border-top: 2px solid #fff;
+   border-bottom:2px solid #fff;
+   background:#EAEAEA;
+}
+
+#area4-title {
+    width:100%;
+    height:90px;
+    text-align:center;
+    padding-top:50px;
+}
+
+#area4 .visual-box {   
+    display:block;
+    width: 994px;
+    height: 492px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:20px;
+    overflow:hidden;
+    background:blue;
+}
+
+.pic-ratio-box9 {
+    float:left;
+    display:block;
+    width:314px;
+    height:100%;
+    overflow:hidden;
+    background:red;
+    margin-left:13px;
+}
+
+/********************* footer **************************/
+
+#footer {
+    min-width: 100%;
+    height: 100px;
+    background:#747474;
+}
+
+#footer-wrapper {
+    width:inherit;
+    height:inherit;
+    text-align: center;   
+}
+
+#footer ul {
+    display:inline-block;
+    text-align: center;
+}
+
+#footer ul li {
+    float:left;
+    padding-top: 30px;
+}
+
+#footer ul li a {
+    text-decoration: none;
+}
+
+#footer span {
+    display:block;
+    margin-top: 16px;
+}
