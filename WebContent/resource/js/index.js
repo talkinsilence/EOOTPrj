@@ -124,6 +124,7 @@
             $('#reg-pwdcon-wrapper label').text("비밀번호가 일치하지 않습니다.");
             $('#reg-pwd-con').css('border-color', '#e4a197');
         }
+               
     });
 });
 

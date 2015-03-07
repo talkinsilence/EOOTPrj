@@ -1,8 +1,10 @@
-﻿<!DOCTYPE html>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>우리 함께 | e - oot</title>
 <link href="resource/css/bind_index.css" type="text/css" rel="stylesheet" />
 <link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" type="text/css" rel="stylesheet" />
 <script src="resource/js/jquery-2.1.3.js"></script>
@@ -71,32 +73,35 @@
                             <span>주변 사람들과 더욱 더 가까워 질 수 있습니다.</span>
                         </div>
                         <div id="reg-form-box">
-                            <form name="regform" id="regform">
+                            <form name="regform" id="regform" action="indexRegProg.jsp" method="post">
                                 <div id="reg-name-wrapper">
-                                    <input type="text" name="name" id="reg-name" placeholder="이름" />
+                                    <input type="text" name="reg-name" id="reg-name" placeholder="이름" />
                                     <p></p><br />
                                 </div>
                                 <div id="reg-email-wrapper">
-                                    <input type="text" name="uid" id="reg-uid" placeholder="이메일 주소(ID)" />
+                                    <input type="text" name="reg-uid" id="reg-uid" placeholder="이메일 주소(ID)" />
                                     <p></p><br />
                                 </div>
                                 <div id="reg-pwd-wrapper">
-                                    <input type="password" name="pwd" id="reg-pwd" placeholder="비밀번호" />
+                                    <input type="password" name="reg-pwd" id="reg-pwd" placeholder="비밀번호" />
                                     <p></p><br />
                                 </div>
                                 <div id="reg-pwdcon-wrapper">
-                                    <input type="password" name="pwdcon" id="reg-pwd-con" placeholder="비밀번호 확인" />
+                                    <input type="password" name="reg-pwd-con" id="reg-pwd-con" placeholder="비밀번호 확인" />
                                     <p></p><br />
                                 </div>
                                 <div id="reg-birthday-wrapper">
-                                    <select id="user-birthday-month">
+                                    <select name="user-birthday-month" id="user-birthday-month">
                                         <option>월</option>
+                                        <option>10</option>
                                     </select>
-                                    <select id="user-birthday-day">
+                                    <select name="user-birthday-day" id="user-birthday-day">
                                         <option>일</option>
+                                        <option>09</option>
                                     </select>
-                                    <select id="user-birthday-year">
+                                    <select name="user-birthday-year" id="user-birthday-year">
                                         <option>년</option>
+                                        <option>1991</option>
                                     </select>
                                 </div>
                                 <div id="reg-txt">
@@ -105,7 +110,7 @@
                                         다른 사람들이 내가 입력한 이메일로 나를 찾을 수 있습니다.
                                     </span>
                                 </div>
-                                <input type="button" id="btn-reg" value="등록하기" />
+                                <input type="submit" id="btn-reg" value="등록하기" />
                             </form>
                         </div>                          
                     </div>
