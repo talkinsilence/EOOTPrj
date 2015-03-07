@@ -1,0 +1,232 @@
+
+/****************** 로그인 ******************/
+
+#login-form {
+    font-family: 'Nanum Gothic';
+    text-align: center;  
+}
+
+#login-form input{
+	width: 380px;
+	height: 45px;
+	border: 2px solid #EAEAEA;
+	border-radius: 4px;
+	font-size: 12pt;
+}
+
+#login-form input[type="button"] {
+	width: 118px;
+	height: 30px;
+	color: #909090;
+	font-size: 10pt;
+	font-weight: bold;
+	border: 1px solid #D8D8D8;
+	border-radius: 2px;
+	background: #EAEAEA;
+	cursor: pointer;
+}
+
+#login-form label {
+    display: inline-block;
+    padding: 5px;
+    width: 350px;
+    font-size: 15px;
+    color: #b92219;
+    border-right: 1px solid #e4a197;
+    border-left: 1px solid #e4a197;
+    border-bottom: 1px solid #e4a197;
+    border-radius: 3px;
+    background:#ffd1d1;
+}
+
+/****************** 회원가입 ******************/
+
+#reg-form {
+    font-family: 'Nanum Gothic';
+    border: 1px solid #878787;
+	border-radius: 6px;
+    padding: 10px;
+	box-shadow: 1px 1px 15px 2px #000;
+}
+
+#reg-title {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#reg-subtitle {
+    font-size: 15px;
+    padding-top: 10px;
+    padding-left: 45px;
+}
+
+#reg-form-box {
+    min-height:385px;
+    padding-top: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align:center;
+}
+
+#reg-form input {
+    width: 320px;
+	height: 35px;
+	border: 1px solid #BDBDBD;
+	border-radius: 4px;
+	font-size: 12pt;
+}
+
+#reg-form input[type="button"] {
+	width: 320px;
+	height: 44px;
+	color: #909090;
+	font-size: 10pt;
+	font-weight: bold;
+	border: 1px solid #D8D8D8;
+	border-radius: 2px;
+	background: #EAEAEA;
+	cursor: pointer;
+}
+
+#reg-form-box label {
+    display: inline-block;
+    padding: 5px;
+    width: 290px;
+    font-size: 15px;
+    color: #b92219;
+    border-right: 1px solid #e4a197;
+    border-left: 1px solid #e4a197;
+    border-bottom: 1px solid #e4a197;
+    border-radius: 3px;
+    background:#ffd1d1;
+}
+
+#user-birthday-month {
+    float:left;
+    margin-left: 69px;
+    width: 78px;
+    height: 38px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+}
+
+#user-birthday-day {
+    float:left;
+    margin-left:10px;
+    width: 64px;
+    height: 38px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+}
+
+#user-birthday-year {
+    float:left;
+    margin-left:10px;
+    width: 79px;
+    height: 38px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+}
+
+#reg-txt {
+    display:block;
+    text-align: center;
+}
+
+#reg-txt span {
+    display:inline-block;
+    width: 440px;
+    padding-top: 22px;
+    padding-bottom:15px;
+    font-size: 12px;
+    color:#747474;
+    background: #fff;
+    border: none;
+}
+
+#reg-txt span a {
+    text-decoration:none;
+    color: #4a8db8;
+}
+
+#reg-txt span a:hover {
+    color: #4a8db8;
+    text-decoration:underline;
+}
+
+/************** area1 ***************/
+
+#area1 article > span {
+   font-family: 'Nanum Gothic';
+   font-size: 45px;
+}
+
+#area1 article > p {
+    font-family: 'Nanum Gothic';
+    padding: 20px;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+#visual-bar {
+    font-family: 'Nanum Gothic';
+    color: #fff;
+    font-size: 25px;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    font-weight: bold;
+}
+
+#visual-bar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#visual-bar a:hover {
+    font-size:28px;
+    color: #F15F5F;
+}
+
+/************** area2 ***************/
+
+#area2-title > h1 {
+    font-family: 'Nanum Gothic';
+    font-size: 30px;
+    font-weight:bold;
+    color: #403939;
+}
+
+/************** area3 ***************/
+
+#area3-title > h1 {
+    font-family: 'Nanum Gothic';
+    font-size: 60px;
+    font-weight:bold;
+    color:#fff;
+    text-shadow: 2px -2px 8px #000;
+}
+
+/************** area4 ***************/
+
+#area4-title > h1 {
+    font-family: 'Nanum Gothic';
+    font-size: 30px;
+    font-weight:bold;
+    color: #403939;
+}
+
+/************** footer ***************/
+
+#footer ul li a {
+    font-family: 'Nanum Gothic';
+    font-size:14px;
+    color:#fff;
+}
+
+#footer span {
+    font-family: 'Nanum Gothic';
+    font-size:14px;
+    color:#fff;
+}
