@@ -12,4 +12,7 @@
 		VALUES(#{mid}, #{pwd}, #{name}, '1991-12-11', GETDATE(), #{mid});
 	</insert>
 	
+	<select id="getMember" parameterType="String" resultType="Member">
+		SELECT * FROM MEMBERS WHERE MID = #{mid};
+	</select>
 </mapper>

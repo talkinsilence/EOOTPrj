@@ -110,7 +110,7 @@
                                         다른 사람들이 내가 입력한 이메일로 나를 찾을 수 있습니다.
                                     </span>
                                 </div>
-                                <input type="submit" id="btn-reg" value="등록하기" />
+                                <input type="button" id="btn-reg" value="등록하기" />
                             </form>
                         </div>                          
                     </div>

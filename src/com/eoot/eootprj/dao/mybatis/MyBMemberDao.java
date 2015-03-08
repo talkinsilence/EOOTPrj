@@ -14,4 +14,11 @@ public class MyBMemberDao implements MemberDao {
 		return memberDao.insert(member);
 	}
 
+	@Override
+	public Member getMember(String uid) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.getMember(uid);
+	}
+
 }

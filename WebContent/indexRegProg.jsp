@@ -9,7 +9,7 @@
 	String regPwd = request.getParameter("reg-pwd");		
 	String regBirthday = request.getParameter("user-birthday-year") + request.getParameter("user-birthday-month") + request.getParameter("user-birthday-day");
 	
-	/* Member member = new Member();
+	Member member = new Member();
 	
 	member.setName(regName);
 	member.setMid(regUid);
@@ -17,10 +17,10 @@
 	member.setBirthday(regBirthday);
 	
 	MyBMemberDao dao = new MyBMemberDao();
-	dao.insert(member); */
-%>
+	dao.insert(member);
+	
 
-<%=regName%>
-<%=regUid%>
-<%=regPwd%>
-<%=regBirthday%>
+	//response.sendRedirect("index.jsp");
+	
+%>
+회원가입완료!!
