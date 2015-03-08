@@ -18,7 +18,6 @@
 	
 	MyBMemberDao dao = new MyBMemberDao();
 	dao.insert(member);
-	
 
 	//response.sendRedirect("index.jsp");
 	

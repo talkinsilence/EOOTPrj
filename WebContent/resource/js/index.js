@@ -50,13 +50,17 @@
 
     $('#btn-reg-field').click(function () {
         $('#reg-box').fadeIn(400);
-
+        $('#loginform').each(function(){
+        	this.reset();
+        });
         reset_loginForm();
     });
 
     $('#reg-close-box a').click(function () {
         $('#reg-box').fadeOut(300);
-        
+        $('#regform').each(function(){
+        	this.reset();
+        });
         reset_regForm();
     });
 
@@ -280,12 +284,14 @@
 function reset_loginForm() {
     $('#loginform label').remove();
     $('#loginform input').css('border-color', '#D8D8D8');
+    
 }
 
 function reset_regForm() {
     $('#regform label').remove();
     $('#regform input').css('border-color', '#D8D8D8');
     $('#regform select').css('border-color', '#D8D8D8');
+    
     nameValCheck = false;
     uidValCheck = false;
     pwdValCheck = false;

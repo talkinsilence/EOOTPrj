@@ -9,7 +9,7 @@
 		<!-- INSERT INTO MEMBERS(MID, NAME, REGDATE) 
 		VALUES(#{mid}, #{name}, GETDATE()) -->
 		INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, REGDATE, FAMCODE)
-		VALUES(#{mid}, #{pwd}, #{name}, '1991-12-11', GETDATE(), #{mid});
+		VALUES(#{mid}, #{pwd}, #{name}, #{birthday}, GETDATE(), #{mid});
 	</insert>
 	
 	<select id="getMember" parameterType="String" resultType="Member">
