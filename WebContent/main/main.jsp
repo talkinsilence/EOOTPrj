@@ -4,10 +4,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-	String mid = "chanmoon@naver.com";
+	String uid = (String) session.getAttribute("uid");
 
 	MemberDao memberDao = new MyBMemberDao();
-	Member m = memberDao.getMember(mid);
+	Member m = memberDao.getMember(uid);
 	//Member m = memberDao.getMember(_mid);
 	
 	pageContext.setAttribute("m", m);

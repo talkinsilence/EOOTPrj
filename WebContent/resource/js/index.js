@@ -311,7 +311,7 @@
                     $('#login-pwd-wrapper label').text("dd.");
                     $('#pwd').css('border-color', '#e4a197');
         		} else
-        			location.href="/main/main2.jsp";
+        			location.href="main/main.jsp";
         	}
         });
     }
