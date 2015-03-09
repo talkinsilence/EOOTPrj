@@ -145,6 +145,21 @@ body {
     overflow: hidden;
 }
 
+.info-wrapper {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 180px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: opacity .13s linear;
+    z-index: 2201;
+    opacity: 0; 
+    visibility: hidden;
+}
+
 /*////////< lower layout >///////////////////////////////////*/
 .lower {
     display: block;
@@ -177,7 +192,10 @@ body {
     height: 20px;
     background: url("../images/btn-up.png") no-repeat center;
 }
-.btn-up:hover {opacity: 0.5;}
+.btn-up:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
 
 .btn-down {
     display: block;
@@ -187,7 +205,10 @@ body {
     bottom: 0;
     background: url("../images/btn-down.png") no-repeat center;
 }
-.btn-down:hover {opacity: 0.5;}
+.btn-down:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
 
 .alarms-box {
     display: block;
@@ -255,7 +276,7 @@ body {
     z-index: 1;
 }*/
 
-/*.btn-menu-wrapper {
+.btn-menu-wrapper {
     display: inline-block;
     position: relative;
     left: 50%;
@@ -279,4 +300,4 @@ body {
 .btn-menu:active {
   box-shadow: 0 2px 0 #c3222e;
   transform: translateY(3px);
-}*/
+}

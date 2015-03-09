@@ -1,16 +1,13 @@
-﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
-<%@page import="com.eoot.eootprj.model.Member"%>
+﻿<%@page import="com.eoot.eootprj.model.Member"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
-<%@page import="com.eoot.eootprj.dao.mybatis.MyBatisMain"%>
-<%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
 	String mid = "chanmoon@naver.com";
-	MemberDao dao = new MyBMemberDao();
 
-	Member m = dao.getMember(mid);
-
+	MemberDao memberDao = new MyBMemberDao();
+	Member m = memberDao.getMember(mid);
 	//Member m = memberDao.getMember(_mid);
 	
 	pageContext.setAttribute("m", m);
@@ -19,13 +16,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>우리 함께 | e - oot</title>
-    <link href="css/bind_main2.css" type="text/css" rel="stylesheet" />
+    <title></title>
+    <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/main_layout.css" rel="stylesheet" type="text/css" />
+    <link href="css/main_style.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
-    <script src="../resources/js/modernizr.js" type="text/javascript"></script>
-    <script src="../resources/js/jquery-2.1.3.js"></script>
-    <script src="js/main2.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+    <script src="../resource/js/modernizr.js" type="text/javascript"></script>
+    <script src="../resource/js/jquery-2.1.3.js"></script>
+    <script src="js/main.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="main">
@@ -37,7 +37,7 @@
             </div>
             <aside class="upper-left">
                 <div class="transp-bg">
-                	<!--음영-->
+                    <!--음영-->
                 </div>
                 <div class="profile">
                     <div class="logo">
@@ -89,9 +89,19 @@
                         <div class="alarm-news">
                             <a href="">새로운 소식이 99개 있습니다.</a>
                         </div>
+                        <div class="alarm-cal">
+                            <a href="">오늘은 형수입학식입니다.</a>
+                        </div>
                     </div>
                 </div>
                 <div class="btn-down"></div>
+                <!-- <div class="btn-menu-wrapper">
+                    <div class="btn-menu cal">일정</div>
+                    <div class="btn-menu med">사진첩</div>
+                    <div class="btn-menu let">우체통</div>
+                    <div class="btn-menu scr">스크랩</div>
+                    <div class="btn-menu set">설정</div>
+                </div> -->
             </aside>
             <aside class="lower-right">
                 <!--오른쪽 아래) 최근/인기소식-->
@@ -120,6 +130,11 @@
             </aside>
         </div>
         
+    </div>
+    <div class="info-wrapper">
+        <div>
+            data
+        </div>
     </div>
 </body>
 </html>
