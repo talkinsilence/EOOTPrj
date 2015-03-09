@@ -44,7 +44,7 @@
                 <div id="login-form">
                     <h2 class="hidden">회원로그인 폼</h2>
 
-                    <form name="loginform" id="loginform" action="" method="post">
+                    <form name="loginform" id="loginform">
                         <div id="login-email-wrapper">
                             <input type="text" name="uid" id="uid" placeholder="사용자 이메일"><br />
                             <p></p><br />

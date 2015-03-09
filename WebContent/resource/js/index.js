@@ -86,7 +86,17 @@
             $('#login-pwd-wrapper label').text("이 필드는 필수 입력 항목입니다.");
             $('#pwd').css('border-color', '#e4a197');
         }
-
+        $.ajax({
+        	type:"post",
+        	url:"loginProc.jsp",
+        	data:{
+        		uid:$("#uid").val(),
+        		pwd:$("#pwd").val()
+        	},
+        	success:function(data){
+        		alert($.trim(data));
+        	}
+        });
     });
 
     // 회원가입 폼 유효성 검사
