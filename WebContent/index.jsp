@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>우리 함께 | e - oot</title>
-<link href="resource/css/bind_index.css" type="text/css" rel="stylesheet" />
+<link href="resources/css/bind_index.css" type="text/css" rel="stylesheet" />
 <link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" type="text/css" rel="stylesheet" />
 <script src="resource/js/jquery-2.1.3.js"></script>
 <script src="resource/js/modernizr.js" type="text/javascript"></script>

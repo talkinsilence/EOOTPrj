@@ -1,0 +1,282 @@
+﻿.hidden {
+    display: none;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+html {
+    display: block;
+}
+
+body {
+    display: block;
+}
+
+.main {
+    display: block;
+    float: left;
+    /*margin-left: 70px;*/
+}
+/*////////< upper layout >///////////////////////////////////*/
+.upper {
+    display: block;
+    position: relative;
+    width: 1366px;
+    height: 500px;
+}
+
+@media screen and (max-width: 1280px) {
+    .upper {
+        width: 1280px;
+    }
+}
+
+.profile-pic-box-bg {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: darkgrey;
+    overflow: hidden;
+}
+
+.profile-pic-box-bg .thumbnail {
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 130px;
+    height: auto;
+    width: 100%;
+    transform: translate(-50%,-50%);
+}
+
+.upper-left {
+    width: 401px;
+    height: 100%;
+    position: relative;
+}
+
+.transp-bg {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.3;
+}
+
+.profile {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.logo {
+    display: block;
+    width: 185px;
+    height: 70px;
+    padding-top: 40px;
+    padding-left: 105px;
+}
+
+.logo1 {float: left;}
+.logo2 {float: left;}
+.logo3 {float: left;}
+.logo4 {float: left;}
+.logo5 {float: left;}
+
+.profile-pic-box-main {
+    display: block;
+    position: absolute;
+    width: 185px;
+    height: 185px;
+    margin-left: 105px;
+    overflow: hidden;
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+.thumbnail {
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%,-50%);
+}
+
+.profile-id {
+    display: block;
+    position: relative;
+    top: 220px;
+}
+
+.profile-name {
+    display: block;
+    position: relative;
+    top: 230px;
+}
+
+.profile-family-members-wrapper {
+    display: inline-block;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    top: 246px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translateX(-50%);
+}
+
+.profile-family-members {
+    display: block;
+    position: relative;
+    margin: 10px;
+    width: 46px;
+    height: 46px;
+    border: 2px solid white;
+    border-radius: 50%;
+    float: left;
+    overflow: hidden;
+}
+
+/*////////< lower layout >///////////////////////////////////*/
+.lower {
+    display: block;
+    position: absolute;
+    width: 1366px;
+    height: calc(100% - 500px);
+}
+
+@media screen and (max-width: 1280px) {
+    .lower {
+        width: 1280px;
+    }
+}
+
+.lower-left {
+    display: block;
+    position: absolute;
+    width: 401px;
+    height: 100%;
+    min-height: 120px;
+    /*background: #C1C1C1;*/
+    background: #E5E5E5;
+    /*background: #20f298;*/
+}
+
+.btn-up {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: url("../images/btn-up.png") no-repeat center;
+}
+.btn-up:hover {opacity: 0.5;}
+
+.btn-down {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: 0;
+    background: url("../images/btn-down.png") no-repeat center;
+}
+.btn-down:hover {opacity: 0.5;}
+
+.alarms-box {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: calc(100% - 40px);
+    top: 50%;
+    transform: translateY(-50%);
+    overflow-y: hidden;
+    background: pink;
+}
+
+.alarms-wrapper {
+    display: block;
+    position: absolute;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    background: aqua;
+}
+
+.lower-right {
+    display: block;
+    position: absolute; 
+    left: 401px;
+    width: calc(100% - 401px);
+    height: 100%;
+    min-height: 120px;
+}
+
+.post-wrapper {
+    display:inline-block;
+    background: #b6ff00;
+}
+.post {
+    display: block;
+    margin: 16px 8px;
+    width: 150px;
+    height: 100px;
+    float: left;
+    background: #e5e5e5;
+}
+
+    .post:first-child {
+        margin-left: 16px;
+    }
+
+    .post:last-child {
+        margin-right: 16px;
+    }
+
+/*.hello-wrapper {
+    display: block;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: calc(100% - 440px);
+    height: 90px;
+    //height: calc(100% - 110px);
+    //min-height: 56px;
+    overflow: hidden;
+}
+
+.hello {
+    position: absolute;
+    z-index: 1;
+}*/
+
+/*.btn-menu-wrapper {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100px;
+}
+
+.btn-menu {
+    padding: 12px 20px;
+    margin: 40px 30px;
+    outline: 0;
+    border: 0;
+    background: #ed5661;
+    border-radius: 4px;
+    box-shadow: 0 5px 0 #c3222e;
+    cursor: pointer;
+    transition: all .1s linear;
+    float: left;
+}
+
+.btn-menu:active {
+  box-shadow: 0 2px 0 #c3222e;
+  transform: translateY(3px);
+}*/
