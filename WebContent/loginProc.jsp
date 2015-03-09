@@ -13,9 +13,12 @@
 	Member m = dao.getMember(uid);
 	
 	if(m == null)
-		data = "아이디 없음";
+		data = "null";
 	else if(!m.getPwd().equals(pwd))
-		data = "비밀번호나 아이디 틀림";
-
+		data = "invalid";
+	else
+		session.setAttribute("uid", uid);
+	
+	
 	out.print(data);
 %>

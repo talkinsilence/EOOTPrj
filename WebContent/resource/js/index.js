@@ -6,6 +6,8 @@
     var label_regPwd = $("<label>");
     var label_regPwdcon = $("<label>");
     
+    var loginUidCheck = false;
+    var loginPwdCheck = false;
     var nameValCheck = false;
     var uidValCheck = false;
     var pwdValCheck = false;
@@ -79,24 +81,24 @@
             $('#login-email-wrapper p').append(label_Email);
             $('#login-email-wrapper label').text("이메일 형식이 올바르지 않습니다.");
             $('#uid').css('border-color', '#e4a197');
-        }
+        } else 
+        	loginUidCheck = true;
+        	
 
         if (pwdVal == "") {
             $('#login-pwd-wrapper p').append(label_Pwd);
             $('#login-pwd-wrapper label').text("이 필드는 필수 입력 항목입니다.");
             $('#pwd').css('border-color', '#e4a197');
-        }
-        $.ajax({
-        	type:"post",
-        	url:"loginProc.jsp",
-        	data:{
-        		uid:$("#uid").val(),
-        		pwd:$("#pwd").val()
-        	},
-        	success:function(data){
-        		alert($.trim(data));
-        	}
-        });
+        } else if (!regex_Pwd.test(pwdVal)) {
+            $('#login-pwd-wrapper p').append(label_regPwd);
+            $('#login-pwd-wrapper label').text("비밀번호 형식이 맞지 않습니다.(6~12자리)");
+            $('#pwd').css('border-color', '#e4a197');
+        }  else 
+        	loginPwdCheck = true;
+        
+        if(loginUidCheck == true && loginPwdCheck == true)
+        	login();
+        
     });
 
     // 회원가입 폼 유효성 검사
@@ -174,7 +176,7 @@
         
         if(nameValCheck == true && uidValCheck == true && pwdValCheck == true && pwdconValCheck == true && monthCheck == true
         		&& dayCheck == true && yearCheck == true)
-        	regSubmit();
+        	reg();
     });
     
     // 회원가입 폼 유효성 검사 (포커스 아웃시)
@@ -288,9 +290,36 @@
     	});
     }
     
+    function login(){
+    	$.ajax({
+        	type:"post",
+        	url:"loginProc.jsp",
+        	data:{
+        		uid:$("#uid").val(),
+        		pwd:$("#pwd").val()
+        	},
+        	success:function(data){
+        		if($.trim(data) == "null"){
+        			$('#login-email-wrapper p').append(label_Email);
+                    $('#login-email-wrapper label').text("사용자 아이디가 존재하지 않습니다.");
+                    $('#uid').css('border-color', '#e4a197');
+        		} else if ($.trim(data) == "invalid"){
+        			$('#login-email-wrapper p').append(label_Email);
+                    $('#login-email-wrapper label').text("사용자 아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
+                    $('#uid').css('border-color', '#e4a197');
+                    $('#login-pwd-wrapper p').append(label_Pwd);
+                    $('#login-pwd-wrapper label').text("dd.");
+                    $('#pwd').css('border-color', '#e4a197');
+        		} else
+        			location.href="/main/main2.jsp";
+        	}
+        });
+    }
+    
 });
 
-function regSubmit(){
+
+function reg(){
 	$.ajax({
 		type:"POST",
 		url:"indexRegProc.jsp",
@@ -315,11 +344,12 @@ function regSubmit(){
 	});
 }
 
-
 function reset_loginForm() {
     $('#loginform label').remove();
     $('#loginform input').css('border-color', '#D8D8D8');
     
+    loginUidCheck = false;
+    loginPwdCheck = false;
 }
 
 function reset_regForm() {
