@@ -1,8 +1,25 @@
-﻿<!DOCTYPE html>
+﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
+<%@page import="com.eoot.eootprj.model.Member"%>
+<%@page import="com.eoot.eootprj.dao.MemberDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBatisMain"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% 
+	String mid = "chanmoon@naver.com";
+	MemberDao dao = new MyBMemberDao();
+
+	Member m = dao.getMember(mid);
+
+	//Member m = memberDao.getMember(_mid);
+	
+	pageContext.setAttribute("m", m);
+%>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>우리 함께 | e - oot</title>
     <link href="css/bind_main2.css" type="text/css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
@@ -20,7 +37,7 @@
             </div>
             <aside class="upper-left">
                 <div class="transp-bg">
-                    <!--음영-->
+                	<!--음영-->
                 </div>
                 <div class="profile">
                     <div class="logo">
@@ -28,15 +45,15 @@
                     </div>
                     <div class="profile-pic-box-main">
                         <!--프로필사진-->
-                        <img class="thumbnail" src="images/bobby1.jpg" />
+                        <img class="thumbnail" src="images/pcm.jpg" />
                     </div>
                     <div class="profile-id">
                         <!--이메일-->
-                        talkinsilence21@gmail.com
+                        ${m.mid}
                     </div>
                     <div class="profile-name">
                         <!--이름-->
-                                                장남영
+                        ${m.name}
                     </div>
                     <div class="profile-family-members-wrapper">
                         <!--가족구성원-->

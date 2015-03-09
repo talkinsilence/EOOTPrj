@@ -15,10 +15,10 @@ public class MyBMemberDao implements MemberDao {
 	}
 
 	@Override
-	public Member getMember(String uid) {
+	public Member getMember(String mid) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
-		return memberDao.getMember(uid);
+		return memberDao.getMember(mid);
 	}
 
 }
