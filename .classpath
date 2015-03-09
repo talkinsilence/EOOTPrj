@@ -9,5 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache-tomcat-8.0.15"/>
+	<classpathentry kind="lib" path="G:/SIST PC/Nami3_1/Tools/apache/apache-tomcat-8.0.15/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
