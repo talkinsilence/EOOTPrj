@@ -305,10 +305,10 @@
                     $('#uid').css('border-color', '#e4a197');
         		} else if ($.trim(data) == "invalid"){
         			$('#login-email-wrapper p').append(label_Email);
-                    $('#login-email-wrapper label').text("사용자 아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
+                    $('#login-email-wrapper label').text("사용자 아이디 혹은 비밀번호가 올바르지 않습니다.");
                     $('#uid').css('border-color', '#e4a197');
                     $('#login-pwd-wrapper p').append(label_Pwd);
-                    $('#login-pwd-wrapper label').text("dd.");
+                    $('#login-pwd-wrapper label').text("사용자 아이디 혹은 비밀번호가 올바르지 않습니다.");
                     $('#pwd').css('border-color', '#e4a197');
         		} else
         			location.href="main/main.jsp";
