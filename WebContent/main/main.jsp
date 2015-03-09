@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿<%@page import="com.eoot.eootprj.model.Member"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
+<%@page import="com.eoot.eootprj.dao.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% 
+	String mid = "chanmoon@naver.com";
+
+	MemberDao memberDao = new MyBMemberDao();
+	Member m = memberDao.getMember(mid);
+	//Member m = memberDao.getMember(_mid);
+	
+	pageContext.setAttribute("m", m);
+%>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -35,11 +49,11 @@
                     </div>
                     <div class="profile-id">
                         <!--이메일-->
-                        talkinsilence21@gmail.com
+                        ${m.mid}
                     </div>
                     <div class="profile-name">
                         <!--이름-->
-                        장남영
+                        ${m.name}
                     </div>
                     <div class="profile-family-members-wrapper">
                         <!--가족구성원-->
