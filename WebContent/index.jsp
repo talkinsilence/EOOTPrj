@@ -1,11 +1,12 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>우리 함께 | e - oot</title>
-<link href="resources/css/bind_index.css" type="text/css" rel="stylesheet" />
+<link href="resource/css/bind_index.css" type="text/css" rel="stylesheet" />
 <link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" type="text/css" rel="stylesheet" />
 <script src="resource/js/jquery-2.1.3.js"></script>
 <script src="resource/js/modernizr.js" type="text/javascript"></script>
@@ -73,7 +74,7 @@
                             <span>주변 사람들과 더욱 더 가까워 질 수 있습니다.</span>
                         </div>
                         <div id="reg-form-box">
-                            <form name="regform" id="regform" action="indexRegProg.jsp" method="post">
+                            <form name="regform" id="regform">
                                 <div id="reg-name-wrapper">
                                     <input type="text" name="reg-name" id="reg-name" placeholder="이름" />
                                     <p></p><br />
@@ -93,15 +94,21 @@
                                 <div id="reg-birthday-wrapper">
                                     <select name="user-birthday-month" id="user-birthday-month">
                                         <option>월</option>
-                                        <option>10</option>
+                                        <c:forEach var="i" begin="1" end="12">
+                                        	<option value="${i}">${i}</option>
+                                        </c:forEach>
                                     </select>
                                     <select name="user-birthday-day" id="user-birthday-day">
                                         <option>일</option>
-                                        <option>09</option>
+                                        <c:forEach var="i" begin="1" end="31">
+                                        	<option value="${i}">${i}</option>
+                                        </c:forEach>
                                     </select>
                                     <select name="user-birthday-year" id="user-birthday-year">
                                         <option>년</option>
-                                        <option>1991</option>
+                                        <c:forEach var="i" begin="1905" end="2015" step="1" varStatus="loop">
+                                        	<option value="${loop.end - i + loop.begin}">${loop.end - i + loop.begin}</option>
+                                        </c:forEach>
                                     </select>
                                 </div>
                                 <div id="reg-txt">

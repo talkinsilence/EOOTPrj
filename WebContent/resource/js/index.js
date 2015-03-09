@@ -75,7 +75,7 @@
             $('#login-email-wrapper p').append(label_Email);
             $('#login-email-wrapper label').text("이 필드는 필수 입력 항목입니다.");
             $('#uid').css('border-color', '#e4a197');
-        } else if (uidVal.length < 6 || !regex_Email.test(uidVal)) {
+        } else if (!regex_Email.test(uidVal)) {
             $('#login-email-wrapper p').append(label_Email);
             $('#login-email-wrapper label').text("이메일 형식이 올바르지 않습니다.");
             $('#uid').css('border-color', '#e4a197');
@@ -100,7 +100,7 @@
         var yearVal = $("#user-birthday-year").val();
         
         reset_regForm();
-
+        
         // 이름
         if (nameVal == "") {
             $('#reg-name-wrapper p').append(label_regName);
@@ -164,8 +164,7 @@
         
         if(nameValCheck == true && uidValCheck == true && pwdValCheck == true && pwdconValCheck == true && monthCheck == true
         		&& dayCheck == true && yearCheck == true)
-        	$("#regform").submit();
-               
+        	regSubmit();
     });
     
     // 회원가입 폼 유효성 검사 (포커스 아웃시)
@@ -278,7 +277,33 @@
     		}
     	});
     }
+    
 });
+
+function regSubmit(){
+	$.ajax({
+		type:"POST",
+		url:"indexRegProc.jsp",
+		data:({
+			regName: $("#reg-name").val(),
+			regUid: $("#reg-uid").val(),
+			regPwd: $("#reg-pwd").val(),
+			regMonth : $("#user-birthday-month").val(),
+			regDay : $("#user-birthday-day").val(),
+			regYear : $("#user-birthday-year").val()
+		}),
+		success: function(){
+	        $('#regform').each(function(){
+	        	this.reset();
+	        });
+	        reset_regForm();
+	        
+	        $('#reg-box').fadeOut(300,function(){
+	        	alert("회원가입에 성공하셨습니다.\n\n이웃과 함께 하세요.");
+	        });
+		}
+	});
+}
 
 
 function reset_loginForm() {
