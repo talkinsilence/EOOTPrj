@@ -187,15 +187,15 @@
 
             <div class="visual-box">
                 <div class="pic-ratio-box9">
-                        
+                	<img id="pic1" src="resource/images/area4-pic1.jpg" />  
                 </div>
 
                 <div class="pic-ratio-box9">
-
+					<img id="pic2" src="resource/images/area4-pic2.jpg" />
                 </div>
-
+					
                 <div class="pic-ratio-box9">
-
+					<img id="pic3" src="resource/images/area4-pic3.jpg" />
                 </div>
             </div>
         </section>

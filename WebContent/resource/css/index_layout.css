@@ -339,7 +339,6 @@ nav#primary a:hover, nav#primary a.active {
     margin-right:auto;
     margin-bottom:20px;
     overflow:hidden;
-    background:blue;
 }
 
 .pic-ratio-box9 {
@@ -350,6 +349,24 @@ nav#primary a:hover, nav#primary a.active {
     overflow:hidden;
     background:red;
     margin-left:13px;
+}
+
+.pic-ratio-box9 #pic1 {
+	width:auto;
+	height:492px;
+	transform: translate(-40px, 0px);
+}
+
+.pic-ratio-box9 #pic2 {
+	width:314px;
+	height:100%;
+	
+}
+
+.pic-ratio-box9 #pic3 {
+	width:auto;
+	height:492px;
+	transform: translate(-270px, 0px);
 }
 
 /********************* footer **************************/
