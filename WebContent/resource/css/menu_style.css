@@ -1,15 +1,19 @@
-ï»¿#menu1 .vertical_text{
+#menu1 .vertical_text{
     word-wrap: break-word;
     width: 14px;
-    font-family: ë§‘ì€ ê³ ë”•, ê³ ë”•, sans-serif;
+    font-family: ¸¼Àº °íµñ, °íµñ, sans-serif;
     font-size: 15px;
     display: inline-block;
     line-height: 25px;
 }
 
 #menu2 .vertical_text{
-    font-family: ë§‘ì€ ê³ ë”•, ê³ ë”•, sans-serif;
+    font-family: ¸¼Àº °íµñ, °íµñ, sans-serif;
     font-size: 15px;
     display: inline-block;
     line-height: 25px;
+}
+
+#menu3 #family {
+    font-size:12px;
 }
