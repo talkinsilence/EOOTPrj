@@ -10,7 +10,8 @@ public class Letter {
 	private String title;
 	private String content;
 	private int read;
-	
+	private int type;
+
 	public String getCode() {
 		return code;
 	}
@@ -53,5 +54,10 @@ public class Letter {
 	public void setRead(int read) {
 		this.read = read;
 	}
-
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
 }

@@ -7,3 +7,4 @@ INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, REGDATE, FAMCODE) VALUES('ddddd', 
 select * from members where Mid = 'ddd';
 
 select * from letters;
+select * from letterfiles;
