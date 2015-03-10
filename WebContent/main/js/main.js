@@ -30,4 +30,8 @@
     $('.info-wrapper').mouseover(function () {
         $(this).show();
     });
+    
+    $('.info-wrapper').mouseout(function () {
+        $(this).hide();
+    });
 })

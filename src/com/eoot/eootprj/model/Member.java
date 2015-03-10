@@ -1,6 +1,6 @@
 package com.eoot.eootprj.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Member {
 	private String mid;
