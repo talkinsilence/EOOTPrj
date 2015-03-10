@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <!-- Type alias -->
    <typeAliases>
       <typeAlias alias="Member" type="com.eoot.eootprj.model.Member" />
+      <typeAlias alias="Letter" type="com.eoot.eootprj.model.Letter" />
    </typeAliases>
 
    <environments default="development">
