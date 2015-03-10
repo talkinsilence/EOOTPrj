@@ -8,6 +8,7 @@
 
 html {
     display: block;
+    background: #404148;
 }
 
 body {
@@ -158,6 +159,7 @@ body {
     position: absolute;
     width: 1296px;
     height: calc(100% - 500px);
+    background: #fff;
 }
 
 @media screen and (max-width: 1280px) {

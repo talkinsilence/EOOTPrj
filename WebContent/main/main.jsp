@@ -17,7 +17,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />
     <link href="css/main_layout.css" rel="stylesheet" type="text/css" />
     <link href="css/main_style.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -25,9 +25,134 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script src="../resource/js/modernizr.js" type="text/javascript"></script>
     <script src="../resource/js/jquery-2.1.3.js"></script>
+    <script src="../resource/js/menu.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
 </head>
 <body>
+
+<!--===========< 메뉴영역 >===============================================-->
+    <section>
+        <h1 class="hidden">회원 메뉴</h1>
+
+        <nav id="menu1">
+            <h1 class="hidden">메뉴 1</h1>
+
+            <div id="menu_button"></div>
+
+            <div id="buttons">
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">우리집</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">이 웃</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">마 을</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div id="separator"></div>
+
+                <div class="img-button">
+                    <div class="vertical-field1">
+                        <div class="img-vertical-field2">
+                            <a href=""><img src="../resource/images/btn-scrapped.png" /></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="img-button">
+                    <div class="vertical-field1">
+                        <div class="img-vertical-field2">
+                            <a href=""><img src="../resource/images/btn_write.png" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <nav id="menu2">
+            <h1 class="hidden">메뉴 2</h1>
+
+            <div id="menu_button"><input type="button" value="닫기" id="menu2_hide" /></div>
+
+            <div id="buttons">
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">달 력</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">앨 범</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">편 지 함</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">택 배</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">설 정</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+            </div>
+        </nav>
+    </section>
+
+<!--===========< 메인영역 >===============================================-->
+
     <div class="main">
 
         <div class="upper">

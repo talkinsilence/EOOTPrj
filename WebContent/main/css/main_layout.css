@@ -8,6 +8,7 @@
 
 html {
     display: block;
+    background: #404148;
 }
 
 body {
@@ -17,19 +18,19 @@ body {
 .main {
     display: block;
     float: left;
-    /*margin-left: 70px;*/
+    margin-left: 70px;
 }
 /*////////< upper layout >///////////////////////////////////*/
 .upper {
     display: block;
     position: relative;
-    width: 1366px;
+    width: 1296px;
     height: 500px;
 }
 
 @media screen and (max-width: 1280px) {
     .upper {
-        width: 1280px;
+        width: 1210px;
     }
 }
 
@@ -164,13 +165,14 @@ body {
 .lower {
     display: block;
     position: absolute;
-    width: 1366px;
+    width: 1296px;
     height: calc(100% - 500px);
+    background: #fff;
 }
 
 @media screen and (max-width: 1280px) {
     .lower {
-        width: 1280px;
+        width: 1210px;
     }
 }
 
