@@ -143,7 +143,7 @@
                     <div class="vertical-field1">
                         <div class="vertical-field2">
                             <span class="vertical_text">레알 마드리드</span>
-                            <div id="family">한솥 이삭</div>
+                            <div id="family">한솥 이삭 토마토</div>
                         </div>
                     </div>
                 </div>
