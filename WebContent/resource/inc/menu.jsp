@@ -45,7 +45,7 @@
                 <div class="img-button">
                     <div class="vertical-field1">
                         <div class="img-vertical-field2">
-                            <a href=""><img src="../images/btn-scrapped.png" /></a>
+                            <a href=""><img src="../resource/images/btn-scrapped.png" /></a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                 <div class="img-button">
                     <div class="vertical-field1">
                         <div class="img-vertical-field2">
-                            <a href=""><img src="../images/btn_write.png" /></a>
+                            <a href=""><img src="../resource/images/btn_write.png" /></a>
                         </div>
                     </div>
                 </div>
