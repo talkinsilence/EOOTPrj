@@ -35,12 +35,12 @@
 
     //===========< letter >==============================================
     $('.eoot-menu-letter').click(function () {
-        $('.letter').fadeIn(200);
+        $('.letter-write-wrapper, .letter-add-wrapper').css("display", "none");
+        $('.letter, .letter-type-wrapper').fadeIn(200);
     });
 
-    $('.btn-close').click(function () {
+    $('.btn-close, .letter-transp-bg').click(function () {
         $('.letter').fadeOut(10);
-
     });
 
     if ($('.letter-write-box').height() >= 400)
@@ -59,7 +59,6 @@
     });
 
     $('.letter-to-list-add').click(function () {
-
         $('.letter-write-wrapper').css("display", "block");
 
         var loc = $('.letter-write-wrapper').offset();
@@ -67,11 +66,8 @@
         $('.letter-add-wrapper').offset({ left: loc.left + wid + 70, top: loc.top });
 
         $('.letter-add-wrapper').fadeIn(100, 'linear');
-
-
     })
  
-
     $('.letter-send').click(function () {
         if ($('.letter-to-list').length == 0) 
             alert("수신인을 한 명 이상 지정해야 합니다.");
@@ -83,9 +79,6 @@
             });
         }
     });
-
-
-
 }//end init
 
 window.onload = init;
