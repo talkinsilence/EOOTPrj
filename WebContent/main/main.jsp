@@ -19,6 +19,7 @@
     <title></title>
     <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
     <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />
+    <link href="../resource/css/bind_letter.css" rel="stylesheet" type="text/css" />
     <link href="css/bind_main.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>

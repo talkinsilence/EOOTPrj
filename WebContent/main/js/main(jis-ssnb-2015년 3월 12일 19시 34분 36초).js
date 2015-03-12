@@ -65,18 +65,10 @@
         $('.letter-add-wrapper').fadeIn(100, 'linear');
     });
 
-    $('.letter-add-list').each(function(){
-    	$(this).children("img").click(function(){
-    		var src = $(this).attr("src");
-        	alert(src);
-        	$(this).parent().clone().css("float", "left").prependTo($('.letter-to-list-wrapper'));
-        	
-        	//if($('.letter-to-list-wrapper').children("img").attr("src")==src)
-        	//if($('.letter-to-list-wrapper > .letter-add-list').children("img").attr("src")==src)
-        		//$(this).parent().unbind("click");   
-        	
-    	});
-    });
+    
+    
+    //여기
+    
 
     $('#letter-send').click(function () {
         if ($('.letter-to-list').length == 0)
@@ -89,5 +81,18 @@
             });
         }
     });
+    
+    
+    $('.letter-add-list').each(function(){
+    	$(this).children("img").click(function(){
+    		var src = $(this).attr("src");
+        	alert(src);
+        	$('.letter-to-list').clone().prependTo($('.letter-to-list-wrapper'));
+    	});
+    });
+    	//$('.letter-to-list').attr("src", src);
+    	//$('.letter-to-list-wrapper').append($('.letter-to-list'));
+
+
     
 })

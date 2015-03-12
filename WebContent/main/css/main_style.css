@@ -30,27 +30,3 @@ a {
     text-shadow:0px 1px 6px #000000;
     letter-spacing: 2px;
 }
-
-.lower-left {
-    font-size: 15px;
-    color: black;
-    text-align: center;
-    line-height: 1.4;
-}
-
-.letter-box-header-title {
-    font-size : 20px;
-    font-weight: bold;
-    color: #404148;
-    float: left;
-}
-
-.letter-box-header-total {
-    font-size : 12px;
-    color: #6c6d74;
-}
-
-.letter-item-box {
-    font-size: 14px;
-    text-align: center;
-}
