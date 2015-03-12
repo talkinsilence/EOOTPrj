@@ -1,0 +1,46 @@
+﻿body
+{
+  
+}
+
+#main
+{   
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+.village-main-area
+{
+    position: absolute;
+    width: calc(100% - 30% - 70px);
+    height: 100%;
+    background: #edf1f2;
+    overflow-y: auto;
+    /*배경색 변경*/
+}
+
+.village-sub-area
+{
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    right: 0;
+}
+
+.e-oot-newsfeed
+{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 50%;
+    background: #C5E0B4;
+}
+
+.village-newsfeed
+{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50%;
+    background: #F8CBAD;
+}

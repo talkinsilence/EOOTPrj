@@ -10,7 +10,7 @@ public class VilPost {
    private String Writer;
    private Date Regdate;
    private int Hit;
-   private int LickCnt;
+   private int LikeCnt;
    private int ClipCnt;
    
    public String getCode() {
@@ -55,11 +55,11 @@ public class VilPost {
    public void setHit(int hit) {
       Hit = hit;
    }
-   public int getLickCnt() {
-      return LickCnt;
+   public int getLikeCnt() {
+      return LikeCnt;
    }
-   public void setLickCnt(int lickCnt) {
-      LickCnt = lickCnt;
+   public void setLikeCnt(int likeCnt) {
+	   LikeCnt = likeCnt;
    }
    public int getClipCnt() {
       return ClipCnt;

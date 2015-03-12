@@ -1,0 +1,262 @@
+﻿.hidden
+{
+    display: none;
+    /*visibility: hidden;*/
+}
+
+.empty-space
+{
+    display: inline-block;
+    height: 15%;
+    float: left;
+    visibility: hidden;
+}
+
+#e-oot-newsfeed-board
+{
+    margin-top: 20px;
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+#village-newsfeed-board 
+{
+    margin-top: 20px;
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.e-oot-newsfeed-prev-btn
+{
+    display: block;
+    text-align: center;   
+}
+
+.e-oot-newsfeed-next-btn
+{
+    display: block;
+    text-align: center;   
+}
+
+.village-newsfeed-prev-btn
+{
+    display: block;
+    text-align: center;   
+}
+
+.village-newsfeed-next-btn
+{
+    display: block;
+    text-align: center;   
+}
+
+.e-oot-newsfeed-clipper
+{
+    position: relative;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+}
+
+.village-newsfeed-clipper
+{
+    position: relative;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+}
+
+.e-oot-newsfeed-list
+{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 2000px;
+}
+
+.e-oot-newsfeed-item {
+    display: block;
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.e-oot-newsfeed-item > a
+{
+    text-decoration: none;
+}
+
+#e-oot-newsfeed-item-btn
+{
+    width: 30px;
+    height: 30px;
+}
+
+#village-newsfeed-item-btn
+{
+    width: 30px;
+    height: 30px;
+}
+
+.newsfeed-item-layout
+{
+    text-align: center;
+}
+
+.village-newsfeed-list
+{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 2000px;
+}
+
+.village-newsfeed-item
+{
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.village-newsfeed-item > a
+{
+    text-decoration: none;
+}
+
+#village-newsfeed-item-img
+{
+    display: inline-block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    /*background: blue;*/
+}
+
+#village-newsfeed-item-content1
+{
+    position: relative;
+    display: inline-block;
+    font-family: 'Nanum Gothic', serif;
+    font-size: 12px;
+    font-weight: bold;
+    /*background: red;*/
+    padding-left: 70px;
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #c23a5b;
+    margin-top: 5px;
+}
+
+#village-newsfeed-item-content2
+{
+    position: relative;
+    display: inline-block;
+    font-family: 'Nanum Gothic', serif;
+    font-size: 12px;
+    font-weight: bold;
+    /*background: red;*/
+    padding-left: 70px;
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: black;
+}
+
+#map_canvas
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+/*추가사항*/
+
+.newsfeed-detail-view
+{
+    display: block;
+    width: 80%;
+    min-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    margin-top: 3%;    
+}
+
+#newsfeed-title
+{
+    display: block;
+    float: left;
+    width: 100%;
+    min-height: 50px;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#newsfeed-title-text
+{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 맑은 휴먼고딕, 굴림, sans-serif;
+    color: #515050;
+}
+
+#newsfeed-content
+{
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    background: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#newsfeed-content-img
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+#newsfeed-content-item
+{
+    width: 95%;
+    min-height: 50px;
+    border: 1px solid red;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#newsfeed-etc
+{
+    display: block;
+    width: 95%;
+    min-height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #ffffff;
+}
+
+#newsfeed-etc-item
+{
+    display: block;
+    float: left;
+    width: 33.1%;
+    border: 1px solid #ff0000;
+}
