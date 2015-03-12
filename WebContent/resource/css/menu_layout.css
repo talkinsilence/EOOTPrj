@@ -1,4 +1,4 @@
-﻿
+
 .hidden {
     display: none;
 }
@@ -83,7 +83,7 @@
     width: 100%;
     height: 2%;
 }
-/*//////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////  menu2  ////////////////////////////////////////*/
 
 #menu2{
     position: fixed;
@@ -100,9 +100,8 @@
 #menu2 #menu_button{
     width: 200px;
     height: 70px;
-    background: white;
+    background: url("../images/menu_button.png") no-repeat center;
     cursor: pointer;
-    background-size: cover;
 }
 
 #menu2 #buttons{
@@ -112,6 +111,7 @@
     left: 0px;
     right: 0px;
     background: #404148;
+    overflow-y:auto;
 }
 
 #menu2 .button{
@@ -129,4 +129,56 @@
     width: 100%;
     height: 1px;
     background: url("../images/menu_separator1.png") center;
+}
+
+/*/////////////////////////// menu3 ///////////////////////////////////////////*/
+
+#menu3{
+    position: fixed;
+    top: 0px;
+    left: -200px;
+    bottom: 0px;
+    width: 200px;
+    color: #CCCCCC;
+    font-size: 15px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.15);
+    z-index:2;
+}
+
+#menu3 #menu_button{
+    width: 200px;
+    height: 70px;
+    background: url("../images/menu_button.png") no-repeat center;
+    cursor: pointer;
+}
+
+#menu3 #buttons{
+    position: absolute;
+    top: 70px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: #404148;
+    overflow-y:auto;
+}
+
+#menu3 .button{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 75px;
+    cursor: pointer;
+    background: #404148;
+}
+
+#menu3 .visual{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 1px;
+    background: url("../images/menu_separator1.png") center;
+}
+
+#menu3 #family {
+    padding-top: 10px;
 }
