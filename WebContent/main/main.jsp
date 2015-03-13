@@ -52,7 +52,7 @@
                     </div>
                     <div class="profile-pic-box-main">
                         <!--프로필사진-->
-                        <img class="thumbnail" src="${m.profilepic}" />
+                        <img class="thumbnail" src="${m.profilepic}" alt="naminami"/>
                     </div>
                     <div class="profile-id">
                         <!--이메일-->
