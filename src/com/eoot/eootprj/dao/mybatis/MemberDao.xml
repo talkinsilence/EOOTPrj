@@ -8,8 +8,8 @@
 	<insert id="insert" parameterType="Member">		
 		<!-- INSERT INTO MEMBERS(MID, NAME, REGDATE) 
 		VALUES(#{mid}, #{name}, GETDATE()) -->
-		INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, REGDATE, FAMCODE)
-		VALUES(#{mid}, #{pwd}, #{name}, #{birthday}, GETDATE(), #{mid});
+		INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, REGDATE, FAMCODE)
+		VALUES(#{mid}, #{pwd}, #{name}, #{birthday}, #{profilepic}, GETDATE(), #{mid});
 	</insert>
 	
 	<select id="getMember" parameterType="String" resultType="Member">

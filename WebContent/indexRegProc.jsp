@@ -10,7 +10,8 @@
 	String year = request.getParameter("regYear");
 	String _month = request.getParameter("regMonth");
 	String _day = request.getParameter("regDay");
-	String path = "resource/images/default.jpg";
+	String ctxName = request.getContextPath();
+	String path = ctxName + "/resource/images/default.jpg";
 	
 	String month = "";
 	String day = "";
@@ -33,9 +34,8 @@
 	member.setMid(regUid);
 	member.setPwd(regPwd);
 	member.setBirthday(regBirthday);
-	member.setProfilePic(path);
+	member.setProfilepic(path);
 	
 	MemberDao dao = new MyBMemberDao();
 	dao.insert(member);
-	
 %>
