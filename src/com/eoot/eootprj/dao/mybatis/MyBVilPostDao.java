@@ -9,39 +9,42 @@ import com.eoot.eootprj.model.VilPost;
 
 public class MyBVilPostDao implements VilPostDao{
 
-	@Override
+	/*@Override
 	public VilPost getVilPost(String code) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
 		return vilPostDao.getVilPost(code);
-	}
+	}*/
 
 	@Override
-	public List<VilPost> getVilPosts(String query, String field) {
+	public List<VilPost> getVilPosts() {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
-		return vilPostDao.getVilPosts(query, field);
+		return vilPostDao.getVilPosts();
 	}
 
 	@Override
 	public int update(VilPost vilPost) {
-		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		/*SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
-		return vilPostDao.update(vilPost);
+		return vilPostDao.update(vilPost);*/
+		return 0;
 	}
 
 	@Override
 	public int delete(VilPost vilPost) {
-		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		/*SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
-		return vilPostDao.delete(vilPost);
+		return vilPostDao.delete(vilPost);*/
+		return 0;
 	}
 
 	@Override
 	public int insert(VilPost vilPost) {
-		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		/*SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
-		return vilPostDao.insert(vilPost);
+		return vilPostDao.insert(vilPost);*/
+		return 0;
 	}
 
 }

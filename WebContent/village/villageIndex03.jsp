@@ -1,4 +1,6 @@
-﻿<%@ page import="com.eoot.eootprj.dao.VilPostDao"%>
+﻿<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@ page import="com.eoot.eootprj.dao.VilPostDao"%>
 <%@ page import="com.eoot.eootprj.model.VilPost"%>
 <%@ page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,9 +11,13 @@
 	String code = request.getParameter("Code");
 	
 	VilPostDao vilPostDao = new MyBVilPostDao();
-	VilPost n = vilPostDao.getVilPost(code);
+	List<VilPost> n = vilPostDao.getVilPosts();
+	List<VilPost> list = vilPostDao.getVilPosts();
+		
+	/* List<VilPost> list = new ArrayList<VilPost>(); */
 	
 	pageContext.setAttribute("n", n);
+	pageContext.setAttribute("list", list);
 %>
 
 <!DOCTYPE html>
@@ -185,7 +191,7 @@
                         </div>
 
                         <div class="village-board-list-wrapper">
-						<%-- <c:forEach var="n" items="${list}"> --%>
+						<c:forEach var="i" items="${list}" >
 							<div class="village-board-list">
 								<div class="village-board-item1">
 									<div class="village-board-label1"></div>
@@ -193,24 +199,24 @@
 										<img class="thumbnail2" src="refimg/suzy1.jpg" />
 									</div>
 									<div class="village-board-item-text00">
-										<p id="village-board-item-title">${n.regdate}</p>
-										<p id="village-board-item-user">${n.writer}</p>
+										<p id="village-board-item-title">${i.regdate}</p>
+										<p id="village-board-item-user">${i.writer}</p>
 									</div>
 									<div class="post-popularity">
 										<div class="post-popularity-item like">
 											<h1 class="hidden">좋아요 개수</h1>
 											<img class="post-popularity-btn" src="refimg/btn-like.png" />
-											<div class="post-popularity-cnt clearfix">${n.likeCnt}</div>
+											<div class="post-popularity-cnt clearfix">${i.likeCnt}</div>
 										</div>
 										<div class="post-popularity-item scrap">
 											<h1 class="hidden">스크랩 횟수</h1>
 											<img class="post-popularity-btn" src="refimg/btn-scrap.png" />
-											<div class="post-popularity-cnt clearfix">${n.clipCnt}</div>
+											<div class="post-popularity-cnt clearfix">${i.clipCnt}</div>
 										</div>
 										<div class="post-popularity-item comment">
 											<h1 class="hidden">댓글 개수</h1>
 											<img class="post-popularity-btn" src="refimg/btn-comment.png" />
-											<div class="post-popularity-cnt clearfix">${n.commentCnt}</div>
+											<div class="post-popularity-cnt clearfix">${i.commentCnt}</div>
 										</div>
 									</div>
 								</div>
@@ -218,17 +224,17 @@
 								<div id="accordion">
 									<div>
 										<div class="village-board-item2">
-											<p>${n.title}</p>
+											<p>${i.title}</p>
 										</div>
 										<div class="village-board-item3"></div>
 									</div>
 									<div id="village-board-item2-text">
-										<p>${n.content}</p>
+										<p>${i.content}</p>
 										<img id="village-board-item2-img" src="refimg/bobby1.jpg" />
 									</div>
 								</div>
 							</div>
-						<%-- </c:forEach> --%>
+						</c:forEach>
 					</div>
                         <!--==============================================================================================-->
 

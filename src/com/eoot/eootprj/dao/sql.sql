@@ -8,7 +8,7 @@ VALUES('qq3', 'ddfd', 'dfasdf', '19910101', 'default.jpg', GETDATE(), 'tete');
 
 select * from members where Mid = 'ddd';
 
-
+SELECT V.* FROM (SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM , VilPosts.* FROM NOTICES WHERE #{field} LIKE '%${query}%') V WHERE ;
 
 select * from letters;
 select * from letterfiles;
