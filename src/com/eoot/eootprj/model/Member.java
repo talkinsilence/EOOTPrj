@@ -8,7 +8,7 @@ public class Member {
 	private String name;
 	private String birthday;
 	private String address;
-	private String profilePic;
+	private String profilepic;
 	private String phone;
 	private Date regdate;
 	private String famcode;
@@ -43,11 +43,11 @@ public class Member {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getProfilePic() {
-		return profilePic;
+	public String getProfilepic() {
+		return profilepic;
 	}
-	public void setProfilePic(String profilePic) {
-		this.profilePic = profilePic;
+	public void setProfilepic(String profilepic) {
+		this.profilepic = profilepic;
 	}
 	public String getPhone() {
 		return phone;

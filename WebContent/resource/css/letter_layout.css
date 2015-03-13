@@ -1,0 +1,503 @@
+﻿/* .hidden {
+    display: none;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+html {
+    display: block;
+    background: #404148;
+}
+
+body {
+    display: block;
+}
+ */
+/*////////< letter layout >///////////////////////////////////*/
+.letter {
+    display: none;
+    /*position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;*/
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+}
+
+.letter-transp-bg {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.75;
+}
+
+.btn-close {
+    display: block;
+    position: fixed;
+    width: 18px;
+    height: 30px;
+    right: 8px;
+    top: 0;
+    cursor: pointer;
+    background: url("../images/btn-close.png") no-repeat center;
+}
+
+.btn-close:hover {
+    opacity: 0.7;
+}
+
+/*======< letter box >==================*/
+.letter-box-wrapper {
+    display: block;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-250px, -250px);
+    background: #fff; 
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 6px #161616;
+}
+
+.letter-box-header {
+    display: block;
+    position: relative;
+    width: calc(100% - 60px);
+    height: 40px;
+    left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    border-bottom: 2px solid #e8eaed;
+}
+
+.letter-box-header-title {
+    display: inline-block;
+    float: left;
+}
+
+.letter-box-header-total {
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 9px;
+}
+
+.letter-box-search {
+    border: 1px solid #e8eaed;
+    width: 132px;
+    height: 24px;
+    float: right;
+}
+
+.letter-search {
+    width: 112px;
+    height: 24px;
+    padding-left: 3px;
+    border: none;
+    outline : none;
+    float: left;
+}
+
+#letter-search {
+    display: block;
+    margin-left: 112px;
+    margin-top: 3px;
+    width: 18px;
+    height: 20px;
+    background: url("../../resource/images/btn-search-s.png") no-repeat center;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+#letter-search:hover {
+    opacity: 0.6;
+}
+
+.letter-item-box {
+    display: block;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.letter-items {
+    display: block;
+    width: 380px;
+    min-height: 100px;
+    margin-left: 55px;
+}
+
+.letter-item {
+    display: block;
+    margin-top: 25px;
+    width: 170px;
+    height: 100px;
+    background: #e8eaed;
+    -webkit-box-shadow: 0px 2px 3px #d4d4d4;
+    clear: left;
+    float: left;
+}
+
+.letter-item:nth-child(2n) {
+    clear: right;
+    float: right;
+}
+
+.letter-title {
+    display: block;
+    margin: 18px 0;
+    padding: 2px 10px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: underline;
+}
+
+.letter-from {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.letter-date {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #9d9d9d;
+}
+
+#letter-write {
+    position: absolute;
+    left: calc(50% - 42px);
+    bottom: 40px;
+    border: 0;
+    background: #ed5661;
+    border-radius: 4px;
+    box-shadow: 0 5px 0 #c3222e;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+    outline: 0;
+    padding: 12px 20px;
+    transition: all .1s linear;
+}
+
+#letter-write:active {
+  box-shadow: 0 2px 0 #c3222e;
+  transform: translateY(3px);
+}
+
+/*======< letter type >==================*/
+.letter-type-wrapper {
+    display: block;
+    position: absolute;
+    width: 530px;
+    height: 190px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-265px, -95px);
+    background: #fff; 
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 6px #161616;
+}
+
+.letter-type {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    margin-top: 20px;
+    float: left;
+    cursor: pointer;
+}
+
+.letter-type:hover {
+    opacity: 0.6;
+}
+
+.letter-type.text {
+    margin-left: 20px;
+    background: url("../images/icon-letter-text.png") no-repeat center;
+}
+
+.letter-type.voice {
+    background: url("../images/icon-letter-voice.png") no-repeat center;
+}
+
+.letter-type.video {
+    background: url("../images/icon-letter-video.png") no-repeat center;
+}
+
+/*======< letter write >==================*/
+.letter-write-wrapper {
+    display: none;
+    position: absolute;
+    width: 30%;  
+    height: 70%; 
+    min-width: 350px;
+    min-height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background: #fff; 
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 6px #161616;
+}
+
+.letter-write-header {
+    width: 100%;
+    height: 76px;
+}
+
+.letter-to {
+    display: block;
+    font-size: 14px;
+}
+
+.letter-to-list-wrapper {
+    display: inline-block;
+    position: relative;
+    margin-top: -20px;
+    min-width: 56px;
+    min-height: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.letter-to-list {
+    display: block;
+    position: relative;
+    margin: 10px;
+    width: 52px;
+    height: 52px;
+    border: 2px solid #e5e5e5;
+    border-radius: 50%;
+    background: #000;
+    float: left;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/*     .letter-to-list:hover .thumbnail{
+        opacity: 0.5;
+    } */
+
+    .letter-to-list:hover {
+        border: 2px solid #7F90F7;
+    }
+    .letter-to-list:hover .thumbnail{
+        opacity: 0.5;
+    }
+    .letter-to-list:hover .delete {
+        display: block;
+    }
+
+.delete {
+    display: none;
+    position: absolute;
+    left: calc(50% - 10px);
+    top: calc(50% - 10px);
+    width: 18px;
+    height: 18px;
+    background: url("../images/btn-del-on.png") no-repeat center;
+}
+
+.thumbnail {
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%,-50%);
+}
+
+.letter-to-list-add {
+    display: block;
+    position: relative;
+    margin: 10px;
+    width: 52px;
+    height: 52px;
+    border: 2px solid #e5e5e5;
+    border-radius: 50%;
+    background: #000;
+    float: left;
+    overflow: hidden;
+    background: url("../images/btn-add.png") no-repeat center;  
+    cursor: pointer;
+}
+
+    .letter-to-list-add:hover {
+        border: 2px solid #FF949C;
+        background: url("../images/btn-add-on.png") no-repeat center;
+    }
+
+#title {
+    width: calc(100% - 24px);
+    border: 2px solid #e8eaed;
+    padding: 2px 10px;
+    resize: none;
+    outline: none;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.letter-title::-webkit-input-placeholder {
+    font-size: 13px;
+}
+
+.letter-write-box {
+    font-size: 13px;
+    display: block;
+    width: calc(100% - 4px);
+    height: calc(100% - 170px);
+    border: 2px solid #e8eaed;
+}
+
+#write {
+    border: 0px;
+    resize: none;
+    padding: 5px 10px;
+    width: calc(100% - 20px);
+    overflow: auto;
+    word-wrap: break-word;
+    outline: none;
+    line-height: 1.4;
+    /*background: #566ced;*/
+}
+
+#letter-send {
+    position: absolute;
+    left: calc(50% - 42px);
+    bottom: 40px;
+    border: 0;
+    background: #ed5661;
+    border-radius: 4px;
+    box-shadow: 0 5px 0 #c3222e;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+    outline: 0;
+    padding: 12px 20px;
+    transition: all .1s linear;
+}
+
+#letter-send:active {
+  box-shadow: 0 2px 0 #c3222e;
+  transform: translateY(3px);
+}
+
+/*======< letter add >==================*/
+.letter-add-wrapper {
+    display: none;
+    position: absolute;
+    padding: 30px;
+    width: 115px;
+    min-height: 200px;
+    background: #fff; 
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.check-box {
+    margin-top: 6px;
+}
+#check-box {
+    width: 14px;
+    height: 14px;
+    margin: 3px;
+}
+
+.letter-add-list-box {
+    display: block;
+    position: absolute;
+    margin: 15px 0;
+    width: 96px;
+    height: 38%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.letter-add-list-wrapper {
+    display: block;
+    position: absolute;
+    left: calc(50% - 38px);
+    width: 76px;
+    min-height: 76px;    
+}
+
+.letter-add-list {
+    display: block;
+    position: relative;
+    margin: 10px;
+    width: 52px;
+    height: 52px;
+    border: 2px solid #e5e5e5;
+    border-radius: 50%;
+    background: #000;
+    float: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .letter-add-list:hover .thumbnail{
+        opacity: 0.5;
+    }
+
+#letter-add {
+    position: absolute;
+    left: 35px;
+    bottom: 40px;
+    border: 0;
+    background: #e8eaed;
+    /*background: #566ced;*/
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    color: #000;
+    margin: 0;
+    outline: 0;
+    padding: 6px 12px;
+}
+
+#letter-add:hover {
+    opacity: 0.7;
+}
+
+#letter-add-cancel {
+    position: absolute;
+    right: 35px;
+    bottom: 40px;
+    border: 0;
+    background: #e8eaed;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    color: #000;
+    margin: 0;
+    outline: 0;
+    padding: 6px 12px;
+}
+
+#letter-add-cancel:hover {
+    opacity: 0.7;
+}

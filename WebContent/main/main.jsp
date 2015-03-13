@@ -19,6 +19,7 @@
     <title></title>
     <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
     <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />
+    <link href="../resource/css/bind_letter.css" rel="stylesheet" type="text/css" />
     <link href="css/bind_main.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
@@ -51,7 +52,7 @@
                     </div>
                     <div class="profile-pic-box-main">
                         <!--프로필사진-->
-                        <img class="thumbnail" src="images/pcm.jpg" />
+                        <img class="thumbnail" src="${m.profilepic}" alt="naminami"/>
                     </div>
                     <div class="profile-id">
                         <!--이메일-->
@@ -79,68 +80,44 @@
 
         <div class="lower">
             <aside class="lower-left">
-                <!--왼쪽 아래) 알림창-->
-                <div class="btn-up"></div>
-                <div class="alarms-box">
-                    <div class="alarms-wrapper">
-                        <div class="alarm-letter">
-                            <a href="">별이 님으로부터 편지가 1통 도착했습니다.</a>
-                        </div>
-                        <div class="alarm-cal">
-                            <a href="">장형수 님의 생일이 2주 남았습니다.</a>
-                        </div>
-                        <div class="alarm-cal">
-                            <a href="">오늘은 형수입학식입니다.</a>
-                        </div>
-                        <div class="alarm-news">
-                            <a href="">새로운 소식이 99개 있습니다.</a>
-                        </div>
-                        <div class="alarm-cal">
-                            <a href="">오늘은 형수입학식입니다.</a>
-                        </div>
+                <div class="alarm-wrapper">
+                    <div class="alarm what">
+                        <p class="hidden">음.. 뭐하지?</p> 
+                    </div>
+                    <div class="alarm let">
+                        <p class="hidden">새로운 편지가 1통 도착했습니다.</p>
+                    </div>
+                    <div class="alarm cal">
+                        <p class="hidden">오늘은 형수입학식입니다.</p>
+                        <p class="hidden">장형수 님의 생일이 2주 남았습니다.</p>
+                    </div>
+                    <div class="alarm news">
+                        <p class="hidden">새로운 소식이 99개 있습니다.</p>
                     </div>
                 </div>
-                <div class="btn-down"></div>
-                <!-- <div class="btn-menu-wrapper">
-                    <div class="btn-menu cal">일정</div>
-                    <div class="btn-menu med">사진첩</div>
-                    <div class="btn-menu let">우체통</div>
-                    <div class="btn-menu scr">스크랩</div>
-                    <div class="btn-menu set">설정</div>
-                </div> -->
             </aside>
-            <aside class="lower-right">
-                <!--오른쪽 아래) 최근/인기소식-->
-                <div class="post-wrapper">
-                    <div class="post"></div>
-                    <div class="post"></div>
-                    <div class="post"></div>
-                    <div class="post"></div>
-                </div>
-                <!--<div class="hello-wrapper">
-                    <div class="transp-bg"></div>
+            <aside class="lower-right"> 809*406
+                <div class="hello-wrapper">
                     <div class="hello">
-                        <p>이모 : 남봉아 별이는 잘 크고 있냐</p>
-                        <p>이웃집1 : 안녕하세요 옆집입니다. 저번에 보니까 집안에 개를 키우시던데, 그렇게 큰 개를 아파트에서 키워도 되나요?</p>
-                        <p>홍길동 : 이 집 김치찌개 맛있음 ㅇㅇ</p>
-                        <p>jQuery UI is built for designers and developers alike. We've designed all of our plugins to get you up and running quickly while being flexible enough to evolve with your needs and solve a plethora of use cases.</p>
+                        <p>안부?</p>
                     </div>
-                </div>-->
-                <!--<div class="btn-menu-wrapper">
-                    <div class="btn-menu cal">일정</div>
-                    <div class="btn-menu med">사진첩</div>
-                    <div class="btn-menu let">우체통</div>
-                    <div class="btn-menu scr">스크랩</div>
-                    <div class="btn-menu set">설정</div>
-                </div>-->
+                    <div class="hello">
+                        <p>안부?</p>
+                    </div>
+                    <div class="hello">
+                        <p>안부?</p>
+                    </div>
+                    <div class="hello">
+                        <p>안부?</p>
+                    </div>
+                </div>
             </aside>
         </div>
         
     </div>
-    <div class="info-wrapper">
-        <div>
-            data
-        </div>
-    </div>
+
+<!--===========< 편지쓰기 >===============================================-->
+	<jsp:include page="../resource/inc/letter.jsp"></jsp:include>
+	
 </body>
 </html>
