@@ -1,4 +1,20 @@
-﻿<!DOCTYPE html>
+﻿<%@ page import="com.eoot.eootprj.dao.VilPostDao"%>
+<%@ page import="com.eoot.eootprj.model.VilPost"%>
+<%@ page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+	String code = request.getParameter("Code");
+	
+	VilPostDao vilPostDao = new MyBVilPostDao();
+	VilPost n = vilPostDao.getVilPost(code);
+	
+	pageContext.setAttribute("n", n);
+%>
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -169,47 +185,51 @@
                         </div>
 
                         <div class="village-board-list-wrapper">
-                            <div class="village-board-list">
-                                <div class="village-board-item1">
-                                    <div class="village-board-label1"></div>
-                                    <div class="village-board-item-img">
-                                        <img class="thumbnail2" src="refimg/suzy1.jpg" />
-                                    </div>
-                                    <div class="village-board-item-text00">
-                                        <p id="village-board-item-title">March 2, 2015</p>
-                                        <p id="village-board-item-user">JAMES</p>
-                                    </div>
-                                    <div class="post-popularity">
-                                        <div class="post-popularity-item like">
-                                            <h1 class="hidden">좋아요 개수</h1>
-                                            <img class="post-popularity-btn" src="refimg/btn-like.png" />
-                                            <div class="post-popularity-cnt clearfix">119</div>
-                                        </div>
-                                        <div class="post-popularity-item scrap">
-                                            <h1 class="hidden">스크랩 횟수</h1>
-                                            <img class="post-popularity-btn" src="refimg/btn-scrap.png" />
-                                            <div class="post-popularity-cnt clearfix">1</div>
-                                        </div>
-                                        <div class="post-popularity-item comment">
-                                            <h1 class="hidden">댓글 개수</h1>
-                                            <img class="post-popularity-btn" src="refimg/btn-comment.png" />
-                                            <div class="post-popularity-cnt clearfix">2</div>
-                                        </div>
-                                    </div>
-                                </div>
+						<%-- <c:forEach var="n" items="${list}"> --%>
+							<div class="village-board-list">
+								<div class="village-board-item1">
+									<div class="village-board-label1"></div>
+									<div class="village-board-item-img">
+										<img class="thumbnail2" src="refimg/suzy1.jpg" />
+									</div>
+									<div class="village-board-item-text00">
+										<p id="village-board-item-title">${n.regdate}</p>
+										<p id="village-board-item-user">${n.writer}</p>
+									</div>
+									<div class="post-popularity">
+										<div class="post-popularity-item like">
+											<h1 class="hidden">좋아요 개수</h1>
+											<img class="post-popularity-btn" src="refimg/btn-like.png" />
+											<div class="post-popularity-cnt clearfix">${n.likeCnt}</div>
+										</div>
+										<div class="post-popularity-item scrap">
+											<h1 class="hidden">스크랩 횟수</h1>
+											<img class="post-popularity-btn" src="refimg/btn-scrap.png" />
+											<div class="post-popularity-cnt clearfix">${n.clipCnt}</div>
+										</div>
+										<div class="post-popularity-item comment">
+											<h1 class="hidden">댓글 개수</h1>
+											<img class="post-popularity-btn" src="refimg/btn-comment.png" />
+											<div class="post-popularity-cnt clearfix">${n.commentCnt}</div>
+										</div>
+									</div>
+								</div>
 
-                                <div id="accordion">
-                                    <div>
-                                        <div class="village-board-item2"><p>제목: 이웃을 응원합니다.</p></div>
-                                        <div class="village-board-item3"></div>
-                                    </div>
-                                    <div id="village-board-item2-text">
-                                        <p>나와라 아코디언! 황사 조심하세요. 날씨가 춥네요. 이웃을 응원합니다. 황사 조심하세요. 날씨가 춥네요. 이웃을 응원합니다. 황사 조심하세요. 날씨가 춥네요.</p>
-                                        <img id="village-board-item2-img" src="refimg/bobby1.jpg"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+								<div id="accordion">
+									<div>
+										<div class="village-board-item2">
+											<p>${n.title}</p>
+										</div>
+										<div class="village-board-item3"></div>
+									</div>
+									<div id="village-board-item2-text">
+										<p>${n.content}</p>
+										<img id="village-board-item2-img" src="refimg/bobby1.jpg" />
+									</div>
+								</div>
+							</div>
+						<%-- </c:forEach> --%>
+					</div>
                         <!--==============================================================================================-->
 
                     </div>

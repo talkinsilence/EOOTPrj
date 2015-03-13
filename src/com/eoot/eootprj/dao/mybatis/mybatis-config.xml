@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <typeAliases>
       <typeAlias alias="Member" type="com.eoot.eootprj.model.Member" />
       <typeAlias alias="Letter" type="com.eoot.eootprj.model.Letter" />
+      <typeAlias alias="VilPost" type="com.eoot.eootprj.model.VilPost" />
    </typeAliases>
 
    <environments default="development">
@@ -26,5 +27,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <!-- UserMap.xml 등록 -->
    <mappers>
       <mapper resource="com/eoot/eootprj/dao/mybatis/MemberDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostDao.xml" />
    </mappers>
 </configuration>  
