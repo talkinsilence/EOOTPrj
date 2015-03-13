@@ -47,7 +47,7 @@ body {
     right: 8px;
     top: 0;
     cursor: pointer;
-    background: url("../images/btn-close.png") no-repeat center;
+    background: url("../../resource/images/btn-close.png") no-repeat center;
 }
 
 .btn-close:hover {
@@ -479,9 +479,19 @@ body {
     padding: 6px 12px;
 }
 
-#letter-add:hover {
+/* #letter-add:hover {
     opacity: 0.7;
-}
+} */
+
+    .letter-add-list:hover {
+        border: 2px solid #7F90F7;
+    }
+    .letter-add-list:hover .thumbnail{
+        opacity: 0.5;
+    }
+    .letter-add-list:hover .delete {
+        display: block;
+    }
 
 #letter-add-cancel {
     position: absolute;

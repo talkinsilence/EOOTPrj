@@ -224,6 +224,12 @@ body {
     }
 }
 
+@media screen and (max-height: 1024px) {
+    .lower-left {
+		overflow-y: hidden;
+    }
+}
+
 .lower-right {
     display: block;
     position: absolute; 

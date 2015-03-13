@@ -56,6 +56,7 @@
     });
 
     $('.letter-to-list-add').click(function () {
+    	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
         $('.letter-write-wrapper').css("display", "block");
 
         var loc = $('.letter-write-wrapper').offset();
@@ -64,19 +65,37 @@
 
         $('.letter-add-wrapper').fadeIn(100, 'linear');
     });
-
+    
     $('.letter-add-list').each(function(){
-    	$(this).children("img").click(function(){
-    		var src = $(this).attr("src");
-        	alert(src);
-        	$(this).parent().clone().css("float", "left").prependTo($('.letter-to-list-wrapper'));
-        	
-        	//if($('.letter-to-list-wrapper').children("img").attr("src")==src)
-        	//if($('.letter-to-list-wrapper > .letter-add-list').children("img").attr("src")==src)
-        		//$(this).parent().unbind("click");   
-        	
-    	});
-    });
+        
+        //var clicked = 0;
+        
+        $(this).children("img").click(function(){
+           //alert($('.letter-to-list-wrapper > img ').attr("name"));
+           //clicked = 1;
+           //alert(clicked);
+
+           var name = $(this).attr("name");
+            alert(name);
+           
+           //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
+            if($('.letter-to-list-wrapper > .letter-add-list').find("*").attr("name")!=name){
+                             
+               //clicked = 0;
+               //alert(clicked);
+               
+               var clone = $(this).parent().clone().css("float", "left");
+               clone.append($('<div class="delete"></div>'));
+               clone.prependTo($('.letter-to-list-wrapper'));
+                             
+                $('.delete').click(function () {
+                    $(this).parent().remove();
+                });
+            }
+
+        });
+        
+     });
 
     $('#letter-send').click(function () {
         if ($('.letter-to-list').length == 0)
