@@ -52,7 +52,7 @@
                     </div>
                     <div class="profile-pic-box-main">
                         <!--프로필사진-->
-                        <img class="thumbnail" src="images/pcm.jpg" />
+                        <img class="thumbnail" src="${m.profilepic}" />
                     </div>
                     <div class="profile-id">
                         <!--이메일-->
