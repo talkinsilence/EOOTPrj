@@ -1,4 +1,4 @@
-ï»¿body
+body
 {
   
 }
@@ -15,8 +15,8 @@
     width: calc(100% - 30% - 70px);
     height: 100%;
     background: #edf1f2;
-    overflow-y: auto;
-    /*ë°°ê²½ìƒ‰ ë³€ê²½*/
+    overflow-y: scroll;
+    /*¹è°æ»ö º¯°æ*/
 }
 
 .village-sub-area
@@ -33,7 +33,7 @@
     top: 0px;
     width: 100%;
     height: 50%;
-    background: #C5E0B4;
+    background: #3bc0c3;
 }
 
 .village-newsfeed

@@ -39,11 +39,27 @@
     <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
     <script>
         $(function () {
-            $("#accordion").accordion({
-                collapsible: true                
+            $(".accordion").accordion({
+                collapsible: true
+                , active: false
             });
-
         });
+        
+        /* $(function () {
+            $("#accordion").toggle(function(){
+            	$("#accordion").accordion({
+                    collapsible: true
+                    , active: false
+                });
+            });
+        }); */
+         
+        /*$(document).ready(function(){
+        	$("#accordion").accordion({
+        		collasible: true
+        		, active: false
+        	});
+        }); */
     </script>
     <title></title>
 </head>
@@ -189,7 +205,7 @@
                             </form>
                             <input id="write-button" type="button" value="글 쓰기" />
                         </div>
-
+                        
                         <div class="village-board-list-wrapper">
 						<c:forEach var="i" items="${list}" >
 							<div class="village-board-list">
@@ -221,7 +237,7 @@
 									</div>
 								</div>
 
-								<div id="accordion">
+								<div class="accordion">
 									<div>
 										<div class="village-board-item2">
 											<p>${i.title}</p>
@@ -229,6 +245,7 @@
 										<div class="village-board-item3"></div>
 									</div>
 									<div id="village-board-item2-text">
+										<p>${i.title}</p>
 										<p>${i.content}</p>
 										<img id="village-board-item2-img" src="refimg/bobby1.jpg" />
 									</div>
@@ -236,6 +253,7 @@
 							</div>
 						</c:forEach>
 					</div>
+					
                         <!--==============================================================================================-->
 
                     </div>

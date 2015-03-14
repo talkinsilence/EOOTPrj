@@ -1,4 +1,4 @@
-ï»¿.hidden
+.hidden
 {
     display: none;
     /*visibility: hidden;*/
@@ -170,7 +170,7 @@
     height: 100%;
 }
 
-/*ì¶”ê°€ì‚¬í•­*/
+/*Ãß°¡»çÇ×*/
 
 .village-board-label1
 {
@@ -289,10 +289,10 @@
     padding-top: 5px;
 }
 
-/*--------------------------------ì˜ë‚¨ì´ post popularity----------------------------------------*/
+/*--------------------------------¿µ³²ÀÌ post popularity----------------------------------------*/
 
 .post-popularity-cnt {
-    font-family: ë§‘ì€ ê³ ë”•, ê³ ë”•, sans-serif;
+    font-family: ¸¼Àº °íµñ, °íµñ, sans-serif;
     font-size: 14px;
     font-weight: bold;
 }
@@ -342,7 +342,7 @@
     margin-top: 3px;
 }
 
-/*--------------------------------ì˜ë‚¨ì´ post popularity----------------------------------------*/
+/*--------------------------------¿µ³²ÀÌ post popularity----------------------------------------*/
 
 /*.village-board-list
 {
