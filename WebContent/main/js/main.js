@@ -96,12 +96,17 @@
         });
         
      });
+    
+    $('#letter-add-cancel').click(function () {
+        $('.letter-add-wrapper').fadeOut(10);
+    });
 
     $('#letter-send').click(function () {
-        if ($('.letter-to-list').length == 0)
+        if ($('.letter-to-list' || '.letter-add-list').length == 0)
             alert("수신인을 한 명 이상 지정해야 합니다.");
         else if (($('#write').val() == ""))
             alert("편지 내용을 입력해주세요.");
+      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
         else {
             $('.letter-write-wrapper, .letter-add-wrapper').hide(800, function () {
                 alert("편지가 전송되었습니다^ㅇ^");

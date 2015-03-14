@@ -293,10 +293,6 @@ body {
     cursor: pointer;
 }
 
-/*     .letter-to-list:hover .thumbnail{
-        opacity: 0.5;
-    } */
-
     .letter-to-list:hover {
         border: 2px solid #7F90F7;
     }
@@ -459,30 +455,6 @@ body {
     cursor: pointer;
 }
 
-    .letter-add-list:hover .thumbnail{
-        opacity: 0.5;
-    }
-
-#letter-add {
-    position: absolute;
-    left: 35px;
-    bottom: 40px;
-    border: 0;
-    background: #e8eaed;
-    /*background: #566ced;*/
-    cursor: pointer;
-    font: inherit;
-    font-size: 13px;
-    color: #000;
-    margin: 0;
-    outline: 0;
-    padding: 6px 12px;
-}
-
-/* #letter-add:hover {
-    opacity: 0.7;
-} */
-
     .letter-add-list:hover {
         border: 2px solid #7F90F7;
     }
@@ -495,8 +467,8 @@ body {
 
 #letter-add-cancel {
     position: absolute;
-    right: 35px;
-    bottom: 40px;
+    left: calc(50% - 24px);
+    bottom: 30px;
     border: 0;
     background: #e8eaed;
     cursor: pointer;

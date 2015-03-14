@@ -52,7 +52,7 @@
                     </div>
                     <div class="profile-pic-box-main">
                         <!--프로필사진-->
-                        <img class="thumbnail" src="${m.profilepic}" alt="naminami"/>
+                        <img class="thumbnail" src="${m.profilepic}" />
                     </div>
                     <div class="profile-id">
                         <!--이메일-->
@@ -201,7 +201,7 @@
 	            <div class="letter-write-header">
 	                <div class="letter-to">받는 사람</div>
 	                <div class="letter-to-list-wrapper">
-	                    <div class="letter-to-list">
+	                    <!-- <div class="letter-to-list">
 	                        <img class="thumbnail" src="images/suzy2.jpg" />
 	                        <div class="delete"></div>
 	                    </div>
@@ -212,7 +212,7 @@
 	                    <div class="letter-to-list">
 	                        <img class="thumbnail" src="images/cat.png" />
 	                        <div class="delete"></div>
-	                    </div>
+	                    </div> -->
 	                    <div class="letter-to-list-add"></div>
 	                </div>
 	            </div>
@@ -246,7 +246,6 @@
 	                    </div>
 	                </div>
 	            </div>
-	            <button id="letter-add" type="submit">추가</button>
 	            <button id="letter-add-cancel" type="submit">취소</button>
 	        </div>
 	        
