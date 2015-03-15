@@ -30,10 +30,11 @@ body
 .e-oot-newsfeed
 {
     position: absolute;
+    display: block;
     top: 0px;
     width: 100%;
     height: 50%;
-    background: #3bc0c3;
+    background: url("../refimg/04-1.png") no-repeat center;
 }
 
 .village-newsfeed

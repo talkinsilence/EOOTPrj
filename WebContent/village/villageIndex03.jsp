@@ -242,7 +242,7 @@
 										<div class="village-board-item2">
 											<p>${i.title}</p>
 										</div>
-										<div class="village-board-item3"></div>
+										<img class="village-board-item3" src="refimg/etc_img.png" />
 									</div>
 									<div id="village-board-item2-text">
 										<p>${i.title}</p>
@@ -272,6 +272,7 @@
                 <h1 class="hidden">뉴스피드</h1>
                 <div class="village-sub-area">
                     <div class="e-oot-newsfeed">
+                    <img alt="" src="">
                         <div class="e-oot-newsfeed">
                             <p class="empty-space">이웃 뉴스피드</p>
                             <span><a href=""><img id="e-oot-newsfeed-board" src="refimg/e-oot-board.png" /></a></span>
