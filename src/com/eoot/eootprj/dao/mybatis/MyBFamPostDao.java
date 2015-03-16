@@ -25,20 +25,23 @@ public class MyBFamPostDao implements FamPostDao{
 
 	@Override
 	public int update(FamPost famPost) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		FamPostDao famPostDao = sqlSession.getMapper(FamPostDao.class);
+		return famPostDao.update(famPost);
 	}
 
 	@Override
 	public int delete(FamPost famPost) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		FamPostDao famPostDao = sqlSession.getMapper(FamPostDao.class);
+		return famPostDao.delete(famPost);
 	}
 
 	@Override
 	public int insert(FamPost fampost) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		FamPostDao famPostDao = sqlSession.getMapper(FamPostDao.class);
+		return famPostDao.insert(fampost);
 	}
 }
 

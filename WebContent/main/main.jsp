@@ -8,7 +8,6 @@
 
 	MemberDao memberDao = new MyBMemberDao();
 	Member m = memberDao.getMember(uid);
-	//Member m = memberDao.getMember(_mid);
 	
 	pageContext.setAttribute("m", m);
 %>
