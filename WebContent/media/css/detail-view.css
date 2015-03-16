@@ -1,0 +1,511 @@
+﻿.dv-mask{
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+.dv-bg {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.7;
+}
+
+.dv-btn-close {
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 30px;
+    right: 8px;
+    top: 0;
+    cursor: pointer;
+    background:url('../images/btn-close.jpg') no-repeat center;
+}
+
+.dv-btn-close:hover {
+    opacity: 0.7;
+}
+
+/*.dv-btn-close:active {
+    position:relative;
+    top: 1px;
+}*/
+
+/*--------밑바탕----------------------------------*/
+.detail-view-container {
+    display: block;
+    position: absolute;
+    top: 30px;
+    height: 650px;
+    width: 100%;
+}
+
+/*--------버튼,뷰 랩퍼----------------------------*/
+.dv-btn-wrapper {
+    display: block;
+    height: 100%;
+    width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dv-btn-pre {
+    display: block;
+    position:relative;
+    float: left;
+    height: 100%;
+    width: 50px;
+    cursor:pointer;
+    background: url("../images/btn-pre.png") no-repeat center;
+}
+
+.dv-btn-pre:hover {
+    opacity:0.7;
+}
+
+.dv-btn-pre :active {
+    position: relative;
+    top: 1px;
+}
+
+.dv-btn-next {
+    display: block;
+    position:relative;
+    float: left;
+    height: 100%;
+    width: 50px;
+    cursor:pointer;
+    background: url("../images/btn-next.png") no-repeat center;
+}
+
+.dv-btn-next:hover {
+    opacity:0.7;
+}
+
+.dv-btn-next :active {
+    position: relative;
+    top: 1px;
+}
+
+/*-------뷰------------------------------------------*/
+.detail-view {
+    display: block;
+    float: left;
+    height: 100%;
+    width: 1080px;
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow: 0px 0px 15px #000000;
+}
+
+.dv-media-box {
+    display: block;
+    position:relative;
+    float: left;
+    height: 648px;
+    width: 699px;
+    margin-top: 1px;
+    margin-left: 1px;
+    overflow: hidden;
+    background:#ffffff;
+}
+
+.dv-media-box-img{
+    height:inherit;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.dv-edit{
+    display:block;
+    position:absolute;
+    height:50px;
+    width:inherit;
+    top:648px;
+    left:0px;
+    background:#000000;
+    opacity:0.8;
+    transition: all 0.1s linear;
+}
+
+.dv-media-box:hover .dv-edit{
+    transform:translateY(-50px);
+}
+
+.dv-edit-btn{
+    display:inline-block;
+    float:left;
+    height:30px;
+    width:50px;
+    margin-top:10px;
+    margin-left:8px;
+    border:none;
+    border-radius:3px;
+    background:none;
+    line-height:30px;
+    text-align:center;
+    color:#ffffff;
+    outline:none;
+}
+
+.dv-edit-btn:hover {
+    color:#ff0000
+}
+
+.dv-edit-btn :active {
+    position: relative;
+    top: 1px;
+}
+
+/*-------프로필------------------------------------------*/
+.dv-comment-container {
+    display: block;
+    float: left;
+    height: 594px;
+    width: 378px;
+    margin-top: 1px;
+    margin-left: 1px;
+    overflow:hidden;
+}
+
+.dv-profile-box {
+    display: block;
+    height: 70px;
+    width: 338px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #fefefe;
+}
+
+.dv-profile-pic {
+    display: block;
+    float: left;
+    height: 50px;
+    width: 50px;
+    margin-top: 15px;
+    background:black;
+    overflow: hidden;
+    border-radius:4px;
+}
+
+.dv-profile-name {
+    display: block;
+    float: left;
+    height: 25px;
+    width: 288px;
+    margin-top: 15px;
+    text-indent:10px;
+    line-height:25px;
+}
+
+.dv-profile-title {
+    display: block;
+    float: left;
+    height: 25px;
+    width: 144px;
+    text-indent:10px;
+    line-height:25px;
+}
+
+.dv-profile-regdae {
+    display: block;
+    float: left;
+    height: 25px;
+    width: 144px;
+    text-indent:10px;
+    line-height:25px;
+}
+
+.dv-content-popularity-wrapper {
+    display: inline-block;
+    position: absolute;
+    background:#fefefe;
+}
+
+.dv-content-box {
+    display: block;
+    width: 338px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dv-content {
+    height: 22px;
+    max-height: 474px;
+    width: 338px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    word-break:inherit; /*컨텐츠 클릭시 속성을 break-all;으로 변경*/
+}
+
+/*-------popularity------------------------------------------*/
+
+.dv-popularity-box {
+    display: block;
+    height: 48px;
+    width: 338px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom:1px solid #dddddd;
+    border-top:1px solid #efefef;
+}
+
+.dv-like-cnt-btn {
+    display: inline-block;
+    float: left;
+    height: 30px;
+    min-width:50px;
+    margin-top: 9px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	background-color:#f9f9f9;
+	color:#666666;
+	cursor:pointer;
+    overflow:hidden;
+}
+
+.dv-like-img{
+    display:inline-block;
+    float:left;
+    height:20px;
+    width:20px;
+    padding-top:6px;
+    overflow:hidden;
+}
+
+.dv-like-cnt{
+    display:inline-block;
+    float:left;
+    height:20px;
+    padding-top:6px;
+    padding-left:6px
+}
+
+.dv-like-cnt-btn:hover {
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color:#e9e9e9;
+}
+
+.dv-like-cnt-btn:active {
+	position:relative;
+	top:1px;
+}
+
+.dv-scrap-cnt-btn {
+    display: inline-block;
+    float: left;
+    height: 30px;
+    min-width: 50px;
+    margin-top: 9px;
+    margin-left: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	background-color:#f9f9f9;
+	color:#666666;
+	cursor:pointer;
+    overflow:hidden;
+}
+
+.dv-scrap-img{
+    display:inline-block;
+    float:left;
+    height:20px;
+    width:20px;
+    padding-top:6px;
+    overflow:hidden;
+}
+
+.dv-scrap-cnt{
+    display:inline-block;
+    float:left;
+    height:20px;
+    padding-top:6px;
+    padding-left:6px
+}
+
+.dv-scrap-cnt-btn:hover {
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color:#e9e9e9;
+}
+
+.dv-scrap-cnt-btn:active {
+	position:relative;
+	top:1px;
+}
+
+.dv-comment-cnt-btn {
+    display: inline-block;
+    float: right;
+    height: 30px;
+    min-width: 50px;
+    margin-top: 9px;
+    margin-left: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	background-color:#f9f9f9;
+	color:#666666;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	cursor:pointer;
+    overflow:hidden;
+}
+
+.dv-comment-img{
+    display:inline-block;
+    float:left;
+    height:20px;
+    width:20px;
+    padding-top:6px;
+    overflow:hidden;
+}
+
+.dv-comment-cnt{
+    display:inline-block;
+    float:left;
+    height:20px;
+    padding-top:6px;
+    padding-left:6px
+}
+
+.dv-comment-cnt-btn:hover {
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color:#e9e9e9;
+}
+
+.dv-comment-cnt-btn:active {
+	position:relative;
+	top:1px;
+}
+
+/*-------댓글------------------------------------------*/
+
+.dv-comment-box-list {
+    display: inline-block;
+    height: 451px;
+    margin-top: 72px;
+    overflow-y: auto;
+    overflow-x: inherit;
+    background:#f1f1f1;
+    border-top:1px solid #efefef;
+    border-bottom:1px solid #dddddd;
+}
+
+.dv-comment-box {
+    display: block;
+    min-height: 50px;
+    width: 328px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.dv-comment-writer-pic {
+    display: block;
+    float: left;
+    height: 40px;
+    width: 40px;
+    margin-top: 10px;
+    background: black;
+    overflow: hidden;
+    border-radius:4px;
+}
+
+.dv-comment-writer-name {
+    display: block;
+    float: left;
+    height: 20px;
+    width: 288px;
+    margin-top: 10px;
+    background: white;
+}
+
+.dv-comment-regdate {
+    display: block;
+    float: left;
+    height: 20px;
+    width: 288px;
+    background: orange;
+}
+
+.dv-comment {
+    display: inline-block;
+    width: 328px;
+    word-break: break-all;
+    padding-top:5px;
+    padding-bottom:5px;
+    border-bottom:1px solid #eaeaea;
+}
+
+.dv-reg-box {
+    display: block;
+    float: left;
+    height: 53px;
+    width: 338px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 1px;
+    border-top:1px solid #efefef;
+    background: #fefefe;
+}
+
+.dv-reg-pic{
+    display: block;
+    float: left;
+    height: 40px;
+    width: 40px;
+    margin-top: 6px;
+    background: black;
+    overflow: hidden;
+    border-radius:4px;
+}
+
+.dv-reg-input{
+    display: block;
+    float: left;
+    height: 35px;
+    width: 228px;
+    margin-top: 7px;
+    margin-left:12px;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+}
+
+.dv-reg-btn{
+    display: inline-block;
+    float: right;
+    height: 38px;
+    width: 50px;
+    margin-top: 7px;
+    margin-left:2px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	background-color:#f9f9f9;
+	color:#666666;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	cursor:pointer;
+    overflow:hidden;
+}
+
+.dv-reg-btn:hover {
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color:#e9e9e9;
+}
+
+.dv-reg-btn:active {
+	position:relative;
+	top:1px;
+}
