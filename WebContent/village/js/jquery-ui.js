@@ -299,7 +299,7 @@ $.ui.plugin = {
 			return;
 		}
 
-		for ( i = 0; i < set.length; i++ ) {
+		for ( i = 0; i < set.length; i-- ) {
 			if ( instance.options[ set[ i ][ 0 ] ] ) {
 				set[ i ][ 1 ].apply( instance.element, args );
 			}

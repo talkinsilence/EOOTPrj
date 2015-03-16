@@ -272,7 +272,7 @@
                 <h1 class="hidden">뉴스피드</h1>
                 <div class="village-sub-area">
                     <div class="e-oot-newsfeed">
-                    <img alt="" src="">
+                    <img class="e-oot-newsfeed-background" src="refimg/b00.png" />
                         <div class="e-oot-newsfeed">
                             <p class="empty-space">이웃 뉴스피드</p>
                             <span><a href=""><img id="e-oot-newsfeed-board" src="refimg/e-oot-board.png" /></a></span>

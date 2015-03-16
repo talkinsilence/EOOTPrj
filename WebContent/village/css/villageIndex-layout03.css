@@ -15,13 +15,13 @@ body
     width: calc(100% - 30% - 70px);
     height: 100%;
     background: #edf1f2;
-    overflow-y: scroll;
+    overflow-y: auto;
     /*배경색 변경*/
 }
 
 .village-sub-area
 {
-    position: fixed;
+    position: absolute;
     width: 30%;
     height: 100%;
     right: 0;
@@ -30,11 +30,9 @@ body
 .e-oot-newsfeed
 {
     position: absolute;
-    display: block;
     top: 0px;
     width: 100%;
     height: 50%;
-    background: url("../refimg/04-1.png") no-repeat center;
 }
 
 .village-newsfeed
@@ -43,5 +41,4 @@ body
     bottom: 0px;
     width: 100%;
     height: 50%;
-    background: #F8CBAD;
 }
