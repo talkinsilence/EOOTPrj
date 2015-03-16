@@ -34,24 +34,28 @@
 
 .e-oot-newsfeed-prev-btn
 {
+    position: relative;
     display: block;
     text-align: center;   
 }
 
 .e-oot-newsfeed-next-btn
 {
+    position: relative;
     display: block;
     text-align: center;   
 }
 
 .village-newsfeed-prev-btn
 {
+    position: relative;
     display: block;
-    text-align: center;   
+    text-align: center; 
 }
 
 .village-newsfeed-next-btn
 {
+    position: relative;
     display: block;
     text-align: center;   
 }

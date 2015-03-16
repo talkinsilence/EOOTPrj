@@ -1,4 +1,4 @@
-﻿.hidden
+.hidden
 {
     display: none;
     /*visibility: hidden;*/
@@ -14,6 +14,7 @@
 
 #e-oot-newsfeed-board
 {
+    position: relative;
     margin-top: 20px;
     width: 60px;
     height: 60px;
@@ -24,6 +25,7 @@
 
 #village-newsfeed-board 
 {
+    position: relative;
     margin-top: 20px;
     width: 60px;
     height: 60px;
@@ -34,26 +36,30 @@
 
 .e-oot-newsfeed-prev-btn
 {
+    position: relative;
     display: block;
     text-align: center;   
 }
 
 .e-oot-newsfeed-next-btn
 {
+    position: relative;
     display: block;
     text-align: center;   
 }
 
 .village-newsfeed-prev-btn
 {
+    position: relative;
     display: block;
-    text-align: center;   
+    text-align: center; 
 }
 
 .village-newsfeed-next-btn
 {
+    position: relative;
     display: block;
-    text-align: center;    
+    text-align: center;   
 }
 
 .e-oot-newsfeed-clipper
