@@ -1,16 +1,31 @@
-﻿<%@page import="com.eoot.eootprj.model.Member"%>
+﻿<%@page import="java.util.List"%>
+<%@page import="com.eoot.eootprj.model.FamPost"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
+<%@page import="com.eoot.eootprj.dao.FamPostDao"%>
+<%@page import="com.eoot.eootprj.model.Member"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <% 
 	String uid = (String) session.getAttribute("uid");
+	String code = request.getParameter("code");
 
 	MemberDao memberDao = new MyBMemberDao();
 	Member m = memberDao.getMember(uid);
 	
+	FamPostDao famPostDao = new MyBFamPostDao();
+	FamPost fp = famPostDao.getFamPost(code);
+	List<FamPost> fps = famPostDao.getFamPosts(); 
+	
 	pageContext.setAttribute("m", m);
+	pageContext.setAttribute("fp", fp);
+	pageContext.setAttribute("fps", fps);
 %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -65,6 +80,8 @@
     <div class="main">
         <div class="wrapper">
         
+        
+        	<c:forEach var="i" items="${fps}" >
             <div class="post">
                 <div class="post-header-wrapper">
                     <div class="post-header">
@@ -75,7 +92,7 @@
                         <div class="post-info">
                             <div class="post-info-writer">
                                 <h1 class="hidden">작성자이름</h1>
-                                <div>수지</div>
+                                <p>${i.writer}</p>
                             </div>
                             <div class="post-info-wrapper">
                                 <div class="post-info-sharing-details">
@@ -84,7 +101,7 @@
                                 </div>
                                 <div class="post-info-date">
                                     <h1 class="hidden">작성일(또는 작성시간)</h1>
-                                    <div>2015년 2월 15일</div>
+                                    <div><fmt:formatDate value="${i.regdate}" pattern="yyyy년 MM월 dd일  HH:mm:ss" /></div>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +111,7 @@
                     <div class="post-main">
                         <div class="post-content">
                             <div>
-                                JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999.
+                                ${i.content}
                             </div>
                             <div class="post-content-more">(더 보기)</div>
                         </div>
@@ -107,17 +124,17 @@
                         <div class="post-popularity-item like">
                             <h1 class="hidden">좋아요 개수</h1>
                             <img class="post-popularity-btn" src="../resource/images/btn-like.png" />
-                            <div class="post-popularity-cnt clearfix">1789</div>
+                            <div class="post-popularity-cnt clearfix">${i.likeCnt}</div>
                         </div>
                         <div class="post-popularity-item scrap">
                             <h1 class="hidden">스크랩 횟수</h1>
                             <img class="post-popularity-btn" src="../resource/images/btn-scrap.png" />
-                            <div class="post-popularity-cnt clearfix">1</div>
+                            <div class="post-popularity-cnt clearfix">${i.clipCnt}</div>
                         </div>
                         <div class="post-popularity-item comment">
                             <h1 class="hidden">댓글 개수</h1>
                             <img class="post-popularity-btn" src="../resource/images/btn-comment.png" />
-                            <div class="post-popularity-cnt clearfix">2</div>
+                            <div class="post-popularity-cnt clearfix">${i.commentCnt}</div>
                         </div>
                     </div>
                 </div>
@@ -190,370 +207,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="post">
-                <div class="post-header-wrapper">
-                    <div class="post-header">
-                        <div class="profile-pic-box">
-                            <h1 class="hidden">프로필사진</h1>
-                            <img class="thumbnail" src="images/suzy1.jpg" />
-                        </div>
-                        <div class="post-info">
-                            <div class="post-info-writer">
-                                <h1 class="hidden">작성자이름</h1>
-                                <div>수지</div>
-                            </div>
-                            <div class="post-info-wrapper">
-                                <div class="post-info-sharing-details">
-                                    <h1 class="hidden">공유범위</h1>
-                                    <div>마을에 게시</div>
-                                </div>
-                                <div class="post-info-date">
-                                    <h1 class="hidden">작성일(또는 작성시간)</h1>
-                                    <div>2015년 2월 15일</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-main-wrapper">
-                    <div class="post-main">
-                        <div class="post-content-wrapper">
-                            <div class="post-content">
-                                설연휴가 훅 가버렸넹.....ㅠㅠ
-                            </div>
-                            <div class="post-content-more">(더 보기)</div>
-                        </div>
-                    </div>
-                </div>
-                <img class="post-main-img" src="images/hjw.jpg" />
-                <!--<img class="post-main-img hidden">(동영상대표이미지)</img>-->
-                <div class="post-popularity-wrapper">
-                    <div class="post-popularity">
-                        <div class="post-popularity-item like">
-                            <h1 class="hidden">좋아요 개수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-like.png" />
-                            <div class="post-popularity-cnt clearfix">1789</div>
-                        </div>
-                        <div class="post-popularity-item scrap">
-                            <h1 class="hidden">스크랩 횟수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-scrap.png" />
-                            <div class="post-popularity-cnt clearfix">1</div>
-                        </div>
-                        <div class="post-popularity-item comment">
-                            <h1 class="hidden">댓글 개수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-comment.png" />
-                            <div class="post-popularity-cnt clearfix">2</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-footer-wrapper">
-                    <div class="post-footer">
-                        <ul class="post-like-list hidden"><li>(좋아요한 사람)</li></ul>
-                        <ul class="post-scrap-list hidden"><li>(스크랩한 사람)</li></ul>
-                    </div>
-                </div>
-                <div class="post-comment-wrapper">
-                    <div class="post-comment">
-                        <ul class="post-comment-list">
-                            <li>
-                                <div class="profile-pic-box-s">
-                                    <h1 class="hidden">댓글작성자프로필사진</h1>
-                                    <img class="thumbnail" src="images/hjw.jpg" />
-                                </div>
-                                <div class="comment-info">
-                                    <div class="comment-info-writer">
-                                        <h1 class="hidden">댓글작성자이름</h1>
-                                        <p>남명이</p>
-                                    </div>
-                                    <div class="comment-info-date">
-                                        <h1 class="hidden">댓글작성일(또는 작성시간)</h1>
-                                        <p>3일 전</p>
-                                    </div>
-                                    <div class="comment-like">
-                                        <h1 class="hidden">댓글좋아요개수</h1>
-                                        <img class="comment-like-btn" src="../resource/images/btn-like-s.png" />
-                                        <div class="comment-like-cnt clearfix">1</div>
-                                    </div>
-                                </div>
-                                <p class="comment-content">
-                                    이웃 파이팅..♥
-                                </p>
-                            </li>
-                            <li>
-                                <div class="profile-pic-box-s">
-                                    <h1 class="hidden">댓글작성자프로필사진</h1>
-                                    <img class="thumbnail" src="images/dog.png" />
-                                </div>
-                                <div class="comment-info">
-                                    <div class="comment-info-writer">
-                                        <h1 class="hidden">댓글작성자이름</h1>
-                                        <p>무니무니</p>
-                                    </div>
-                                    <div class="comment-info-date">
-                                        <h1 class="hidden">댓글작성일(또는 작성시간)</h1>
-                                        <p>어제</p>
-                                    </div>
-                                    <div class="comment-like">
-                                        <h1 class="hidden">댓글좋아요개수</h1>
-                                        <img class="comment-like-btn" src="../resource/images/btn-like-s.png" />
-                                        <div class="comment-like-cnt clearfix">2</div>
-                                    </div>
-                                </div>
-                                <p class="comment-content">
-                                    승과니과니
-                                </p>
-                            </li>
-                        </ul>
-                        <div class="post-comment-write">
-                            <div class="profile-pic-box-s">
-                                <h1 class="hidden">댓글작성자프로필사진</h1>
-                                <img class="thumbnail" src="../resource/images/img-profile-default.png" />
-                            </div>
-                            <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" class="comment-submit" value="등록" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="post">
-                <div class="post-header-wrapper">
-                    <div class="post-header">
-                        <div class="profile-pic-box">
-                            <h1 class="hidden">프로필사진</h1>
-                            <img class="thumbnail" src="images/suzy1.jpg" />
-                        </div>
-                        <div class="post-info">
-                            <div class="post-info-writer">
-                                <h1 class="hidden">작성자이름</h1>
-                                <div>수지</div>
-                            </div>
-                            <div class="post-info-wrapper">
-                                <div class="post-info-sharing-details">
-                                    <h1 class="hidden">공유범위</h1>
-                                    <div>마을에 게시</div>
-                                </div>
-                                <div class="post-info-date">
-                                    <h1 class="hidden">작성일(또는 작성시간)</h1>
-                                    <div>2015년 2월 15일</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-main-wrapper">
-                    <div class="post-main">
-                        <div class="post-content-wrapper">
-                            <div class="post-content">
-                                동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세
-                            </div>
-                            <div class="post-content-more">(더 보기)</div>
-                        </div>
-                    </div>
-                </div>
-                <img class="post-main-img" src="images/shakerbrand-thum.jpg" />
-                <!--<img class="post-main-img hidden">(동영상대표이미지)</img>-->
-                <div class="post-popularity-wrapper">
-                    <div class="post-popularity">
-                        <div class="post-popularity-item like">
-                            <h1 class="hidden">좋아요 개수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-like.png" />
-                            <div class="post-popularity-cnt clearfix">1789</div>
-                        </div>
-                        <div class="post-popularity-item scrap">
-                            <h1 class="hidden">스크랩 횟수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-scrap.png" />
-                            <div class="post-popularity-cnt clearfix">1</div>
-                        </div>
-                        <div class="post-popularity-item comment">
-                            <h1 class="hidden">댓글 개수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-comment.png" />
-                            <div class="post-popularity-cnt clearfix">2</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-footer-wrapper">
-                    <div class="post-footer">
-                        <ul class="post-like-list hidden"><li>(좋아요한 사람)</li></ul>
-                        <ul class="post-scrap-list hidden"><li>(스크랩한 사람)</li></ul>
-                    </div>
-                </div>
-                <div class="post-comment-wrapper">
-                    <div class="post-comment">
-                        <ul class="post-comment-list">
-                            <li></li>
-                        </ul>
-                        <div class="post-comment-write">
-                            <div class="profile-pic-box-s">
-                                <h1 class="hidden">댓글작성자프로필사진</h1>
-                                <img class="thumbnail" src="../resource/images/img-profile-default.png" />
-                            </div>
-                            <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" class="comment-submit" value="등록" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="post">
-                <div class="post-header-wrapper">
-                    <div class="post-header">
-                        <div class="profile-pic-box">
-                            <h1 class="hidden">프로필사진</h1>
-                            <img class="thumbnail" src="images/suzy1.jpg" />
-                        </div>
-                        <div class="post-info">
-                            <div class="post-info-writer">
-                                <h1 class="hidden">작성자이름</h1>
-                                <div>수지</div>
-                            </div>
-                            <div class="post-info-wrapper">
-                                <div class="post-info-sharing-details">
-                                    <h1 class="hidden">공유범위</h1>
-                                    <div>마을에 게시</div>
-                                </div>
-                                <div class="post-info-date">
-                                    <h1 class="hidden">작성일(또는 작성시간)</h1>
-                                    <div>2015년 2월 15일</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-main-wrapper">
-                    <div class="post-main">
-                        <div class="post-content-wrapper">
-                            <div class="post-content">
-                                동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세
-                            </div>
-                            <div class="post-content-more">(더 보기)</div>
-                        </div>
-                    </div>
-                </div>
-                <img class="post-main-img" src="images/suzy1.jpg" />
-                <!--<img class="post-main-img hidden">(동영상대표이미지)</img>-->
-                <div class="post-popularity-wrapper">
-                    <div class="post-popularity">
-                        <div class="post-popularity-item like">
-                            <h1 class="hidden">좋아요 개수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-like.png" />
-                            <div class="post-popularity-cnt clearfix">1789</div>
-                        </div>
-                        <div class="post-popularity-item scrap">
-                            <h1 class="hidden">스크랩 횟수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-scrap.png" />
-                            <div class="post-popularity-cnt clearfix">1</div>
-                        </div>
-                        <div class="post-popularity-item comment">
-                            <h1 class="hidden">댓글 개수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-comment.png" />
-                            <div class="post-popularity-cnt clearfix">2</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-footer-wrapper">
-                    <div class="post-footer">
-                        <ul class="post-like-list hidden"><li>(좋아요한 사람)</li></ul>
-                        <ul class="post-scrap-list hidden"><li>(스크랩한 사람)</li></ul>
-                    </div>
-                </div>
-                <div class="post-comment-wrapper">
-                    <div class="post-comment">
-                        <ul class="post-comment-list">
-                            <li></li>
-                        </ul>
-                        <div class="post-comment-write">
-                            <div class="profile-pic-box-s">
-                                <h1 class="hidden">댓글작성자프로필사진</h1>
-                                <img class="thumbnail" src="../resource/images/img-profile-default.png" />
-                            </div>
-                            <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" class="comment-submit" value="등록" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="post">
-                <div class="post-header-wrapper">
-                    <div class="post-header">
-                        <div class="profile-pic-box">
-                            <h1 class="hidden">프로필사진</h1>
-                            <img class="thumbnail" src="images/suzy1.jpg" />
-                        </div>
-                        <div class="post-info">
-                            <div class="post-info-writer">
-                                <h1 class="hidden">작성자이름</h1>
-                                <div>수지</div>
-                            </div>
-                            <div class="post-info-wrapper">
-                                <div class="post-info-sharing-details">
-                                    <h1 class="hidden">공유범위</h1>
-                                    <div>마을에 게시</div>
-                                </div>
-                                <div class="post-info-date">
-                                    <h1 class="hidden">작성일(또는 작성시간)</h1>
-                                    <div>2015년 2월 15일</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-main-wrapper">
-                    <div class="post-main">
-                        <div class="post-content-wrapper">
-                            <div class="post-content">
-                                동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한 사람 대한으로 길이 보전하세
-                            </div>
-                            <div class="post-content-more">(더 보기)</div>
-                        </div>
-                    </div>
-                </div>
-                <img class="post-main-img" src="images/shakerbrand-thum.jpg" />
-                <!--<img class="post-main-img hidden">(동영상대표이미지)</img>-->
-                <div class="post-popularity-wrapper">
-                    <div class="post-popularity">
-                        <div class="post-popularity-item like">
-                            <h1 class="hidden">좋아요 개수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-like.png" />
-                            <div class="post-popularity-cnt clearfix">1789</div>
-                        </div>
-                        <div class="post-popularity-item scrap">
-                            <h1 class="hidden">스크랩 횟수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-scrap.png" />
-                            <div class="post-popularity-cnt clearfix">1</div>
-                        </div>
-                        <div class="post-popularity-item comment">
-                            <h1 class="hidden">댓글 개수</h1>
-                            <img class="post-popularity-btn" src="../resource/images/btn-comment.png" />
-                            <div class="post-popularity-cnt clearfix">2</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-footer-wrapper">
-                    <div class="post-footer">
-                        <ul class="post-like-list hidden"><li>(좋아요한 사람)</li></ul>
-                        <ul class="post-scrap-list hidden"><li>(스크랩한 사람)</li></ul>
-                    </div>
-                </div>
-                <div class="post-comment-wrapper">
-                    <div class="post-comment">
-                        <ul class="post-comment-list">
-                            <li></li>
-                        </ul>
-                        <div class="post-comment-write">
-                            <div class="profile-pic-box-s">
-                                <h1 class="hidden">댓글작성자프로필사진</h1>
-                                <img class="thumbnail" src="../resource/images/img-profile-default.png" />
-                            </div>
-                            <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" class="comment-submit" value="등록" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+            </c:forEach>
+
         </div>
     </div>
 </body>

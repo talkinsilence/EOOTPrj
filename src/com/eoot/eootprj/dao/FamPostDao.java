@@ -13,7 +13,7 @@ public interface FamPostDao {
 	@Select("SELECT * FROM FamPosts WHERE CODE = #{code}")
 	public FamPost getFamPost(String code);
 	
-	@Select("SELECT * FROM FamPosts")
+	@Select("SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS.MID=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;")
 	public List<FamPost> getFamPosts();
 	
 	@Select("SELECT TOP 1 * FROM FamPosts "
