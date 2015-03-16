@@ -11,136 +11,46 @@
     <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
     <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />
     <link href="css/bind_newsFeed.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
     <script src="../resource/js/modernizr.js" type="text/javascript"></script>
     <script src="../resource/js/jquery-2.1.3.js"></script>
+    <script src="js/newsFeed.js" type="text/javascript"></script>
 </head>
 <body>
 <!--===========< 메뉴영역 >===============================================-->
-    <!--<section>
-        <h1 class="hidden">회원 메뉴</h1>
-
-        
-        <nav id="menu1">
-            <h1 class="hidden">메뉴 1</h1>
-
-            <div id="menu_button"></div>
-
-            <div id="buttons">
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">우리집</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">이 웃</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">마 을</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div id="separator"></div>
-
-                <div class="img-button">
-                    <div class="vertical-field1">
-                        <div class="img-vertical-field2">
-                            <a href=""><img src="../images/btn-scrapped.png" /></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="img-button">
-                    <div class="vertical-field1">
-                        <div class="img-vertical-field2">
-                            <a href=""><img src="../images/btn_write.png" /></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        
-        <nav id="menu2">
-            <h1 class="hidden">메뉴 2</h1>
-
-            <div id="menu_button"><input type="button" value="닫기" id="menu2_hide" /></div>
-
-            <div id="buttons">
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">달 력</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">앨 범</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">편 지 함</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">택 배</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">설 정</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-            </div>
-        </nav>
-    </section>-->
+	<jsp:include page="../resource/inc/menu.jsp"></jsp:include>
 <!--===========< 툴바 >===================================================-->
-    <!--<div id="aside">
-        툴바
-    </div>-->
+    <section>
+        <h1 class="hidden">뉴스피드 툴바</h1>
+
+        <div id="toolbar">
+            <div class="toolbar-bg"></div>
+            <div class="toolbar-main">
+                <div class="toolbar-logo">
+                    e-oot
+                </div>
+                <div class="toolbar-search">
+                    <input type="search" class="news-search" placeholder="." />
+                    <div id="news-search"></div>
+                </div>
+                <div class="toolbar-user">
+                    <div class="profile-pic-box">
+                        <h1 class="hidden">프로필사진</h1>
+                        <img class="thumbnail" src="images/pcm.jpg" />
+                    </div>
+                    <div class="toolbar-info">
+                        <span class="user name">참무니</span>
+                        <span class="user id">chanmooni@eoot.com asdfasdfasdfadsfadsf</span>
+                        <span class="user log-out">로그아웃</span>
+                    </div>
+                </div>
+                <div class="toolbar-opt"></div>
+                <div class="view-opt popular">인기소식</div>
+                <div class="view-opt recent">최근소식</div>
+            </div>
+        </div>
+    </section>
 <!--===========< 뉴스피드 >===============================================-->
     <div class="main">
         <div class="wrapper">
@@ -265,7 +175,7 @@
                                 <img class="thumbnail" src="../resource/images/img-profile-default.png" />
                             </div>
                             <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" value="등록" />
+                            <input type="button" class="comment-submit" value="등록" />
                         </div>
                     </div>
                 </div>
@@ -391,7 +301,7 @@
                                 <img class="thumbnail" src="../resource/images/img-profile-default.png" />
                             </div>
                             <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" value="등록" />
+                            <input type="button" class="comment-submit" value="등록" />
                         </div>
                     </div>
                 </div>
@@ -470,7 +380,7 @@
                                 <img class="thumbnail" src="../resource/images/img-profile-default.png" />
                             </div>
                             <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" value="등록" />
+                            <input type="button" class="comment-submit" value="등록" />
                         </div>
                     </div>
                 </div>
@@ -549,7 +459,7 @@
                                 <img class="thumbnail" src="../resource/images/img-profile-default.png" />
                             </div>
                             <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" value="등록" />
+                            <input type="button" class="comment-submit" value="등록" />
                         </div>
                     </div>
                 </div>
@@ -628,7 +538,7 @@
                                 <img class="thumbnail" src="../resource/images/img-profile-default.png" />
                             </div>
                             <input type="text" placeholder="댓글을 남겨주세요." />
-                            <input type="button" value="등록" />
+                            <input type="button" class="comment-submit" value="등록" />
                         </div>
                     </div>
                 </div>

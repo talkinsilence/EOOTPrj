@@ -9,18 +9,196 @@
 
 /*////////툴바 레이아웃/////////////////////////////////////*/
 
-/*#aside {
+#toolbar {
     position: fixed;
-    width: 100%;
-    height: 60px;
-    background: #F2F2F2;
-    border: 1px solid blue;
+    margin-left: 70px;
+    width: calc(100% - 70px);
+    min-width: 461px;
+    height: 70px;
+    background: #f2f2f2;
     z-index: 1;
+}
+
+.toolbar-bg {
+    display: block;
+    position: absolute;
+    width: 120%;
+    height: 100%;
+    /*background: #3bc0c3;*/
+    /*background: #4AB19A;*/
+    background: #47ccaf;
+    /*background: #ed5661;*/
+    /*background: #e5e5e5;*/
+    /*background: #68cfb9;*/
+    /*-webkit-transform: skew(-40deg, 0deg) ;
+    -webkit-animation-name: fill;
+    -webkit-animation-delay: 50ms;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-direction: normal;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-play-state: running;
+    -webkit-animation-fill-mode: forwards;*/
+}
+
+/*@-webkit-keyframes fill {
+    0%   {margin-left: -1600px;  }
+    100% {margin-left: -50px; }
 }*/
+
+#toolbar.shadow {-webkit-box-shadow: 0px 0px 5px #9f9f9f;}
+
+.toolbar-main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.toolbar-logo {
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 14px;
+    float: left;
+}
+
+.toolbar-search {
+    display: inline-block;
+    /*position: absolute;
+    right: 370px;*/
+    margin-top: 18px;
+    margin-left: 30px;
+    width: 240px;
+    height: 30px;
+    border: 2px solid #F5F5F5;
+    border-radius: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+    /*background: #fff;*/
+    float: left;
+}
+
+.news-search {
+    width: calc(100% - 20px);
+    height: 100%;
+    border: none;
+    outline: none;
+    float: left;
+    background: none;
+}
+
+    .news-search::-webkit-input-placeholder::before {
+        content: "이웃 소식을 검색해보세요";
+
+        font-family: Montserrat, Nanum Gothic;
+        font-size: 15px;
+        color: #F5F5F5;
+    }
+
+#news-search {
+    display: block;
+    margin-left: calc(100% - 15px);
+    margin-top: 4px;
+    width: 18px;
+    height: 20px;
+    background: url("../../resource/images/btn-search-s.png") no-repeat center;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+#news-search:hover {
+    opacity: 0.6;
+}
+
+    @media screen and (max-width: 860px) {.toolbar-search {width: 120px;}}
+    @media screen and (max-width: 860px) {.news-search::-webkit-input-placeholder::before {content: "검색";}}
+    @media screen and (max-width: 750px) {.toolbar-logo {display: none;}}
+    @media screen and (max-width: 750px) {.news-search::-webkit-input-placeholder::before {content: "e-oot 검색";}}
+    @media screen and (max-width: 590px) {.toolbar-search {width: 80px;}}
+    @media screen and (max-width: 590px) {.news-search::-webkit-input-placeholder::before {content: "e-oot";}}
+
+.toolbar-user {
+    display: block;
+    position: absolute;
+    width: 250px;
+    height: 100%;
+    right: 40px;
+}
+
+.toolbar-main .profile-pic-box {
+    position: relative;
+    margin-top: 12px;
+    margin-right: 8px;
+    float: left;
+}
+
+.toolbar-info {
+    display: inline-block;
+    margin-top: 12px;
+
+    font-family: Montserrat, Nanum Gothic;
+    font-size: 12px;
+    color: #fff;
+}
+
+.user {
+    display: block;
+    width: 190px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user.log-out {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    color: #E5E5E5;
+}
+
+.toolbar-opt {
+    display: block;
+    width: 30px;
+    height: 100%;
+    float: right;
+    cursor: pointer;
+    background: url("../images/btn-more.png") no-repeat center;
+}
+
+    .toolbar-opt:hover {
+        opacity: 0.7;
+    }
+
+.view-opt {
+    display: none;
+    position: fixed;
+    width: 60px;
+    height: 18px;
+    padding: 6px 10px;
+    border: 1px solid #e5e5e5;
+    right: 14px;
+    top: 56px;
+    background: #fff;
+    cursor: pointer;
+
+    font-family: Montserrat, Nanum Gothic;
+    font-size: 12px;
+    text-align: center;
+    color: #9f9f9f;
+}
+
+.view-opt.recent {
+    border-top: none;
+    top: 88px; 
+}
+
+    .view-opt:hover {
+        background: #e0f6f1;
+    }
 
 /*////////뉴스피드 레이아웃/////////////////////////////////////*/
 html {
-    background: #E5E5E5;
+    /*background: #E5E5E5;*/
+    background: #F2F2F2;
 }
 
 .main {
@@ -29,13 +207,15 @@ html {
 
 .wrapper {
     display: block;
+    margin-top: 85px;
     left: 50%;
-    margin-left: -380px; /*( 760px / 2 )*/
+    margin-left: -345px; /*( 760px / 2 ) - (70 / 2)*/
     right: 50%;
     margin-right: -380px;
     position: absolute;
     min-width: 760px;
-    background: #E5E5E5;
+    /*background: #E5E5E5;*/
+    background: #F2F2F2;
 }
 
 .post {
@@ -47,7 +227,8 @@ html {
     /*width: 518px;*/
     width: 358px;
     background: white;
-    border: 1px solid #d8d8d8;
+    /*border: 1px solid #d8d8d8;*/
+    border: 1px solid #e5e5e5;
     border-bottom-width: 2px;
     border-radius: 3px;
 }
@@ -62,6 +243,27 @@ html {
         float: right;
     }
 
+    @media screen and (max-width: 960px) {
+        .post:nth-child(2n) {
+            clear: left;
+            float: left;
+        }
+    }
+
+    @media screen and (max-width: 960px) {
+        .wrapper {
+            min-width: 380px;
+            left: 316px;
+            margin-left: 0px;
+            right: auto;
+            margin-right: auto;
+        }
+    }
+
+    @media screen and (max-width: 750px) {.wrapper {left: 212px;}}
+    @media screen and (max-width: 640px) {.wrapper {left: 157px;}}
+    @media screen and (max-width: 590px) {.wrapper {left: 140px;}}
+    @media screen and (max-width: 548px) {.wrapper {left: 110px;}}
 
 /*=======< post-header >===================================*/
 .post-header-wrapper {
@@ -87,7 +289,9 @@ html {
     margin-right: 15px;
     width: 46px;
     height: 46px;
-    background: black;
+    border-radius: 50%;
+    /*border: 1px solid #ededed;*/
+    background: black; 
     overflow: hidden;
 }
 
@@ -326,7 +530,7 @@ html {
     background: black;
     float: left;
     overflow: hidden;
-    /*border-radius: 14px;*/
+    border-radius: 50%;
 }
 
 input[type=text] {
@@ -348,7 +552,7 @@ input[type=text] {
     overflow-y: auto;
 }
 
-input[type=button] {
+.comment-submit {
     width: 50px;
     height: 30px;
     padding-left: 8px;

@@ -1,4 +1,13 @@
-﻿/*=======< post-header STYLE >===================================*/
+﻿
+.toolbar-logo {
+    font-family: Montserrat;
+    font-size: 34px;
+    color: white;
+    text-align: center;
+    /*text-shadow:0px 1px 6px #000000;*/
+}
+
+/*=======< post-header STYLE >===================================*/
 .post-info {
     font-family: Nanum Gothic;
     font-size: 12px;
