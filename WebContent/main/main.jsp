@@ -91,7 +91,7 @@
                         <p class="hidden">장형수 님의 생일이 2주 남았습니다.</p>
                     </div>
                     <div class="alarm news">
-                        <p class="hidden">새로운 소식이 99개 있습니다.</p>
+                        <p class="hidden"><a href="../newsFeed/newsFeed.jsp">새로운 소식이 99개 있습니다.</a></p>
                     </div>
                 </div>
             </aside>

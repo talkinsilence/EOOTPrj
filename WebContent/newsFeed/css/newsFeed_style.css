@@ -7,6 +7,29 @@
     /*text-shadow:0px 1px 6px #000000;*/
 }
 
+.news-search::-webkit-input-placeholder {
+	color: #47ccaf;
+}
+
+.news-search::-webkit-input-placeholder::before {
+    font-family: Montserrat, Nanum Gothic;
+    font-size: 15px;
+    color: #F5F5F5;
+}
+
+.toolbar-info {
+    font-family: Montserrat, Nanum Gothic;
+    font-size: 12px;
+    color: #fff;
+}
+
+.opt {
+    font-family: Montserrat, Nanum Gothic;
+    font-size: 12px;
+    text-align: center;
+    color: #9f9f9f;
+}
+
 /*=======< post-header STYLE >===================================*/
 .post-info {
     font-family: Nanum Gothic;

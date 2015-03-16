@@ -30,20 +30,7 @@
     /*background: #ed5661;*/
     /*background: #e5e5e5;*/
     /*background: #68cfb9;*/
-    /*-webkit-transform: skew(-40deg, 0deg) ;
-    -webkit-animation-name: fill;
-    -webkit-animation-delay: 50ms;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-direction: normal;
-    -webkit-animation-timing-function: ease-in;
-    -webkit-animation-play-state: running;
-    -webkit-animation-fill-mode: forwards;*/
 }
-
-/*@-webkit-keyframes fill {
-    0%   {margin-left: -1600px;  }
-    100% {margin-left: -50px; }
-}*/
 
 #toolbar.shadow {-webkit-box-shadow: 0px 0px 5px #9f9f9f;}
 
@@ -88,10 +75,6 @@
 
     .news-search::-webkit-input-placeholder::before {
         content: "이웃 소식을 검색해보세요";
-
-        font-family: Montserrat, Nanum Gothic;
-        font-size: 15px;
-        color: #F5F5F5;
     }
 
 #news-search {
@@ -134,10 +117,6 @@
 .toolbar-info {
     display: inline-block;
     margin-top: 12px;
-
-    font-family: Montserrat, Nanum Gothic;
-    font-size: 12px;
-    color: #fff;
 }
 
 .user {
@@ -168,30 +147,26 @@
         opacity: 0.7;
     }
 
-.view-opt {
-    display: none;
-    position: fixed;
-    width: 60px;
-    height: 18px;
-    padding: 6px 10px;
-    border: 1px solid #e5e5e5;
-    right: 14px;
+.opt-wrapper {
+	display: none;
+	position: fixed;
+	right: 14px;
     top: 56px;
+    border: 1px solid #e5e5e5;
     background: #fff;
-    cursor: pointer;
-
-    font-family: Montserrat, Nanum Gothic;
-    font-size: 12px;
-    text-align: center;
-    color: #9f9f9f;
 }
 
-.view-opt.recent {
-    border-top: none;
-    top: 88px; 
+.opt {
+    display: block;
+    padding: 8px 12px;
+    cursor: pointer;	
 }
 
-    .view-opt:hover {
+.opt.popular {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+    .opt:hover {
         background: #e0f6f1;
     }
 

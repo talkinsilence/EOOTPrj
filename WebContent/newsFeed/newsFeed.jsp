@@ -1,7 +1,15 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="com.eoot.eootprj.model.Member"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
+<%@page import="com.eoot.eootprj.dao.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
+	String uid = (String) session.getAttribute("uid");
+
+	MemberDao memberDao = new MyBMemberDao();
+	Member m = memberDao.getMember(uid);
 	
+	pageContext.setAttribute("m", m);
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -37,17 +45,19 @@
                 <div class="toolbar-user">
                     <div class="profile-pic-box">
                         <h1 class="hidden">프로필사진</h1>
-                        <img class="thumbnail" src="images/pcm.jpg" />
+                        <img class="thumbnail" src="${m.profilepic}" />
                     </div>
                     <div class="toolbar-info">
-                        <span class="user name">참무니</span>
-                        <span class="user id">chanmooni@eoot.com asdfasdfasdfadsfadsf</span>
+                        <span class="user name">${m.name}</span>
+                        <span class="user id">${m.mid}</span>
                         <span class="user log-out">로그아웃</span>
                     </div>
                 </div>
                 <div class="toolbar-opt"></div>
-                <div class="view-opt popular">인기소식</div>
-                <div class="view-opt recent">최근소식</div>
+                <div class="opt-wrapper">
+	                <div class="opt popular">인기소식</div>
+	                <div class="opt recent">최근소식</div>
+                </div>
             </div>
         </div>
     </section>

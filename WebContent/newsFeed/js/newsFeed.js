@@ -13,7 +13,10 @@
     });
 
     $('.toolbar-opt').click(function () {
-        $('.view-opt').toggle();
+        $('.opt-wrapper').toggle();
+    });
+    $('.opt').click(function(){
+    	$(this).parent().hide();
     });
  
 })

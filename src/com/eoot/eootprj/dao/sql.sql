@@ -1,4 +1,5 @@
 select * from VILPOSTS;
+select * from FAMPOSTS;
 select * from MEMBERS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 delete from members;
@@ -18,16 +19,16 @@ INSERT INTO LETTERS VALUES('letterceode5', 'nami@eoot.com', GETDATE(), 'adsfadsf
 
 
 INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
-VALUES (1, 1, 'ÀÌ¿ôÀ» ÀÀ¿øÇÕ´Ï´Ù.', '³»¿ëÀÌµé¾î°¥ºÎºÐ', 'nami@eoot.com', getDate(), 0,0,0,0);
+VALUES (1, 1, 'ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½î°¥ï¿½Îºï¿½', 'nami@eoot.com', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
 VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
-VALUES (3, 1, 'Á¦¸ñÁ¦¸ñÁ¦¸ñ', '³»¿ë³»¿ë³»¿ë', 'nami@eoot.com', getDate(), 0,0,0,0);
+VALUES (3, 1, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ë³»ï¿½ë³»ï¿½ï¿½', 'nami@eoot.com', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts
-VALUES (1, 0, 'ÀÌ¿ôÀ»ÀÀ¿øÇÕ´Ï´Ù.', '³»¿ëÀÌµé¾î°¥ºÎºÐ', '', getDate(), 0,0,0,0);
+VALUES (1, 0, 'ï¿½Ì¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.', 'ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½î°¥ï¿½Îºï¿½', '', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts(code)
 VALUES 1;
