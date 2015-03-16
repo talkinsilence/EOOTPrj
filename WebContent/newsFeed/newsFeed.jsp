@@ -81,7 +81,7 @@
         <div class="wrapper">
         
         
-        	<c:forEach var="i" items="${fps}" >
+			<c:forEach var="i" items="${fps}" >
             <div class="post">
                 <div class="post-header-wrapper">
                     <div class="post-header">
@@ -208,7 +208,8 @@
                 </div>
             </div>
             </c:forEach>
-
+            
+                    
         </div>
     </div>
 </body>
