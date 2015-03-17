@@ -1,4 +1,5 @@
-﻿<%@page import="java.util.List"%>
+﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
+<%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.model.FamPost"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
 <%@page import="com.eoot.eootprj.dao.FamPostDao"%>
@@ -19,7 +20,7 @@
 	
 	FamPostDao famPostDao = new MyBFamPostDao();
 	FamPost fp = famPostDao.getFamPost(code);
-	List<FamPost> fps = famPostDao.getFamPosts(); 
+	List<FamPostJoinMember> fps = famPostDao.getFamPosts(); 
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fp", fp);
@@ -92,7 +93,7 @@
                         <div class="post-info">
                             <div class="post-info-writer">
                                 <h1 class="hidden">작성자이름</h1>
-                                <p>${i.writer}</p>
+                                <p>${i.name}</p>
                             </div>
                             <div class="post-info-wrapper">
                                 <div class="post-info-sharing-details">
