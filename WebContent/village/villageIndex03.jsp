@@ -8,16 +8,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	String code = request.getParameter("Code");
+	String sort = request.getParameter("Sort");
 	
 	VilPostDao vilPostDao = new MyBVilPostDao();
 	List<VilPost> n = vilPostDao.getVilPosts();
 	List<VilPost> list = vilPostDao.getVilPosts();
-		
-	/* List<VilPost> list = new ArrayList<VilPost>(); */
 	
 	pageContext.setAttribute("n", n);
 	pageContext.setAttribute("list", list);
+	pageContext.setAttribute("sort", sort);
 %>
 
 <!DOCTYPE html>
@@ -210,7 +209,18 @@
 						<c:forEach var="i" items="${list}" >
 							<div class="village-board-list">
 								<div class="village-board-item1">
-									<div class="village-board-label1"></div>
+									<c:if test="${param.sort == 1}">
+										<div class="village-board-label1"></div>
+									</c:if>
+									<c:if test="${param.sort == 2}">
+										<div class="village-board-label2"></div>
+									</c:if>
+									<c:if test="${param.sort == 3}">
+										<div class="village-board-label3"></div>
+									</c:if>
+									<c:if test="${param.sort == 4}">
+										<div class="village-board-label4"></div>
+									</c:if>
 									<div class="village-board-item-img">
 										<img class="thumbnail2" src="refimg/suzy1.jpg" />
 									</div>

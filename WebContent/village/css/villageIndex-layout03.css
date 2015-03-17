@@ -15,7 +15,7 @@ body
     width: calc(100% - 30% - 70px);
     height: 100%;
     background: #edf1f2;
-    overflow-y: auto;
+    overflow-y: scroll;
     /*배경색 변경*/
 }
 
