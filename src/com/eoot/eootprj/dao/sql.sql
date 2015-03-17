@@ -2,7 +2,6 @@ select * from VILPOSTS;
 select * from FAMPOSTS;
 select * from MEMBERS;
 SELECT * FROM VilPosts WHERE CODE = 1;
-delete from members;
 
 INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, REGDATE, FAMCODE) 
 VALUES('qq3', 'ddfd', 'dfasdf', '19910101', 'default.jpg', GETDATE(), 'tete');
