@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.SelectKey;
 import com.eoot.eootprj.model.VilPost;
 
 public interface VilPostDao {
-	/*@Select("SELECT * FROM VilPosts WHERE CODE = #{code}")
-	public VilPost getVilPost(String code);*/
+	@Select("SELECT * FROM VilPosts WHERE CODE = #{code}")
+	public VilPost getVilPost(String code);
 	
 	@Select("SELECT * FROM VilPosts")
 	public List<VilPost> getVilPosts();
