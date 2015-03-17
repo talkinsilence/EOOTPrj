@@ -33,3 +33,6 @@ VALUES (1, 0, '�̿��������մϴ�.', '�����̵��
 
 INSERT INTO VilPosts(code)
 VALUES 1;
+
+INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
+VALUES (5, 3, '이웃이웃이웃이웃', '이웃의내용이웃의내용이웃의내용', 'nami@eoot.com', getDate(), 0,0,0,0);

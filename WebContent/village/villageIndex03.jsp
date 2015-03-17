@@ -8,15 +8,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	String sort = request.getParameter("Sort");
+	/* int sort = request.getParameter("Sort");*/
+	//String code = request.getParameter("code");
 	
 	VilPostDao vilPostDao = new MyBVilPostDao();
-	List<VilPost> n = vilPostDao.getVilPosts();
+	//VilPost vilPost = vilPostDao.getVilPost(code);
+	
+	/* List<VilPost> n = vilPostDao.getVilPosts(); */
 	List<VilPost> list = vilPostDao.getVilPosts();
 	
-	pageContext.setAttribute("n", n);
+	/* pageContext.setAttribute("n", n); */
 	pageContext.setAttribute("list", list);
-	pageContext.setAttribute("sort", sort);
+	//pageContext.setAttribute("vilPost" ,vilPost);
+	
+	//System.out.println(vilPost.getSort());
 %>
 
 <!DOCTYPE html>
@@ -24,7 +29,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/bind03.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="modernizr.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="js/menubar.js" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -43,22 +48,6 @@
                 , active: false
             });
         });
-        
-        /* $(function () {
-            $("#accordion").toggle(function(){
-            	$("#accordion").accordion({
-                    collapsible: true
-                    , active: false
-                });
-            });
-        }); */
-         
-        /*$(document).ready(function(){
-        	$("#accordion").accordion({
-        		collasible: true
-        		, active: false
-        	});
-        }); */
     </script>
     <title></title>
 </head>
@@ -195,6 +184,25 @@
                     <h1 class="hidden">마을영역</h1>
                     <div class="village-main-area">
                         <div class="search-wrapper">
+                            <div class="icon-deploy">
+                                <div>
+                                    <span class="vilPosts-icon-color1"></span>
+                                    <img class="vilPosts-icon" src="refimg/village-board-normal.png" />
+                                </div>
+                                <div>
+                                    <span class="vilPosts-icon-color2"></span>
+                                    <img class="vilPosts-icon" src="refimg/village-board-group.png" />
+                                </div>
+                                <div>
+                                    <span class="vilPosts-icon-color3"></span>
+                                    <img class="vilPosts-icon" src="refimg/village-board-shopping.png" />
+                                </div>
+                                <div>
+                                    <span class="vilPosts-icon-color4"></span>
+                                    <img class="vilPosts-icon" src="refimg/village-board-normal.png" />
+                                </div>
+                            </div>
+
                             <form class="search">
                                 <fieldset>
                                     <legend class="hidden">검색필드</legend>
@@ -209,16 +217,17 @@
 						<c:forEach var="i" items="${list}" >
 							<div class="village-board-list">
 								<div class="village-board-item1">
-									<c:if test="${param.sort == 1}">
+									<c:if test="${i.sort.equals('1')}">
+									
 										<div class="village-board-label1"></div>
 									</c:if>
-									<c:if test="${param.sort == 2}">
+									<c:if test="${i.sort.equals('2')}">
 										<div class="village-board-label2"></div>
 									</c:if>
-									<c:if test="${param.sort == 3}">
+									<c:if test="${i.sort.equals('3')}">
 										<div class="village-board-label3"></div>
 									</c:if>
-									<c:if test="${param.sort == 4}">
+									<c:if test="${i.sort.equals('4')}">
 										<div class="village-board-label4"></div>
 									</c:if>
 									<div class="village-board-item-img">
@@ -248,18 +257,81 @@
 								</div>
 
 								<div class="accordion">
-									<div>
-										<div class="village-board-item2">
-											<p>${i.title}</p>
-										</div>
-										<img class="village-board-item3" src="refimg/etc_img.png" />
-									</div>
-									<div id="village-board-item2-text">
-										<p>${i.title}</p>
-										<p>${i.content}</p>
-										<img id="village-board-item2-img" src="refimg/bobby1.jpg" />
-									</div>
-								</div>
+                                        <div>
+                                            <div class="village-board-item2">
+                                                <p>${i.title}</p>
+                                            </div>
+                                            <img class="village-board-item3" src="refimg/etc_image.png" />
+                                        </div>
+                                        <div id="village-board-item2-text">
+                                            <p>${i.title}</p>                                            
+                                            <p>${i.content}</p>
+                                            <img id="village-board-item2-img" src="refimg/bobby1.jpg" />
+                                            <div class="post-comment-wrapper">
+                                                <div class="post-comment">
+                                                    <ul class="post-comment-list">
+                                                        <li>
+                                                            <div class="profile-pic-box-s">
+                                                                <h1 class="hidden">댓글작성자프로필사진</h1>
+                                                                <img class="thumbnail" src="refimg/hjw.jpg" />
+                                                            </div>
+                                                            <div class="comment-info">
+                                                                <div class="comment-info-writer">
+                                                                    <h1 class="hidden">댓글작성자이름</h1>
+                                                                    <p>남명이</p>
+                                                                </div>
+                                                                <div class="comment-info-date">
+                                                                    <h1 class="hidden">댓글작성일(또는 작성시간)</h1>
+                                                                    <p>3일 전</p>
+                                                                </div>
+                                                                <div class="comment-like">
+                                                                    <h1 class="hidden">댓글좋아요개수</h1>
+                                                                    <img class="comment-like-btn" src="refimg/btn-like-s.png" />
+                                                                    <div class="comment-like-cnt clearfix">1</div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="comment-content">
+                                                                댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <div class="profile-pic-box-s">
+                                                                <h1 class="hidden">댓글작성자프로필사진</h1>
+                                                                <img class="thumbnail" src="refimg/dog.png" />
+                                                            </div>
+                                                            <div class="comment-info">
+                                                                <div class="comment-info-writer">
+                                                                    <h1 class="hidden">댓글작성자이름</h1>
+                                                                    <p>무니무니</p>
+                                                                </div>
+                                                                <div class="comment-info-date">
+                                                                    <h1 class="hidden">댓글작성일(또는 작성시간)</h1>
+                                                                    <p>어제</p>
+                                                                </div>
+                                                                <div class="comment-like">
+                                                                    <h1 class="hidden">댓글좋아요개수</h1>
+                                                                    <img class="comment-like-btn" src="refimg/btn-like-s.png" />
+                                                                    <div class="comment-like-cnt clearfix">2</div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="comment-content">
+                                                                댓글내용
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="post-comment-write">
+                                                        <div class="profile-pic-box-s">
+                                                            <h1 class="hidden">댓글작성자프로필사진</h1>
+                                                            <img class="thumbnail" src="refimg/default-profile-pic.png" />
+                                                        </div>
+                                                        <input class="post-input-text" type="text" placeholder="댓글을 남겨주세요." />
+                                                        <input class="post-input-button" type="button" value="등록" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
 							</div>
 						</c:forEach>
 					</div>

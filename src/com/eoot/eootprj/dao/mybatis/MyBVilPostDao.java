@@ -9,12 +9,12 @@ import com.eoot.eootprj.model.VilPost;
 
 public class MyBVilPostDao implements VilPostDao{
 
-	/*@Override
+	@Override
 	public VilPost getVilPost(String code) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
 		return vilPostDao.getVilPost(code);
-	}*/
+	}
 
 	@Override
 	public List<VilPost> getVilPosts() {
