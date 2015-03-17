@@ -1,5 +1,7 @@
 select * from VILPOSTS;
 select * from FAMPOSTS;
+select * from FAMPOSTCOMMENTS;
+select * from FAMPOSTFILES;
 select * from MEMBERS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 
@@ -25,3 +27,11 @@ VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);
 INSERT INTO VilPosts(code)
 VALUES 1;
 
+SELECT * FROM MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
+(EXCEPT SELECT MID WHERE MID='viovio@eoot.com')
+
+SELECT  FamPosts.*, FamPostFiles.*, FamPostComments.*, Members.Name, Members.Address, Members.FamCode, Members.ProfilePic
+FROM     FamPostFiles RIGHT OUTER JOIN
+               Members INNER JOIN
+               FamPosts ON Members.Mid = FamPosts.Writer LEFT OUTER JOIN
+               FamPostComments ON FamPosts.Code = FamPostComments.FamPostCode ON FamPostFiles.FamPostCode = FamPosts.Code

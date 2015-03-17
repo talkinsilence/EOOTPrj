@@ -1,16 +1,25 @@
-﻿<%@page import="com.eoot.eootprj.model.Member"%>
+﻿<%@page import="java.util.List"%>
+<%@page import="com.eoot.eootprj.model.Member"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <% 
 	String uid = (String) session.getAttribute("uid");
+	//String famcode = (String) session.getAttribute("uid");
 
 	MemberDao memberDao = new MyBMemberDao();
 	Member m = memberDao.getMember(uid);
+	String famcode = m.getFamcode();
+	List<Member> fms = memberDao.getFamMembers(famcode);
+	
+	for( Member ms : fms)
+		System.out.println(ms.getFamcode());
 	
 	pageContext.setAttribute("m", m);
+	pageContext.setAttribute("fms", fms);
 %>
 
 <!DOCTYPE html>
@@ -64,15 +73,11 @@
                     </div>
                     <div class="profile-family-members-wrapper">
                         <!--가족구성원-->
-                        <div class="profile-family-members">
-                            <img class="thumbnail" src="images/dog.png" />
-                        </div>
-                        <div class="profile-family-members">
-                            <img class="thumbnail" src="images/suzy2.jpg" />
-                        </div>
-                        <div class="profile-family-members">
-                            <img class="thumbnail" src="images/nami3.jpg" />
-                        </div>
+                        <c:forEach var="i" items="${fms}" >
+	                        <div class="profile-family-members">
+	                            <img class="thumbnail" src="${i.profilepic}" />
+	                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </aside>
