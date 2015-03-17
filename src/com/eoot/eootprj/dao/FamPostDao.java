@@ -8,13 +8,14 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 
 import com.eoot.eootprj.model.FamPost;
+import com.eoot.eootprj.model.FamPostJoinMember;
 
 public interface FamPostDao {
 	@Select("SELECT * FROM FamPosts WHERE CODE = #{code}")
 	public FamPost getFamPost(String code);
 	
 	@Select("SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS.MID=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;")
-	public List<FamPost> getFamPosts();
+	public List<FamPostJoinMember> getFamPosts();
 	
 	@Select("SELECT TOP 1 * FROM FamPosts "
 			+ "WHERE REGDATE &gt; (SELECT REGDATE FROM FamPosts "

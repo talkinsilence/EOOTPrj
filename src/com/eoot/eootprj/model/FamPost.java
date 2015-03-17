@@ -14,7 +14,15 @@ public class FamPost {
 	private int likeCnt;
 	private int clipCnt;
 	private int commentCnt;
+	private String name;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getCode() {
 		return code;
 	}

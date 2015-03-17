@@ -15,24 +15,14 @@ select * from letters;
 select * from letterfiles;
 
 INSERT INTO LETTERS VALUES('letterceode5', 'nami@eoot.com', GETDATE(), 'adsfadsfadf', 'asdfasdfadf', 1, 'cskn2@naver.com', 0);
-INSERT INTO FAMPOSTS VALUES(6, '냠냠', '오늘은 비빔냉면', 'talkinsilence21@eoot.com', GETDATE(), 1, 0, 0, 0, 0, 0);
 
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS."MID"=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;
 
-INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
-VALUES (1, 1, '�̿��� �����մϴ�.', '�����̵��κ�', 'nami@eoot.com', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
 VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);
 
-INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
-VALUES (3, 1, '������������', '���볻�볻��', 'nami@eoot.com', getDate(), 0,0,0,0);
-
-INSERT INTO VilPosts
-VALUES (1, 0, '�̿��������մϴ�.', '�����̵��κ�', '', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts(code)
 VALUES 1;
 
-INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
-VALUES (5, 3, '이웃이웃이웃이웃', '이웃의내용이웃의내용이웃의내용', 'nami@eoot.com', getDate(), 0,0,0,0);

@@ -1,4 +1,32 @@
-﻿<!DOCTYPE html>
+﻿<%@page import="java.util.List"%>
+<%@page import="com.eoot.eootprj.model.FamPost"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
+<%@page import="com.eoot.eootprj.dao.FamPostDao"%>
+<%@page import="com.eoot.eootprj.model.Member"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
+<%@page import="com.eoot.eootprj.dao.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<% 
+	String uid = (String) session.getAttribute("uid");
+	String code = request.getParameter("code");
+
+	MemberDao memberDao = new MyBMemberDao();
+	Member m = memberDao.getMember(uid);
+	
+	FamPostDao famPostDao = new MyBFamPostDao();
+	FamPost fp = famPostDao.getFamPost(code);
+	List<FamPost> fps = famPostDao.getFamPosts(); 
+	
+	pageContext.setAttribute("m", m);
+	pageContext.setAttribute("fp", fp);
+	pageContext.setAttribute("fps", fps);
+%>
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
