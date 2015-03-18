@@ -3,6 +3,7 @@ select * from FAMPOSTS;
 select * from FAMPOSTCOMMENTS;
 select * from FAMPOSTFILES;
 select * from MEMBERS;
+select * from LETTERS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 
 INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, REGDATE, FAMCODE) 
@@ -14,8 +15,8 @@ SELECT V.* FROM (SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM , VilPos
 
 select * from letters;
 select * from letterfiles;
-
-INSERT INTO LETTERS VALUES('letterceode5', 'nami@eoot.com', GETDATE(), 'adsfadsfadf', 'asdfasdfadf', 1, 'cskn2@naver.com', 0);
+INSERT INTO LETTERS VALUES('lettercode7', 'nami@eoot.com', GETDATE(), '제목', '내용', 1, 'viovio@eoot.com', 1);
+UPDATE LETTERS SET READER='nami@eoot.com' WHERE CODE='lettercode4';
 
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS."MID"=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;
 
