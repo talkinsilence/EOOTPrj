@@ -82,6 +82,7 @@
     display: inline-block;
     width: 100%;
     height: 2000px;
+    overflow: hidden;
 }
 
 .e-oot-newsfeed-item {
@@ -175,6 +176,78 @@
 }
 
 /*추가사항*/
+
+.icon-deploy
+{
+    position: relative;
+    display: block;
+    width: 300px;
+    height: 70px;
+    left: -8px;
+}
+
+.vilPosts-icon-color1
+{
+    position: relative;
+    display: block;
+    float: left;
+    width: 10px;
+    height: 10px;    
+    border-radius: 2px;
+    background: #3bc0c3;
+    top: 36px;
+    left: 8px;    
+}
+
+.vilPosts-icon-color2
+{
+    position: relative;
+    display: block;
+    float: left;
+    width: 10px;
+    height: 10px;    
+    border-radius: 2px;
+    background: #f6902e;
+    top: 36px;
+    left: 8px;
+}
+
+.vilPosts-icon-color3
+{
+    position: relative;
+    display: block;
+    float: left;
+    width: 10px;
+    height: 10px;    
+    border-radius: 2px;
+    background: #e55175;
+    top: 36px;
+    left: 8px;
+}
+
+.vilPosts-icon-color4
+{
+    position: relative;
+    display: block;
+    float: left;
+    width: 10px;
+    height: 10px;    
+    border-radius: 2px;
+    background: #7eca56;
+    top: 36px;
+    left: 8px;
+}
+
+.vilPosts-icon
+{
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    float: left;
+    top: 34px;
+}
 
 .village-board-label1
 {
@@ -392,7 +465,7 @@
 
 #village-board-item2-text
 {
-    margin-top: -2px;
+    margin-top: -4px;
     background: white;
     font-family: 'Nanum Gothic', serif;
     font-size: 12px;
@@ -600,4 +673,113 @@
     border: 2px solid #808080;
     border-radius: 2px;
     overflow: hidden;
+}
+
+/*=======< post-comment >===================================*/
+.post-comment-wrapper {
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 12px;
+    background: #F5F5F5;
+    border-top: 1px solid #E5E5E5;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.post-comment {
+    display: block;
+}
+
+.post-comment-list {
+    display: block;
+    position: relative;
+    padding-bottom: 10px;
+    clear: left;
+}
+
+.post-comment-list li {
+    margin-top: 5px;
+}
+
+.comment-info {
+    margin-left: 36px;
+    padding-top: 8px;
+}
+
+.comment-info-writer {
+    display: block;
+}
+
+.comment-info-date {
+    display: inline-block;
+    float: left;
+}
+
+.comment-like {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.comment-like-btn {
+    display: inline-block;
+    float: left;
+    padding-top: 4px;
+}
+
+.comment-like-cnt {
+    display: inline-block;
+    margin-left: 2px;
+    padding-top: 1px;
+}
+
+.comment-content {
+    display: block;
+    margin-left: 36px;
+}
+
+.post-comment-write {
+    display: block;
+    clear: left;
+}
+.profile-pic-box-s {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    margin-top: 11px;
+    background: black;
+    float: left;
+    overflow: hidden;
+    /*border-radius: 14px;*/
+}
+
+.post-input-text {
+    width: calc(100% - 112px);
+    min-height: 30px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 36px;
+    margin-right: 8px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    float: left;
+
+    /*box-sizing: border-box;*/
+    height: auto;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.post-input-button {
+    width: 50px;
+    height: 30px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 11px;
+    border: 1px solid #c1c1c1;
+    border-radius: 4px;
+    background: #c1c1c1;
 }

@@ -15,4 +15,8 @@
 	<select id="getMember" parameterType="String" resultType="Member">
 		SELECT * FROM MEMBERS WHERE MID = #{mid};
 	</select>
+	
+	<select id="getFamMembers" parameterType="String" resultType="Member">
+		SELECT * FROM MEMBERS WHERE FAMCODE = #{famcode} ORDER BY BIRTHDAY ASC;
+	</select>
 </mapper>
