@@ -3,6 +3,7 @@ select * from FAMPOSTS;
 select * from FAMPOSTCOMMENTS;
 select * from FAMPOSTFILES;
 select * from MEMBERS;
+select * from ADMINS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 
 INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, REGDATE, FAMCODE) 
@@ -26,9 +27,27 @@ VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts(code)
 VALUES 1;
+<<<<<<< HEAD
 
-SELECT * FROM MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
-(EXCEPT SELECT MID WHERE MID='viovio@eoot.com')
+SELECT * FROM MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC; 
+SELECT * (SELECT * FROM MEMBERS M2 WHERE NOT EXISTS M2.MID='viovio@eoot.com')FROM MEMBERS M1 WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
+               
+SELECT  FamPosts.*,Members.*,fampostfiles.*,fampostcomments.*
+FROM FamPosts INNER JOIN Members ON FamPosts.Writer = Members.Mid 
+         left outer JOIN FamPostFiles on FamPosts.code = FamPostfiles.fampostcode
+         left outer JOIN fampostcomments on famposts.code = fampostcomments.fampostcode;
+         
+         
+         
+         
+         
+         
+         
+=======
+
+UPDATE MEMBERS SET PROFILEPIC = '/EOOTPrj/main/images/nami3.jpg' WHERE MID = 'talkinsilence21@gmail.com';
+SELECT * FROM (SELECT * FROM MEMBERS WHERE MID <> 'viovio@eoot.com') MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
+
 
 <<<<<<< HEAD
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON FAMPOSTS.WRITER=MEMBERS.MID ORDER BY FAMPOSTS.REGDATE DESC;
@@ -104,6 +123,7 @@ FROM     FamPostFiles RIGHT OUTER JOIN
                Members INNER JOIN
                FamPosts ON Members.Mid = FamPosts.Writer LEFT OUTER JOIN
                FamPostComments ON FamPosts.Code = FamPostComments.FamPostCode ON FamPostFiles.FamPostCode = FamPosts.Code
+
 
 create view fampostview
 as

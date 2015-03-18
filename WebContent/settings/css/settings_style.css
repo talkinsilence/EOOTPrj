@@ -1,0 +1,154 @@
+﻿body {
+    font-family: Montserrat, Nanum Gothic;
+}
+
+#settings-body {
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+#title > h1 {
+    font-size:20px;
+}
+
+#profile-pic-box-main > div {
+    font-weight:bold;
+}
+
+#profile-upload-form #btn-upload-select{
+    width: 174px;
+    height: 30px;
+    border: 1px solid #c6c6c6;
+    background:#f8f8f8;
+}
+
+#profile-upload-form #btn-upload-set{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #3079ed;
+    background:#357ae8;
+    font-weight:bold;
+    color:#fff;
+}
+
+#profile-upload-form #btn-upload-cancel {
+    width: 70px;
+    height:30px;
+    border: 1px solid #c6c6c6;
+    background:#f8f8f8;
+}
+
+#profile-name-txt {
+    width:175px;
+}
+
+#btn-profile-name{
+    width: 35px;
+    height:24px;
+    background: #427fed;
+    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    border: 1px solid transparent;
+    font-size: 12px;
+    font-weight:bold;
+    color: #fff;
+}
+
+/*#profile-name-edit {
+    color:#427fed;
+    font-size:14px;
+    cursor: pointer;    
+}*/
+
+#profile-myhome-name-val{
+
+}
+
+#profile-myhome-address-val {
+    
+}
+
+a:hover {
+    color: #427fed;
+}
+
+/***************************** accordion 영역 *********************************/
+
+#accordion > div {
+    font-size: 15px;
+}
+
+#accordion input[type="button"]{
+    width: 35px;
+    height:24px;
+    background: #427fed;
+    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    border: 1px solid transparent;
+    font-size: 12px;
+    font-weight:bold;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+#accordion input[type="button"].btn-cancel {
+    background:#808080;
+}
+
+#accordion p {
+    font-size:12px;
+    margin-left:20px;
+    padding-bottom:10px;
+    line-height:25px;
+    color:#ff6363;
+}
+
+.view {
+    color:#427fed;
+    font-size:12px;
+    cursor: pointer;
+}
+
+.edit {
+    color:#427fed;
+    font-size:14px;
+    cursor: pointer; s
+}
+
+/* 우리집 이름 */
+
+#myhome-name-txt {
+    width:175px;
+}
+
+
+/* 우리집 주소 */
+
+.board-cell-zipcode {
+    width: 120px;
+    height:30px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    text-align:center;
+}
+
+#board-cell-address {
+    text-align:center;
+}
+
+.board-row {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* 우리집 구성원 */
+
+
+
+/* 이웃 */
+
+.eoot-member-famname a {
+    color: #427fed;
+    text-decoration:none;
+}
+
+.eoot-member-famname a:hover {
+    text-decoration:underline;
+}

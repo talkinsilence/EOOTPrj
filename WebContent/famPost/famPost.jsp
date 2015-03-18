@@ -11,21 +11,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%-- <%
-	String uid = (String) session.getAttribute("uid");
-	String code = request.getParameter("code");
 
-	MemberDao memberDao = new MyBMemberDao();
-	Member m = memberDao.getMember(uid);
-
-	FamPostDao famPostDao = new MyBFamPostDao();
-	FamPost fp = famPostDao.getFamPost(code);
-	/* List<FamPostJoinMember> fps = famPostDao.getFamPosts(query, field); */
-
-	pageContext.setAttribute("m", m);
-	pageContext.setAttribute("fp", fp);
-	/* pageContext.setAttribute("fps", fps); */
-%> --%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
