@@ -3,6 +3,7 @@ select * from FAMPOSTS;
 select * from FAMPOSTCOMMENTS;
 select * from FAMPOSTFILES;
 select * from MEMBERS;
+select * from LETTERS;
 select * from ADMINS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 
@@ -15,8 +16,8 @@ SELECT V.* FROM (SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM , VilPos
 
 select * from letters;
 select * from letterfiles;
-
-INSERT INTO LETTERS VALUES('letterceode5', 'nami@eoot.com', GETDATE(), 'adsfadsfadf', 'asdfasdfadf', 1, 'cskn2@naver.com', 0);
+INSERT INTO LETTERS VALUES('lettercode7', 'nami@eoot.com', GETDATE(), '제목', '내용', 1, 'viovio@eoot.com', 1);
+UPDATE LETTERS SET READER='nami@eoot.com' WHERE CODE='lettercode4';
 
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS."MID"=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;
 
@@ -27,7 +28,6 @@ VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts(code)
 VALUES 1;
-<<<<<<< HEAD
 
 SELECT * FROM MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC; 
 SELECT * (SELECT * FROM MEMBERS M2 WHERE NOT EXISTS M2.MID='viovio@eoot.com')FROM MEMBERS M1 WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
@@ -124,4 +124,13 @@ FROM     FamPostFiles RIGHT OUTER JOIN
                FamPosts ON Members.Mid = FamPosts.Writer LEFT OUTER JOIN
                FamPostComments ON FamPosts.Code = FamPostComments.FamPostCode ON FamPostFiles.FamPostCode = FamPosts.Code
 
->>>>>>> refs/remotes/origin/master
+
+create view fampostview
+as
+SELECT  F.regdate as Fr, M.regdate as Mr, FF.regdate as FFr, FC.regdate as FCr
+FROM FamPosts F INNER JOIN Members M ON F.Writer = M.Mid
+         left outer JOIN FamPostFiles FF on F.code = FF.fampostcode
+         left outer JOIN fampostcomments FC on F.code = FC.fampostcode;
+         
+         
+SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER WHERE F.title LIKE '%fam%') MJOINF WHERE MJOINF.NUM BETWEEN 1 AND 30

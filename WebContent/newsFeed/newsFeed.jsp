@@ -62,7 +62,7 @@
                 <div class="toolbar-user">
                     <div class="profile-pic-box">
                         <h1 class="hidden">프로필사진</h1>
-                        <img class="thumbnail" src="${m.profilepic}" />
+                        <a href="../main/main.jsp"><img class="thumbnail" src="${m.profilepic}" /></a>
                     </div>
                     <div class="toolbar-info">
                         <span class="user name">${m.name}</span>
