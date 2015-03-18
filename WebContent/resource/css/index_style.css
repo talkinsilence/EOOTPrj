@@ -1,5 +1,4 @@
-
-/****************** ·Î±×ÀÎ ******************/
+/****************** ï¿½Î±ï¿½ï¿½ï¿½ ******************/
 
 #login-form {
     font-family: 'Nanum Gothic';
@@ -39,7 +38,7 @@
     background:#ffd1d1;
 }
 
-/****************** È¸¿ø°¡ÀÔ ******************/
+/****************** È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ******************/
 
 #reg-form {
     font-family: 'Nanum Gothic';
@@ -159,12 +158,12 @@
 /************** area1 ***************/
 
 #area1 article > span {
-   font-family: 'Nanum Gothic';
+   font-family: 'Montserrat';
    font-size: 45px;
 }
 
 #area1 article > p {
-    font-family: 'Nanum Gothic';
+    font-family: 'Montserrat';
     padding: 20px;
     font-size: 60px;
     font-weight: bold;

@@ -1,4 +1,5 @@
-﻿<%@page import="java.util.List"%>
+﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
+<%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.model.FamPost"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
 <%@page import="com.eoot.eootprj.dao.FamPostDao"%>
@@ -10,17 +11,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<% 
+<%
 	String uid = (String) session.getAttribute("uid");
 	String code = request.getParameter("code");
 
 	MemberDao memberDao = new MyBMemberDao();
 	Member m = memberDao.getMember(uid);
-	
+
 	FamPostDao famPostDao = new MyBFamPostDao();
 	FamPost fp = famPostDao.getFamPost(code);
-	//List<FamPost> fps = famPostDao.getFamPosts(); 
-	
+
+	List<FamPostJoinMember> fps = famPostDao.getFamPosts();
+
+
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fp", fp);
 	//pageContext.setAttribute("fps", fps);
@@ -50,11 +53,11 @@
             <div class="main-media-box">
                 <div class="main-media-box-L">
                     <img src="../images/김연아4.jpeg" />
-                    <div class="mask"></div>
+                    <!-- <div class="mask"></div>
                     <div class="title">title title title title title title title title title</div>
                     <div class="date">2015.2.28</div>
                     <div class="content">contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent</div>
-                    <div class="view">CLICK</div>
+                    <div class="view">CLICK</div> -->
                 </div>
 
                 <div class="main-media-box-R">

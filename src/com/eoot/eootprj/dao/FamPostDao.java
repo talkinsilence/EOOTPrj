@@ -11,6 +11,7 @@ import com.eoot.eootprj.model.FamPost;
 import com.eoot.eootprj.model.FamPostJoinMember;
 
 public interface FamPostDao {
+	
 	@Select("SELECT * FROM FamPosts WHERE CODE = #{code}")
 	public FamPost getFamPost(String code);
 	
@@ -33,4 +34,5 @@ public interface FamPostDao {
 	@Insert("INSERT INTO FamPosts(CODE, TITLE, CONTENT, WRITER, REGDATE, SHARENEI, SHAREVIL, HIT, LIKECNT, CLIPCNT, COMMENTCNT)"
 			+ "VALUES(#{code}, #{title}, #{content}, #{writer}, getDate(), 0, 0, 0, 0, 0, 0)")
 	public int insert(FamPost fampost);
+	
 }
