@@ -3,6 +3,7 @@ select * from FAMPOSTS;
 select * from FAMPOSTCOMMENTS;
 select * from FAMPOSTFILES;
 select * from MEMBERS;
+select * from ADMINS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 
 INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, REGDATE, FAMCODE) 
