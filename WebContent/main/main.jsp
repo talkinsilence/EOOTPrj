@@ -21,7 +21,6 @@
 			
 	for( Member ms : fms)
 		System.out.println(ms.getFamcode());
-	
 	System.out.println(fms.size());
 	
 	pageContext.setAttribute("m", m);

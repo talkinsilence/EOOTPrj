@@ -1,6 +1,6 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
-<<<<<<< HEAD
 encoding//src/com/eoot/eootprj/dao/FamPostDao.java=UTF-8
-=======
->>>>>>> refs/remotes/origin/master
 encoding//src/com/eoot/eootprj/dao/sql.sql=UTF-8
