@@ -1,5 +1,23 @@
+<%@page import="java.util.List"%>
+<%@page import="com.eoot.eootprj.dao.MemberDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
+<%@page import="com.eoot.eootprj.model.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String uid = "viovio@eoot.com";
+
+	MemberDao memberDao = new MyBMemberDao();
+	
+	Member m = memberDao.getMember(uid);
+	String famcode = m.getFamcode();
+	
+	List<Member> fms = memberDao.getFamMembers(uid, famcode);
+	
+	pageContext.setAttribute("m", m);
+	pageContext.setAttribute("fms", fms);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,10 +78,10 @@
                     <div id="profile-wrapper">
                         <div id="profile-wrapper2">
                             <div>
-                                이메일 : niseung@naver.com
+								이메일 : ${m.mid}
                             </div>
                             <div>
-                                이름 : 최승관
+								이름 : ${m.name}
                                 <label id="profile-name-wrapper">
                                     &nbsp;&nbsp;
                                     <input type="text" id="profile-name-txt" maxlength="20"/>
@@ -73,10 +91,10 @@
                                 <label id="profile-name-edit" class="edit">수정</label>
                             </div>
                             <div>
-                                우리집 이름 :
+								우리집 이름 :
                             </div>
                             <div>
-                                우리집 주소 : 
+								우리집 주소 : 
                             </div>
                         </div>
                     </div>
@@ -86,7 +104,7 @@
                     <h3>우 리 집</h3>
                     <div>
 
-                        <div id="invited">
+                        <!-- <div id="invited">
                             <ul>
                                 <li>
                                     <a href="">뵤뵤뵤뵤</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
@@ -95,10 +113,10 @@
                                     <input type="button" name="reject-fam" value="거절" class="btn-cancel" />
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         
                         <div id="myhome-name">
-                            우리집 이름 : <label id="profile-myhome-name-val">우리집 이름을 정해주세요.</label>
+                           	 우리집 이름 : <label id="profile-myhome-name-val">우리집 이름을 정해주세요.</label>
                             <label id="myhome-name-wrapper">
                                 &nbsp;&nbsp;
                                 <input type="text" id="myhome-name-txt" maxlength="20" />
@@ -111,14 +129,14 @@
                         </div>
 
                         <div id="myhome-address">
-                            우리집 주소 : <label id="profile-myhome-address-val">우리집 주소를 입력해주세요.</label>
+                         	우리집 주소 : <label id="profile-myhome-address-val">우리집 주소를 입력해주세요.</label>
 
                             <label id="myhome-address-edit" class="edit">수정</label>
                             
                             <p>주소를 설정하시면 '마을' 서비스를 이용하실 수 있습니다.</p>
 
                             <div id="myhome-address-wrapper">
-                                주소 검색 : <input type="text" />
+                            	주소 검색 : <input type="text" />
                                 <input type="button" value="검색"/>
                                 <input type="button" value="취소" class="btn-cancel" />
                                 
@@ -146,19 +164,28 @@
                         </div>
 
                         <div id="myhome-member">
-                            우리집 구성원
+							우리집 구성원
                             <label id="myhome-member-view" class="view">자세히 보기</label>
 
                             <div id="myhome-member-view-wrapper">
-                                <ul class="myhome-member-view-body">
-                                    <li class="myhome-member-pic">
-                                        <img class="myhome-member-pic-thumbnail" src="images/default.jpg"/>
-                                    </li>
-
-                                    <li class="myhome-member-uid">niseung@naver.com</li>
-                                    <li class="myhome-member-name">최승관승과니과니과니머하니</li>
-                                    <li class="myhome-member-birthday">1991-09-10</li>
-                                </ul>
+                            	
+                            	<c:if test="${empty fms}">
+                            		<div id="myhome-member-view-msg">구성원이 없습니다.</div>
+                            	</c:if>
+                            	
+                            	<c:if test="${not empty fms}">
+                            		<c:forEach var="i" items="${fms}">
+		                                <ul class="myhome-member-view-body">
+		                                    <li class="myhome-member-pic">
+		                                        <img class="myhome-member-pic-thumbnail" src="${i.profilepic}"/>
+		                                    </li>
+		
+		                                    <li class="myhome-member-uid">${i.mid}</li>
+		                                    <li class="myhome-member-name">${i.name}</li>
+		                                    <li class="myhome-member-birthday">${i.birthday}</li>
+		                                </ul>
+	                                </c:forEach>
+                                </c:if>
                             </div>
                         </div>
 
@@ -189,7 +216,7 @@
                     <h3>이 웃</h3>
                     <div>
                         <div id="eoot-member">
-                            이웃 목록
+                           	이웃 목록
                             <label id="eoot-member-view" class="view">자세히 보기</label>
 
                             <div id="eoot-member-view-wrapper">                            
@@ -213,7 +240,7 @@
                         </div>
 
                         <div id="eoot-with">
-                            이웃맺기 현황
+                           	 이웃맺기 현황
                             <label id="eoot-with-view" class="view">자세히 보기</label>
 
                             <div id="eoot-with-view-wrapper">
@@ -248,7 +275,7 @@
 
                     <h3>마 을</h3>
                     <div id="vil-scope-wrapper">
-                        마을소식 검색 범위 기본 설정 : &nbsp;
+						마을소식 검색 범위 기본 설정 : &nbsp;
                         <input type="radio" name="vil-scope" value="dong" checked />동 단위&nbsp;&nbsp;
                         <input type="radio" name="vil-scope" value="meter" />거리 단위&nbsp;
                         <div id="meter-opt">
@@ -263,7 +290,7 @@
 
                     <h3>게 시 글</h3>
                     <div id="share-scope-wrapper">
-                        게시글 공개 범위 기본 설정 : <br /><br />
+						게시글 공개 범위 기본 설정 : <br /><br />
                         &nbsp;&nbsp;<input type="radio" name="share-scope" value="family" checked />가족과 공유<p class="share-scope-msg">가족 구성원인 회원에게만 공개됩니다.</p>
                         &nbsp;&nbsp;<input type="radio" name="share-scope" value="eoot" />이웃에게 공개<p class="share-scope-msg">나와 이웃인 회원에게 공개됩니다.</p>
                         &nbsp;&nbsp;<input type="radio" name="share-scope" value="village" />마을에 게시<p class="share-scope-msg">나와 이웃이 아니더라도, '마을'서비스를 이용하는 회원에게 공개됩니다.</p>
