@@ -105,3 +105,12 @@ FROM     FamPostFiles RIGHT OUTER JOIN
                FamPosts ON Members.Mid = FamPosts.Writer LEFT OUTER JOIN
                FamPostComments ON FamPosts.Code = FamPostComments.FamPostCode ON FamPostFiles.FamPostCode = FamPosts.Code
 
+create view fampostview
+as
+SELECT  F.regdate as Fr, M.regdate as Mr, FF.regdate as FFr, FC.regdate as FCr
+FROM FamPosts F INNER JOIN Members M ON F.Writer = M.Mid
+         left outer JOIN FamPostFiles FF on F.code = FF.fampostcode
+         left outer JOIN fampostcomments FC on F.code = FC.fampostcode;
+         
+         
+SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER WHERE F.title LIKE '%fam%') MJOINF WHERE MJOINF.NUM BETWEEN 1 AND 30
