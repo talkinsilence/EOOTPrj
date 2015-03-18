@@ -27,11 +27,17 @@ VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);
 INSERT INTO VilPosts(code)
 VALUES 1;
 
-SELECT * FROM MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
-(EXCEPT SELECT MID WHERE MID='viovio@eoot.com')
-
-SELECT  FamPosts.*, FamPostFiles.*, FamPostComments.*, Members.Name, Members.Address, Members.FamCode, Members.ProfilePic
-FROM     FamPostFiles RIGHT OUTER JOIN
-               Members INNER JOIN
-               FamPosts ON Members.Mid = FamPosts.Writer LEFT OUTER JOIN
-               FamPostComments ON FamPosts.Code = FamPostComments.FamPostCode ON FamPostFiles.FamPostCode = FamPosts.Code
+SELECT * FROM MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC; 
+SELECT * (SELECT * FROM MEMBERS M2 WHERE NOT EXISTS M2.MID='viovio@eoot.com')FROM MEMBERS M1 WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
+               
+SELECT  FamPosts.*,Members.*,fampostfiles.*,fampostcomments.*
+FROM FamPosts INNER JOIN Members ON FamPosts.Writer = Members.Mid 
+         left outer JOIN FamPostFiles on FamPosts.code = FamPostfiles.fampostcode
+         left outer JOIN fampostcomments on famposts.code = fampostcomments.fampostcode;
+         
+         
+         
+         
+         
+         
+         

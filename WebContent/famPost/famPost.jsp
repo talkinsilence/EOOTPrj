@@ -19,11 +19,11 @@
 	
 	FamPostDao famPostDao = new MyBFamPostDao();
 	FamPost fp = famPostDao.getFamPost(code);
-	List<FamPost> fps = famPostDao.getFamPosts(); 
+	//List<FamPost> fps = famPostDao.getFamPosts(); 
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fp", fp);
-	pageContext.setAttribute("fps", fps);
+	//pageContext.setAttribute("fps", fps);
 %>
 
 <!DOCTYPE html>
