@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>우리 함께 | e - oot</title>
 <link href="resource/css/bind_index.css" type="text/css" rel="stylesheet" />
-<link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" type="text/css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
 <script src="resource/js/jquery-2.1.3.js"></script>
 <script src="resource/js/modernizr.js" type="text/javascript"></script>
 <script src="resource/js/index.js" type="text/javascript"></script>
