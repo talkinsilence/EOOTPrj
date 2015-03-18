@@ -23,10 +23,17 @@ public class MyBMemberDao implements MemberDao {
 		return memberDao.getMember(mid);
 	}
 
-	@Override
+/*	@Override
 	public List<Member> getFamMembers(String famcode) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		return memberDao.getFamMembers(famcode);
+	}*/
+
+	@Override
+	public List<Member> getFamMembers(String mid, String famcode) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.getFamMembers(mid, famcode);
 	}
 }

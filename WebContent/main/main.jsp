@@ -13,10 +13,12 @@
 	MemberDao memberDao = new MyBMemberDao();
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
-	List<Member> fms = memberDao.getFamMembers(famcode);
+	List<Member> fms = memberDao.getFamMembers(uid, famcode);
 	
 	for( Member ms : fms)
 		System.out.println(ms.getFamcode());
+	
+	System.out.println(fms.size());
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);

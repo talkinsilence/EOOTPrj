@@ -17,6 +17,6 @@
 	</select>
 	
 	<select id="getFamMembers" parameterType="String" resultType="Member">
-		SELECT * FROM MEMBERS WHERE FAMCODE = #{famcode} ORDER BY BIRTHDAY ASC;
+		SELECT * FROM (SELECT * FROM MEMBERS WHERE MID &lt;&gt; #{param1}) MEMBERS WHERE FAMCODE = #{param2} ORDER BY BIRTHDAY ASC;
 	</select>
 </mapper>
