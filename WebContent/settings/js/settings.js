@@ -26,7 +26,7 @@
         $(this).css("background", "#427fed");
     });
 
-    $('#accordion input[type="button"].btn-cancel').mousedown(function () {
+    $('input[type="button"].btn-cancel').mousedown(function () {
         $(this).css("background", '#3b3b3b');
     }).mouseout(function () {
         $(this).css("background", "#808080");
@@ -58,13 +58,6 @@
     });
 
     // 프로필
-    //$('#profile-name-edit').mouseover(function () {
-    //    $('#profile-name-edit').css("text-decoration", "underline");
-    //});
-    //$('#profile-name-edit').mouseout(function () {
-    //    $('#profile-name-edit').css("text-decoration", "none");
-    //});
-
     $('#profile-name-edit').click(function () {
         $("#profile-name-wrapper").css("display", "inline-block");
         $("#profile-name-edit").css("display", "none");
@@ -77,18 +70,21 @@
     });
 
     $("#btn-profile-name").click(function () {
+    	updateName();
+    	
         $("#profile-name-wrapper").css("display", "none");
+        $("#profile-name-edit").css("display", "inline");
+        
+    });
+    
+    $('#btn-name-cancel').click(function(){
+    	$("#profile-name-wrapper").css("display", "none");
         $("#profile-name-edit").css("display", "inline");
     });
 
     /////////////////////////////// accordion ///////////////////////////////  
 
-    $('#myhome-address-wrapper #btn-address-cancle').mousedown(function () {
-        $(this).css("background", "#353535");
-    }).mouseout(function () {
-        $(this).css("background", "#808080")
-    });
-
+    
     /////////////////////// 우리집 /////////////////////////
     // 이름
     $('#myhome-name-edit').click(function () {
@@ -100,7 +96,11 @@
         $("#myhome-name-wrapper").css("display", "none");
         $("#myhome-name-edit").css("display", "inline");
     });
-
+    
+    $('#btn-homename-cancel').click(function(){
+    	$("#myhome-name-wrapper").css("display", "none");
+        $("#myhome-name-edit").css("display", "inline");
+    });
 
     // 주소 
     $('#myhome-address-edit').click(function () {
@@ -108,7 +108,7 @@
         $('#myhome-address-edit').css('display', 'none');
     });
 
-    $('#btn-address-cancle').click(function () {
+    $('#btn-address-cancel').click(function () {
         $('#myhome-address-wrapper').css('display', 'none');
         $('#myhome-address-edit').css('display', 'inline-block');
     });
@@ -194,4 +194,18 @@
             $("#meter-opt").css("visibility", "hidden");
         }
     });
+    
 });
+
+function updateName(){
+	$.ajax({
+		type:"post",
+		url:"updateNameProc.jsp",
+		data: {
+			nametxt:$('#profile-name-txt').val()
+		},
+		success:function(data){
+			//$("#dd").load('updateNameProc.jsp', data);
+		}
+	});
+}

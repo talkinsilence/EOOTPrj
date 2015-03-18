@@ -56,8 +56,8 @@
                             <div id="profile-upload-select-wrapper">
                                 <input type="button" id="btn-upload-select" value="사진 선택" /><br />
                             </div>
-                            <input type="button" id="btn-upload-set"value="사진 등록" />
-                            <input type="button" class="btn-cancel" value="취소" />
+                            <input type="button" id="btn-upload-set" value="사진 등록" />
+                            <input type="button" id="btn-upload-cancel" class="btn-cancel" value="취소" />
                         </form>
                     </div>
                 </div>
@@ -81,11 +81,12 @@
 								이메일 : ${m.mid}
                             </div>
                             <div>
-								이름 : ${m.name}
+								이름 : <label id="dd">${m.name}</label>
                                 <label id="profile-name-wrapper">
                                     &nbsp;&nbsp;
-                                    <input type="text" id="profile-name-txt" maxlength="20"/>
+                                    <input type="text" id="profile-name-txt" name="txt" maxlength="20"/>
                                     <input type="button" id="btn-profile-name" value="확인" />
+                                    <input type="button" id="btn-name-cancel" class="btn-cancel" value="취소" />
                                 </label>
 
                                 <label id="profile-name-edit" class="edit">수정</label>
@@ -121,6 +122,7 @@
                                 &nbsp;&nbsp;
                                 <input type="text" id="myhome-name-txt" maxlength="20" />
                                 <input type="button" id="btn-myhome-name" value="확인" />
+                                <input type="button" id="btn-homename-cancel" class="btn-cancel" value="취소" />
                             </label>
 
                             <label id="myhome-name-edit" class="edit">수정</label>
@@ -138,7 +140,7 @@
                             <div id="myhome-address-wrapper">
                             	주소 검색 : <input type="text" />
                                 <input type="button" value="검색"/>
-                                <input type="button" value="취소" class="btn-cancel" />
+                                <input type="button" value="취소" id="btn-address-cancel" class="btn-cancel" />
                                 
                                 <table id="myhome-address-table">
                                     <thead>
@@ -190,7 +192,7 @@
                         </div>
 
                         <div id="myhome-member-mng">
-                            우리집 구성원 관리
+							우리집 구성원 관리
                             <label id="myhome-member-mng-view" class="view">자세히 보기</label>
 
                             <div id="myhome-member-mng-wrapper">

@@ -8,6 +8,6 @@ public interface MemberDao {
 	public int insert(Member member);
 	public Member getMember(String mid);
 	public List<Member> getFamMembers(String mid, String famcode);
-	public int updateName(String mid);
+	public int updateName(Member member);
 	//public int delete(String uid);
 }

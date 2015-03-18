@@ -1,4 +1,4 @@
-ï»¿body {
+body {
     font-family: Montserrat, Nanum Gothic;
 }
 
@@ -53,11 +53,18 @@
     color: #fff;
 }
 
-/*#profile-name-edit {
-    color:#427fed;
-    font-size:14px;
-    cursor: pointer;    
-}*/
+#profile-name-wrapper input[type="button"].btn-cancel {
+    width: 35px;
+    height:24px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    border: 1px solid transparent;
+    font-size: 12px;
+    font-weight:bold;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    background:#808080;
+}
 
 #profile-myhome-name-val{
 
@@ -71,7 +78,7 @@ a:hover {
     color: #427fed;
 }
 
-/***************************** accordion ì˜ì—­ *********************************/
+/***************************** accordion ¿µ¿ª *********************************/
 
 #accordion > div {
     font-size: 15px;
@@ -114,14 +121,14 @@ a:hover {
     cursor: pointer; s
 }
 
-/* ìš°ë¦¬ì§‘ ì´ë¦„ */
+/* ¿ì¸®Áı ÀÌ¸§ */
 
 #myhome-name-txt {
     width:175px;
 }
 
 
-/* ìš°ë¦¬ì§‘ ì£¼ì†Œ */
+/* ¿ì¸®Áı ÁÖ¼Ò */
 
 .board-cell-zipcode {
     width: 120px;
@@ -138,11 +145,11 @@ a:hover {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* ìš°ë¦¬ì§‘ êµ¬ì„±ì› */
+/* ¿ì¸®Áı ±¸¼º¿ø */
 
 
 
-/* ì´ì›ƒ */
+/* ÀÌ¿ô */
 
 .eoot-member-famname a {
     color: #427fed;
