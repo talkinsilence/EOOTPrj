@@ -1,4 +1,5 @@
-﻿<%@page import="java.util.List"%>
+﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
+<%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.model.FamPost"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
 <%@page import="com.eoot.eootprj.dao.FamPostDao"%>
