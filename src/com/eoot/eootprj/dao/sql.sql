@@ -18,8 +18,8 @@ SELECT V.* FROM (SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM , VilPos
 
 select * from letters;
 select * from letterfiles;
-INSERT INTO LETTERS VALUES('lettercode11', 'talkinsilence21@eoot.com', GETDATE(), 'title', 'mommommommommom', 0, 'nami@eoot.com', 0);
-UPDATE MEMBERS SET NAME='남영' WHERE MID='nami@eoot.com';
+INSERT INTO LETTERS VALUES('lettercode12', 'cskn2@naver.com', GETDATE(), '누나누나누나누나누나누나누나누나누나누나누나', '남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여', 0, 'viovio@eoot.com', 0);
+UPDATE LETTERS SET CONTENT='content' WHERE CONTENT='title';
 
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS."MID"=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;
 SELECT * FROM MEMBERS INNER JOIN LETTERS ON MEMBERS."MID"=LETTERS.READER ORDER BY LETTERS.SENDDATE DESC;
@@ -27,10 +27,7 @@ SELECT * FROM MEMBERS M INNER JOIN LETTERS L ON M."MID"=L.READER WHERE READER = 
 SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.READER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L.TITLE LIKE '%mom%' OR L.CONTENT LIKE '%mom%') ORDER BY L.SENDDATE DESC;
 SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.WRITER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L.TITLE LIKE '%mom%' OR L.CONTENT LIKE '%mom%') ORDER BY L.SENDDATE DESC;;
 
-SELECT N.* FROM 
-	(SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM
-	, NOTICES.* FROM NOTICES WHERE ${param3} LIKE '%${param2}%') N 
-	WHERE N.NUM BETWEEN #{param1} AND #{param1}
+SELECT COUNT(*) CNT FROM LETTERS WHERE READER ='viovio@eoot.com';
 
 INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
 VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);

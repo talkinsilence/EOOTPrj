@@ -13,7 +13,7 @@
 
 <% 
 	String uid = (String) session.getAttribute("uid");
-	
+
 	String query = "";
 	String _query = request.getParameter("q");
 	if(_query != null && !_query.equals(""))
@@ -26,15 +26,16 @@
 	String famcode = m.getFamcode();
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
 	List<LetterJoinMember> lts = letterDao.getLetters(uid, query);
-			
+	int ltSize = lts.size();	
+	
 	for( Member ms : fms)
 		System.out.println(ms.getFamcode());
-	System.out.println("가족 구성원 : " + fms.size());
-	System.out.println("편지 개수 : " + lts.size());
+	//System.out.println("가족 구성원 : " + fms.size());
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
 	pageContext.setAttribute("lts", lts);
+	pageContext.setAttribute("ltSize", ltSize);
 %>
 
 <!DOCTYPE html>
@@ -145,27 +146,37 @@
         <div class="letter-box-wrapper">
             <div class="letter-box-header">
                 <div class="letter-box-header-title">편지함</div>
-                <div class="letter-box-header-total">총 19개</div>
+                <div class="letter-box-header-total">총 ${ltSize}개</div>
                 <div class="letter-box-search">
                     <input class="letter-search" type="search" />
                     <div id="letter-search"></div>
                 </div>
             </div>
-            <div class="letter-item-box">
-                <ul class="letter-items">
-                	<c:forEach var="i" items="${lts}" >
-	                    <li class="letter-item">
-	                        <div class="letter-title">${i.title}</div>
-	                        <div class="letter-from">from: ${i.name}</div>
-	                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
-	                        <div class="letter-mani hidden">
-	                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-	                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-	                        </div>
-	                    </li>
-                    </c:forEach>
-                </ul>
-            </div>
+            <c:if test="${empty lts}">
+            	<div class="letter-item-box-empty">편지함에 편지가 없습니다</div>
+            </c:if>
+            <c:if test="${not empty lts}">
+	            <div class="letter-item-box">
+	                <ul class="letter-items">
+	                	<c:forEach var="i" items="${lts}" >
+	                	<c:if test="${i.read == 1}">
+		                    <li class="letter-item">
+		                </c:if>
+		                <c:if test="${i.read == 0}">
+		                    <li class="letter-item red">
+		                </c:if>
+		                        <div class="letter-title">${i.title}</div>
+		                        <div class="letter-from">from: ${i.name}</div>
+		                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
+		                        <div class="letter-mani hidden">
+		                            <!-- <img class="letter-like" src="../images/btn-like.png" />
+		                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
+		                        </div>
+		                    </li>
+	                    </c:forEach>
+	                </ul>
+	            </div>
+            </c:if>
             <button id="letter-write" type="submit">편지쓰기</button>
         </div>
 

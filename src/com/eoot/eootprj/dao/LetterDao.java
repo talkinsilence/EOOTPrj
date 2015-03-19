@@ -12,7 +12,6 @@ public interface LetterDao {
 	public List<LetterJoinMember> getLetters(String mid, String query);
 	public int insert(Letter letter);
 	public int delete(String code);
-	public int getSize(String mid, String reader);
 	
 	/*@Select("SELECT ISNULL(MAX(CAST(CODE AS INT)),0) CODE FROM LETTERS")
 	public String lastCode();*/

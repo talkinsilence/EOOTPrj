@@ -28,10 +28,5 @@
 			<delete id = "delete" parameterType="String">
 				DELETE LETTERS WHERE CODE =#{code}
 			</delete>	
-	
-			<!-- 이거 고쳐야함 -->
-			<select id = "getSize" resultType="int">
-				SELECT COUNT(*) CNT FROM LETTERS
-			</select>
-	
+		
 </mapper>

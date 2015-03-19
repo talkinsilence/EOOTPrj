@@ -37,11 +37,5 @@ public class MyBLetterDao implements LetterDao {
 		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
 		return letterDao.delete(code);
 	}
-
-	@Override
-	public int getSize(String mid, String reader) {
-		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
-		return letterDao.getSize(mid, reader);
-	}
+	
 }

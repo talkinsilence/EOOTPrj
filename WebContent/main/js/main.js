@@ -30,7 +30,11 @@
         $('.letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-box-wrapper').fadeIn(200);
     });
-
+    
+/*    $('.letter-title').click(function(){
+    	
+    });*/
+    	
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
