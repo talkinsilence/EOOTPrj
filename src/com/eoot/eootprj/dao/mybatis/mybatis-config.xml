@@ -9,7 +9,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <typeAliases>
       <typeAlias alias="Member" type="com.eoot.eootprj.model.Member" />
       <typeAlias alias="Letter" type="com.eoot.eootprj.model.Letter" />
+      <typeAlias alias="LetterJoinMember" type="com.eoot.eootprj.model.LetterJoinMember" />
       <typeAlias alias="VilPost" type="com.eoot.eootprj.model.VilPost" />
+      <typeAlias alias="FamPost" type="com.eoot.eootprj.model.FamPost" />
    </typeAliases>
 
    <environments default="development">
