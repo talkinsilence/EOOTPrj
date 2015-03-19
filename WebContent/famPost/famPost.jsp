@@ -1,4 +1,5 @@
-﻿<%@page import="java.util.List"%>
+﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
+<%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.model.FamPost"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
 <%@page import="com.eoot.eootprj.dao.FamPostDao"%>
@@ -10,38 +11,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<% 
-	String uid = (String) session.getAttribute("uid");
-	String code = request.getParameter("code");
 
-	MemberDao memberDao = new MyBMemberDao();
-	Member m = memberDao.getMember(uid);
-	
-	FamPostDao famPostDao = new MyBFamPostDao();
-	FamPost fp = famPostDao.getFamPost(code);
-	List<FamPost> fps = famPostDao.getFamPosts(); 
-	
-	pageContext.setAttribute("m", m);
-	pageContext.setAttribute("fp", fp);
-	pageContext.setAttribute("fps", fps);
-%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="../css/detail-view.css" rel="stylesheet" />
-    <link href="../css/media-add.css" rel="stylesheet" />
-    <link href="../css/media.css" rel="stylesheet" />
-    <link href="../css/menubar.css" rel="stylesheet" />
-    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="css/detail-view.css" rel="stylesheet" />
+    <link href="css/media-add.css" rel="stylesheet" />
+    <link href="css/media.css" rel="stylesheet" />
+    <link href="../resource/css/bind_menu.css" rel="stylesheet" />
+    <link href="css/reset.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="../js/jquery-2.1.3.js"></script>
-    <script src="../js/menubar.js"></script>
-    <script src="../js/media.js"></script>
-    <script src="../js/modernizr.js"></script>
+    <script src="../resource/js/jquery-2.1.3.js"></script>
+    <script src="../resource/css/bind_menu.css"></script>
+    <script src="js/media.js"></script>
+    <script src="../resource/js/modernizr.js"></script>
+    <script src="../resource/js/menu.js"></script>
 </head>
 
 <body>
@@ -50,11 +38,11 @@
             <div class="main-media-box">
                 <div class="main-media-box-L">
                     <img src="../images/김연아4.jpeg" />
-                    <div class="mask"></div>
+                    <!-- <div class="mask"></div>
                     <div class="title">title title title title title title title title title</div>
                     <div class="date">2015.2.28</div>
                     <div class="content">contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent</div>
-                    <div class="view">CLICK</div>
+                    <div class="view">CLICK</div> -->
                 </div>
 
                 <div class="main-media-box-R">
@@ -357,123 +345,7 @@
         </div>
     </div>
     <!--------------메뉴바------------------------------------->
-    <section>
-        <nav id="menu1">
-            <h1 class="hidden">메뉴 1</h1>
-
-            <div id="menu_button"></div>
-
-            <div id="buttons">
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">우리집</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">이 웃</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">마 을</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div id="separator"></div>
-
-                <div class="img-button">
-                    <div class="vertical-field1">
-                        <div class="img-vertical-field2">
-                            <a href=""><img src="images/btn-scrapped.png" /></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="img-button">
-                    <div class="vertical-field1">
-                        <div class="img-vertical-field2">
-                            <a href=""><img src="images/btn_write.png" /></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <!--Menu 2-->
-        <nav id="menu2">
-            <h1 class="hidden">메뉴 2</h1>
-
-            <div id="menu_button"><input type="button" value="닫기" id="menu2_hide" /></div>
-
-            <div id="buttons">
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">달 력</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">앨 범</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">편 지 함</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">택 배</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-                <div class="button">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">설 정</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
-            </div>
-        </nav>
-    </section>
+    <jsp:include page="../resource/inc/menu.jsp"></jsp:include>
 
 </body>
 </html>

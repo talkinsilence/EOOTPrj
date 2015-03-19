@@ -63,8 +63,10 @@
         <!--Menu 2--> 
         <nav id="menu2">
             <h1 class="hidden">메뉴 2</h1>
-
-            <div id="menu_button"></div>
+			
+			<div class="menu-bg">
+            	<div id="menu_button"></div>
+            </div>
 
             <div id="buttons">
                 <div class="button" id="menu2-calendar">
@@ -114,8 +116,10 @@
         <nav id="menu3">
             <h1 class="hidden">메뉴 2</h1>
 
-            <div id="menu_button"></div>
-
+            <div class="menu-bg">
+            	<div id="menu_button"></div>
+            </div>
+            
             <div id="buttons">
                 <div class="button">
                     <div class="vertical-field1">

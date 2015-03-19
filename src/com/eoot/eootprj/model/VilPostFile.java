@@ -30,6 +30,4 @@ public class VilPostFile {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
 }

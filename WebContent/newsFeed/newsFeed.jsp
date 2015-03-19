@@ -1,4 +1,7 @@
-﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
+﻿<%@page import="com.eoot.eootprj.model.VilPost"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
+<%@page import="com.eoot.eootprj.dao.VilPostDao"%>
+<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
 <%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.model.FamPost"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
@@ -19,11 +22,9 @@
 	Member m = memberDao.getMember(uid);
 	
 	FamPostDao famPostDao = new MyBFamPostDao();
-	FamPost fp = famPostDao.getFamPost(code);
 	List<FamPostJoinMember> fps = famPostDao.getFamPosts(); 
 	
 	pageContext.setAttribute("m", m);
-	pageContext.setAttribute("fp", fp);
 	pageContext.setAttribute("fps", fps);
 %>
 
@@ -61,7 +62,7 @@
                 <div class="toolbar-user">
                     <div class="profile-pic-box">
                         <h1 class="hidden">프로필사진</h1>
-                        <img class="thumbnail" src="${m.profilepic}" />
+                        <a href="../main/main.jsp"><img class="thumbnail" src="${m.profilepic}" /></a>
                     </div>
                     <div class="toolbar-info">
                         <span class="user name">${m.name}</span>

@@ -15,4 +15,12 @@
 	<select id="getMember" parameterType="String" resultType="Member">
 		SELECT * FROM MEMBERS WHERE MID = #{mid};
 	</select>
+	
+	<select id="getFamMembers" parameterType="String" resultType="Member">
+		SELECT * FROM (SELECT * FROM MEMBERS WHERE MID &lt;&gt; #{param1}) MEMBERS WHERE FAMCODE = #{param2} ORDER BY BIRTHDAY ASC;
+	</select>
+	
+	<update id="updateName" parameterType="Member">
+		UPDATE MEMBERS SET NAME = #{name} WHERE MID = #{mid}
+	</update>
 </mapper>

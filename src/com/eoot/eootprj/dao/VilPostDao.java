@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 
@@ -11,14 +12,16 @@ import com.eoot.eootprj.model.VilPost;
 import com.eoot.eootprj.model.VilPostJoinMember;
 
 public interface VilPostDao {
-	@Select("SELECT * FROM VilPosts WHERE CODE = #{code}")
-	public VilPost getVilPost(String code);
-	
-	@Select("SELECT VilPosts.*, Members.* "
-			+ "FROM VilPosts "
-			+ "INNER JOIN Members "
-			+ "ON Members.Mid = VilPosts.writer;")
-	public List<VilPostJoinMember> getVilPosts();
+	/*@Select("SELECT * FROM VilPosts WHERE CODE = #{code}")
+	public VilPost getVilPost(String code);*/
+
+	@Select("SELECT * "
+			+ "FROM (SELECT M.NAME, M.MID, M.PROFILEPIC, M.ADDRESS, V.* ,(ROW_NUMBER() OVER (ORDER BY V.REGDATE DESC)) NUM "
+			+ "FROM MEMBERS M INNER JOIN VILPOSTS V ON M.MID=V.WRITER "
+			+ "WHERE V.${field} LIKE '%${query}%') MJOINV "
+			+ "WHERE MJOINV.NUM BETWEEN 1 AND 30;")
+	public List<VilPostJoinMember> getVilPosts(@Param("query")String query, @Param("field")String field);
+
 	
 	@Select("SELECT TOP 1 * FROM VilPosts "
 			+ "WHERE REGDATE &gt; (SELECT REGDATE FROM VilPosts "

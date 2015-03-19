@@ -1,16 +1,30 @@
-﻿<%@page import="com.eoot.eootprj.model.Member"%>
+﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBLetterDao"%>
+<%@page import="com.eoot.eootprj.dao.LetterDao"%>
+<%@page import="com.eoot.eootprj.model.Letter"%>
+<%@page import="java.util.List"%>
+<%@page import="com.eoot.eootprj.model.Member"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <% 
 	String uid = (String) session.getAttribute("uid");
+	//String famcode = (String) session.getAttribute("uid");
 
 	MemberDao memberDao = new MyBMemberDao();
+	//LetterDao letterDao = new MyBLetterDao();
 	Member m = memberDao.getMember(uid);
+	String famcode = m.getFamcode();
+	List<Member> fms = memberDao.getFamMembers(uid, famcode);
+			
+	for( Member ms : fms)
+		System.out.println(ms.getFamcode());
+	System.out.println(fms.size());
 	
 	pageContext.setAttribute("m", m);
+	pageContext.setAttribute("fms", fms);
 %>
 
 <!DOCTYPE html>
@@ -64,15 +78,11 @@
                     </div>
                     <div class="profile-family-members-wrapper">
                         <!--가족구성원-->
-                        <div class="profile-family-members">
-                            <img class="thumbnail" src="images/dog.png" />
-                        </div>
-                        <div class="profile-family-members">
-                            <img class="thumbnail" src="images/suzy2.jpg" />
-                        </div>
-                        <div class="profile-family-members">
-                            <img class="thumbnail" src="images/nami3.jpg" />
-                        </div>
+                        <c:forEach var="i" items="${fms}" >
+	                        <div class="profile-family-members">
+	                            <img class="thumbnail" src="${i.profilepic}" />
+	                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </aside>
@@ -116,7 +126,7 @@
         
     </div>
 
-<!--===========< 편지쓰기 >===============================================-->
+<!--===========< 편지  >===============================================-->
     <div class="letter">
 
         <div class="letter-transp-bg"></div>
@@ -125,7 +135,7 @@
         <div class="letter-box-wrapper">
             <div class="letter-box-header">
                 <div class="letter-box-header-title">편지함</div>
-                <div class="letter-box-header-total">총 20개</div>
+                <div class="letter-box-header-total">총 19개</div>
                 <div class="letter-box-search">
                     <input class="letter-search" type="search" />
                     <div id="letter-search"></div>

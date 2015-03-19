@@ -11,12 +11,17 @@ import com.eoot.eootprj.model.FamPost;
 import com.eoot.eootprj.model.FamPostJoinMember;
 
 public interface FamPostDao {
+	
 	@Select("SELECT * FROM FamPosts WHERE CODE = #{code}")
 	public FamPost getFamPost(String code);
 	
-	@Select("SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS.MID=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;")
-	public List<FamPostJoinMember> getFamPosts();
-	
+	@Select("SELECT * "
+			+ "FROM (SELECT M.NAME, M.MID, M.PROFILEPIC, M.ADDRESS, F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
+			+ "FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER "
+			+ "WHERE F.{PARAM2} LIKE '%{PARAM1}%') MJOINF "
+			+ "WHERE MJOINF.NUM BETWEEN 1 AND 30;")
+	public List<FamPostJoinMember> getFamPosts(String query, String field);
+
 	@Select("SELECT TOP 1 * FROM FamPosts "
 			+ "WHERE REGDATE &gt; (SELECT REGDATE FROM FamPosts "
 			+ "WHERE CODE = #{code})ORDER BY REGDATE ASC")
@@ -33,4 +38,5 @@ public interface FamPostDao {
 	@Insert("INSERT INTO FamPosts(CODE, TITLE, CONTENT, WRITER, REGDATE, SHARENEI, SHAREVIL, HIT, LIKECNT, CLIPCNT, COMMENTCNT)"
 			+ "VALUES(#{code}, #{title}, #{content}, #{writer}, getDate(), 0, 0, 0, 0, 0, 0)")
 	public int insert(FamPost fampost);
+	
 }

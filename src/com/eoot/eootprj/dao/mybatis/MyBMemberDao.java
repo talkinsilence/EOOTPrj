@@ -1,5 +1,7 @@
 package com.eoot.eootprj.dao.mybatis;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.eoot.eootprj.dao.MemberDao;
@@ -19,6 +21,27 @@ public class MyBMemberDao implements MemberDao {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		return memberDao.getMember(mid);
+	}
+
+/*	@Override
+	public List<Member> getFamMembers(String famcode) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.getFamMembers(famcode);
+	}*/
+
+	@Override
+	public List<Member> getFamMembers(String mid, String famcode) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.getFamMembers(mid, famcode);
+	}
+
+	@Override
+	public int updateName(Member member) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.updateName(member);
 	}
 
 }
