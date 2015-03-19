@@ -27,21 +27,25 @@
 
     //===========< letter >==============================================
     $('.alarm.let').click(function () {
-        $('.letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
+        $('.letter-read-wrapper, .letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-box-wrapper').fadeIn(200);
     });
     
-/*    $('.letter-title').click(function(){
-    	
-    });*/
+    $('.btn-close, .letter-transp-bg').click(function () {
+        $('.letter').fadeOut(10);
+    });
+    
+    $('.btn-close-read, .letter-read-transp-bg').click(function () {
+        $('.letter-read-wrapper').fadeOut(10);
+    });
+    
+    $('.letter-title').click(function(){
+    	$('.letter-read-wrapper').fadeIn(800);
+    });
     	
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
-    });
-
-    $('.btn-close, .letter-transp-bg').click(function () {
-        $('.letter').fadeOut(10);
     });
 
     if ($('.letter-write-box').height() >= 400)

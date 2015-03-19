@@ -15,18 +15,19 @@
 	String uid = (String) session.getAttribute("uid");
 
 	String query = "";
-	String _query = request.getParameter("q");
+	String _query = request.getParameter("lq");
 	if(_query != null && !_query.equals(""))
 		query = _query;
-	
+
 	MemberDao memberDao = new MyBMemberDao();
 	LetterDao letterDao = new MyBLetterDao();
 	
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
-	List<LetterJoinMember> lts = letterDao.getLetters(uid, query);
-	int ltSize = lts.size();	
+	
+	List<LetterJoinMember> ls = letterDao.getLetters(uid, query);
+	int lSize = ls.size();
 	
 	for( Member ms : fms)
 		System.out.println(ms.getFamcode());
@@ -34,8 +35,8 @@
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
-	pageContext.setAttribute("lts", lts);
-	pageContext.setAttribute("ltSize", ltSize);
+	pageContext.setAttribute("ls", ls);
+	pageContext.setAttribute("lSize", lSize);
 %>
 
 <!DOCTYPE html>
@@ -139,26 +140,26 @@
 
 <!--===========< 편지  >===============================================-->
     <div class="letter">
-
+    
         <div class="letter-transp-bg"></div>
         <div class="btn-close"></div>
-
+        
         <div class="letter-box-wrapper">
             <div class="letter-box-header">
                 <div class="letter-box-header-title">편지함</div>
-                <div class="letter-box-header-total">총 ${ltSize}개</div>
+                <div class="letter-box-header-total">총 ${lSize}개</div>
                 <div class="letter-box-search">
-                    <input class="letter-search" type="search" />
+                    <input class="letter-search" type="text" name="lq" value="${param.lq}"/>
                     <div id="letter-search"></div>
                 </div>
             </div>
-            <c:if test="${empty lts}">
+            <c:if test="${empty ls}">
             	<div class="letter-item-box-empty">편지함에 편지가 없습니다</div>
             </c:if>
-            <c:if test="${not empty lts}">
+            <c:if test="${not empty ls}">
 	            <div class="letter-item-box">
 	                <ul class="letter-items">
-	                	<c:forEach var="i" items="${lts}" >
+	                	<c:forEach var="i" items="${ls}" >
 	                	<c:if test="${i.read == 1}">
 		                    <li class="letter-item">
 		                </c:if>
@@ -179,7 +180,15 @@
             </c:if>
             <button id="letter-write" type="submit">편지쓰기</button>
         </div>
-
+		
+		<div class="letter-read-wrapper">
+			<div class="letter-read-transp-bg"></div>
+			<div class="btn-close-read"></div>
+			<div class="letter-read">
+				<div>편지 : </div>
+			</div>
+		</div>
+        
         <div class="letter-type-wrapper">
             <div class="letter-type text">
                 <input class="letter-type-btn hidden" type="button" value="글" />
