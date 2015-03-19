@@ -12,7 +12,16 @@ public class Member {
 	private String phone;
 	private Date regdate;
 	private String famcode;
+	private String famname;
 	
+	
+	
+	public String getFamname() {
+		return famname;
+	}
+	public void setFamname(String famname) {
+		this.famname = famname;
+	}
 	public String getMid() {
 		return mid;
 	}

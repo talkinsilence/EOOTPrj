@@ -74,7 +74,6 @@
     	
         $("#profile-name-wrapper").css("display", "none");
         $("#profile-name-edit").css("display", "inline");
-        
     });
     
     $('#btn-name-cancel').click(function(){
@@ -92,7 +91,9 @@
         $("#myhome-name-edit").css("display", "none");
     });
 
-    $("#btn-myhome-name").click(function () {       
+    $("#btn-myhome-name").click(function () {
+    	updateFamname();
+    	
         $("#myhome-name-wrapper").css("display", "none");
         $("#myhome-name-edit").css("display", "inline");
     });
@@ -205,7 +206,25 @@ function updateName(){
 			nametxt:$('#profile-name-txt').val()
 		},
 		success:function(data){
-			//$("#dd").load('updateNameProc.jsp', data);
+			if($.trim(data) != ""){
+				$("#profile-name-val").text($.trim(data));
+			}
+		}
+	});
+}
+
+function updateFamname(){
+	$.ajax({
+		type:"post",
+		url:"updateFamnameProc.jsp",
+		data:{
+			famnametxt:$("#myhome-name-txt").val()
+		},
+		success:function(data){
+			if($.trim(data) != ""){
+				$("#profile-myhome-name-val").text($.trim(data));
+				$("#profile-famname-val").text($.trim(data));
+			}
 		}
 	});
 }
