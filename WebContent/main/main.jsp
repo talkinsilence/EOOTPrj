@@ -101,34 +101,41 @@
         <div class="lower">
             <aside class="lower-left">
                 <div class="alarm-wrapper">
-                    <div class="alarm what">
-                        <p class="hidden">음.. 뭐하지?</p> 
+                    <div class="alarm news">
+                        <div class="alarm-icon"></div>
+                        <p>새로운 소식<br/>99개</p>
                     </div>
                     <div class="alarm let">
-                        <p class="hidden">새로운 편지가 1통 도착했습니다.</p>
+                        <div class="alarm-icon"></div>
+                        <p >새로운 편지<br/>3통</p>
                     </div>
                     <div class="alarm cal">
-                        <p class="hidden">오늘은 형수입학식입니다.</p>
-                        <p class="hidden">장형수 님의 생일이 2주 남았습니다.</p>
+                        <div class="alarm-icon"></div>
+                        <p>다가오는 일정<br />2개</p>
                     </div>
-                    <div class="alarm news">
-                        <p class="hidden"><a href="../newsFeed/newsFeed.jsp">새로운 소식이 99개 있습니다.</a></p>
+                    <div class="alarm bday">
+                        <div class="alarm-icon"></div>
+                        <p>장형수 님의 생일</p>
                     </div>
                 </div>
             </aside>
-            <aside class="lower-right"> 809*406
-                <div class="hello-wrapper">
-                    <div class="hello">
-                        <p>안부?</p>
+            <aside class="lower-right">
+            	<div class="preview-wrapper">
+                    <div class="preview">
+                        <div class="preview-post pic-box">
+                            <img class="preview-pic" src="images/byul2.jpg"/>
+                        </div>
+                        <div class="preview-post text-box">
+                            <p class="text-box-title">별이의 폭풍성장</p>
+                        </div>
                     </div>
-                    <div class="hello">
-                        <p>안부?</p>
-                    </div>
-                    <div class="hello">
-                        <p>안부?</p>
-                    </div>
-                    <div class="hello">
-                        <p>안부?</p>
+                    <div class="preview">
+                        <div class="preview-post pic-box">
+                            <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
+                        </div>
+                        <div class="preview-post text-box">
+                            <p class="text-box-title">마을/주변 인기게시물</p>
+                        </div>
                     </div>
                 </div>
             </aside>
