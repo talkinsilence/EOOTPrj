@@ -1,4 +1,7 @@
-﻿<%@page import="java.util.ArrayList"%>
+﻿<%@page import="com.eoot.eootprj.model.VilPostComment"%>
+<%@page import="com.eoot.eootprj.model.VilPostFile"%>
+<%@page import="com.eoot.eootprj.model.VilPostJoinMember"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@ page import="com.eoot.eootprj.dao.VilPostDao"%>
 <%@ page import="com.eoot.eootprj.model.VilPost"%>
@@ -9,13 +12,14 @@
 
 <%
 	/* int sort = request.getParameter("Sort");*/
-	//String code = request.getParameter("code");
+	String code = request.getParameter("code");
 	
 	VilPostDao vilPostDao = new MyBVilPostDao();
-	//VilPost vilPost = vilPostDao.getVilPost(code);
+	/* VilPostFile vilPostFile = vilPostDao.getVilPosts(code);
+	VilPostComment vilPostComment = vilPostDao.getVilPosts(code);*/
 	
 	/* List<VilPost> n = vilPostDao.getVilPosts(); */
-	List<VilPost> list = vilPostDao.getVilPosts();
+	List<VilPostJoinMember> list = vilPostDao.getVilPosts();
 	
 	/* pageContext.setAttribute("n", n); */
 	pageContext.setAttribute("list", list);
@@ -231,11 +235,11 @@
 										<div class="village-board-label4"></div>
 									</c:if>
 									<div class="village-board-item-img">
-										<img class="thumbnail2" src="refimg/suzy1.jpg" />
+										<img class="thumbnail2" src="${i.profilepic}" />
 									</div>
 									<div class="village-board-item-text00">
 										<p id="village-board-item-title">${i.regdate}</p>
-										<p id="village-board-item-user">${i.writer}</p>
+										<p id="village-board-item-user">${i.name}</p>
 									</div>
 									<div class="post-popularity">
 										<div class="post-popularity-item like">

@@ -8,13 +8,17 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 
 import com.eoot.eootprj.model.VilPost;
+import com.eoot.eootprj.model.VilPostJoinMember;
 
 public interface VilPostDao {
 	@Select("SELECT * FROM VilPosts WHERE CODE = #{code}")
 	public VilPost getVilPost(String code);
 	
-	@Select("SELECT * FROM VilPosts")
-	public List<VilPost> getVilPosts();
+	@Select("SELECT VilPosts.*, Members.* "
+			+ "FROM VilPosts "
+			+ "INNER JOIN Members "
+			+ "ON Members.Mid = VilPosts.writer;")
+	public List<VilPostJoinMember> getVilPosts();
 	
 	@Select("SELECT TOP 1 * FROM VilPosts "
 			+ "WHERE REGDATE &gt; (SELECT REGDATE FROM VilPosts "

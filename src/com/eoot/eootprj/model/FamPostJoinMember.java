@@ -11,5 +11,4 @@ public class FamPostJoinMember extends FamPost{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 }

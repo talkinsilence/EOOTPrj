@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.eoot.eootprj.dao.VilPostDao;
 import com.eoot.eootprj.model.VilPost;
+import com.eoot.eootprj.model.VilPostJoinMember;
 
 public class MyBVilPostDao implements VilPostDao{
 
@@ -17,7 +18,7 @@ public class MyBVilPostDao implements VilPostDao{
 	}
 
 	@Override
-	public List<VilPost> getVilPosts() {
+	public List<VilPostJoinMember> getVilPosts() {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
 		return vilPostDao.getVilPosts();
