@@ -14,10 +14,8 @@
 <% 
 	String uid = (String) session.getAttribute("uid");
 
-	String query = "";
-	String _query = request.getParameter("lq");
-	if(_query != null && !_query.equals(""))
-		query = _query;
+	String query = request.getParameter("q");
+
 
 	MemberDao memberDao = new MyBMemberDao();
 	LetterDao letterDao = new MyBLetterDao();
@@ -149,8 +147,8 @@
                 <div class="letter-box-header-title">편지함</div>
                 <div class="letter-box-header-total">총 ${lSize}개</div>
                 <div class="letter-box-search">
-                    <input class="letter-search" type="text" name="lq" value="${param.lq}"/>
-                    <div id="letter-search"></div>
+                    <input class="letter-search" type="text" name="q" value="${param.q}"/>
+                    <div id="letter-search"><input type="submit"/></div>
                 </div>
             </div>
             <c:if test="${empty ls}">
