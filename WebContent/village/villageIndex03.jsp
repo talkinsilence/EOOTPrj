@@ -1,4 +1,12 @@
-﻿<%@page import="java.util.ArrayList"%>
+﻿<%@page import="com.eoot.eootprj.model.VilPostCommentJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostCommentDao"%>
+<%@page import="com.eoot.eootprj.dao.VilPostCommentDao"%>
+<%@page import="com.eoot.eootprj.dao.VilPostFileDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostFileDao"%>
+<%@page import="com.eoot.eootprj.model.VilPostComment"%>
+<%@page import="com.eoot.eootprj.model.VilPostFile"%>
+<%@page import="com.eoot.eootprj.model.VilPostJoinMember"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@ page import="com.eoot.eootprj.dao.VilPostDao"%>
 <%@ page import="com.eoot.eootprj.model.VilPost"%>
@@ -8,20 +16,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	/* int sort = request.getParameter("Sort");*/
-	//String code = request.getParameter("code");
+	String query = "";
+	String _query = request.getParameter("query");
+	
+	if(_query != null && !_query.equals(""))
+		query = _query;
 	
 	VilPostDao vilPostDao = new MyBVilPostDao();
-	//VilPost vilPost = vilPostDao.getVilPost(code);
+	VilPostFileDao vilPostFileDao = new MyBVilPostFileDao();
+	VilPostCommentDao vilPostCommentDao = new MyBVilPostCommentDao();
 	
-	/* List<VilPost> n = vilPostDao.getVilPosts(); */
-	List<VilPost> list = vilPostDao.getVilPosts();
+	List<VilPostJoinMember> list = vilPostDao.getVilPosts(query, "TITLE");
+	List<VilPostFile> fList = vilPostFileDao.getVilPostFiles();
+	List<VilPostCommentJoinMember> cList = vilPostCommentDao.getVilPostComments();
 	
-	/* pageContext.setAttribute("n", n); */
+	/* System.out.println(list.get(0).getCode());
+	System.out.println(fList.get(0).getVilPostCode()); */
+	/* List<VilPostJoinVilPostFile> fList = vilPostFileDao.getVilPostFiles("1"); */
+
 	pageContext.setAttribute("list", list);
-	//pageContext.setAttribute("vilPost" ,vilPost);
+	pageContext.setAttribute("fList", fList);
+	pageContext.setAttribute("cList", cList);
 	
-	//System.out.println(vilPost.getSort());
+	//System.out.println(cList.get(0).getVilPostCode());
 %>
 
 <!DOCTYPE html>
@@ -206,8 +223,8 @@
                             <form class="search">
                                 <fieldset>
                                     <legend class="hidden">검색필드</legend>
-                                    <input id="search-input" type="text" placeholder="Search e-oot" />
-                                    <input id="search-button" type="button" value="검색" />
+                                    <input id="search-input" type="text" name="query" value="${param.query}" placeholder="Search e-oot" />
+                                    <input id="search-button" type="submit" />
                                 </fieldset>
                             </form>
                             <input id="write-button" type="button" value="글 쓰기" />
@@ -218,7 +235,6 @@
 							<div class="village-board-list">
 								<div class="village-board-item1">
 									<c:if test="${i.sort.equals('1')}">
-									
 										<div class="village-board-label1"></div>
 									</c:if>
 									<c:if test="${i.sort.equals('2')}">
@@ -231,11 +247,11 @@
 										<div class="village-board-label4"></div>
 									</c:if>
 									<div class="village-board-item-img">
-										<img class="thumbnail2" src="refimg/suzy1.jpg" />
+										<img class="thumbnail2" src="${i.profilepic}" />
 									</div>
 									<div class="village-board-item-text00">
 										<p id="village-board-item-title">${i.regdate}</p>
-										<p id="village-board-item-user">${i.writer}</p>
+										<p id="village-board-item-user">${i.name}</p>
 									</div>
 									<div class="post-popularity">
 										<div class="post-popularity-item like">
@@ -266,69 +282,58 @@
                                         <div id="village-board-item2-text">
                                             <p>${i.title}</p>                                            
                                             <p>${i.content}</p>
-                                            <img id="village-board-item2-img" src="refimg/bobby1.jpg" />
+                                            <c:forEach var="f" items="${fList}">                                          
+	                                            <c:if test="${i.getCode() == f.getVilPostCode()}">
+	                                            	<img class="village-board-item2-img" src="${f.getSrc()}" />
+	                                            </c:if>
+                                            </c:forEach>
+                                            
                                             <div class="post-comment-wrapper">
-                                                <div class="post-comment">
-                                                    <ul class="post-comment-list">
-                                                        <li>
-                                                            <div class="profile-pic-box-s">
-                                                                <h1 class="hidden">댓글작성자프로필사진</h1>
-                                                                <img class="thumbnail" src="refimg/hjw.jpg" />
-                                                            </div>
-                                                            <div class="comment-info">
-                                                                <div class="comment-info-writer">
-                                                                    <h1 class="hidden">댓글작성자이름</h1>
-                                                                    <p>남명이</p>
-                                                                </div>
-                                                                <div class="comment-info-date">
-                                                                    <h1 class="hidden">댓글작성일(또는 작성시간)</h1>
-                                                                    <p>3일 전</p>
-                                                                </div>
-                                                                <div class="comment-like">
-                                                                    <h1 class="hidden">댓글좋아요개수</h1>
-                                                                    <img class="comment-like-btn" src="refimg/btn-like-s.png" />
-                                                                    <div class="comment-like-cnt clearfix">1</div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="comment-content">
-                                                                댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <div class="profile-pic-box-s">
-                                                                <h1 class="hidden">댓글작성자프로필사진</h1>
-                                                                <img class="thumbnail" src="refimg/dog.png" />
-                                                            </div>
-                                                            <div class="comment-info">
-                                                                <div class="comment-info-writer">
-                                                                    <h1 class="hidden">댓글작성자이름</h1>
-                                                                    <p>무니무니</p>
-                                                                </div>
-                                                                <div class="comment-info-date">
-                                                                    <h1 class="hidden">댓글작성일(또는 작성시간)</h1>
-                                                                    <p>어제</p>
-                                                                </div>
-                                                                <div class="comment-like">
-                                                                    <h1 class="hidden">댓글좋아요개수</h1>
-                                                                    <img class="comment-like-btn" src="refimg/btn-like-s.png" />
-                                                                    <div class="comment-like-cnt clearfix">2</div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="comment-content">
-                                                                댓글내용
-                                                            </p>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="post-comment-write">
-                                                        <div class="profile-pic-box-s">
-                                                            <h1 class="hidden">댓글작성자프로필사진</h1>
-                                                            <img class="thumbnail" src="refimg/default-profile-pic.png" />
-                                                        </div>
-                                                        <input class="post-input-text" type="text" placeholder="댓글을 남겨주세요." />
-                                                        <input class="post-input-button" type="button" value="등록" />
-                                                    </div>
-                                                </div>
-                                            </div>
+											
+												
+													<div class="post-comment">
+													<c:forEach var="c" items="${cList}">
+													<c:if test="${i.getCode() == c.getVilPostCode()}">
+														<div class="post-comment-list">
+															<div>
+																<div class="profile-pic-box-s">
+																	<h1 class="hidden">댓글작성자프로필사진</h1>
+																	<img class="thumbnail" src="refimg/hjw.jpg" />
+																</div>
+																<div class="comment-info">
+																	<div class="comment-info-writer">
+																		<h1 class="hidden">댓글작성자이름</h1>
+																		<p>${c.name}</p>
+																	</div>
+																	<div class="comment-info-date">
+																		<h1 class="hidden">댓글작성일(또는 작성시간)</h1>
+																		<p>${c.regdate}</p>
+																	</div>
+																	<div class="comment-like">
+																		<h1 class="hidden">댓글좋아요개수</h1>
+																		<img class="comment-like-btn"
+																			src="refimg/btn-like-s.png" />
+																		<div class="comment-like-cnt clearfix">1</div>
+																	</div>
+																</div>
+																<p class="comment-content">${c.content}</p>
+															</div>
+														</div>
+														</c:if>
+											</c:forEach>
+														<div class="post-comment-write">
+															<div class="profile-pic-box-s">
+																<h1 class="hidden">댓글작성자프로필사진</h1>
+																<img class="thumbnail"
+																	src="refimg/default-profile-pic.png" />
+															</div>
+															<input class="post-input-text" type="text"
+																placeholder="댓글을 남겨주세요." /> <input
+																class="post-input-button" type="button" value="등록" />
+														</div>
+													</div>
+												
+										</div>
                                         </div>
 
                                     </div>
@@ -340,7 +345,7 @@
 
                     </div>
                 </div>
-            
+            </main>
         </div>
 
         <!------------------------------------------------------------- 메인 영역 ------------------------------------------------------------------->

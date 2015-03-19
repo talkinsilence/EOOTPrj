@@ -478,10 +478,10 @@
     padding-top: 15px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
 }
 
-#village-board-item2-img
+.village-board-item2-img
 {
     display: block;
     width: 680px;

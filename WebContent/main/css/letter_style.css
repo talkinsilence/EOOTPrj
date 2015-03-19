@@ -24,3 +24,9 @@ a {
     font-size: 14px;
     text-align: center;
 }
+
+.letter-item-box-empty {
+	font-size: 14px;
+	text-align: center;
+	color: #3B3B3B;
+}

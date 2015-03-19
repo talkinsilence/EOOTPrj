@@ -1,6 +1,6 @@
 package com.eoot.eootprj.model;
 
-public class FamPostJoinMember extends FamPost{
+public class LetterJoinMember extends Letter{
 	
 	private String name;
 	private String mid;
@@ -14,7 +14,6 @@ public class FamPostJoinMember extends FamPost{
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getMid() {
 		return mid;
 	}

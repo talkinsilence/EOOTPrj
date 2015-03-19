@@ -3,6 +3,7 @@ package com.eoot.eootprj.model;
 import java.sql.Date;
 
 public class VilPost {
+	
 	private String code;
 	private String sort;
 	private String title;
