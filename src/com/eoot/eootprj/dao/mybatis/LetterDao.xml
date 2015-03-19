@@ -5,39 +5,28 @@
 
 <mapper namespace="com.eoot.eootprj.dao.LetterDao">
 	
-	<select id = "getLetter" parameterType="String" resultType="com.eoot.eootprj.model.Letter">
+	<select id = "getLetter" parameterType="String" resultType="Letter">
 		SELECT * FROM LETTERS WHERE CODE =#{code}
 	</select>
 	
-			<!-- 이거 고쳐야함 -->
-			<select id = "getLetters" resultType="com.eoot.eootprj.model.Letter">
-				SELECT * FROM LETTERS WHERE READER =#{mid} ORDER BY SENDDATE DESC
-			</select>
-			<!--<select id = "getNotices" resultType="com.eoot.jspprj.model.Notice">
-					SELECT N.* FROM 
-						(SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM
-						, NOTICES.* FROM NOTICES WHERE ${param3} LIKE '%${param2}%') N 
-						WHERE N.NUM BETWEEN #{param1} AND #{param1}
-				</select> -->
-			<!--@Select("SELECT * FROM LETTERS WHERE READER =#{mid} ORDER BY SENDDATE DESC")
-				public List<Letter> getLetters(@Param("query")String query, @Param("field")String field); -->
+	<select id = "getLetters" resultType="LetterJoinMember">
+		SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.WRITER=M."MID" 
+		WHERE (L.READER = #{param1}) AND (L.TITLE LIKE '%${param2}%' OR L.CONTENT LIKE '%${param2}%') 
+		ORDER BY L.SENDDATE DESC;
+	</select>
 	
-	<insert id = "insert" parameterType="com.eoot.eootprj.model.Letter">
-		<selectKey keyColumn="code" resultType="String" order="BEFORE">
-			SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS
-		</selectKey>
-			INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, READ, READER, LETTERTYPE) 
-			VALUES(#{code}, #{mid}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
-	</insert>
+			<!-- 이거 고쳐야함 -->
+			<insert id = "insert" parameterType="Letter">
+				<selectKey keyColumn="code" resultType="String" order="BEFORE">
+					SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS
+				</selectKey>
+					INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, READ, READER, LETTERTYPE) 
+					VALUES(#{code}, #{mid}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
+			</insert>
 	
 			<!-- 이거 고쳐야함 -->
 			<delete id = "delete" parameterType="String">
 				DELETE LETTERS WHERE CODE =#{code}
 			</delete>	
-	
-			<!-- 이거 고쳐야함 -->
-			<select id = "getSize" resultType="int">
-				SELECT COUNT(*) CNT FROM LETTERS
-			</select>
-	
+		
 </mapper>

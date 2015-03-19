@@ -81,7 +81,7 @@
 								이메일 : ${m.mid}
                             </div>
                             <div>
-								이름 : <label id="dd">${m.name}</label>
+								이름 : <label id="profile-name-val">${m.name}</label>
                                 <label id="profile-name-wrapper">
                                     &nbsp;&nbsp;
                                     <input type="text" id="profile-name-txt" name="txt" maxlength="20"/>
@@ -92,10 +92,10 @@
                                 <label id="profile-name-edit" class="edit">수정</label>
                             </div>
                             <div>
-								우리집 이름 :
+								우리집 이름 : <label id="profile-famname-val">${m.famname}</label>
                             </div>
                             <div>
-								우리집 주소 : 
+								우리집 주소 : <label id="profile-address-val">${m.address}</label>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,16 @@
                         </div> -->
                         
                         <div id="myhome-name">
-                           	 우리집 이름 : <label id="profile-myhome-name-val">우리집 이름을 정해주세요.</label>
+                           	 우리집 이름 : 
+                           	<label id="profile-myhome-name-val">
+								<c:if test="${empty m.famname}">
+									우리집 이름을 설정해주세요.
+								</c:if>
+								<c:if test="${not empty m.famname}">
+									${m.famname}
+								</c:if>                         		
+                           	</label>
+                           	
                             <label id="myhome-name-wrapper">
                                 &nbsp;&nbsp;
                                 <input type="text" id="myhome-name-txt" maxlength="20" />
@@ -131,7 +140,7 @@
                         </div>
 
                         <div id="myhome-address">
-                         	우리집 주소 : <label id="profile-myhome-address-val">우리집 주소를 입력해주세요.</label>
+                         	우리집 주소 : <label id="profile-myhome-address-val">우리집 주소를 설정해주세요.</label>
 
                             <label id="myhome-address-edit" class="edit">수정</label>
                             
