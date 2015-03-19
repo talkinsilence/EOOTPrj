@@ -7,12 +7,14 @@ public class FamPostJoinMember extends FamPost{
 	private String address;
 	private String profilepic;
 	private String famcode;
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getMid() {
 		return mid;
 	}

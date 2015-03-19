@@ -11,7 +11,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <typeAlias alias="Letter" type="com.eoot.eootprj.model.Letter" />
       <typeAlias alias="LetterJoinMember" type="com.eoot.eootprj.model.LetterJoinMember" />
       <typeAlias alias="VilPost" type="com.eoot.eootprj.model.VilPost" />
+<<<<<<< HEAD
+      <typeAlias alias="VilPostFile" type="com.eoot.eootprj.model.VilPostFile" />
+      <typeAlias alias="VilPostComment" type="com.eoot.eootprj.model.VilPostComment" />
+=======
       <typeAlias alias="FamPost" type="com.eoot.eootprj.model.FamPost" />
+>>>>>>> refs/remotes/origin/master
    </typeAliases>
 
    <environments default="development">
@@ -31,6 +36,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <mapper resource="com/eoot/eootprj/dao/mybatis/MemberDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/LetterDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostFileDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostCommentDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostDao.xml" />
    </mappers>
 </configuration>  
