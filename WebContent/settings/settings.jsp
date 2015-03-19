@@ -30,6 +30,7 @@
 <script src="../resource/js/modernizr.js" type="text/javascript"></script>
 <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css">
 <script src="../resource/js/menu.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="js/settings.js" type="text/javascript"></script>
 <script src="js/jquery-ui.js" type="text/javascript"></script>
 <link href="css/jquery-ui.css" rel="stylesheet">
@@ -147,31 +148,13 @@
                             <p>주소를 설정하시면 '마을' 서비스를 이용하실 수 있습니다.</p>
 
                             <div id="myhome-address-wrapper">
-                            	주소 검색 : <input type="text" />
-                                <input type="button" value="검색"/>
+                            	주소 검색 : <input type="text" id="myhome-address-txt" readonly="readonly"/>
+                                <input type="button" id="btn-myhome-address" value="확인" />
                                 <input type="button" value="취소" id="btn-address-cancel" class="btn-cancel" />
                                 
-                                <table id="myhome-address-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="board-cell-zipcode">우편번호</th>
-                                            <th id="board-cell-address">주소</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="board-row">
-                                            <td class="board-cell-zipcode">441-340</td>
-                                            <td>경기도 수원시 권선구</td>
-                                        </tr>
-                                        <tr class="board-row">
-                                            <td class="board-cell-zipcode">441-340</td>
-                                            <td>경기도 수원시 권선구</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div id="myhome-address-search-wrapper">
+                                </div>
                             </div>
-                            
-                            
                         </div>
 
                         <div id="myhome-member">
