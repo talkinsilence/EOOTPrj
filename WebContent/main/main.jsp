@@ -1,4 +1,5 @@
-﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBLetterDao"%>
+﻿<%@page import="com.eoot.eootprj.model.LetterJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBLetterDao"%>
 <%@page import="com.eoot.eootprj.dao.LetterDao"%>
 <%@page import="com.eoot.eootprj.model.Letter"%>
 <%@page import="java.util.List"%>
@@ -8,23 +9,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <% 
 	String uid = (String) session.getAttribute("uid");
-	//String famcode = (String) session.getAttribute("uid");
-
+	
+	String query = "";
+	String _query = request.getParameter("q");
+	if(_query != null && !_query.equals(""))
+		query = _query;
+	
 	MemberDao memberDao = new MyBMemberDao();
-	//LetterDao letterDao = new MyBLetterDao();
+	LetterDao letterDao = new MyBLetterDao();
+	
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
+	List<LetterJoinMember> lts = letterDao.getLetters(uid, query);
 			
 	for( Member ms : fms)
 		System.out.println(ms.getFamcode());
-	System.out.println(fms.size());
+	System.out.println("가족 구성원 : " + fms.size());
+	System.out.println("편지 개수 : " + lts.size());
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
+	pageContext.setAttribute("lts", lts);
 %>
 
 <!DOCTYPE html>
@@ -143,51 +153,17 @@
             </div>
             <div class="letter-item-box">
                 <ul class="letter-items">
-                    <li class="letter-item">
-                        <div class="letter-title">남영이에게</div>
-                        <div class="letter-from">from: 뵤뵤</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                    <li class="letter-item">
-                        <div class="letter-title">이웃파이팅파이팅파이팅파이팅파이팅파이팅파이팅파이팅</div>
-                        <div class="letter-from">from: newlec</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                    <li class="letter-item">
-                        <div class="letter-title"></div>      
-                        <div class="letter-from">from: 할무니</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                    <li class="letter-item">
-                        <div class="letter-title"></div>      
-                        <div class="letter-from">from: 할무니</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                    <li class="letter-item">
-                        <div class="letter-title"></div>      
-                        <div class="letter-from">from: 할무니</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
+                	<c:forEach var="i" items="${lts}" >
+	                    <li class="letter-item">
+	                        <div class="letter-title">${i.title}</div>
+	                        <div class="letter-from">from: ${i.name}</div>
+	                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
+	                        <div class="letter-mani hidden">
+	                            <!-- <img class="letter-like" src="../images/btn-like.png" />
+	                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
+	                        </div>
+	                    </li>
+                    </c:forEach>
                 </ul>
             </div>
             <button id="letter-write" type="submit">편지쓰기</button>

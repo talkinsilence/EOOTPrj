@@ -10,17 +10,27 @@ SELECT * FROM VilPosts WHERE CODE = 1;
 INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, REGDATE, FAMCODE) 
 VALUES('qq3', 'ddfd', 'dfasdf', '19910101', 'default.jpg', GETDATE(), 'tete');
 
+INSERT INTO MEMBERS(FAMNAME) VALUES('뉴렉이네집') WHERE FAMCODE='viovio@eoot.com';
+
 select * from members where Mid = 'ddd';
 
 SELECT V.* FROM (SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM , VilPosts.* FROM NOTICES WHERE #{field} LIKE '%${query}%') V WHERE ;
 
 select * from letters;
 select * from letterfiles;
-INSERT INTO LETTERS VALUES('lettercode7', 'nami@eoot.com', GETDATE(), '제목', '내용', 1, 'viovio@eoot.com', 1);
-UPDATE LETTERS SET READER='nami@eoot.com' WHERE CODE='lettercode4';
+INSERT INTO LETTERS VALUES('lettercode11', 'talkinsilence21@eoot.com', GETDATE(), 'title', 'mommommommommom', 0, 'nami@eoot.com', 0);
+UPDATE MEMBERS SET NAME='남영' WHERE MID='nami@eoot.com';
 
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS."MID"=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;
+SELECT * FROM MEMBERS INNER JOIN LETTERS ON MEMBERS."MID"=LETTERS.READER ORDER BY LETTERS.SENDDATE DESC;
+SELECT * FROM MEMBERS M INNER JOIN LETTERS L ON M."MID"=L.READER WHERE READER = 'viovio@eoot.com' ORDER BY L.SENDDATE DESC;
+SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.READER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L.TITLE LIKE '%mom%' OR L.CONTENT LIKE '%mom%') ORDER BY L.SENDDATE DESC;
+SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.WRITER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L.TITLE LIKE '%mom%' OR L.CONTENT LIKE '%mom%') ORDER BY L.SENDDATE DESC;;
 
+SELECT N.* FROM 
+	(SELECT (ROW_NUMBER() OVER (ORDER BY REGDATE DESC)) NUM
+	, NOTICES.* FROM NOTICES WHERE ${param3} LIKE '%${param2}%') N 
+	WHERE N.NUM BETWEEN #{param1} AND #{param1}
 
 INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
 VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);

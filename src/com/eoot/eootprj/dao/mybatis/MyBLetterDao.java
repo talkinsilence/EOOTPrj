@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.eoot.eootprj.dao.LetterDao;
 import com.eoot.eootprj.model.Letter;
+import com.eoot.eootprj.model.LetterJoinMember;
 
 public class MyBLetterDao implements LetterDao {
 
@@ -17,10 +18,10 @@ public class MyBLetterDao implements LetterDao {
 	}
 
 	@Override
-	public List<Letter> getLetters(String query, String field) {
+	public List<LetterJoinMember> getLetters(String mid, String query) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
-		return letterDao.getLetters(query, field);
+		return letterDao.getLetters(mid, query);
 	}
 
 	@Override
