@@ -14,8 +14,10 @@
 <% 
 	String uid = (String) session.getAttribute("uid");
 
-	String query = request.getParameter("q");
-
+	String query = "";
+	String _query = request.getParameter("query");
+	if(_query != null && !_query.equals(""))
+		query = _query;
 
 	MemberDao memberDao = new MyBMemberDao();
 	LetterDao letterDao = new MyBLetterDao();
@@ -25,7 +27,7 @@
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
 	
 	List<LetterJoinMember> ls = letterDao.getLetters(uid, query);
-	int lSize = ls.size();
+	int lsSize = ls.size();
 	
 	for( Member ms : fms)
 		System.out.println(ms.getFamcode());
@@ -34,7 +36,7 @@
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
 	pageContext.setAttribute("ls", ls);
-	pageContext.setAttribute("lSize", lSize);
+	pageContext.setAttribute("lsSize", lsSize);
 %>
 
 <!DOCTYPE html>
@@ -111,11 +113,11 @@
                     </div>
                     <div class="alarm cal">
                         <div class="alarm-icon"></div>
-                        <p>다가오는 일정<br />2개</p>
+                        <p>다가오는<br />일정 2개</p>
                     </div>
                     <div class="alarm bday">
                         <div class="alarm-icon"></div>
-                        <p>장형수 님의 생일</p>
+                        <p>장형수 님의<br /> 생일</p>
                     </div>
                 </div>
             </aside>
@@ -152,10 +154,10 @@
         <div class="letter-box-wrapper">
             <div class="letter-box-header">
                 <div class="letter-box-header-title">편지함</div>
-                <div class="letter-box-header-total">총 ${lSize}개</div>
+                <div class="letter-box-header-total">총 ${lsSize}개</div>
                 <div class="letter-box-search">
-                    <input class="letter-search" type="text" name="q" value="${param.q}"/>
-                    <div id="letter-search"><input type="submit"/></div>
+                    <input class="letter-search" type="text" name="query" value="${param.query}"/>
+                    <div id="letter-search"></div>
                 </div>
             </div>
             <c:if test="${empty ls}">

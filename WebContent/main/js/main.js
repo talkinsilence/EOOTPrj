@@ -1,30 +1,5 @@
 ﻿$(document).ready(function () {
 
-	//===========< profile >==============================================
-    $('.profile-family-members').mouseover(function () {
-        var divLoc = $(this).offset();
-        var left = divLoc.left + 26;
-        var top = divLoc.top + 35;
-        $('.info-wrapper').css({
-            "opacity": "1",
-            "visibility": "visible",
-            "left": left,
-            "top": top
-        }).show();
-    });
-
-    $('.profile-family-members').mouseout(function () {
-        $('.info-wrapper').hide();
-    });
-
-    $('.info-wrapper').mouseover(function () {
-        $(this).show();
-    });
-
-    $('.info-wrapper').mouseout(function () {
-        $(this).hide();
-    });
-
     //===========< letter >==============================================
     $('.alarm.let').click(function () {
         $('.letter-read-wrapper, .letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
@@ -37,6 +12,14 @@
     
     $('.btn-close-read, .letter-read-transp-bg').click(function () {
         $('.letter-read-wrapper').fadeOut(10);
+    });
+    
+    $('#letter-search').click(function(){
+    	//var input = $(this).parent().find(".letter-search");
+    	
+    	var lbox = $('.letter-item-box');
+    	lbox.empty();
+    	lbox.load("letter.jsp?query="+$('.letter-search').val());
     });
     
     $('.letter-title').click(function(){

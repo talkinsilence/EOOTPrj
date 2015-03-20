@@ -24,12 +24,17 @@ body {
 
 ::-webkit-scrollbar-track
 {
-  background: rgba(0, 0, 0, 0.1);
+  /* background: rgba(0, 0, 0, 0.1); */
+  background: #F1F1F1;
 }
 
 ::-webkit-scrollbar-thumb
 {
-  background: rgba(0, 0, 0, 0.2);
+  width: 10px;  /* for vertical scrollbars */
+  height: 10px; /* for horizontal scrollbars */
+/*   background: rgba(0, 0, 0, 0.2); */
+  background: #BCBCBC;
+  border: 1px solid #B1B1B1;
 } 
 
 ::-webkit-scrollbar-thumb:ACTIVE
@@ -251,6 +256,10 @@ body {
 }
 
 /*======< letter read >==================*/
+
+.letter-read-wrapper {
+	display: none;
+}
 
 .letter-read-transp-bg {
     display: block;

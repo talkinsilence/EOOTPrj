@@ -10,6 +10,7 @@ select * from ADMINS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 
 delete from members;
+delete from neighbors;
 
 SELECT V.*, VF.* FROM VilPosts V LEFT OUTER JOIN VilPostFiles VF ON VF.VilPostCode = V.CODE WHERE VF.VilPostCode = '1';
 
