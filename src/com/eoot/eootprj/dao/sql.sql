@@ -53,16 +53,14 @@ SELECT * FROM MEMBERS M INNER JOIN LETTERS L ON M."MID"=L.READER WHERE READER = 
 SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.READER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L.TITLE LIKE '%mom%' OR L.CONTENT LIKE '%mom%') ORDER BY L.SENDDATE DESC;
 SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.WRITER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L.TITLE LIKE '%mom%' OR L.CONTENT LIKE '%mom%') ORDER BY L.SENDDATE DESC;
 SELECT COUNT(*) CNT FROM LETTERS L INNER JOIN MEMBERS M ON L.READER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L."READ" = 0);
-
-
 SELECT COUNT(*) CNT FROM LETTERS WHERE READER ='viovio@eoot.com';
 
->>>>>>> refs/remotes/origin/master
 INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
 VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);
 
 INSERT INTO VilPosts(code)
 VALUES 1;
+
 
 
 SELECT * FROM information_schema.tables -- 테이블 목록 보기욤
@@ -94,6 +92,7 @@ AS
     left outer JOIN vilpostcomments VC on V.code = VC.vilpostcode;
 
 SELECT * FROM NOTICEVIEW130 WHERE TITLE LIKE~;         
+>>>>>>> refs/remotes/origin/master
 
 SELECT * FROM MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC; 
 SELECT * (SELECT * FROM MEMBERS M2 WHERE NOT EXISTS M2.MID='viovio@eoot.com')FROM MEMBERS M1 WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
@@ -102,13 +101,21 @@ SELECT  FamPosts.*,Members.*,fampostfiles.*,fampostcomments.*
 FROM FamPosts INNER JOIN Members ON FamPosts.Writer = Members.Mid 
          left outer JOIN FamPostFiles on FamPosts.code = FamPostfiles.fampostcode
          left outer JOIN fampostcomments on famposts.code = fampostcomments.fampostcode;
-         
-         
-         
-         
+<<<<<<< HEAD
 
+=======
+         
+         
+         
+         
+>>>>>>> refs/remotes/origin/master
+
+<<<<<<< HEAD
+UPDATE FAMPOSTFILES SET regdate = getdate() WHERE code='1';
+=======
 UPDATE MEMBERS SET PROFILEPIC = '/EOOTPrj/main/images/nami3.jpg' WHERE MID = 'talkinsilence21@gmail.com';
 
+>>>>>>> refs/remotes/origin/master
 SELECT * FROM (SELECT * FROM MEMBERS WHERE MID <> 'viovio@eoot.com') MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
 
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON FAMPOSTS.WRITER=MEMBERS.MID ORDER BY FAMPOSTS.REGDATE DESC;
@@ -119,6 +126,8 @@ select * from information_schema.tables --테이블 목록보기
 select * from fampostfiles;
 
 INSERT INTO fampostfiles VALUES('3', 'images/bobby1.jpg', 5, 'jpg');
+
+delete from fampostfiles where code = '3';
 
 delete from fampostfiles where code = '4';
 
@@ -131,6 +140,8 @@ INSERT INTO fampostcomments VALUES('1', 'zzz', 'viovio@eoot.com','1', getdate())
 INSERT INTO fampostcomments VALUES('2', 'xxx', 'nami@eoot.com','1', getdate());
 
 INSERT INTO fampostcomments VALUES('3', 'xxx', 'nami@eoot.com','3', getdate());
+
+INSERT INTO fampostfiles VALUES('10', 'image/kim3.jpg','7', 'jpg',getdate());
 
 select * from members;
 
@@ -194,4 +205,16 @@ FROM FamPosts F INNER JOIN Members M ON F.Writer = M.Mid
          left outer JOIN fampostcomments FC on F.code = FC.fampostcode;
          
          
+<<<<<<< HEAD
 SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER WHERE F.title LIKE '%fam%') MJOINF WHERE MJOINF.NUM BETWEEN 1 AND 30
+
+SELECT M.NAME, M.PROFILEPIC, V.* ,(ROW_NUMBER() OVER (ORDER BY V.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN VILPOSTcomments V ON M.MID=V.WRITER;
+
+SELECT * FROM FamPostfiles order by regdate desc;
+
+SELECT * FROM FamPostfiles 
+
+UPDATE FAMPOSTFILES SET regdate = getdate() WHERE code='6';
+=======
+SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER WHERE F.title LIKE '%fam%') MJOINF WHERE MJOINF.NUM BETWEEN 1 AND 30
+>>>>>>> refs/remotes/origin/master

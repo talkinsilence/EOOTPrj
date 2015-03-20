@@ -1,17 +1,17 @@
-﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
+﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostFileDao"%>
+<%@page import="com.eoot.eootprj.dao.FamPostFileDao"%>
+<%@page import="com.eoot.eootprj.model.FamPostFile"%>
 <%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.model.FamPost"%>
+<%@page import="com.eoot.eootprj.model.Member"%>
+<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
 <%@page import="com.eoot.eootprj.dao.FamPostDao"%>
-<%@page import="com.eoot.eootprj.model.Member"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,14 +22,43 @@
     <link href="css/media-add.css" rel="stylesheet" />
     <link href="css/media.css" rel="stylesheet" />
     <link href="../resource/css/bind_menu.css" rel="stylesheet" />
-    <link href="css/reset.css" rel="stylesheet" />
+    <link href="../resource/css/reset.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="../resource/js/jquery-2.1.3.js"></script>
-    <script src="../resource/css/bind_menu.css"></script>
-    <script src="js/media.js"></script>
     <script src="../resource/js/modernizr.js"></script>
     <script src="../resource/js/menu.js"></script>
+    <script src="js/media.js"></script>
+
+<%
+	String query = "";
+	String field = "Title";
+
+	String _query = request.getParameter("query");
+	String _field = request.getParameter("filed");
+
+	if (_query != null && !_query.equals(""))
+		query = _query;
+
+	if (_field != null && !_field.equals(""))
+		field = _field;
+
+	FamPostDao famPostDao = new MyBFamPostDao();
+	FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
+
+	List<FamPostJoinMember> list = famPostDao.getFamPosts(query, field);
+	List<FamPostFile> fList = famPostFileDao.getFamPostFiles();
+	
+	pageContext.setAttribute("list", list);
+	pageContext.setAttribute("fList", fList);
+	/*for(int i=0; i<5; i++){
+		for(int j=0; j<5; j++)
+			System.out.println(fList.get(i+j).getSrc());
+	} */
+	System.out.println(fList.get(0).getSrc());
+			
+%>
+
 </head>
 
 <body>
@@ -37,7 +66,7 @@
         <div class="main-media">
             <div class="main-media-box">
                 <div class="main-media-box-L">
-                    <img src="../images/김연아4.jpeg" />
+                    <img src="${fList.get(5).getSrc()}"/>
                     <!-- <div class="mask"></div>
                     <div class="title">title title title title title title title title title</div>
                     <div class="date">2015.2.28</div>
@@ -78,117 +107,33 @@
             <div class="search">
                 <form>
                     <fieldset>
-                        <input id="search-input" type="text" name="subject" placeholder="placeholder" />
+                        <input id="search-input" type="text" name="query" value="${param.query}" placeholder="뒤져보아요" />
                         <input id="search-button" type="submit" value="search" />
                     </fieldset>
                 </form>
             </div>
         </div>
 
-        <div class="media-lists">
-            <div class="media-list-box">
-                <div class="media-list-item-box">
-                    <div class="media-list-item">
-                        <img src="../images/김연아2.jpg" />
-                        <div class="media-list-item-mask"></div>
-                        <div class="media-list-item-like">0</div>
-                        <div class="media-list-item-scrap">0</div>
-                        <div class="media-list-item-comment"></div>
-                    </div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item">
-                        <img src="../images/김연아2.jpg" />
-                        <div class="media-list-item-mask"></div>
-                        <div class="media-list-item-like">0</div>
-                        <div class="media-list-item-scrap">0</div>
-                        <div class="media-list-item-comment"></div>
-                    </div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-            </div>
+		<div class="media-lists">
+			<c:forEach var="j" begin="0" end="1" step="1">
+				<div class="media-list-box">
+					<c:forEach var="i" begin="0" end="4" step="1">
+						<div class="media-list-item-box">
+							<div class="media-list-item">
+								<img class="media-list-item-img" src="${fList.get(j*5+i).getSrc()}">
+								<div class="media-list-item-mask"></div>
+								<div class="media-list-item-like">0</div>
+								<div class="media-list-item-scrap">0</div>
+								<div class="media-list-item-comment"></div>
+							</div>
+						</div>
 
-            <div class="media-list-box">
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-            </div>
-
-            <div class="media-list-box">
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-            </div>
-
-            <div class="media-list-box">
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-            </div>
-
-            <div class="media-list-box">
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-                <div class="media-list-item-box">
-                    <div class="media-list-item"><img src="../images/김연아2.jpg" /></div>
-                </div>
-            </div>
-        </div>
-    </div>
+					</c:forEach>
+				</div>
+			</c:forEach>
+		</div>
+		
+	</div>
 
     <!--------------상세보기----------------------------------->
     <div class="dv-mask">
@@ -199,7 +144,7 @@
                 <div class="dv-btn-pre"></div>
                 <div class="detail-view">
                     <div class="dv-media-box">
-                        <img class="dv-media-box-img" src="images/김연아4.jpeg" />
+                        <img class="dv-media-box-img" src="${fList.get(0).getSrc()}" />
                         <div class="dv-edit">
                             <button class="dv-edit-btn">수정</button>
                             <button class="dv-edit-btn">삭제</button>

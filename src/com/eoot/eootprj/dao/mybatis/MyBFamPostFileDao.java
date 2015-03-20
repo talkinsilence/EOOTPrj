@@ -16,9 +16,9 @@ public class MyBFamPostFileDao implements FamPostFileDao{
 	}
 
 	@Override
-	public List<FamPostFile> getFamPostFiles(String famPostCode) {
+	public List<FamPostFile> getFamPostFiles() {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		FamPostFileDao famPosFiletDao= sqlSession.getMapper(FamPostFileDao.class);
-		return famPosFiletDao.getFamPostFiles(famPostCode);
+		return famPosFiletDao.getFamPostFiles();
 	}
 }

@@ -21,11 +21,11 @@
 	MemberDao memberDao = new MyBMemberDao();
 	Member m = memberDao.getMember(uid);
 	
-	FamPostDao famPostDao = new MyBFamPostDao();
-	List<FamPostJoinMember> fps = famPostDao.getFamPosts(); 
+	/* FamPostDao famPostDao = new MyBFamPostDao();
+	List<FamPostJoinMember> fps = famPostDao.getFamPosts();  */
 	
-	pageContext.setAttribute("m", m);
-	pageContext.setAttribute("fps", fps);
+	/* pageContext.setAttribute("m", m);
+	pageContext.setAttribute("fps", fps); */
 %>
 
 <!DOCTYPE html>

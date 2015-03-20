@@ -18,13 +18,10 @@ public interface FamPostDao {
 	@Select("SELECT * "
 			+ "FROM (SELECT M.NAME, M.MID, M.PROFILEPIC, M.ADDRESS, F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
 			+ "FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER "
-			+ "WHERE F.{PARAM2} LIKE '%{PARAM1}%') MJOINF "
+			+ "WHERE F.${param2} LIKE '%${param1}%') MJOINF "
 			+ "WHERE MJOINF.NUM BETWEEN 1 AND 30;")
 	public List<FamPostJoinMember> getFamPosts(String query, String field);
-
-	@Select("SELECT TOP 1 * FROM FamPosts "
-			+ "WHERE REGDATE &gt; (SELECT REGDATE FROM FamPosts "
-			+ "WHERE CODE = #{code})ORDER BY REGDATE ASC")
+	
 	public int update(FamPost famPost);
 
 	@Delete("DELETE FROM FamPosts WHERE CODE = #{code}")

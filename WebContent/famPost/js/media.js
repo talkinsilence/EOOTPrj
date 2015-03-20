@@ -1,10 +1,10 @@
 ﻿window.onload = function () {
 
     //-----------------상세보기---------------------
-    $("img").click(function () {
+    $(".media-list-item-mask").click(function () {
         $(".dv-mask").fadeIn(400);
         $("body").css("overflow","hidden");
-        var mainImgSrc = $(this).attr("src");
+        var mainImgSrc = $(".media-list-item-img").attr("src");
         $(".dv-media-box-img").attr("src", mainImgSrc);
     });
 
