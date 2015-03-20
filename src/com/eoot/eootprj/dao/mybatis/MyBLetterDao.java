@@ -23,19 +23,21 @@ public class MyBLetterDao implements LetterDao {
 		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
 		return letterDao.getLetters(mid, query);
 	}
+	
+	@Override
+	public List<LetterJoinMember> getNewLetters(String mid) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
+		return letterDao.getNewLetters(mid);
+	}
 
 	@Override
 	public int insert(Letter letter) {
-		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
-		return letterDao.insert(letter);
+		return 0;
 	}
 
 	@Override
 	public int delete(String code) {
-		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
-		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
-		return letterDao.delete(code);
+		return 0;
 	}
-	
 }

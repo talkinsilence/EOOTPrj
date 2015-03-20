@@ -247,6 +247,24 @@ body {
 }
 
 @media screen and (max-height: 1024px) {
+    .alarm-icon {
+		margin-top: 15px;
+    }
+}
+
+@media screen and (max-height: 1024px) {
+    .alarm > p {
+        margin-top: 10px;
+    }
+}
+
+/* @media screen and (max-height: 1024px) {
+    .alarm:hover.alarm > p {
+        margin: -20px auto;
+    }
+} */
+
+@media screen and (max-height: 1024px) {
     .lower-left {
 		overflow-y: hidden;
     }
@@ -318,7 +336,6 @@ body {
     .preview-wrapper {
         width: 728px;
         height: 320px;
-        background: pink;
     }
 }
 

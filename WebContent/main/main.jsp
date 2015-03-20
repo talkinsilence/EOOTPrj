@@ -18,7 +18,7 @@
 	String _query = request.getParameter("query");
 	if(_query != null && !_query.equals(""))
 		query = _query;
-
+	
 	MemberDao memberDao = new MyBMemberDao();
 	LetterDao letterDao = new MyBLetterDao();
 	
@@ -29,14 +29,18 @@
 	List<LetterJoinMember> ls = letterDao.getLetters(uid, query);
 	int lsSize = ls.size();
 	
-	for( Member ms : fms)
-		System.out.println(ms.getFamcode());
+	List<LetterJoinMember> nls = letterDao.getNewLetters(uid);
+	int nlsSize = nls.size();
+	
+	/* for( Member ms : fms)
+		System.out.println(ms.getFamcode()); */
 	//System.out.println("가족 구성원 : " + fms.size());
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
 	pageContext.setAttribute("ls", ls);
 	pageContext.setAttribute("lsSize", lsSize);
+	pageContext.setAttribute("nlsSize", nlsSize);
 %>
 
 <!DOCTYPE html>
@@ -109,7 +113,7 @@
                     </div>
                     <div class="alarm let">
                         <div class="alarm-icon"></div>
-                        <p >새로운 편지<br/>3통</p>
+                        <p >새로운 편지<br/>${nlsSize}통</p>
                     </div>
                     <div class="alarm cal">
                         <div class="alarm-icon"></div>
