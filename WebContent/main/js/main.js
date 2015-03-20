@@ -1,43 +1,34 @@
 ﻿$(document).ready(function () {
 
-	//===========< profile >==============================================
-    $('.profile-family-members').mouseover(function () {
-        var divLoc = $(this).offset();
-        var left = divLoc.left + 26;
-        var top = divLoc.top + 35;
-        $('.info-wrapper').css({
-            "opacity": "1",
-            "visibility": "visible",
-            "left": left,
-            "top": top
-        }).show();
-    });
-
-    $('.profile-family-members').mouseout(function () {
-        $('.info-wrapper').hide();
-    });
-
-    $('.info-wrapper').mouseover(function () {
-        $(this).show();
-    });
-
-    $('.info-wrapper').mouseout(function () {
-        $(this).hide();
-    });
-
     //===========< letter >==============================================
     $('.alarm.let').click(function () {
-        $('.letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
+        $('.letter-read-wrapper, .letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-box-wrapper').fadeIn(200);
     });
-
+    
+    $('.btn-close, .letter-transp-bg').click(function () {
+        $('.letter').fadeOut(10);
+    });
+    
+    $('.btn-close-read, .letter-read-transp-bg').click(function () {
+        $('.letter-read-wrapper').fadeOut(10);
+    });
+    
+    $('#letter-search').click(function(){
+    	//var input = $(this).parent().find(".letter-search");
+    	
+    	var lbox = $('.letter-item-box');
+    	lbox.empty();
+    	lbox.load("letter.jsp?query="+$('.letter-search').val());
+    });
+    
+    $('.letter-title').click(function(){
+    	$('.letter-read-wrapper').fadeIn(800);
+    });
+    	
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
-    });
-
-    $('.btn-close, .letter-transp-bg').click(function () {
-        $('.letter').fadeOut(10);
     });
 
     if ($('.letter-write-box').height() >= 400)

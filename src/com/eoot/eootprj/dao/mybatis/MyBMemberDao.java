@@ -36,4 +36,26 @@ public class MyBMemberDao implements MemberDao {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		return memberDao.getFamMembers(mid, famcode);
 	}
+
+	@Override
+	public int updateName(Member member) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.updateName(member);
+	}
+
+	@Override
+	public int updateFamname(Member member) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.updateFamname(member);
+	}
+
+	@Override
+	public int updateAddress(Member member) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.updateAddress(member);
+	}
+
 }

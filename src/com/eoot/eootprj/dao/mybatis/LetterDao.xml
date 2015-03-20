@@ -4,4 +4,29 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.eoot.eootprj.dao.LetterDao">
+	
+	<select id = "getLetter" parameterType="String" resultType="Letter">
+		SELECT * FROM LETTERS WHERE CODE =#{code}
+	</select>
+	
+	<select id = "getLetters" resultType="LetterJoinMember">
+		SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.WRITER=M."MID" 
+		WHERE (L.READER = #{param1}) AND (L.TITLE LIKE '%${param2}%' OR L.CONTENT LIKE '%${param2}%') 
+		ORDER BY L.SENDDATE DESC;
+	</select>
+	
+			<!-- 이거 고쳐야함 -->
+			<insert id = "insert" parameterType="Letter">
+				<selectKey keyColumn="code" resultType="String" order="BEFORE">
+					SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS
+				</selectKey>
+					INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, READ, READER, LETTERTYPE) 
+					VALUES(#{code}, #{mid}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
+			</insert>
+	
+			<!-- 이거 고쳐야함 -->
+			<delete id = "delete" parameterType="String">
+				DELETE LETTERS WHERE CODE =#{code}
+			</delete>	
+		
 </mapper>

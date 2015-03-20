@@ -1,26 +1,42 @@
-﻿<%@page import="java.util.List"%>
+﻿<%@page import="com.eoot.eootprj.model.LetterJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBLetterDao"%>
+<%@page import="com.eoot.eootprj.dao.LetterDao"%>
+<%@page import="com.eoot.eootprj.model.Letter"%>
+<%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.model.Member"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <% 
 	String uid = (String) session.getAttribute("uid");
-	//String famcode = (String) session.getAttribute("uid");
+
+	String query = "";
+	String _query = request.getParameter("query");
+	if(_query != null && !_query.equals(""))
+		query = _query;
 
 	MemberDao memberDao = new MyBMemberDao();
+	LetterDao letterDao = new MyBLetterDao();
+	
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
 	
+	List<LetterJoinMember> ls = letterDao.getLetters(uid, query);
+	int lsSize = ls.size();
+	
 	for( Member ms : fms)
 		System.out.println(ms.getFamcode());
-	System.out.println(fms.size());
+	//System.out.println("가족 구성원 : " + fms.size());
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
+	pageContext.setAttribute("ls", ls);
+	pageContext.setAttribute("lsSize", lsSize);
 %>
 
 <!DOCTYPE html>
@@ -87,34 +103,41 @@
         <div class="lower">
             <aside class="lower-left">
                 <div class="alarm-wrapper">
-                    <div class="alarm what">
-                        <p class="hidden">음.. 뭐하지?</p> 
+                    <div class="alarm news">
+                        <div class="alarm-icon"></div>
+                        <p>새로운 소식<br/>99개</p>
                     </div>
                     <div class="alarm let">
-                        <p class="hidden">새로운 편지가 1통 도착했습니다.</p>
+                        <div class="alarm-icon"></div>
+                        <p >새로운 편지<br/>3통</p>
                     </div>
                     <div class="alarm cal">
-                        <p class="hidden">오늘은 형수입학식입니다.</p>
-                        <p class="hidden">장형수 님의 생일이 2주 남았습니다.</p>
+                        <div class="alarm-icon"></div>
+                        <p>다가오는<br />일정 2개</p>
                     </div>
-                    <div class="alarm news">
-                        <p class="hidden"><a href="../newsFeed/newsFeed.jsp">새로운 소식이 99개 있습니다.</a></p>
+                    <div class="alarm bday">
+                        <div class="alarm-icon"></div>
+                        <p>장형수 님의<br /> 생일</p>
                     </div>
                 </div>
             </aside>
-            <aside class="lower-right"> 809*406
-                <div class="hello-wrapper">
-                    <div class="hello">
-                        <p>안부?</p>
+            <aside class="lower-right">
+            	<div class="preview-wrapper">
+                    <div class="preview">
+                        <div class="preview-post pic-box">
+                            <img class="preview-pic" src="images/byul2.jpg"/>
+                        </div>
+                        <div class="preview-post text-box">
+                            <p class="text-box-title">별이의 폭풍성장</p>
+                        </div>
                     </div>
-                    <div class="hello">
-                        <p>안부?</p>
-                    </div>
-                    <div class="hello">
-                        <p>안부?</p>
-                    </div>
-                    <div class="hello">
-                        <p>안부?</p>
+                    <div class="preview">
+                        <div class="preview-post pic-box">
+                            <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
+                        </div>
+                        <div class="preview-post text-box">
+                            <p class="text-box-title">마을/주변 인기게시물</p>
+                        </div>
                     </div>
                 </div>
             </aside>
@@ -122,73 +145,57 @@
         
     </div>
 
-<!--===========< 편지쓰기 >===============================================-->
+<!--===========< 편지  >===============================================-->
     <div class="letter">
-
+    
         <div class="letter-transp-bg"></div>
         <div class="btn-close"></div>
-
+        
         <div class="letter-box-wrapper">
             <div class="letter-box-header">
                 <div class="letter-box-header-title">편지함</div>
-                <div class="letter-box-header-total">총 20개</div>
+                <div class="letter-box-header-total">총 ${lsSize}개</div>
                 <div class="letter-box-search">
-                    <input class="letter-search" type="search" />
+                    <input class="letter-search" type="text" name="query" value="${param.query}"/>
                     <div id="letter-search"></div>
                 </div>
             </div>
-            <div class="letter-item-box">
-                <ul class="letter-items">
-                    <li class="letter-item">
-                        <div class="letter-title">남영이에게</div>
-                        <div class="letter-from">from: 뵤뵤</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                    <li class="letter-item">
-                        <div class="letter-title">이웃파이팅파이팅파이팅파이팅파이팅파이팅파이팅파이팅</div>
-                        <div class="letter-from">from: newlec</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                    <li class="letter-item">
-                        <div class="letter-title"></div>      
-                        <div class="letter-from">from: 할무니</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                    <li class="letter-item">
-                        <div class="letter-title"></div>      
-                        <div class="letter-from">from: 할무니</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                    <li class="letter-item">
-                        <div class="letter-title"></div>      
-                        <div class="letter-from">from: 할무니</div>
-                        <div class="letter-date">20150311</div>
-                        <div class="letter-mani hidden">
-                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <c:if test="${empty ls}">
+            	<div class="letter-item-box-empty">편지함에 편지가 없습니다</div>
+            </c:if>
+            <c:if test="${not empty ls}">
+	            <div class="letter-item-box">
+	                <ul class="letter-items">
+	                	<c:forEach var="i" items="${ls}" >
+	                	<c:if test="${i.read == 1}">
+		                    <li class="letter-item">
+		                </c:if>
+		                <c:if test="${i.read == 0}">
+		                    <li class="letter-item red">
+		                </c:if>
+		                        <div class="letter-title">${i.title}</div>
+		                        <div class="letter-from">from: ${i.name}</div>
+		                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
+		                        <div class="letter-mani hidden">
+		                            <!-- <img class="letter-like" src="../images/btn-like.png" />
+		                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
+		                        </div>
+		                    </li>
+	                    </c:forEach>
+	                </ul>
+	            </div>
+            </c:if>
             <button id="letter-write" type="submit">편지쓰기</button>
         </div>
-
+		
+		<div class="letter-read-wrapper">
+			<div class="letter-read-transp-bg"></div>
+			<div class="btn-close-read"></div>
+			<div class="letter-read">
+				<div>편지 : </div>
+			</div>
+		</div>
+        
         <div class="letter-type-wrapper">
             <div class="letter-type text">
                 <input class="letter-type-btn hidden" type="button" value="글" />

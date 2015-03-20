@@ -39,7 +39,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: darkgrey;
+    background: yellow;
     overflow: hidden;
 }
 
@@ -84,12 +84,6 @@ body {
     padding-left: 105px;
 }
 
-.logo1 {float: left;}
-.logo2 {float: left;}
-.logo3 {float: left;}
-.logo4 {float: left;}
-.logo5 {float: left;}
-
 .profile-pic-box-main {
     display: block;
     position: absolute;
@@ -97,7 +91,7 @@ body {
     height: 185px;
     margin-left: 105px;
     overflow: hidden;
-    border: 3px solid white;
+    border: 3px solid #fff;
     border-radius: 50%;
 }
 
@@ -140,17 +134,17 @@ body {
     margin: 10px;
     width: 46px;
     height: 46px;
-    border: 2px solid white;
+    border: 2px solid #fff;
     border-radius: 50%;
     float: left;
     overflow: hidden;
 }
 
-.info-wrapper {
+/* .info-wrapper {
     display: block;
     position: absolute;
     bottom: 0;
-    width: 125px;
+    width: 120px;
     height: 180px;
     border-radius: 4px;
     background: #fff;
@@ -159,7 +153,7 @@ body {
     z-index: 2201;
     opacity: 0; 
     visibility: hidden;
-}
+} */
 
 /*////////< lower layout >///////////////////////////////////*/
 .lower {
@@ -173,6 +167,7 @@ body {
 @media screen and (max-width: 1280px) {
     .lower {
         width: 1210px;
+        overflow: hidden;
     }
 }
 
@@ -199,14 +194,34 @@ body {
     padding: 10px;
     width: 138px;
     height: 138px;
-    border: 1px solid #D8D8D8;
+    border: 1px solid #e5e5e5;
     float: left;
     cursor: pointer;
 }
 
-    .alarm:hover.alarm > p {
-        display: inline-block;
-    }
+.alarm > p {
+    display: block;
+    width: 68px;
+    padding: 4px 0;
+    margin: 0 auto;
+}
+
+.news > p {background: #47ccaf;}
+.let > p  {background: #ed5661;}
+.cal > p  {background: #7085e8;}
+.bday > p {background: #ffcb3a;}
+
+.alarm-icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 4px auto;
+}
+
+.news > .alarm-icon {background: url("../images/main-news.png") no-repeat center;  }
+.let > .alarm-icon  {background: url("../images/main-letter.png") no-repeat center;}
+.cal > .alarm-icon  {background: url("../images/main-cal.png") no-repeat center;   }
+.bday > .alarm-icon {background: url("../images/main-bday.png") no-repeat center;  }
 
 @media screen and (max-height: 768px) {
     .alarm-wrapper {
@@ -221,6 +236,13 @@ body {
         width: 68px;
         height: 68px;
         font-size: 0.7em;
+        overflow-y: hidden;
+    }
+}
+
+@media screen and (max-height: 768px) {
+    .alarm:hover.alarm > p {
+        margin: -40px auto;
     }
 }
 
@@ -237,4 +259,71 @@ body {
     width: calc(100% - 401px);
     height: 100%;
     min-height: 120px;
+}
+
+.preview-wrapper {
+    display: block;
+    width: 814px;
+    height: 80px;
+    /*height: 320px;*/
+    margin: 0 auto;
+    margin-top: 40px;
+    background: #e5e5e5;
+
+    font-size: 12px;
+}
+
+.preview {
+    display: block;
+    float: left;
+    width: 405px;
+    height: 78px;
+    border: 1px solid #fff;
+}
+
+.preview-post {
+    display: block;
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.pic-box {
+    background: #404148;
+}
+
+.preview-pic {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    margin-top: -10px;
+    /*top: 50%;
+    transform: translateY(-50%);*/
+}
+
+.text-box {
+    margin: 5px;
+    width: calc(50% - 10px);
+    height: calc(100% - 10px);
+    background: #e5e5e5;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1280px) {
+    .preview-wrapper {
+        width: 728px;
+        height: 320px;
+        background: pink;
+    }
+}
+
+@media screen and (max-height: 1024px) {
+    .lower-right {
+		overflow-y: hidden;
+    }
 }
