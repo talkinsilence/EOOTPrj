@@ -141,7 +141,15 @@
                         </div>
 
                         <div id="myhome-address">
-                         	우리집 주소 : <label id="profile-myhome-address-val">우리집 주소를 설정해주세요.</label>
+                         	우리집 주소 :
+                         	<label id="profile-myhome-address-val">
+                         		<c:if test="${empty m.address}">
+                         			우리집 주소를 설정해주세요.
+                         		</c:if>
+                         		<c:if test="${not empty m.address}">
+                         			${m.address}
+                         		</c:if>
+                         	</label>
 
                             <label id="myhome-address-edit" class="edit">수정</label>
                             

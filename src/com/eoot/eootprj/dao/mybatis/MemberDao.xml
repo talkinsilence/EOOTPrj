@@ -27,4 +27,8 @@
 	<update id="updateFamname" parameterType="Member">
 		UPDATE MEMBERS SET FAMNAME = #{famname} WHERE FAMCODE = #{famcode}
 	</update>
+	
+	<update id="updateAddress" parameterType="Member">
+		UPDATE MEMBERS SET ADDRESS = #{address} WHERE FAMCODE = #{famcode}
+	</update>
 </mapper>

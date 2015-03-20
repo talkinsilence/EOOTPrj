@@ -117,7 +117,11 @@ $(document).ready(function () {
     });
     
     $("#btn-myhome-address").click(function(){
-    	alert("dd");
+    	updateAddress();
+    	
+    	$("#myhome-address-search-wrapper").css("display","none");
+        $('#myhome-address-wrapper').css('display', 'none');
+        $('#myhome-address-edit').css('display', 'inline-block');
     });
     
     $('#btn-address-cancel').click(function () {
@@ -285,6 +289,22 @@ function updateFamname(){
 			if($.trim(data) != ""){
 				$("#profile-myhome-name-val").text($.trim(data));
 				$("#profile-famname-val").text($.trim(data));
+			}
+		}
+	});
+}
+
+function updateAddress(){
+	$.ajax({
+		type:"post",
+		url:"updateAddressProc.jsp",
+		data:{
+			addresstxt:$("#myhome-address-txt").val()
+		},
+		success:function(data){
+			if($.trim(data) != ""){
+				$("#profile-address-val").text($.trim(data));
+				$("#profile-myhome-address-val").text($.trim(data));
 			}
 		}
 	});

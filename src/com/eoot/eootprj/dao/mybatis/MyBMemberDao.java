@@ -51,4 +51,11 @@ public class MyBMemberDao implements MemberDao {
 		return memberDao.updateFamname(member);
 	}
 
+	@Override
+	public int updateAddress(Member member) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.updateAddress(member);
+	}
+
 }

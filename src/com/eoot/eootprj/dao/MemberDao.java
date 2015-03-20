@@ -10,5 +10,6 @@ public interface MemberDao {
 	public List<Member> getFamMembers(String mid, String famcode);
 	public int updateName(Member member);
 	public int updateFamname(Member member);
+	public int updateAddress(Member member);
 	//public int delete(String uid);
 }
