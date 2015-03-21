@@ -58,4 +58,11 @@ public class MyBMemberDao implements MemberDao {
 		return memberDao.updateAddress(member);
 	}
 
+	@Override
+	public int updateProfilePic(String fileName, String mid) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.updateProfilePic(fileName, mid);
+	}
+
 }

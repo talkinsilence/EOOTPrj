@@ -17,6 +17,8 @@
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -42,22 +44,21 @@
 
     <main id="main">
         <div id="content-wrapper">
-
             <div id="profile-edit">
                 <div id="profile-edit-body">
                     <div id="profile-edit-viewer-wrapper">
                         <div id="profile-edit-viewer">
-                            <img id="profile-edit-thumbnail" src="images/default.jpg" />
+                            <img id="profile-edit-thumbnail" src="${pageContext.request.contextPath}/${m.profilepic}" />
                         </div>
                     </div>
 
                     <div id="profile-upload-form">
-                        <form>
-                            <input type="file" id="profile-edit-file"/>
+                        <form method="post" enctype="multipart/form-data" action="updateProfilePic.jsp">
+                            <input type="file" name="file" id="profile-edit-file"/>
                             <div id="profile-upload-select-wrapper">
                                 <input type="button" id="btn-upload-select" value="사진 선택" /><br />
                             </div>
-                            <input type="button" id="btn-upload-set" value="사진 등록" />
+                            <input type="submit" id="btn-upload-set" value="사진 등록" />
                             <input type="button" id="btn-upload-cancel" class="btn-cancel" value="취소" />
                         </form>
                     </div>
@@ -72,7 +73,7 @@
                 
                 <div id="profile">                 
                     <div id="profile-pic-box-main">
-                        <img id="profile-thumbnail" src="images/default.jpg" />
+                        <img id="profile-thumbnail" src="${pageContext.request.contextPath}/${m.profilepic}" />
                         <div>사진 변경</div>
                     </div>
 
