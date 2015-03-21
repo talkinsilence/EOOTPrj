@@ -1,0 +1,101 @@
+
+/*@media screen and (max-width: 1027px) {
+
+}*/
+
+#main {
+    position: fixed;
+    width: 100%;
+    height:100%;
+    background: #CCCCCC; 
+}
+
+#content-wrapper {
+    min-width:calc(100%, -70px);
+    height:100%;   
+    margin-left:70px;
+    overflow-y:auto;
+}
+
+#calendar-vertical1 {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+#calendar-vertical2 {
+    display:table-cell;
+    vertical-align:middle;
+}
+
+#calendar-body {    
+    width:1070px;
+    height:920px;
+    margin-left:auto;
+    margin-right:auto;
+    background:#fff;
+}
+
+
+#calendarWrite {
+    float: left;
+    padding-right: 8px;
+    /*margin-right:5px;*/
+    padding-left:8px;
+    padding-top: 3px;
+    cursor: pointer;
+    margin-top:10px;
+}
+
+#calendar {
+    float:left;
+    width:1050px;
+    margin-top:10px;
+    margin-left:10px;
+    background:#fff;
+}
+
+div.calendar-trash{
+    float: left;
+    padding-right: 8px;
+    margin-top:10px;
+    /*margin-right:5px;*/
+    padding-left:8px;
+    padding-top: 3px;
+    cursor: pointer;
+}
+
+.to-trash{
+    background-color:#EAEAEA;
+    -webkit-border-radius: 5em;
+    border-radius: 5em;
+}
+
+/* 캘린더 작성 영역 */
+
+#calendar-write-body {
+    display:none;
+    position:absolute;
+    width:160px;
+    min-height:260px;
+    padding:20px;
+    background:#fff;
+    box-shadow:rgba(0, 0, 0, 0.2) 0px 4px 16px;
+    z-index:5;
+}
+
+#datepicker {
+    cursor:pointer;
+}
+
+.calendar-wrapper {
+    padding-bottom:10px;
+}
+
+#calendar-content {
+    resize:none;
+}
+
+#calendar-btn-wrapper {
+    text-align:center;
+}
