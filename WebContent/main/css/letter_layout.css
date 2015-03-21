@@ -18,8 +18,8 @@ body {
 
 ::-webkit-scrollbar
 {
-  width: 12px;  /* for vertical scrollbars */
-  height: 12px; /* for horizontal scrollbars */
+  width: 14px;  /* for vertical scrollbars */
+  height: 14px; /* for horizontal scrollbars */
 }
 
 ::-webkit-scrollbar-track
@@ -30,11 +30,11 @@ body {
 
 ::-webkit-scrollbar-thumb
 {
-  width: 10px;  /* for vertical scrollbars */
-  height: 10px; /* for horizontal scrollbars */
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
 /*   background: rgba(0, 0, 0, 0.2); */
   background: #BCBCBC;
-  border: 1px solid #B1B1B1;
+  border: 2px solid #F1F1F1;
 } 
 
 ::-webkit-scrollbar-thumb:ACTIVE
@@ -255,13 +255,13 @@ body {
   transform: translateY(3px);
 }
 
-/*======< letter read >==================*/
+/*======< letter view >==================*/
 
-.letter-read-wrapper {
+.letter-view-wrapper {
 	display: none;
 }
 
-.letter-read-transp-bg {
+.letter-view-transp-bg {
     display: block;
     position: fixed;
     width: 100%;
@@ -270,7 +270,7 @@ body {
     opacity: 0.4;
 }
 
-.btn-close-read {
+.btn-close-letter-view {
     display: block;
     position: fixed;
     width: 18px;
@@ -281,11 +281,11 @@ body {
     background: url("../../resource/images/btn-close.png") no-repeat center;
 }
 
-.btn-close-read:hover {
+.btn-close-letter-view:hover {
     opacity: 0.7;
 }
 
-.letter-read {
+.letter-view {
     display: hidden;
     position: absolute;
     width: 480px;

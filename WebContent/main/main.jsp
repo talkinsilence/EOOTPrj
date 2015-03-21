@@ -192,10 +192,10 @@
             <button id="letter-write" type="submit">편지쓰기</button>
         </div>
 		
-		<div class="letter-read-wrapper">
-			<div class="letter-read-transp-bg"></div>
-			<div class="btn-close-read"></div>
-			<div class="letter-read">
+		<div class="letter-view-wrapper">
+			<div class="letter-view-transp-bg"></div>
+			<div class="btn-close-letter-view"></div>
+			<div class="letter-view">
 				<div>편지 : </div>
 			</div>
 		</div>

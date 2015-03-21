@@ -2,7 +2,7 @@
 
     //===========< letter >==============================================
     $('.alarm.let').click(function () {
-        $('.letter-read-wrapper, .letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
+        $('.letter-view-wrapper, .letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-box-wrapper').fadeIn(200);
     });
     
@@ -10,20 +10,20 @@
         $('.letter').fadeOut(10);
     });
     
-    $('.btn-close-read, .letter-read-transp-bg').click(function () {
-        $('.letter-read-wrapper').fadeOut(10);
+    $('.btn-close-letter-view, .letter-view-transp-bg').click(function () {
+        $('.letter-view-wrapper').fadeOut(10);
     });
     
     $('#letter-search').click(function(){
-    	//var input = $(this).parent().find(".letter-search");
+    	var input = $(this).parent().find(".letter-search");
     	
     	var lbox = $('.letter-item-box');
     	lbox.empty();
-    	lbox.load("letter.jsp?query="+$('.letter-search').val());
+    	lbox.load("letter.jsp?query="+input.val());
     });
     
     $('.letter-title').click(function(){
-    	$('.letter-read-wrapper').fadeIn(800);
+    	$('.letter-view-wrapper').fadeIn(800);
     });
     	
     $('#letter-write').click(function () {
