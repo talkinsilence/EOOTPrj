@@ -1,4 +1,4 @@
-ï»¿body {
+body {
     overflow-x: hidden;
 }
 
@@ -61,10 +61,18 @@
 }
 
 #profile-thumbnail{
-    position:absolute;
+    /* position:absolute;
     width:100%;
     height:auto;
-    cursor:pointer;
+    cursor:pointer; */
+    position: absolute;
+  	left: 50%;
+  	top: 50%;
+  	width: auto;
+  	height: 100%;
+  	-webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 }
 
 #profile-wrapper {
@@ -129,9 +137,17 @@
 }
 
 #profile-edit-thumbnail{
-    position:absolute;
+    /* position:absolute;
     width:100%;
-    height:auto;
+    height:auto; */
+    position: absolute;
+  	left: 50%;
+  	top: 50%;
+  	width: auto;
+  	height: 100%;
+  	-webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 }
 
 #profile-upload-form {
@@ -148,7 +164,7 @@
     padding-bottom:5px;
 }
 
-/************************** accordion ì˜ì—­ ******************************/
+/************************** accordion ¿µ¿ª ******************************/
 
 #invited {
     display: block;
@@ -160,7 +176,7 @@
     background: #c9efe7;
 }
 
-/* ìš°ë¦¬ì§‘ ì´ë¦„ */
+/* ¿ì¸®Áı ÀÌ¸§ */
 #myhome-name-wrapper {
     display: none;
 }
@@ -170,7 +186,7 @@
     min-height:35px;
 }
 
-/* ìš°ë¦¬ì§‘ ì£¼ì†Œ */
+/* ¿ì¸®Áı ÁÖ¼Ò */
 
 #myhome-address {
     min-height: 35px;
@@ -196,7 +212,7 @@
 }
 
 
-/* ìš°ë¦¬ì§‘ êµ¬ì„±ì› */
+/* ¿ì¸®Áı ±¸¼º¿ø */
 
 #myhome-member {
     width:100%;
@@ -290,7 +306,7 @@
     min-height:35px;
 }
 
-/* ìš°ë¦¬ì§‘ êµ¬ì„±ì› ê´€ë¦¬ */
+/* ¿ì¸®Áı ±¸¼º¿ø °ü¸® */
 
 #myhome-member-mng {
     width:100%;
@@ -361,9 +377,9 @@
 }
 
 
-/************ ì´ì›ƒ ***************/
+/************ ÀÌ¿ô ***************/
 
-/* ëª©ë¡ */
+/* ¸ñ·Ï */
 
 #eoot-member {
     width:100%;
@@ -433,7 +449,7 @@
     text-overflow: ellipsis;
 }
 
-/* ì´ì›ƒë§ºê¸° í˜„í™© */
+/* ÀÌ¿ô¸Î±â ÇöÈ² */
 
 #eoot-with {
     width:100%;
@@ -539,7 +555,7 @@
     color: #9b9b9b;
 }
 
-/* ë§ˆì„ */
+/* ¸¶À» */
 
 #vil-scope-wrapper{
     padding-bottom:20px;
@@ -550,7 +566,7 @@
    visibility: hidden;
 }
 
-/* ê²Œì‹œê¸€ */
+/* °Ô½Ã±Û */
 
 #share-scope-wrapper{
     padding-bottom:20px;
