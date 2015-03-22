@@ -177,13 +177,10 @@
 		                <c:if test="${i.read == 0}">
 		                    <li class="letter-item red">
 		                </c:if>
+		                        <div class="letter-code hidden">${i.code}</div>
 		                        <div class="letter-title">${i.title}</div>
 		                        <div class="letter-from">from: ${i.name}</div>
 		                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
-		                        <div class="letter-mani hidden">
-		                            <!-- <img class="letter-like" src="../images/btn-like.png" />
-		                            <img class="letter-like" src="../images/btn-scrap.png" /> -->
-		                        </div>
 		                    </li>
 	                    </c:forEach>
 	                </ul>
@@ -195,8 +192,8 @@
 		<div class="letter-view-wrapper">
 			<div class="letter-view-transp-bg"></div>
 			<div class="btn-close-letter-view"></div>
-			<div class="letter-view">
-				<div>편지 : </div>
+			<div class="letter-view-box">
+				<div class="letter-view"></div>
 			</div>
 		</div>
         

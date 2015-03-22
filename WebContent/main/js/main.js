@@ -15,7 +15,7 @@
     });
     
     $('#letter-search').click(function(){
-    	var input = $(this).parent().find(".letter-search");
+    	var input = $(this).parent().find('.letter-search');
     	
     	var lbox = $('.letter-item-box');
     	lbox.empty();
@@ -23,8 +23,31 @@
     });
     
     $('.letter-title').click(function(){
+    	var lvbox = $('.letter-view-box');
+    	lvbox.empty();
+    	
+    	var lcode = $(this).parent().find('.letter-code').html();
+    	alert(lcode);
+    	
+    	$.ajax({
+    		type:"post",
+    		url:"letter_view.jsp",
+    		data: {
+    			lcode:lcode
+    		},
+    		success:function(result){
+    			lvbox.html(result);
+    		}
+    	});
+
+    	lvbox.load("letter_view.jsp");
+    	
     	$('.letter-view-wrapper').fadeIn(800);
     });
+    
+
+
+
     	
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
@@ -104,5 +127,4 @@
             });
         }
     });
-    
 })
