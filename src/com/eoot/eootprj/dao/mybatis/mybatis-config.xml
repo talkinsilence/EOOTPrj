@@ -37,5 +37,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostCommentDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostFileDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostCommentDao.xml" />
    </mappers>
 </configuration>  

@@ -14,8 +14,6 @@ public class Member {
 	private String famcode;
 	private String famname;
 	
-	
-	
 	public String getFamname() {
 		return famname;
 	}

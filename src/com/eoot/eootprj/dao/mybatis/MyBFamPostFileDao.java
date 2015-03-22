@@ -3,8 +3,10 @@ package com.eoot.eootprj.dao.mybatis;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+
 import com.eoot.eootprj.dao.FamPostFileDao;
 import com.eoot.eootprj.model.FamPostFile;
+import com.eoot.eootprj.model.FamPostFileJoinFamPost;
 
 public class MyBFamPostFileDao implements FamPostFileDao{
 
@@ -16,9 +18,16 @@ public class MyBFamPostFileDao implements FamPostFileDao{
 	}
 
 	@Override
-	public List<FamPostFile> getFamPostFiles() {
+	public List<FamPostFileJoinFamPost> getFamPostFiles() {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		FamPostFileDao famPosFiletDao= sqlSession.getMapper(FamPostFileDao.class);
 		return famPosFiletDao.getFamPostFiles();
+	}
+
+	@Override
+	public int getSize() {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		FamPostFileDao famPosFiletDao= sqlSession.getMapper(FamPostFileDao.class);
+		return famPosFiletDao.getSize();
 	}
 }
