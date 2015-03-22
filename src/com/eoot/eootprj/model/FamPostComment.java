@@ -2,7 +2,7 @@ package com.eoot.eootprj.model;
 
 import java.sql.Date;
 
-public class FamPostComment {
+public class FamPostComment{
 	private String code;
 	private String content;
 	private String writer;

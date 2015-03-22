@@ -11,7 +11,7 @@ import com.eoot.eootprj.model.FamPostJoinMember;
 public class MyBFamPostDao implements FamPostDao{
 
 	@Override
-	public FamPost getFamPost(String code) {
+	public FamPostJoinMember getFamPost(String code) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		FamPostDao famPostDao = sqlSession.getMapper(FamPostDao.class);
 		return famPostDao.getFamPost(code);

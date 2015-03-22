@@ -400,6 +400,11 @@
     
 }
 
+.hidden{
+	display: none;
+	visibility: hidden;
+}
+
 .media-list-item>img {
     position: absolute;
     height: 100%;

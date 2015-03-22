@@ -111,7 +111,7 @@ FROM FamPosts INNER JOIN Members ON FamPosts.Writer = Members.Mid
 >>>>>>> refs/remotes/origin/master
 
 <<<<<<< HEAD
-UPDATE FAMPOSTFILES SET regdate = getdate() WHERE code='1';
+UPDATE FAMPOSTFILES SET src = 'images/kim3.jpg' WHERE code='11';
 =======
 UPDATE MEMBERS SET PROFILEPIC = '/EOOTPrj/main/images/nami3.jpg' WHERE MID = 'talkinsilence21@gmail.com';
 
@@ -141,7 +141,7 @@ INSERT INTO fampostcomments VALUES('2', 'xxx', 'nami@eoot.com','1', getdate());
 
 INSERT INTO fampostcomments VALUES('3', 'xxx', 'nami@eoot.com','3', getdate());
 
-INSERT INTO fampostfiles VALUES('10', 'image/kim3.jpg','7', 'jpg',getdate());
+INSERT INTO fampostfiles VALUES('12', 'images/suzy1.jpg','7', 'jpg',getdate());
 
 select * from members;
 
@@ -210,11 +210,49 @@ SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)
 
 SELECT M.NAME, M.PROFILEPIC, V.* ,(ROW_NUMBER() OVER (ORDER BY V.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN VILPOSTcomments V ON M.MID=V.WRITER;
 
-SELECT * FROM FamPostfiles order by regdate desc;
+SELECT * FROM FamPostfiles order by code desc;
 
 SELECT * FROM FamPostfiles 
 
 UPDATE FAMPOSTFILES SET regdate = getdate() WHERE code='6';
 =======
-SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER WHERE F.title LIKE '%fam%') MJOINF WHERE MJOINF.NUM BETWEEN 1 AND 30
+SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM 
+FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER WHERE F.title LIKE '%fam%') MJOINF WHERE MJOINF.NUM BETWEEN 1 AND 30
 >>>>>>> refs/remotes/origin/master
+
+UPDATE famPOSTs SET clipcnt = '1' WHERE code=2;
+
+SELECT * FROM FamPostfiles order by regdate asc
+
+SELECT * FROM FamPosts
+
+SELECT * FROM members
+delete from fampost;
+
+INSERT INTO fampostfiles VALUES('9', 'images/kim3.jpg','9', 'jpg',getdate());
+
+SELECT f.hit, f.likecnt, f.commentcnt, f.clipcnt, fpf.*
+FROM famposts f
+left outer join fampostfiles fpf
+on f.code = fpf.fampostcode
+
+INSERT INTO famposts VALUES('9', 'kkk','kkkkkk', 'viovio@eoot.com',getdate(),'0','0','0','0','0','0','0');
+
+SELECT F.*, M.NAME, M.PROFILEPIC, (ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM FAMPOSTS F INNER JOIN MEMBERS M ON F.WRITER = M.MID WHERE F.CODE = '1';
+
+SELECT FC.*, M.NAME, M.PROFILEPIC, (ROW_NUMBER() OVER (ORDER BY Fc.REGDATE DESC)) NUM FROM FAMPOSTCOMMENTS FC INNER JOIN MEMBERS M ON FC.WRITER = M.MID WHERE Fc.fampostCODE = '1';
+
+
+SELECT F.*, M.NAME, M.PROFILEPIC, (ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM FAMPOSTS F INNER JOIN MEMBERS M ON F.WRITER = M.MID WHERE F.CODE = 'code'
+
+
+
+
+
+
+
+
+
+
+
+

@@ -92,7 +92,7 @@
 }
 
 /*-------뷰------------------------------------------*/
-.detail-view {
+#detail-view {
     display: block;
     float: left;
     height: 100%;
@@ -163,7 +163,7 @@
 }
 
 /*-------프로필------------------------------------------*/
-.dv-comment-container {
+#dv-comment-container {
     display: block;
     float: left;
     height: 594px;
@@ -391,7 +391,7 @@
 /*-------댓글------------------------------------------*/
 
 .dv-comment-box-list {
-    display: inline-block;
+    display:block;
     height: 451px;
     margin-top: 72px;
     overflow-y: auto;

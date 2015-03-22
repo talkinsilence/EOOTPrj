@@ -12,11 +12,16 @@ import com.eoot.eootprj.model.FamPostJoinMember;
 
 public interface FamPostDao {
 	
-	@Select("SELECT * FROM FamPosts WHERE CODE = #{code}")
-	public FamPost getFamPost(String code);
+	@Select("SELECT "
+			+ "F.*, M.NAME, M.PROFILEPIC, (ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
+			+ "FROM FAMPOSTS F "
+			+ "INNER JOIN MEMBERS M "
+			+ "ON F.WRITER = M.MID "
+			+ "WHERE F.CODE = #{CODE}")
+	public FamPostJoinMember getFamPost(String code);
 	
 	@Select("SELECT * "
-			+ "FROM (SELECT M.NAME, M.MID, M.PROFILEPIC, M.ADDRESS, F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
+			+ "FROM (SELECT M.NAME, M.PROFILEPIC, F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
 			+ "FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER "
 			+ "WHERE F.${param2} LIKE '%${param1}%') MJOINF "
 			+ "WHERE MJOINF.NUM BETWEEN 1 AND 30;")
