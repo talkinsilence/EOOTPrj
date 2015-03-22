@@ -14,6 +14,10 @@
         $('.letter-view-wrapper').fadeOut(10);
     });
     
+    $('.letter-search').click(function(){
+    	$(this).select();
+    });
+    
     $('#letter-search').click(function(){
     	var input = $(this).parent().find('.letter-search');
     	
@@ -21,7 +25,7 @@
     	lbox.empty();
     	lbox.load("letter.jsp?query="+input.val());
     });
-    
+
     $('.letter-title').click(function(){
     	var lvbox = $('.letter-view-box');
     	lvbox.empty();
@@ -33,14 +37,14 @@
     		type:"post",
     		url:"letter_view.jsp",
     		data: {
-    			lcode:lcode
+    			code:lcode
     		},
     		success:function(result){
-    			lvbox.html(result);
+    			lvbox.load("letter_view.jsp");
     		}
     	});
 
-    	lvbox.load("letter_view.jsp");
+    	//lvbox.load("letter_view.jsp");
     	
     	$('.letter-view-wrapper').fadeIn(800);
     });

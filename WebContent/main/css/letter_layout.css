@@ -133,6 +133,8 @@ body {
     border: none;
     outline : none;
     float: left;
+    
+    font-size: 12px;
 }
 
 #letter-search {
@@ -197,6 +199,14 @@ body {
     float: right;
 }
 
+.letter-item:first-child {
+	margin-top: 18px;
+}
+
+.letter-item:nth-child(2) {
+	margin-top: 18px;
+}
+
 .letter-title {
     display: block;
     margin: 14px 0;
@@ -234,7 +244,7 @@ body {
 
 #letter-write {
     position: absolute;
-    left: calc(50% - 42px);
+    left: calc(50% - 46px);
     bottom: 40px;
     border: 0;
     background: #ed5661;
@@ -295,6 +305,31 @@ body {
     transform: translate(-256px, -192px);
     background: #FEFBE6; 
     -webkit-box-shadow: 0px 0px 6px #161616;
+}
+
+#letter-items-back {
+    border: 0;
+    background: #758BAD;
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    color: #FFF;
+    margin: 16px auto;
+    margin-bottom: 0px;
+    outline: 0;
+    padding: 3px 6px;
+}
+
+.letter-items-none {
+	margin-top: 12px;
+	
+	font-size: 12px;
+	color: #9d9d9d;
+}
+
+#letter-items-back:active {
+	background: #394A64;
 }
 
 /*======< letter type >==================*/

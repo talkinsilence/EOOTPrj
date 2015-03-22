@@ -20,6 +20,20 @@ List<LetterJoinMember> ls = letterDao.getLetters(uid, query);
 pageContext.setAttribute("ls", ls);
 %>
 
+<script>	
+$('#letter-items-back').click(function(){
+	$('.letter-items-none').css("display", "none");
+	$('.letter-search').val("");
+	$('#letter-search').click();
+});
+
+if($('.letter-search').val() == "")
+	$('#letter-items-back').css("display", "none");
+</script>
+<c:if test="${empty ls}">
+	<p class="letter-items-none">검색 결과가 없습니다</p>
+</c:if>
+<button id="letter-items-back">전체 목록으로 돌아가기</button>
 <ul class="letter-items">
 	<c:forEach var="i" items="${ls}" >
 		<c:if test="${i.read == 1}">

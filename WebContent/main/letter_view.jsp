@@ -5,11 +5,15 @@
     pageEncoding="UTF-8"%>
 
 <%
-String lcode = request.getParameter("lcode");
-System.out.println("lcode : " + lcode);	
+String code = "";
+String _code = request.getParameter("code");
+System.out.println("_code : " + _code);	
+if(_code != null && !_code.equals(""))
+	code = _code;
+System.out.println("code : " + code);	
 
 LetterDao letterDao = new MyBLetterDao();
-Letter l = letterDao.getLetter(lcode);
+Letter l = letterDao.getLetter(code);
 
 pageContext.setAttribute("l", l);
 %>
