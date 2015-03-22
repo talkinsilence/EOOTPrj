@@ -46,6 +46,7 @@ select * from letters;
 select * from letterfiles;
 INSERT INTO LETTERS VALUES('lettercode12', 'cskn2@naver.com', GETDATE(), '누나누나누나누나누나누나누나누나누나누나누나', '남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여', 0, 'viovio@eoot.com', 0);
 UPDATE LETTERS SET CONTENT='content' WHERE CONTENT='title';
+UPDATE LETTERS SET "READ"=0;
 
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS."MID"=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;
 SELECT * FROM MEMBERS INNER JOIN LETTERS ON MEMBERS."MID"=LETTERS.READER ORDER BY LETTERS.SENDDATE DESC;

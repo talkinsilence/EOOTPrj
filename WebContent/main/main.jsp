@@ -117,7 +117,7 @@
                     </div>
                     <div class="alarm cal">
                         <div class="alarm-icon"></div>
-                        <p>다가오는<br />일정 2개</p>
+                        <p>다가오는<br />일정 99개</p>
                     </div>
                     <div class="alarm bday">
                         <div class="alarm-icon"></div>
@@ -178,6 +178,7 @@
 		                    <li class="letter-item red">
 		                </c:if>
 		                        <div class="letter-code hidden">${i.code}</div>
+		                        <div class="letter-read hidden">${i.read}</div>
 		                        <div class="letter-title">${i.title}</div>
 		                        <div class="letter-from">from: ${i.name}</div>
 		                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>

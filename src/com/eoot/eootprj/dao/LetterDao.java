@@ -11,9 +11,10 @@ public interface LetterDao {
 	//public List<Letter> getLetters(String mid, String query);
 	public List<LetterJoinMember> getLetters(String mid, String query);
 	public List<LetterJoinMember> getNewLetters(String mid);
+	public int updateRead(String code);
 	public int insert(Letter letter);
 	public int delete(String code);
-	
+
 	/*@Select("SELECT ISNULL(MAX(CAST(CODE AS INT)),0) CODE FROM LETTERS")
 	public String lastCode();*/
 }

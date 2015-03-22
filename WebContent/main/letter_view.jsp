@@ -7,19 +7,18 @@
 <%
 String code = "";
 String _code = request.getParameter("code");
-System.out.println("_code : " + _code);	
 if(_code != null && !_code.equals(""))
 	code = _code;
-System.out.println("code : " + code);	
 
 LetterDao letterDao = new MyBLetterDao();
+letterDao.updateRead(code);
 Letter l = letterDao.getLetter(code);
 
 pageContext.setAttribute("l", l);
 %>
 
 <div class="letter-view">
-편지뷰뷰뷰뷰뷰뷰뷰뷰뷰
+${l.read}
 	<p>${l.title}</p>
 	<p>${l.content}</p>
 </div>

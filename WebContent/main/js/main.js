@@ -11,6 +11,7 @@
     });
     
     $('.btn-close-letter-view, .letter-view-transp-bg').click(function () {
+    	location.reload();
         $('.letter-view-wrapper').fadeOut(10);
     });
     
@@ -19,6 +20,7 @@
     });
     
     $('#letter-search').click(function(){
+    	//done with a help from newlec
     	var input = $(this).parent().find('.letter-search');
     	
     	var lbox = $('.letter-item-box');
@@ -27,31 +29,24 @@
     });
 
     $('.letter-title').click(function(){
+    	$(this).css("color", "#000");
+    	
     	var lvbox = $('.letter-view-box');
     	lvbox.empty();
     	
     	var lcode = $(this).parent().find('.letter-code').html();
-    	alert(lcode);
-    	
     	$.ajax({
     		type:"post",
     		url:"letter_view.jsp",
     		data: {
     			code:lcode
     		},
-    		success:function(result){
-    			lvbox.load("letter_view.jsp");
+    		success:function(){
+    			lvbox.load("letter_view.jsp?code="+lcode);
     		}
     	});
-
-    	//lvbox.load("letter_view.jsp");
-    	
-    	$('.letter-view-wrapper').fadeIn(800);
+    	$('.letter-view-wrapper').fadeIn(700);
     });
-    
-
-
-
     	
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
