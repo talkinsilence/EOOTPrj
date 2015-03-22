@@ -18,7 +18,10 @@ pageContext.setAttribute("l", l);
 %>
 
 <div class="letter-view">
-${l.read}
-	<p>${l.title}</p>
-	<p>${l.content}</p>
+	<div class="letter-view-title">
+		<p>${l.title}</p>
+	</div>
+	<div class="letter-view-content">
+		<p>${l.content}</p>
+	</div>
 </div>

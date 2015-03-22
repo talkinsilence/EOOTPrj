@@ -242,6 +242,31 @@ body {
     color: #9d9d9d;
 }
 
+#letter-items-back {
+    border: 0;
+    background: #758BAD;
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    color: #FFF;
+    margin: 16px auto;
+    margin-bottom: 0px;
+    outline: 0;
+    padding: 3px 6px;
+}
+
+.letter-items-none {
+	margin-top: 12px;
+	
+	font-size: 12px;
+	color: #9d9d9d;
+}
+
+#letter-items-back:active {
+	background: #394A64;
+}
+
 #letter-write {
     position: absolute;
     left: calc(50% - 46px);
@@ -298,40 +323,40 @@ body {
 .letter-view-box {
     display: hidden;
     position: absolute;
-    width: 480px;
-    min-height: 384px;
+    width: 520px;
+    height: 600px;
     left: 50%;
-    top: 50%;
-    transform: translate(-256px, -192px);
+	top: 50%;
+	transform: translate(-260px, -300px);
     background: #FEFBE6; 
     -webkit-box-shadow: 0px 0px 6px #161616;
+    overflow: auto;
 }
 
-#letter-items-back {
-    border: 0;
-    background: #758BAD;
-    border-radius: 4px;
-    cursor: pointer;
-    font: inherit;
-    font-size: 12px;
-    color: #FFF;
-    margin: 16px auto;
-    margin-bottom: 0px;
-    outline: 0;
-    padding: 3px 6px;
-}
-
-.letter-items-none {
-	margin-top: 12px;
+.letter-view-title {
+	display: block;
+	width: 400px;
+	min-height: 20px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 15px 20px;
+	background: white;
 	
-	font-size: 12px;
-	color: #9d9d9d;
+    text-align: center;
+    word-wrap: break-word;
 }
 
-#letter-items-back:active {
-	background: #394A64;
+.letter-view-content {
+	display: block;
+	width: 400px;
+	min-height: 80px;
+	margin: 20px auto;
+	padding: 15px 20px;
+	background: white;
+	
+    word-wrap: break-word;
 }
-
 /*======< letter type >==================*/
 .letter-type-wrapper {
     display: block;

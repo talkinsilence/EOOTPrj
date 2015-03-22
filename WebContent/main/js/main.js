@@ -7,11 +7,11 @@
     });
     
     $('.btn-close, .letter-transp-bg').click(function () {
+    	location.reload();
         $('.letter').fadeOut(10);
     });
     
     $('.btn-close-letter-view, .letter-view-transp-bg').click(function () {
-    	location.reload();
         $('.letter-view-wrapper').fadeOut(10);
     });
     
@@ -29,8 +29,6 @@
     });
 
     $('.letter-title').click(function(){
-    	$(this).css("color", "#000");
-    	
     	var lvbox = $('.letter-view-box');
     	lvbox.empty();
     	
@@ -46,6 +44,7 @@
     		}
     	});
     	$('.letter-view-wrapper').fadeIn(700);
+    	$(this).css("color", "#000");
     });
     	
     $('#letter-write').click(function () {
@@ -62,6 +61,14 @@
         $('.letter-type-wrapper').hide(10, function () {
             $('.letter-write-wrapper').fadeIn(200);
         });
+    });
+    
+    $('.letter-type.voice').click(function () {
+        alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");
+    });
+    
+    $('.letter-type.video').click(function () {
+        alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");
     });
 
     $('.delete').click(function () {
