@@ -1,3 +1,6 @@
+<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.NeighborDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBNeighborDao"%>
 <%@page import="com.eoot.eootprj.model.FamInvitation"%>
 <%@page import="com.eoot.eootprj.model.FamInvitationJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.FamInvitationDao"%>
@@ -15,18 +18,21 @@
 
 	MemberDao memberDao = new MyBMemberDao();
 	FamInvitationDao famInvDao = new MyBFamInvitationDao();
+	NeighborDao neighborDao = new MyBNeighborDao();
 	
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
 	
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
-	List<FamInvitationJoinMember> famInvMe = famInvDao.getInvsMe(uid);
-	List<FamInvitationJoinMember> finv = famInvDao.getInvs(uid);
+	List<FamInvitationJoinMember> famInvsMe = famInvDao.getInvsMe(uid);
+	List<FamInvitationJoinMember> finvs = famInvDao.getInvs(uid);
+	List<NeighborJoinMember> neis = neighborDao.getNeis(uid);
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
-	pageContext.setAttribute("famInvMe", famInvMe);
-	pageContext.setAttribute("finv", finv);
+	pageContext.setAttribute("famInvMe", famInvsMe);
+	pageContext.setAttribute("finv", finvs);
+	pageContext.setAttribute("neis", neis);
 	
 %>
 <!DOCTYPE html>
@@ -287,12 +293,20 @@
                                     </div>
                                     
                                     <div id="eoot-with-add-view">
-                                        <ul>
-                                            <li class="eoot-with-get-famname">나미네집!!!</li>
-                                            <li class="eoot-with-get-name">나미 타 커쇼 쭈구리비버</li>
-                                            <li class="eoot-with-get-msg">우리 이웃 맺어요!!~~!!</li>
-                                            <li class="waiting">대기중</li>
-                                        </ul>
+                                    	<c:if test="${empty neis}">
+                                    		이웃신청 기록이 없습니다.
+                                    	</c:if>
+                                    	
+                                    	<c:if test="${not empty neis}">
+                                    		<c:forEach var="n" items="${neis}">
+	                                    		<ul>
+		                                            <li class="eoot-with-get-famname">${n.famname}</li>
+		                                            <li class="eoot-with-get-name">${n.name}</li>
+		                                            <li class="eoot-with-get-msg">${n.askmsg}</li>
+		                                            <li class="waiting">대기중</li>
+	                                        	</ul>
+                                        	</c:forEach>
+                                    	</c:if>
                                     </div>
                                 </div>
                             </div>
