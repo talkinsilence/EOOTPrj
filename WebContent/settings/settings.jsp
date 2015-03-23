@@ -1,3 +1,6 @@
+<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.NeighborDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBNeighborDao"%>
 <%@page import="com.eoot.eootprj.model.FamInvitation"%>
 <%@page import="com.eoot.eootprj.model.FamInvitationJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.FamInvitationDao"%>
@@ -15,18 +18,21 @@
 
 	MemberDao memberDao = new MyBMemberDao();
 	FamInvitationDao famInvDao = new MyBFamInvitationDao();
+	NeighborDao neighborDao = new MyBNeighborDao();
 	
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
 	
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
-	List<FamInvitationJoinMember> famInvMe = famInvDao.getInvsMe(uid);
-	List<FamInvitationJoinMember> finv = famInvDao.getInvs(uid);
+	List<FamInvitationJoinMember> famInvsMe = famInvDao.getInvsMe(uid);
+	List<FamInvitationJoinMember> finvs = famInvDao.getInvs(uid);
+	List<NeighborJoinMember> neis = neighborDao.getNeis(uid);
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
-	pageContext.setAttribute("famInvMe", famInvMe);
-	pageContext.setAttribute("finv", finv);
+	pageContext.setAttribute("famInvMe", famInvsMe);
+	pageContext.setAttribute("finv", finvs);
+	pageContext.setAttribute("neis", neis);
 	
 %>
 <!DOCTYPE html>
@@ -116,14 +122,15 @@
                     <h3>우 리 집</h3>
                     <div>
 						<c:if test="${not empty famInvMe}">
-							<c:forEach var="i" items="${famInvMe}">
+							<c:forEach var="i" items="${famInvMe}" varStatus="idx">
 		                        <div id="invited">
+		                        <input type="hidden" id="${idx.count}" value="${i.acceptmid}" />
 		                            <ul>
 		                                <li>
 		                                    <a href="">${i.name}</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
 		                                    <p>수락하시면 현재 가족페이지의 모든 자료는 삭제되고,<br />${i.name}님의 가족페이지에 있는 자료를 공유하게 됩니다.</p>
-		                                    <input type="button" name="accept-fam" value="수락" />
-		                                    <input type="button" name="reject-fam" value="거절" class="btn-cancel" />
+		                                    <input type="button" class="btn-invited-accept" name="accept-fam" value="수락" />
+		                                    <input type="button" class="btn-invited-reject btn-cancel" name="reject-fam" value="거절" />
 		                                </li>
 		                            </ul>
 		                        </div>
@@ -286,12 +293,20 @@
                                     </div>
                                     
                                     <div id="eoot-with-add-view">
-                                        <ul>
-                                            <li class="eoot-with-get-famname">나미네집!!!</li>
-                                            <li class="eoot-with-get-name">나미 타 커쇼 쭈구리비버</li>
-                                            <li class="eoot-with-get-msg">우리 이웃 맺어요!!~~!!</li>
-                                            <li class="waiting">대기중</li>
-                                        </ul>
+                                    	<c:if test="${empty neis}">
+                                    		이웃신청 기록이 없습니다.
+                                    	</c:if>
+                                    	
+                                    	<c:if test="${not empty neis}">
+                                    		<c:forEach var="n" items="${neis}">
+	                                    		<ul>
+		                                            <li class="eoot-with-get-famname">${n.famname}</li>
+		                                            <li class="eoot-with-get-name">${n.name}</li>
+		                                            <li class="eoot-with-get-msg">${n.askmsg}</li>
+		                                            <li class="waiting">대기중</li>
+	                                        	</ul>
+                                        	</c:forEach>
+                                    	</c:if>
                                     </div>
                                 </div>
                             </div>

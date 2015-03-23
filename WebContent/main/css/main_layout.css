@@ -363,12 +363,12 @@ body {
     width: auto;
     height: 100%;
     left: 50%;
-    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
     /*
     width: 100%;
     height: auto;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
     */
 }
 
@@ -410,15 +410,19 @@ body {
     .preview-wrapper {
         width: 814px;
     	height: 80px;
+    	overflow-y:auto;
     }
-}
+}  
+
+@media screen and (max-height: 768px) {
+    .preview-vilpost-wrapper {
+        margin-right: 36px;
+    }
+}  
 
 @media screen and (max-height: 1024px) {
     .lower-right {
 		overflow-y: hidden;
     }
-    
-@media screen and (max-height: 1024px) {
-    .lower-right {
-		overflow-y: hidden;
-    }
+}    
+

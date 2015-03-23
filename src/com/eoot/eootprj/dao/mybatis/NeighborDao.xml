@@ -4,9 +4,17 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-    <mapper namespace="com.eoot.eootprj.dao.FamInvitationDao">
-    
-    	<insert id="insertInv" parameterType="Faminv">
+    <mapper namespace="com.eoot.eootprj.dao.NeighborDao">
+    	
+    	<insert id="insertNei" parameterType="Neighbor">
+    		INSERT INTO NEIGHBORS(ASKMID, ACCEPTMID, ASKREGDATE, STATE) VALUES(#{ASKID}, #{ACCEPTMID}, GETDATE(), 0);
+    	</insert>
+    	
+    	<select id="getNeis" parameterType="String" resultType="NeighborJoinMember">
+    		SELECT * FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ASKMID = M.MID WHERE N.ACCEPTMID = #{acceptmid} AND state = 0;
+    	</select>
+    	
+    	<!-- <insert id="insertInv" parameterType="Faminv">
     		insert into FamInvitations(askmid, acceptmid, askregdate, state) values(#{askmid}, #{acceptmid}, getDate(), 0);
     	</insert>
     	
@@ -20,5 +28,5 @@
     	
     	<select id="getInv" parameterType="String" resultType="FamInv">
     		SELECT * FROM (SELECT * FROM FAMINVITATIONS WHERE ACCEPTMID = #{param1}) FAMINVITATIONS WHERE ASKMID = #{param2}
-    	</select>
+    	</select> -->
     </mapper>

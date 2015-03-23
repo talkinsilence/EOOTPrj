@@ -88,6 +88,16 @@ $(document).ready(function () {
 
     
     /////////////////////// 우리집 /////////////////////////
+    // 가족 초대 영역
+    $(".btn-invited-reject").click(function(){
+    	alert($("#1").val());
+    	/*alert(test);
+    	$.ajax({
+    		type=""
+    		url:""
+    	});*/
+    });
+    
     // 이름
     $('#myhome-name-edit').click(function () {
         $("#myhome-name-wrapper").css("display", "inline-block");

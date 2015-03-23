@@ -10,40 +10,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
-	/* String data = "";
-	String nametxt = request.getParameter("nametxt");
-	String uid = "viovio@eoot.com";
-	
-	if(nametxt != ""){
-		Member m = new Member();
-		
-		m.setName(nametxt);
-		m.setMid(uid);
-		
-		MemberDao memberDao = new MyBMemberDao();
-		memberDao.updateName(m);
-		
-		data = nametxt;
-	}
-	
-	out.write(data); */
 	String uid = "viovio@eoot.com";
 	String askmid = request.getParameter("askmid");
-	
 	
 	MemberDao memberDao = new MyBMemberDao();
 	FamInvitationDao famInvDao = new MyBFamInvitationDao();
 	
+	
+	
 	if(memberDao.getMember(askmid) != null){
 		
-		FamInvitation famInvitation = new FamInvitation();
-		famInvitation.setAskmid(askmid);
-		famInvitation.setAcceptmid(uid);
-		
-		famInvDao.insertInv(famInvitation);
+		if(famInvDao.getInv(uid, askmid) == null){
+			FamInvitation famInvitation = new FamInvitation();
+			famInvitation.setAskmid(askmid);
+			famInvitation.setAcceptmid(uid);
+			
+			famInvDao.insertInv(famInvitation);
+		}
 	}
-	
-	List<FamInvitationJoinMember> finv = famInvDao.getAskMids(uid);
+	List<FamInvitationJoinMember> finv = famInvDao.getInvs(uid);
 	
 	pageContext.setAttribute("finv", finv);
 %>
