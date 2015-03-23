@@ -18,4 +18,7 @@
     		SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ACCEPTMID = #{acceptmid} AND state = 0;
     	</select>
     	
+    	<select id="getInv" parameterType="String" resultType="FamInv">
+    		SELECT * FROM (SELECT * FROM FAMINVITATIONS WHERE ACCEPTMID = #{param1}) FAMINVITATIONS WHERE ASKMID = #{param2}
+    	</select>
     </mapper>

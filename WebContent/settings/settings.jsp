@@ -116,14 +116,15 @@
                     <h3>우 리 집</h3>
                     <div>
 						<c:if test="${not empty famInvMe}">
-							<c:forEach var="i" items="${famInvMe}">
+							<c:forEach var="i" items="${famInvMe}" varStatus="idx">
 		                        <div id="invited">
+		                        <input type="hidden" id="${idx.count}" value="${i.acceptmid}" />
 		                            <ul>
 		                                <li>
 		                                    <a href="">${i.name}</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
 		                                    <p>수락하시면 현재 가족페이지의 모든 자료는 삭제되고,<br />${i.name}님의 가족페이지에 있는 자료를 공유하게 됩니다.</p>
-		                                    <input type="button" name="accept-fam" value="수락" />
-		                                    <input type="button" name="reject-fam" value="거절" class="btn-cancel" />
+		                                    <input type="button" class="btn-invited-accept" name="accept-fam" value="수락" />
+		                                    <input type="button" class="btn-invited-reject btn-cancel" name="reject-fam" value="거절" />
 		                                </li>
 		                            </ul>
 		                        </div>
