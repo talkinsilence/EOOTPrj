@@ -1,4 +1,7 @@
-﻿<%@page import="com.eoot.eootprj.model.LetterJoinMember"%>
+﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
+<%@page import="com.eoot.eootprj.dao.VilPostDao"%>
+<%@page import="com.eoot.eootprj.model.VilPost"%>
+<%@page import="com.eoot.eootprj.model.LetterJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBLetterDao"%>
 <%@page import="com.eoot.eootprj.dao.LetterDao"%>
 <%@page import="com.eoot.eootprj.model.Letter"%>
@@ -21,6 +24,7 @@
 	
 	MemberDao memberDao = new MyBMemberDao();
 	LetterDao letterDao = new MyBLetterDao();
+	//VilPostDao vilPostDao = new MyBVilPostDao();
 	
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
@@ -31,6 +35,8 @@
 	
 	List<LetterJoinMember> nls = letterDao.getNewLetters(uid);
 	int nlsSize = nls.size();
+
+	//List<VilPost> tvps = vilPostDao.getTopVilPosts(vcode);
 	
 	/* for( Member ms : fms)
 		System.out.println(ms.getFamcode()); */
@@ -41,6 +47,7 @@
 	pageContext.setAttribute("ls", ls);
 	pageContext.setAttribute("lsSize", lsSize);
 	pageContext.setAttribute("nlsSize", nlsSize);
+	//pageContext.setAttribute("tvps", tvps);
 %>
 
 <!DOCTYPE html>
@@ -52,9 +59,6 @@
     <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />    
     <link href="css/bind_main.css" rel="stylesheet" type="text/css" />
     <link href="css/bind_letter.css" rel="stylesheet" type="text/css" />
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script src="../resource/js/modernizr.js" type="text/javascript"></script>
     <script src="../resource/js/jquery-2.1.3.js"></script>
     <script src="../resource/js/menu.js" type="text/javascript"></script>
@@ -127,22 +131,55 @@
             </aside>
             <aside class="lower-right">
             	<div class="preview-wrapper">
-                    <div class="preview">
-                        <div class="preview-post pic-box">
-                            <img class="preview-pic" src="images/byul2.jpg"/>
-                        </div>
-                        <div class="preview-post text-box">
-                            <p class="text-box-title">별이의 폭풍성장</p>
-                        </div>
-                    </div>
-                    <div class="preview">
-                        <div class="preview-post pic-box">
-                            <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
-                        </div>
-                        <div class="preview-post text-box">
-                            <p class="text-box-title">마을/주변 인기게시물</p>
-                        </div>
-                    </div>
+	            	<div class="preview-fampost-wrapper">
+	            		<div class="preview-fampost pic-box">
+		                    <img class="preview-pic" src="images/byul2.jpg"/>
+		                    <div class="preview-pic-dscrp hidden"></div>
+		                </div>
+		                <div class="preview-fampost pic-box">
+		                    <img class="preview-pic" src="images/byul22.jpg"/>
+		                    <div class="preview-pic-dscrp hidden"></div>
+		                </div>
+		                <div class="preview-fampost text-box">
+		                    <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
+		                </div>
+		                <div class="preview-fampost pic-box">
+		                    <img class="preview-pic" src="images/byul222.png"/>
+		                    <div class="preview-pic-dscrp hidden"></div>
+		                </div>
+		                <div class="preview-fampost text-box">
+		                    <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
+		                </div>
+		                <div class="preview-fampost pic-box">
+		                    <img class="preview-pic" src="images/byul2222.jpg"/>
+		                    <div class="preview-pic-dscrp hidden"></div>
+		                </div>
+	            	</div>
+	            	<div class="preview-vilpost-wrapper">
+	            		<span>주변 인기게시물</span>
+	            		<c:forEach var="i" items="${tvps}" >
+		            		<div class="preview-vilpost pic-box">
+			                    <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
+			                    <div class="preview-pic-dscrp hidden"></div>
+			                </div>
+			                <div class="preview-vilpost text-box">
+			                	<c:if test="${i.sort.equals('1')}">
+									<div class="village-board-label 1"></div>
+								</c:if>
+								<c:if test="${i.sort.equals('2')}">
+									<div class="village-board-label 2"></div>
+								</c:if>
+								<c:if test="${i.sort.equals('3')}">
+									<div class="village-board-label 3"></div>
+								</c:if>
+								<c:if test="${i.sort.equals('4')}">
+									<div class="village-board-label 4"></div>
+								</c:if>
+			                    <p class="text-box-title">${i.title}</p>
+			                    <p class="text-box-content">${i.content}</p>
+			                </div>
+		                </c:forEach>
+	            	</div>
                 </div>
             </aside>
         </div>

@@ -22,7 +22,6 @@ public interface VilPostDao {
 			+ "WHERE MJOINV.NUM BETWEEN 1 AND 30;")
 	public List<VilPostJoinMember> getVilPosts(@Param("query")String query, @Param("field")String field);
 
-	
 	@Select("SELECT TOP 1 * FROM VilPosts "
 			+ "WHERE REGDATE &gt; (SELECT REGDATE FROM VilPosts "
 			+ "WHERE CODE = #{code})ORDER BY REGDATE ASC")

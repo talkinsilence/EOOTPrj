@@ -39,7 +39,6 @@ VALUES(3, '댓글댓글댓글3번째', 'nami@eoot.com', 3, getDate());
 INSERT INTO VILPOSTCommentS(CODE, content, writer, VilPostCode, Regdate)
 VALUES(4, '댓글댓글댓글4번째', 'nami@eoot.com', 1, getDate());
 
-
 SELECT * FROM (SELECT M.NAME, M.MID, M.PROFILEPIC, M.ADDRESS, V.* ,(ROW_NUMBER() OVER (ORDER BY V.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN VILPOSTS V ON M.MID=V.WRITER WHERE V.${field} LIKE '%${query}%') MJOINV WHERE MJOINV.NUM BETWEEN 1 AND 30;
 
 UPDATE VilPOSTFILES SET SRC = '../village/refimg/img00.jpg' WHERE code=1;
@@ -70,6 +69,8 @@ SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.READER=M."MID" WHERE (L.READER
 SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.WRITER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L.TITLE LIKE '%mom%' OR L.CONTENT LIKE '%mom%') ORDER BY L.SENDDATE DESC;
 SELECT COUNT(*) CNT FROM LETTERS L INNER JOIN MEMBERS M ON L.READER=M."MID" WHERE (L.READER = 'viovio@eoot.com') AND (L."READ" = 0);
 SELECT COUNT(*) CNT FROM LETTERS WHERE READER ='viovio@eoot.com';
+
+
 
 INSERT INTO VilPosts (Code, Sort, Title, Content, Writer, Regdate, Hit, LikeCnt, ClipCnt, CommentCnt)
 VALUES (2, 1, 'title', 'content', 'nami@eoot.com', getDate(), 0,0,0,0);
