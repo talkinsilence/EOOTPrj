@@ -7,7 +7,7 @@
 				"height": "auto",
 			    "left": "0",
 				"top": "50%",
-		    	"transform": "translate(0, -50%)"
+		    	"-webkit-transform": "translate(0, -50%)"
 			})
 		}
 	});
@@ -135,5 +135,21 @@
                 alert("편지가 전송되었습니다^ㅇ^");
             });
         }
+    });
+
+    /*===========< newsFeed >=============================================*/
+    $('.alarm.news').click(function () {
+
+        //alert($('.main').height());
+        //alert($('.lower').height());
+        
+        var pushMain = $('.main').height() + $('.lower').height();
+        //alert(pushMain);
+    	
+        $('.main').animate({
+        	'marginTop': -pushMain + 'px'
+        }, 800, function(){
+        	$('.newsFeed').load("../newsFeed/newsFeed.jsp");
+        });
     });
 })

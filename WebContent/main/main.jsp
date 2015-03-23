@@ -59,10 +59,12 @@
     <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />    
     <link href="css/bind_main.css" rel="stylesheet" type="text/css" />
     <link href="css/bind_letter.css" rel="stylesheet" type="text/css" />
+    <link href="../newsFeed/css/bind_newsFeed.css" rel="stylesheet" type="text/css" />
     <script src="../resource/js/modernizr.js" type="text/javascript"></script>
     <script src="../resource/js/jquery-2.1.3.js"></script>
     <script src="../resource/js/menu.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
+    <script src="../newsFeed/js/newsFeed.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -157,13 +159,13 @@
 	            	</div>
 	            	<div class="preview-vilpost-wrapper">
 	            		<span>주변 인기게시물</span>
-	            		<c:forEach var="i" items="${tvps}" >
+	            		<%-- <c:forEach var="i" items="${tvps}" > --%>
 		            		<div class="preview-vilpost pic-box">
 			                    <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
 			                    <div class="preview-pic-dscrp hidden"></div>
 			                </div>
 			                <div class="preview-vilpost text-box">
-			                	<c:if test="${i.sort.equals('1')}">
+			                	<%-- <c:if test="${i.sort.equals('1')}">
 									<div class="village-board-label 1"></div>
 								</c:if>
 								<c:if test="${i.sort.equals('2')}">
@@ -174,11 +176,12 @@
 								</c:if>
 								<c:if test="${i.sort.equals('4')}">
 									<div class="village-board-label 4"></div>
-								</c:if>
+								</c:if> --%>
+								<div class="village-board-label"></div>
 			                    <p class="text-box-title">${i.title}</p>
 			                    <p class="text-box-content">${i.content}</p>
 			                </div>
-		                </c:forEach>
+		                <%-- </c:forEach> --%>
 	            	</div>
                 </div>
             </aside>
@@ -303,6 +306,6 @@
 	        
         </div>
 	</div>
-	
+	<div class="newsFeed"></div>
 </body>
 </html>
