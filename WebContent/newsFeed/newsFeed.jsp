@@ -24,9 +24,35 @@
 	/* FamPostDao famPostDao = new MyBFamPostDao();
 	List<FamPostJoinMember> fps = famPostDao.getFamPosts();  */
 	
-	/* pageContext.setAttribute("m", m);
-	pageContext.setAttribute("fps", fps); */
+	pageContext.setAttribute("m", m);
+	//pageContext.setAttribute("fps", fps);
 %>
+<script>
+	var toolbar = $('#toolbar');
+	
+	$(window).scroll(function () {
+	    if (toolbar.offset().top !== 0) {
+	        if (!toolbar.hasClass('shadow')) {
+	            toolbar.addClass('shadow');
+	        }
+	    } else {
+	        toolbar.removeClass('shadow');
+	    }
+	});
+	
+	$('.toolbar-opt').click(function () {
+	    $('.opt-wrapper').toggle();
+	});
+	$('.opt').click(function(){
+		$(this).parent().hide();
+	});
+	
+/* 	var logout = $('.user.log-out');
+	function logout(){
+		
+	}
+	logout.click(logout()); */
+</script>
 
     <section>
         <h1 class="hidden">뉴스피드 툴바</h1>
