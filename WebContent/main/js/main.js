@@ -1,6 +1,18 @@
 ﻿$(document).ready(function () {
-
-    //===========< letter >==============================================
+	/*===========< lower-right >========================================*/
+	$('.preview-pic').each(function(){
+		if($(this).height() >= $(this).width()){
+			$(this).css({
+			    "width": "100%",
+				"height": "auto",
+			    "left": "0",
+				"top": "50%",
+		    	"transform": "translate(0, -50%)"
+			})
+		}	
+	});
+	
+    /*===========< letter >=============================================*/
     $('.alarm.let').click(function () {
         $('.letter-view-wrapper, .letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-box-wrapper').fadeIn(200);
@@ -33,20 +45,13 @@
     	lvbox.empty();
     	
     	var lcode = $(this).parent().find('.letter-code').html();
-    	$.ajax({
-    		type:"post",
-    		url:"letter_view.jsp",
-    		data: {
-    			code:lcode
-    		},
-    		success:function(){
-    			lvbox.load("letter_view.jsp?code="+lcode);
-    		}
+    	lvbox.load("letter_view.jsp?code="+lcode, function(){
+    		alert("test");
+    		$('.letter-view-wrapper').fadeIn(10);
     	});
-    	$('.letter-view-wrapper').fadeIn(700);
     	$(this).css("color", "#000");
     });
-    	
+
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);

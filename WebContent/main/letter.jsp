@@ -29,7 +29,20 @@ $('#letter-items-back').click(function(){
 
 if($('.letter-search').val() == "")
 	$('#letter-items-back').css("display", "none");
+/* 	
+$('.letter-title').click(function(){
+	var lvbox = $('.letter-view-box');
+	lvbox.empty();
+	
+	var lcode = $(this).parent().find('.letter-code').html();
+	lvbox.load("letter_view.jsp?code="+lcode, function(){
+		alert("test");
+		$('.letter-view-wrapper').fadeIn(10);
+	});
+	$(this).css("color", "#000");
+});	 */
 </script>
+
 <c:if test="${empty ls}">
 	<p class="letter-items-none">검색 결과가 없습니다</p>
 </c:if>
