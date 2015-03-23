@@ -59,9 +59,6 @@
     <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />    
     <link href="css/bind_main.css" rel="stylesheet" type="text/css" />
     <link href="css/bind_letter.css" rel="stylesheet" type="text/css" />
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script src="../resource/js/modernizr.js" type="text/javascript"></script>
     <script src="../resource/js/jquery-2.1.3.js"></script>
     <script src="../resource/js/menu.js" type="text/javascript"></script>

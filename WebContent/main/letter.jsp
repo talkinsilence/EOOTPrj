@@ -29,6 +29,10 @@ $('#letter-items-back').click(function(){
 
 if($('.letter-search').val() == "")
 	$('#letter-items-back').css("display", "none");
+	
+$('.letter-title').click(function(){
+	alert("aaa");
+});
 /* 	
 $('.letter-title').click(function(){
 	var lvbox = $('.letter-view-box');

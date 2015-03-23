@@ -9,7 +9,7 @@
 				"top": "50%",
 		    	"transform": "translate(0, -50%)"
 			})
-		}	
+		}
 	});
 	
     /*===========< letter >=============================================*/
@@ -32,7 +32,6 @@
     });
     
     $('#letter-search').click(function(){
-    	//done with a help from newlec
     	var input = $(this).parent().find('.letter-search');
     	
     	var lbox = $('.letter-item-box');
@@ -40,16 +39,15 @@
     	lbox.load("letter.jsp?query="+input.val());
     });
 
-    $('.letter-title').click(function(){
+    $('.letter-title').click(function(){    	
     	var lvbox = $('.letter-view-box');
     	lvbox.empty();
     	
     	var lcode = $(this).parent().find('.letter-code').html();
     	lvbox.load("letter_view.jsp?code="+lcode, function(){
-    		alert("test");
-    		$('.letter-view-wrapper').fadeIn(10);
+    		$('.letter-view-wrapper').show();
     	});
-    	$(this).css("color", "#000");
+		$(this).css("color", "#000");
     });
 
     $('#letter-write').click(function () {
