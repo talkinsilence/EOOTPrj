@@ -1,3 +1,7 @@
+<%@page import="com.eoot.eootprj.model.FamInvitation"%>
+<%@page import="com.eoot.eootprj.model.FamInvitationJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.FamInvitationDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamInvitationDao"%>
 <%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
@@ -5,19 +9,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String uid = "viovio@eoot.com";
 
 	MemberDao memberDao = new MyBMemberDao();
+	FamInvitationDao famInvDao = new MyBFamInvitationDao();
 	
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
 	
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
+	List<FamInvitationJoinMember> famInvMe = famInvDao.getInvsMe(uid);
+	List<FamInvitationJoinMember> finv = famInvDao.getInvs(uid);
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
-	
+	pageContext.setAttribute("famInvMe", famInvMe);
+	pageContext.setAttribute("finv", finv);
 	
 %>
 <!DOCTYPE html>
@@ -48,7 +57,7 @@
                 <div id="profile-edit-body">
                     <div id="profile-edit-viewer-wrapper">
                         <div id="profile-edit-viewer">
-                            <img id="profile-edit-thumbnail" src="${pageContext.request.contextPath}/${m.profilepic}" />
+                            <img id="profile-edit-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
                         </div>
                     </div>
 
@@ -73,7 +82,7 @@
                 
                 <div id="profile">                 
                     <div id="profile-pic-box-main">
-                        <img id="profile-thumbnail" src="${pageContext.request.contextPath}/${m.profilepic}" />
+                        <img id="profile-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
                         <div>사진 변경</div>
                     </div>
 
@@ -106,18 +115,21 @@
                 <div id="accordion">
                     <h3>우 리 집</h3>
                     <div>
+						<c:if test="${not empty famInvMe}">
+							<c:forEach var="i" items="${famInvMe}">
+		                        <div id="invited">
+		                            <ul>
+		                                <li>
+		                                    <a href="">${i.name}</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
+		                                    <p>수락하시면 현재 가족페이지의 모든 자료는 삭제되고,<br />${i.name}님의 가족페이지에 있는 자료를 공유하게 됩니다.</p>
+		                                    <input type="button" name="accept-fam" value="수락" />
+		                                    <input type="button" name="reject-fam" value="거절" class="btn-cancel" />
+		                                </li>
+		                            </ul>
+		                        </div>
+	                        </c:forEach>
+                        </c:if>
 
-                        <!-- <div id="invited">
-                            <ul>
-                                <li>
-                                    <a href="">뵤뵤뵤뵤</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
-                                    <p>수락하시면 현재 가족페이지의 모든 자료는 삭제되고,<br />뵤뵤뵤뵤님의 가족페이지에 있는 자료를 공유하게 됩니다.</p>
-                                    <input type="button" name="accept-fam" value="수락" />
-                                    <input type="button" name="reject-fam" value="거절" class="btn-cancel" />
-                                </li>
-                            </ul>
-                        </div> -->
-                        
                         <div id="myhome-name">
                            	 우리집 이름 : 
                            	<label id="profile-myhome-name-val">
@@ -199,18 +211,28 @@
                             <div id="myhome-member-mng-wrapper">
 
                                 <span>가족 초대하기</span>
-                                <input type="text" />
-                                <input type="button" value="초대"/>
+                                <input type="text" id="myhome-member-mng-txt"/>
+                                <input type="button" id="btn-member-inv" value="초대"/>
                                 
-                                <fieldset>
+                                <fieldset id="myhome-member-mng-inv-view">
                                     <legend>가족 초대 현황</legend>
-
-                                    <ul>
-                                        <li class="myhome-member-mng-uid">namita@gmail.com</li>
-                                        <li class="myhome-member-mng-name">나미짱</li>
-                                        <li class="myhome-member-mng-state">대기중</li>
-                                        <li class="myhome-member-mng-date">2012-12-30</li>
-                                    </ul>
+									
+									<c:if test="${empty finv}">
+										<div>가족 초대 기록이 없습니다.</div>
+									</c:if>
+									
+									<c:if test="${not empty finv}">
+										<c:forEach var="i" items="${finv}">
+		                                    <ul>
+		                                        <li class="myhome-member-mng-uid">${i.askmid}</li>
+		                                        <li class="myhome-member-mng-name">${i.name}</li>
+		                                        <li class="myhome-member-mng-state">대기중</li>
+		                                        <li class="myhome-member-mng-date">
+													<fmt:formatDate value="${i.askregdate}" pattern="yyyy-MM-dd"/>
+												</li>
+		                                    </ul>
+	                                    </c:forEach>
+                                    </c:if>
                                 </fieldset>               
                             </div>
                         </div>

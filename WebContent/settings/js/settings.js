@@ -145,6 +145,11 @@ $(document).ready(function () {
     });
 
     // 구성원 관리
+    $("#btn-member-inv").click(function(){
+    	$("#myhome-member-mng-inv-view").load("insertInvProc.jsp?askmid="+$("#myhome-member-mng-txt").val());
+    	$("#myhome-member-mng-txt").val("");
+    });
+    
     $('#myhome-member-mng-view').click(function () {
         var view = $("#myhome-member-mng-view");
 
