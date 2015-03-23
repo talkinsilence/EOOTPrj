@@ -8,6 +8,17 @@ select * from MEMBERS;
 select * from LETTERS;
 select * from ADMINS;
 SELECT * FROM VilPosts WHERE CODE = 1;
+select * from FamInvitations;
+
+insert into FamInvitations(askmid, acceptmid, askregdate,askmsg,state)
+values('ddd@ddd.dd','cskn2@naver.com',getDate(),'드루dddd와',0);
+
+select * from faminvitations where state = 0
+SELECT * FROM FAMINVITATIONS WHERE ASKMID = 'viovio@eoot.com' AND STATE = 0;
+
+SELECT * from (select * from faminvitations where state = 0) faminvitations
+where acceptmid = 'cskn2@naver.com';
+
 
 delete from members;
 delete from neighbors;
@@ -48,6 +59,10 @@ INSERT INTO LETTERS VALUES('lettercode12', 'cskn2@naver.com', GETDATE(), '누나
 UPDATE LETTERS SET CONTENT='content' WHERE CONTENT='title';
 UPDATE LETTERS SET "READ"=0;
 
+SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ACCEPTMID = 'viovio@eoot.com' AND state = 0;
+SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ASKMID = 'viovio@eoot.com' AND state = 0;
+
+SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ASKMID = 'viovio@eoot.com';
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON MEMBERS."MID"=FAMPOSTS.WRITER ORDER BY FAMPOSTS.REGDATE DESC;
 SELECT * FROM MEMBERS INNER JOIN LETTERS ON MEMBERS."MID"=LETTERS.READER ORDER BY LETTERS.SENDDATE DESC;
 SELECT * FROM MEMBERS M INNER JOIN LETTERS L ON M."MID"=L.READER WHERE READER = 'viovio@eoot.com' ORDER BY L.SENDDATE DESC;
@@ -93,7 +108,6 @@ AS
     left outer JOIN vilpostcomments VC on V.code = VC.vilpostcode;
 
 SELECT * FROM NOTICEVIEW130 WHERE TITLE LIKE~;         
->>>>>>> refs/remotes/origin/master
 
 SELECT * FROM MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC; 
 SELECT * (SELECT * FROM MEMBERS M2 WHERE NOT EXISTS M2.MID='viovio@eoot.com')FROM MEMBERS M1 WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
@@ -101,22 +115,13 @@ SELECT * (SELECT * FROM MEMBERS M2 WHERE NOT EXISTS M2.MID='viovio@eoot.com')FRO
 SELECT  FamPosts.*,Members.*,fampostfiles.*,fampostcomments.*
 FROM FamPosts INNER JOIN Members ON FamPosts.Writer = Members.Mid 
          left outer JOIN FamPostFiles on FamPosts.code = FamPostfiles.fampostcode
-         left outer JOIN fampostcomments on famposts.code = fampostcomments.fampostcode;
-<<<<<<< HEAD
+         left outer JOIN fampostcomments on famposts.code = fampostcomments.fampostcode;   
 
-=======
-         
-         
-         
-         
->>>>>>> refs/remotes/origin/master
-
-<<<<<<< HEAD
 UPDATE FAMPOSTFILES SET src = 'images/kim3.jpg' WHERE code='11';
-=======
+
 UPDATE MEMBERS SET PROFILEPIC = '/EOOTPrj/main/images/nami3.jpg' WHERE MID = 'talkinsilence21@gmail.com';
 
->>>>>>> refs/remotes/origin/master
+
 SELECT * FROM (SELECT * FROM MEMBERS WHERE MID <> 'viovio@eoot.com') MEMBERS WHERE FAMCODE = 'viovio@eoot.com' ORDER BY BIRTHDAY ASC;
 
 SELECT * FROM MEMBERS INNER JOIN FAMPOSTS ON FAMPOSTS.WRITER=MEMBERS.MID ORDER BY FAMPOSTS.REGDATE DESC;
@@ -205,8 +210,7 @@ FROM FamPosts F INNER JOIN Members M ON F.Writer = M.Mid
          left outer JOIN FamPostFiles FF on F.code = FF.fampostcode
          left outer JOIN fampostcomments FC on F.code = FC.fampostcode;
          
-         
-<<<<<<< HEAD
+
 SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER WHERE F.title LIKE '%fam%') MJOINF WHERE MJOINF.NUM BETWEEN 1 AND 30
 
 SELECT M.NAME, M.PROFILEPIC, V.* ,(ROW_NUMBER() OVER (ORDER BY V.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN VILPOSTcomments V ON M.MID=V.WRITER;
@@ -216,10 +220,10 @@ SELECT * FROM FamPostfiles order by code desc;
 SELECT * FROM FamPostfiles 
 
 UPDATE FAMPOSTFILES SET regdate = getdate() WHERE code='6';
-=======
+
 SELECT * FROM (SELECT M.NAME , F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM 
 FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER WHERE F.title LIKE '%fam%') MJOINF WHERE MJOINF.NUM BETWEEN 1 AND 30
->>>>>>> refs/remotes/origin/master
+
 
 UPDATE famPOSTs SET clipcnt = '1' WHERE code=2;
 
