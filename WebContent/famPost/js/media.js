@@ -21,14 +21,7 @@
     });
     
     $(".dv-btn-close").click(function() {
-		$(".dv-content").animate({
-			height : "20px"
-		}, 500, function() {
-			alert($(this).attr("word-break"));
-			$(this).css("word-break", "inherit");
-			$(".dv-mask").fadeOut(300);
-			$("body").css("overflow", "inherit");
-		});
+		$(".dv-mask").fadeOut(300);
 	});
 
     //------------------등록-------------------------
@@ -41,12 +34,13 @@
     });
 
     //------------------메인--------------------------
-    $(".folder").click(function () {
-        if ($(".folder-list-wrapper").is(":hidden")) {
-            $(".folder-list-wrapper").slideDown("fast");
+    
+    $(".filed").click(function () {
+        if ($(".filed-list-wrapper").is(":hidden")) {
+            $(".filed-list-wrapper").slideDown("fast");
         }
         else {
-            $(".folder-list-wrapper").hide();
+            $(".filed-list-wrapper").hide();
         }
     });
 

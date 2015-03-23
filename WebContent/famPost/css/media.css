@@ -1,5 +1,6 @@
 ﻿body {
     font-family: 'Nanum Gothic', serif;
+    font-size:13px;
 }
 
 .media {
@@ -260,7 +261,7 @@
 
 }
 
-.folder {
+.filed {
     display: block;
     float: right;
     height: 50px;
@@ -280,18 +281,18 @@
     outline:none;
 }
 
-.folder:hover {
+.filed:hover {
     background: linear-gradient(to bottom, #f1f1f1 5%, #ffffff 100%);
     background-color: #f6f6f6;
     color:#A9B1C6;
 }
 
-.folder:active {
+.filed:active {
     position: relative;
     top: 1px;
 }
 
-.folder-list-wrapper{
+.filed-list-wrapper{
     display:none;
     position:absolute;
     top:68px;
@@ -299,13 +300,13 @@
     z-index:1;
 }
 
-.folder-list{
+.filed-list{
     border:1px solid #cccccc;
     border-radius:6px;
     background:#ffffff;
 }
 
-.folder-list-item{
+.filed-list-item1{
     display:block;
     height:38px;
     line-height:35px;
@@ -320,7 +321,26 @@
     outline:none;
 }
 
-.folder-list-item:hover{
+.filed-list-item2{
+    display:block;
+    height:38px;
+    line-height:35px;
+    width:150px;
+    text-align:left;
+    font-family: 'Nanum Gothic', serif;
+    font-weight: bold;
+    font-size: 15px;
+    z-index:5;
+    border:none;
+    background:none;
+    outline:none;
+}
+
+.filed-list-item1:hover{
+    color:#A9B1C6;
+}
+
+.filed-list-item12:hover{
     color:#A9B1C6;
 }
 

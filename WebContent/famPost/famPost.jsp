@@ -93,18 +93,13 @@
 		<div class="my-menu">
 			<button class="upload">
 				upload
-				<!--<select name="folder">
-                    <option value="my-pic">내가 올린 사진</option>
-                    <option value="scrap">스크랩</option>
-                </select>-->
 			</button>
 
-			<input type="button" class="folder" value="folder" />
-
-			<div class="folder-list-wrapper">
-				<div class="folder-list">
-					<button class="folder-list-item">my gallery</button>
-					<button class="folder-list-item">fam gallery</button>
+			<input type="button" class="filed" value="filed" />
+			<div class="filed-list-wrapper">
+				<div class="filed-list">
+					<button class="filed-list-item1">my gallery</button>
+					<button class="filed-list-item2">fam gallery</button>
 				</div>
 			</div>
 
@@ -161,54 +156,17 @@
 					</div>
 
 					<div class="dv-comment-container">
-						<%-- <div class="dv-profile-box">
-							<div class="dv-profile-pic"></div>
-							<div class="dv-profile-name"></div>
-							<div class="dv-profile-title">${fp.getTitle()}</div>
-							<div class="dv-profile-regdae">${fp.getRegdate()}</div>
-						</div>
-
-						<div class="dv-content-popularity-wrapper">
-							<div class="dv-content-box">
-								<div class="dv-content">${fp.getContent()}</div>
-							</div>
-							<div class="dv-popularity-box">
-								<button class="dv-like-cnt-btn">
-									<div class="dv-like-img">
-										<img src="images/btn-like.png" />
-									</div>
-									<div class="dv-like-cnt">${fp.getLikeCnt()}</div>
-								</button>
-								<button class="dv-scrap-cnt-btn">
-									<div class="dv-scrap-img">
-										<img src="images/btn-scrap.png" />
-									</div>
-									<div class="dv-scrap-cnt">${fp.getClipCnt()}</div>
-								</button>
-								<button class="dv-comment-cnt-btn">
-									<div class="dv-comment-img">
-										<img src="images/btn-comment.png" />
-									</div>
-									<div class="dv-comment-cnt">${fp.getCommentCnt()}</div>
-								</button>
-							</div>
-						</div>
-
-						<div class="dv-comment-box-list">
-							<c:forEach var="c" items="${cList}">
-								<div class="dv-comment-box">
-									<div class="dv-comment-writer-pic">${c.profilepic}</div>
-									<div class="dv-comment-writer-name">${c.name}</div>
-									<div class="dv-comment-regdate">${c.regdate}</div>
-									<div class="dv-comment">${c.content}</div>
-								</div>
-							</c:forEach>
-						</div> --%>
+						<!-- famPostView.jsp -->
 					</div>
+					
 					<div class="dv-reg-box">
 						<div class="dv-reg-pic"></div>
-						<input class="dv-reg-input" type="text" placeholder="댓글을 남기세요." />
-						<input class="dv-reg-btn" type="button" value="등록" />
+						<form>
+							<fieldset>
+								<input class="dv-reg-input" type="text" placeholder="댓글을 남기세요." />
+								<input class="dv-reg-btn" type="button" value="등록" />
+							</fieldset>
+						</form>
 					</div>
 				</div>
 				<div class="dv-btn-next"></div>

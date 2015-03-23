@@ -9,34 +9,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<style>
-/* .dv-content {
-    height: 20px;
-    max-height: 474px;
-    width: 338px;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    word-break:inherit; /*컨텐츠 클릭시 속성을 break-all;으로 변경*/
-} */
-</style>
-
 <script>
 	 $(document).ready(function() {
 		$('.dv-content').click(function() {
 			if ($(this).css("word-break") == "normal") {
-				alert($(this).css("word-break"));
+				$(this).css("word-break", "break-all")
+						.css("white-space","inherit");
 				$(this).stop().animate({
 					height : "474px"
-				}, 600,function(){
-					$(this).css("word-break", "break-all");
-					alert($(this).css("word-break"));	
-				});
+				}, 400);
 			} else {
 				$(this).stop().animate({
-					height : "20px"
-				}, 300, function() {
-					$(this).css("word-break", "inherit");
-					alert($(this).css("word-break"));
+					height : "28px"
+				}, 200, function() {
+					$(this).css("word-break", "inherit")
+							.css("white-space","nowrap");	
 				});
 			}
 		});
@@ -65,8 +52,8 @@
 <div class="dv-profile-box">
 	<div class="dv-profile-pic"></div>
 	<div class="dv-profile-name">${fp.getName()}</div>
+	<div class="dv-profile-regdate">${fp.getRegdate()}</div>
 	<div class="dv-profile-title">${fp.getTitle()}</div>
-	<div class="dv-profile-regdae">${fp.getRegdate()}</div>
 </div>
 
 <div class="dv-content-popularity-wrapper">

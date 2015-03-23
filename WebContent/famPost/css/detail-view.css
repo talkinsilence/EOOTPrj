@@ -193,31 +193,37 @@
     display: block;
     float: left;
     height: 25px;
-    width: 288px;
+    width: 144px;
+    margin-top: 14px;
+    text-indent:10px;
+    line-height:25px;
+    font-size:14px;
+}
+
+.dv-profile-regdate {
+    display: block;
+    float: left;
+    height: 25px;
+    width: 144px;
     margin-top: 15px;
     text-indent:10px;
+    font-size:12px;
+    overflow:hidden;
     line-height:25px;
 }
 
 .dv-profile-title {
     display: block;
     float: left;
-    height: 25px;
-    width: 144px;
+    height: 22px;
+    padding-top:3px;
+    width: 288px;
     text-indent:10px;
+    font-size:13px;
     line-height:25px;
 }
 
-.dv-profile-regdae {
-    display: block;
-    float: left;
-    height: 25px;
-    width: 144px;
-    text-indent:10px;
-    line-height:25px;
-}
-
-.dv-content-popularity-wrapper {
+.dv-content-popularity-wrapper {	
     display: inline-block;
     position: absolute;
     background:#fefefe;
@@ -231,13 +237,16 @@
 }
 
 .dv-content {
-    height: 20px;
+    height: 28px;
+    line-height:30px;;
     max-height: 474px;
     width: 338px;
+    font-size:13px;
     overflow: hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
     word-break:inherit;                    /*컨텐츠 클릭시 속성을 break-all;으로 변경*/
+    text-indent:2px;
 }
 
 /*-------popularity------------------------------------------*/
@@ -390,7 +399,7 @@
 .dv-comment-box-list {
     display:block;
     height: 453px;
-    margin-top: 70px;
+    margin-top: 78px;
     overflow-y: auto;
     overflow-x: inherit;
     background:#f1f1f1;
@@ -421,17 +430,19 @@
     display: block;
     float: left;
     height: 20px;
+    line-height:20px;
     width: 288px;
     margin-top: 10px;
-    background: white;
+    text-indent:10px;
 }
 
 .dv-comment-regdate {
     display: block;
     float: left;
     height: 20px;
+    line-height:20px;
     width: 288px;
-    background: orange;
+    text-indent:10px;
 }
 
 .dv-comment {
@@ -441,6 +452,7 @@
     padding-top:5px;
     padding-bottom:5px;
     border-bottom:1px solid #eaeaea;
+    text-indent:2px;
 }
 
 .dv-reg-box {
