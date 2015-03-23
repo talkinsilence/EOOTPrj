@@ -14,6 +14,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <typeAlias alias="VilPostFile" type="com.eoot.eootprj.model.VilPostFile" />
       <typeAlias alias="VilPostComment" type="com.eoot.eootprj.model.VilPostComment" />
       <typeAlias alias="FamPost" type="com.eoot.eootprj.model.FamPost" />
+      <typeAlias alias="FamInv" type="com.eoot.eootprj.model.FamInvitation"/>
+      <typeAlias alias="FamInvJoinMember" type="com.eoot.eootprj.model.FamInvitationJoinMember"/>
    </typeAliases>
 
    <environments default="development">
@@ -35,6 +37,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostFileDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostCommentDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/FamInvitationDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostFileDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostCommentDao.xml" />

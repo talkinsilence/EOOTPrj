@@ -164,7 +164,7 @@ body {
     padding-bottom:5px;
 }
 
-/************************** accordion ¿µ¿ª ******************************/
+/************************** accordion ï¿½ï¿½ï¿½ï¿½ ******************************/
 
 #invited {
     display: block;
@@ -176,7 +176,7 @@ body {
     background: #c9efe7;
 }
 
-/* ¿ì¸®Áý ÀÌ¸§ */
+/* ï¿½ì¸®ï¿½ï¿½ ï¿½Ì¸ï¿½ */
 #myhome-name-wrapper {
     display: none;
 }
@@ -186,7 +186,7 @@ body {
     min-height:35px;
 }
 
-/* ¿ì¸®Áý ÁÖ¼Ò */
+/* ï¿½ì¸®ï¿½ï¿½ ï¿½Ö¼ï¿½ */
 
 #myhome-address {
     min-height: 35px;
@@ -212,7 +212,7 @@ body {
 }
 
 
-/* ¿ì¸®Áý ±¸¼º¿ø */
+/* ï¿½ì¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 #myhome-member {
     width:100%;
@@ -306,7 +306,7 @@ body {
     min-height:35px;
 }
 
-/* ¿ì¸®Áý ±¸¼º¿ø °ü¸® */
+/* ï¿½ì¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 
 #myhome-member-mng {
     width:100%;
@@ -326,7 +326,7 @@ body {
     line-height:40px;
 }
 
-#myhome-member-mng-wrapper > fieldset {
+#myhome-member-mng-inv-view {
     width:100%;
     min-height:65px;
     border:1px solid #cccccc;
@@ -335,6 +335,11 @@ body {
 
 #myhome-member-mng-wrapper > fieldset legend {
     text-align:center;
+}
+
+#myhome-member-mng-wrapper > fieldset div {
+	text-align:center;
+	line-height:50px;
 }
 
 .myhome-member-mng-uid {
@@ -377,9 +382,9 @@ body {
 }
 
 
-/************ ÀÌ¿ô ***************/
+/************ ï¿½Ì¿ï¿½ ***************/
 
-/* ¸ñ·Ï */
+/* ï¿½ï¿½ï¿½ */
 
 #eoot-member {
     width:100%;
@@ -449,7 +454,7 @@ body {
     text-overflow: ellipsis;
 }
 
-/* ÀÌ¿ô¸Î±â ÇöÈ² */
+/* ï¿½Ì¿ï¿½ï¿½Î±ï¿½ ï¿½ï¿½È² */
 
 #eoot-with {
     width:100%;
@@ -555,7 +560,7 @@ body {
     color: #9b9b9b;
 }
 
-/* ¸¶À» */
+/* ï¿½ï¿½ï¿½ï¿½ */
 
 #vil-scope-wrapper{
     padding-bottom:20px;
@@ -566,7 +571,7 @@ body {
    visibility: hidden;
 }
 
-/* °Ô½Ã±Û */
+/* ï¿½Ô½Ã±ï¿½ */
 
 #share-scope-wrapper{
     padding-bottom:20px;

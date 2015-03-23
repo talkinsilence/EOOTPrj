@@ -235,16 +235,16 @@
 							<div class="village-board-list">
 								<div class="village-board-item1">
 									<c:if test="${i.sort.equals('1')}">
-										<div class="village-board-label1"></div>
+										<div class="village-board-label 1"></div>
 									</c:if>
 									<c:if test="${i.sort.equals('2')}">
-										<div class="village-board-label2"></div>
+										<div class="village-board-label 2"></div>
 									</c:if>
 									<c:if test="${i.sort.equals('3')}">
-										<div class="village-board-label3"></div>
+										<div class="village-board-label 3"></div>
 									</c:if>
 									<c:if test="${i.sort.equals('4')}">
-										<div class="village-board-label4"></div>
+										<div class="village-board-label 4"></div>
 									</c:if>
 									<div class="village-board-item-img">
 										<img class="thumbnail2" src="${i.profilepic}" />

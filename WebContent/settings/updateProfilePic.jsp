@@ -10,7 +10,7 @@
 	String path = ctx.getRealPath("/upload/profilepic");
 	String uid = "viovio@eoot.com";	
 	
-	out.print(path);
+	System.out.print(path);
 	
 	MultipartRequest req = new MultipartRequest(request
             , path
