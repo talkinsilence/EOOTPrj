@@ -30,16 +30,12 @@
     opacity: 0.7;
 }
 
-/*.dv-btn-close:active {
-    position:relative;
-    top: 1px;
-}*/
-
 /*--------밑바탕----------------------------------*/
 .detail-view-container {
     display: block;
     position: absolute;
-    top: 30px;
+    top: 50%;
+    transform:translateY(-50%);
     height: 650px;
     width: 100%;
 }
@@ -163,7 +159,7 @@
 }
 
 /*-------프로필------------------------------------------*/
-#dv-comment-container {
+.dv-comment-container {
     display: block;
     float: left;
     height: 594px;
@@ -235,12 +231,13 @@
 }
 
 .dv-content {
-    height: 22px;
+    height: 20px;
     max-height: 474px;
     width: 338px;
     overflow: hidden;
     text-overflow:ellipsis;
-    word-break:inherit; /*컨텐츠 클릭시 속성을 break-all;으로 변경*/
+    white-space:nowrap;
+    word-break:inherit;                    /*컨텐츠 클릭시 속성을 break-all;으로 변경*/
 }
 
 /*-------popularity------------------------------------------*/
@@ -392,8 +389,8 @@
 
 .dv-comment-box-list {
     display:block;
-    height: 451px;
-    margin-top: 72px;
+    height: 453px;
+    margin-top: 70px;
     overflow-y: auto;
     overflow-x: inherit;
     background:#f1f1f1;

@@ -2,60 +2,34 @@
 
     //-----------------상세보기---------------------
     $(".media-list-item-mask").click(function () {
-        $(".dv-mask").fadeIn(400);
-        $("body").css("overflow","hidden");
+    	$("body").css("overflow","hidden");
         
         var dvImgSrc = $(this).parent().find(".media-list-item-img").attr("src");
-        $(".dv-media-box-img").attr("src", dvImgSrc);
         
-        var dvImgCode = $(this).parent().find("#media-list-item-code").serialize();
-        alert(dvImgCode);
-
-        $.ajax({
-        	type:"post",
-        	url:"famPostControl.jsp",
-        	data:"famPostCode="+dvImgCode,
-        	success:function(data){
-        		callback(data);
-        	}
-        });
+        var dvImgCode = $(this).parent().find(".media-list-item-code").val();
         
+        var dvCommentContainer = $('.dv-comment-container');
         
+        dvCommentContainer.empty();
         
-        /*$('#letter-search').click(function(){
-        	//var input = $(this).parent().find(".letter-search");
-        	
-        	var lbox = $('.letter-item-box');
-        	lbox.empty();
-        	lbox.load("letter.jsp?query="+$('.letter-search').val());
-        });*/
-        
-        /*var dvCommentContainer = ${'#dv-comment-container'}*/
-        /*dvCommentContainer.empty()*/;
-        /*dvCommentContainer.load("famPostDetailView.jsp");*/
+        dvCommentContainer.load(
+        		  	"famPostView.jsp?famPostCode=" + dvImgCode, 
+        		  	function(){
+        		  		$(".dv-media-box-img").attr("src", dvImgSrc);
+        		  		$(".dv-mask").fadeIn(800);
+        			});
     });
     
-    $(".dv-content").click(function () {
-        if ($(this).css("word-break") == "normal") {
-            $(this).stop()
-                   .animate({ height: "474px" }, 600)
-                   .css("word-break", "break-all");
-        }
-        else {
-            $(this).stop()
-                   .animate({ height: "22px" }, 500, function () {
-                       $(this).css("word-break", "inherit");
-                   });
-        }
-    });
-    
-    $(".dv-btn-close").click(function () {
-        $(".dv-mask").fadeOut(10);
-        $(".dv-content").animate({ height: "22px" }, 500, function () {
-            $(this).css("word-break", "inherit");
-        });
-        $("body").css("overflow", "inherit");
-    });
+    $(".dv-btn-close").click(function() {
+		$(".dv-content").animate({
+			height : "20px"
+		}, 500, function() {
+			alert($(this).attr("word-break"));
+			$(this).css("word-break", "inherit");
+			$(".dv-mask").fadeOut(300);
+			$("body").css("overflow", "inherit");
+		});
+	});
 
     //------------------등록-------------------------
     $(".upload").click(function () {

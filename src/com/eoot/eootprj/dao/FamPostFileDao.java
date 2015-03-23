@@ -15,10 +15,10 @@ public interface FamPostFileDao {
 
 	public int insert(FamPostFile famPostFile );
 	
-	@Select("SELECT f.hit, f.likecnt, f.commentcnt, f.clipcnt, fpf.* "
-			+ "FROM famposts f "
-			+ "left outer join fampostfiles fpf "
-			+ "on f.code = fpf.fampostcode ")
+	@Select("SELECT F.HIT, F.LIKECNT, F.COMMENTCNT, F.CLIPCNT, FPF.* "
+			+ "FROM FAMPOSTS F "
+			+ "LEFT OUTER JOIN FAMPOSTFILES FPF "
+			+ "ON F.CODE = FPF.FAMPOSTCODE ")
 	public	List<FamPostFileJoinFamPost> getFamPostFiles();
 	
 	@Select("SELECT COUNT(*) FROM FAMPOSTFILES") 

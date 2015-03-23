@@ -14,13 +14,13 @@
 <%@page import="com.eoot.eootprj.dao.FamPostDao"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
@@ -29,15 +29,12 @@
 <link href="css/media.css" rel="stylesheet" />
 <link href="../resource/css/bind_menu.css" rel="stylesheet" />
 <link href="../resource/css/reset.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'
-	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
+<script src="../resource/js/menu.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="../resource/js/jquery-2.1.3.js"></script>
 <script src="../resource/js/modernizr.js"></script>
-<script src="../resource/js/menu.js"></script>
 <script src="js/media.js"></script>
-
-
 
 <%    
 	String famPostCode ="";
@@ -55,29 +52,15 @@
 		field = _field;
 
 	FamPostDao famPostDao = new MyBFamPostDao();
-	FamPostJoinMember fp = famPostDao.getFamPost(famPostCode);
 	List<FamPostJoinMember> list = famPostDao.getFamPosts(query, field);
 
 	FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
 	List<FamPostFileJoinFamPost> fList = famPostFileDao.getFamPostFiles();
 	
-	FamPostCommentDao famPostCommentDao = new MyBFamPostCommentDao();
-	List<FamPostCommentJoinMember> cList = famPostCommentDao.getFamPostComments(famPostCode);
-	
-	pageContext.setAttribute("fp", fp);
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("fList", fList);
-	pageContext.setAttribute("cList", cList);
 	pageContext.setAttribute("size", famPostFileDao.getSize());
-
 %>
-
-<script>
-	function callback(data){
-		alert(data);
-	}
-</script>
-
 
 </head>
 
@@ -89,10 +72,10 @@
 
 					<img src="${fList.get(0).getSrc()}" />
 					<!-- <div class="mask"></div>
-                    <div class="title">title title title title title title title title title</div>
+                    <div class="title"></div>
                     <div class="date">2015.2.28</div>
-                    <div class="content">contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent</div>
-                    <div class="view">CLICK</div> -->
+                    <div class="content"></div>
+                    <div class="view"></div> -->
 				</div>
 
 				<div class="main-media-box-R">
@@ -144,7 +127,7 @@
 							<div class="media-list-item-box">
 								<div class="media-list-item">
 									<form>
-										<input id="media-list-item-code" type="hidden" name="famPostCode" value="${fList.get(j*5+i).getFamPostCode()}" />
+										<input class="media-list-item-code" type="hidden" name="famPostCode" value="${fList.get(j*5+i).getFamPostCode()}" />
 									</form>
 									<img class="media-list-item-img" src="${fList.get(j*5+i).getSrc()}">
 									<div class="media-list-item-mask"></div>
@@ -168,9 +151,8 @@
 		<div class="detail-view-container">
 			<div class="dv-btn-wrapper">
 				<div class="dv-btn-pre"></div>
-				<div id="detail-view">
+				<div class="detail-view">
 					<div class="dv-media-box">
-						<!-- <div class="dv-media-box-code hidden"></div> -->
 						<img class="dv-media-box-img" src="" />
 						<div class="dv-edit">
 							<button class="dv-edit-btn">수정</button>
@@ -178,10 +160,10 @@
 						</div>
 					</div>
 
-					<div id="dv-comment-container">
-						<div class="dv-profile-box">
+					<div class="dv-comment-container">
+						<%-- <div class="dv-profile-box">
 							<div class="dv-profile-pic"></div>
-							<div class="dv-profile-name">${fp.getName()}</div>
+							<div class="dv-profile-name"></div>
 							<div class="dv-profile-title">${fp.getTitle()}</div>
 							<div class="dv-profile-regdae">${fp.getRegdate()}</div>
 						</div>
@@ -213,18 +195,15 @@
 						</div>
 
 						<div class="dv-comment-box-list">
-							<%-- <c:forEach var="c" items="${cList}"> --%>
+							<c:forEach var="c" items="${cList}">
 								<div class="dv-comment-box">
 									<div class="dv-comment-writer-pic">${c.profilepic}</div>
 									<div class="dv-comment-writer-name">${c.name}</div>
 									<div class="dv-comment-regdate">${c.regdate}</div>
 									<div class="dv-comment">${c.content}</div>
 								</div>
-								
-								
-								
-							<%-- </c:forEach> --%>
-						</div>
+							</c:forEach>
+						</div> --%>
 					</div>
 					<div class="dv-reg-box">
 						<div class="dv-reg-pic"></div>
