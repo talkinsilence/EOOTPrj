@@ -60,6 +60,13 @@ $('.letter-title').click(function(){
 			<div class="letter-title">${i.title}</div>
 			<div class="letter-from">from: ${i.name}</div>
 			<div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
+			<div class="letter-mani-area">
+                <div class="letter-mani-wrapper-bg"></div>
+                <div class="letter-mani-wrapper">
+	             	<div class="letter-mani reply-letter">답장하기</div>
+	             	<div class="letter-mani delete-letter">삭제하기</div>
+            	</div>
+           	</div>			
 		</li>
 	</c:forEach>
 </ul>

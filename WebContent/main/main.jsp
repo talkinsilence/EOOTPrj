@@ -228,6 +228,13 @@
 		                        <div class="letter-title">${i.title}</div>
 		                        <div class="letter-from">from: ${i.name}</div>
 		                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
+			                    <div class="letter-mani-area">
+				                    <div class="letter-mani-wrapper-bg"></div>
+				                    <div class="letter-mani-wrapper">
+					                	<div class="letter-mani reply-letter">답장하기</div>
+					                	<div class="letter-mani delete-letter">삭제하기</div>
+				                	</div>
+			                	</div>
 		                    </li>
 	                    </c:forEach>
 	                </ul>
@@ -263,7 +270,7 @@
 	            <div class="letter-write-header">
 	                <div class="letter-to">받는 사람</div>
 	                <div class="letter-to-list-wrapper">
-	                    <!-- <div class="letter-to-list">
+	                    <div class="letter-to-list">
 	                        <img class="thumbnail" src="images/suzy2.jpg" />
 	                        <div class="delete"></div>
 	                    </div>
@@ -274,7 +281,7 @@
 	                    <div class="letter-to-list">
 	                        <img class="thumbnail" src="images/cat.png" />
 	                        <div class="delete"></div>
-	                    </div> -->
+	                    </div>
 	                    <div class="letter-to-list-add"></div>
 	                </div>
 	            </div>

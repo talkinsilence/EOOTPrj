@@ -53,6 +53,22 @@
         $('.letter-view-wrapper').fadeOut(10);
     });
     
+    $('.letter-mani-area').mouseover(function(){
+    	$(this).find('.letter-mani-wrapper-bg, .letter-mani-wrapper, .letter-mani').css("display", "block");   
+    });
+    
+    $('.letter-mani-area').mouseout(function(){
+    	$(this).find('.letter-mani-wrapper-bg, .letter-mani-wrapper, .letter-mani').css("display", "none");
+    });
+    
+    $('.letter-mani.delete-letter').click(function(){
+    	var con = confirm("이 편지를 삭제하시겠습니까?");
+		if(con == true){
+			$(this).parent().parent().parent().remove();
+			alert("삭제되었습니다");
+		}
+    });
+    
     $('.letter-search').click(function(){
     	$(this).select();
     });
