@@ -251,6 +251,66 @@ html {
     margin-bottom: 20px;
 }
 
+.post-user-menu-btn {
+	display: none;
+	position: relative;
+	left: 308px;
+	top: 14px;
+	width: 14px;
+	height: 14px;
+	background: url("../images/btn-menu-post.png") no-repeat center;
+	cursor: pointer;
+}
+
+	.post-user-menu-btn:hover {
+		opacity: 0.5;
+	}
+
+.post-user-menu-wrapper-bg {
+	display: block;
+	position: fixed;
+	background: none;
+	left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;	
+}
+
+.post-user-menu-wrapper {
+	display: block;
+	position: relative;
+	width: 72px;
+	height: 63px;
+	left: 314px;
+    top: 16px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    z-index: 3;	
+}
+
+.post-user-menu {
+    display: block;
+    padding: 8px 12px;
+    cursor: pointer;
+    
+    font-size: 12px;
+    color: #9f9f9f;
+    text-align: center;	
+}
+
+.post-user-menu.edit-post {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+    .post-user-menu:hover {
+        background: #f9f9f9;
+    }
+
+
+
+
+
 .post-header {
     display: block;
     position: relative;

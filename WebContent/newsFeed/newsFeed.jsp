@@ -148,6 +148,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="post-user-menu-btn"></div>
+                		<div class="post-user-menu-area hidden">
+                 		    <div class="post-user-menu-wrapper-bg"></div>
+                 		    <div class="post-user-menu-wrapper">
+		                	    <div class="post-user-menu edit-post">수정하기</div>
+		                	    <div class="post-user-menu delete-post">삭제하기</div>
+                		    </div>
+               			</div>
                     </div>
                 </div>
                 <div class="post-main-wrapper">
