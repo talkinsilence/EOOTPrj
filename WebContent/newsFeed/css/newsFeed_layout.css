@@ -128,7 +128,7 @@
     text-overflow: ellipsis;
 }
 
-.user.log-out {
+.user.log-out-toolbar {
     display: inline-block;
     width: auto;
     cursor: pointer;

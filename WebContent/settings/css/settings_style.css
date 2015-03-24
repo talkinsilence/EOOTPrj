@@ -78,7 +78,7 @@ a:hover {
     color: #427fed;
 }
 
-/***************************** accordion ¿µ¿ª *********************************/
+/***************************** accordion ï¿½ï¿½ï¿½ï¿½ *********************************/
 
 #accordion > div {
     font-size: 15px;
@@ -121,14 +121,19 @@ a:hover {
     cursor: pointer; s
 }
 
-/* ¿ì¸®Áý ÀÌ¸§ */
+/* ï¿½ì¸®ï¿½ï¿½ ï¿½Ì¸ï¿½ */
 
 #myhome-name-txt {
     width:175px;
 }
 
 
-/* ¿ì¸®Áý ÁÖ¼Ò */
+/* ï¿½ì¸®ï¿½ï¿½ ï¿½Ö¼ï¿½ */
+
+#myhome-address-txt {
+	width:440px;
+	cursor: pointer;
+}
 
 .board-cell-zipcode {
     width: 120px;
@@ -145,11 +150,11 @@ a:hover {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* ¿ì¸®Áý ±¸¼º¿ø */
+/* ï¿½ì¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 
 
-/* ÀÌ¿ô */
+/* ï¿½Ì¿ï¿½ */
 
 .eoot-member-famname a {
     color: #427fed;

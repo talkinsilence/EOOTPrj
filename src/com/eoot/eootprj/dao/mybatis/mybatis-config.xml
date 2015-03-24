@@ -8,12 +8,17 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <!-- Type alias -->
    <typeAliases>
       <typeAlias alias="Member" type="com.eoot.eootprj.model.Member" />
+      <typeAlias alias="Neighbor" type="com.eoot.eootprj.model.Neighbor" />
+      <typeAlias alias="NeighborJoinMember" type="com.eoot.eootprj.model.NeighborJoinMember" />
       <typeAlias alias="Letter" type="com.eoot.eootprj.model.Letter" />
       <typeAlias alias="LetterJoinMember" type="com.eoot.eootprj.model.LetterJoinMember" />
       <typeAlias alias="VilPost" type="com.eoot.eootprj.model.VilPost" />
       <typeAlias alias="VilPostFile" type="com.eoot.eootprj.model.VilPostFile" />
       <typeAlias alias="VilPostComment" type="com.eoot.eootprj.model.VilPostComment" />
       <typeAlias alias="FamPost" type="com.eoot.eootprj.model.FamPost" />
+      <typeAlias alias="FamInv" type="com.eoot.eootprj.model.FamInvitation"/>
+      <typeAlias alias="FamInvJoinMember" type="com.eoot.eootprj.model.FamInvitationJoinMember"/>
+
    </typeAliases>
 
    <environments default="development">
@@ -31,10 +36,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <!-- UserMap.xml 등록 -->
    <mappers>
       <mapper resource="com/eoot/eootprj/dao/mybatis/MemberDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/NeighborDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/LetterDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostFileDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/VilPostCommentDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/FamInvitationDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostFileDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostCommentDao.xml" />
    </mappers>
 </configuration>  

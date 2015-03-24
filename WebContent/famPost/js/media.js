@@ -1,20 +1,28 @@
-﻿window.onload = function () {
+﻿$(document).ready(function () {
 
     //-----------------상세보기---------------------
-    $("img").click(function () {
-        $(".dv-mask").fadeIn(400);
-        $("body").css("overflow","hidden");
-        var mainImgSrc = $(this).attr("src");
-        $(".dv-media-box-img").attr("src", mainImgSrc);
+    $(".media-list-item-mask").click(function () {
+    	$("body").css("overflow","hidden");
+        
+        var dvImgSrc = $(this).parent().find(".media-list-item-img").attr("src");
+        
+        var dvImgCode = $(this).parent().find(".media-list-item-code").val();
+        
+        var dvCommentContainer = $('.dv-comment-container');
+        
+        dvCommentContainer.empty();
+        
+        dvCommentContainer.load(
+        		  	"famPostView.jsp?famPostCode=" + dvImgCode, 
+        		  	function(){
+        		  		$(".dv-media-box-img").attr("src", dvImgSrc);
+        		  		$(".dv-mask").fadeIn(800);
+        			});
     });
-
-    $(".dv-btn-close").click(function () {
-        $(".dv-mask").fadeOut(10);
-        $(".dv-content").animate({ height: "22px" }, 500, function () {
-            $(this).css("word-break", "inherit");
-        });
-        $("body").css("overflow", "inherit");
-    });
+    
+    $(".dv-btn-close").click(function() {
+		$(".dv-mask").fadeOut(300);
+	});
 
     //------------------등록-------------------------
     $(".upload").click(function () {
@@ -26,27 +34,14 @@
     });
 
     //------------------메인--------------------------
-    $(".folder").click(function () {
-        if ($(".folder-list-wrapper").is(":hidden")) {
-            $(".folder-list-wrapper").slideDown("fast");
+    
+    $(".filed").click(function () {
+        if ($(".filed-list-wrapper").is(":hidden")) {
+            $(".filed-list-wrapper").slideDown("fast");
         }
         else {
-            $(".folder-list-wrapper").hide();
+            $(".filed-list-wrapper").hide();
         }
     });
 
-    $(".dv-content").click(function () {
-        if ($(this).css("word-break") == "normal") {
-            $(this).stop()
-                   .animate({ height: "474px" }, 600)
-                   .css("word-break", "break-all");
-        }
-        else {
-            $(this).stop()
-                   .animate({ height: "22px" }, 500, function () {
-                       $(this).css("word-break", "inherit");
-                   });
-        }
-    });
-
-};
+});

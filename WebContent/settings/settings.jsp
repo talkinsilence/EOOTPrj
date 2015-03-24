@@ -1,3 +1,10 @@
+<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.NeighborDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBNeighborDao"%>
+<%@page import="com.eoot.eootprj.model.FamInvitation"%>
+<%@page import="com.eoot.eootprj.model.FamInvitationJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.FamInvitationDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamInvitationDao"%>
 <%@page import="java.util.List"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
@@ -5,18 +12,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
-	String uid = "viovio@eoot.com";
+	String uid = (String) session.getAttribute("uid");
 
 	MemberDao memberDao = new MyBMemberDao();
+	FamInvitationDao famInvDao = new MyBFamInvitationDao();
+	NeighborDao neighborDao = new MyBNeighborDao();
 	
 	Member m = memberDao.getMember(uid);
 	String famcode = m.getFamcode();
 	
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
+	List<FamInvitationJoinMember> famInvsMe = famInvDao.getInvsMe(uid);
+	List<FamInvitationJoinMember> finvs = famInvDao.getInvs(uid);
+	List<NeighborJoinMember> neis = neighborDao.getNeis(uid);
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
+	pageContext.setAttribute("famInvMe", famInvsMe);
+	pageContext.setAttribute("finv", finvs);
+	pageContext.setAttribute("neis", neis);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -30,6 +47,7 @@
 <script src="../resource/js/modernizr.js" type="text/javascript"></script>
 <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css">
 <script src="../resource/js/menu.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="js/settings.js" type="text/javascript"></script>
 <script src="js/jquery-ui.js" type="text/javascript"></script>
 <link href="css/jquery-ui.css" rel="stylesheet">
@@ -41,22 +59,21 @@
 
     <main id="main">
         <div id="content-wrapper">
-
             <div id="profile-edit">
                 <div id="profile-edit-body">
                     <div id="profile-edit-viewer-wrapper">
                         <div id="profile-edit-viewer">
-                            <img id="profile-edit-thumbnail" src="images/default.jpg" />
+                            <img id="profile-edit-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
                         </div>
                     </div>
 
                     <div id="profile-upload-form">
-                        <form>
-                            <input type="file" id="profile-edit-file"/>
+                        <form method="post" enctype="multipart/form-data" action="updateProfilePic.jsp">
+                            <input type="file" name="file" id="profile-edit-file"/>
                             <div id="profile-upload-select-wrapper">
                                 <input type="button" id="btn-upload-select" value="사진 선택" /><br />
                             </div>
-                            <input type="button" id="btn-upload-set" value="사진 등록" />
+                            <input type="submit" id="btn-upload-set" value="사진 등록" />
                             <input type="button" id="btn-upload-cancel" class="btn-cancel" value="취소" />
                         </form>
                     </div>
@@ -71,7 +88,7 @@
                 
                 <div id="profile">                 
                     <div id="profile-pic-box-main">
-                        <img id="profile-thumbnail" src="images/default.jpg" />
+                        <img id="profile-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
                         <div>사진 변경</div>
                     </div>
 
@@ -104,18 +121,22 @@
                 <div id="accordion">
                     <h3>우 리 집</h3>
                     <div>
+						<c:if test="${not empty famInvMe}">
+							<c:forEach var="i" items="${famInvMe}" varStatus="idx">
+		                        <div id="invited">
+		                        <input type="hidden" id="${idx.count}" value="${i.acceptmid}" />
+		                            <ul>
+		                                <li>
+		                                    <a href="">${i.name}</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
+		                                    <p>수락하시면 현재 가족페이지의 모든 자료는 삭제되고,<br />${i.name}님의 가족페이지에 있는 자료를 공유하게 됩니다.</p>
+		                                    <input type="button" class="btn-invited-accept" name="accept-fam" value="수락" />
+		                                    <input type="button" class="btn-invited-reject btn-cancel" name="reject-fam" value="거절" />
+		                                </li>
+		                            </ul>
+		                        </div>
+	                        </c:forEach>
+                        </c:if>
 
-                        <!-- <div id="invited">
-                            <ul>
-                                <li>
-                                    <a href="">뵤뵤뵤뵤</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
-                                    <p>수락하시면 현재 가족페이지의 모든 자료는 삭제되고,<br />뵤뵤뵤뵤님의 가족페이지에 있는 자료를 공유하게 됩니다.</p>
-                                    <input type="button" name="accept-fam" value="수락" />
-                                    <input type="button" name="reject-fam" value="거절" class="btn-cancel" />
-                                </li>
-                            </ul>
-                        </div> -->
-                        
                         <div id="myhome-name">
                            	 우리집 이름 : 
                            	<label id="profile-myhome-name-val">
@@ -140,38 +161,28 @@
                         </div>
 
                         <div id="myhome-address">
-                         	우리집 주소 : <label id="profile-myhome-address-val">우리집 주소를 설정해주세요.</label>
+                         	우리집 주소 :
+                         	<label id="profile-myhome-address-val">
+                         		<c:if test="${empty m.address}">
+                         			우리집 주소를 설정해주세요.
+                         		</c:if>
+                         		<c:if test="${not empty m.address}">
+                         			${m.address}
+                         		</c:if>
+                         	</label>
 
                             <label id="myhome-address-edit" class="edit">수정</label>
                             
                             <p>주소를 설정하시면 '마을' 서비스를 이용하실 수 있습니다.</p>
 
                             <div id="myhome-address-wrapper">
-                            	주소 검색 : <input type="text" />
-                                <input type="button" value="검색"/>
+                            	주소 검색 : <input type="text" id="myhome-address-txt" readonly="readonly"/>
+                                <input type="button" id="btn-myhome-address" value="확인" />
                                 <input type="button" value="취소" id="btn-address-cancel" class="btn-cancel" />
                                 
-                                <table id="myhome-address-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="board-cell-zipcode">우편번호</th>
-                                            <th id="board-cell-address">주소</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="board-row">
-                                            <td class="board-cell-zipcode">441-340</td>
-                                            <td>경기도 수원시 권선구</td>
-                                        </tr>
-                                        <tr class="board-row">
-                                            <td class="board-cell-zipcode">441-340</td>
-                                            <td>경기도 수원시 권선구</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div id="myhome-address-search-wrapper">
+                                </div>
                             </div>
-                            
-                            
                         </div>
 
                         <div id="myhome-member">
@@ -207,18 +218,28 @@
                             <div id="myhome-member-mng-wrapper">
 
                                 <span>가족 초대하기</span>
-                                <input type="text" />
-                                <input type="button" value="초대"/>
+                                <input type="text" id="myhome-member-mng-txt"/>
+                                <input type="button" id="btn-member-inv" value="초대"/>
                                 
-                                <fieldset>
+                                <fieldset id="myhome-member-mng-inv-view">
                                     <legend>가족 초대 현황</legend>
-
-                                    <ul>
-                                        <li class="myhome-member-mng-uid">namita@gmail.com</li>
-                                        <li class="myhome-member-mng-name">나미짱</li>
-                                        <li class="myhome-member-mng-state">대기중</li>
-                                        <li class="myhome-member-mng-date">2012-12-30</li>
-                                    </ul>
+									
+									<c:if test="${empty finv}">
+										<div>가족 초대 기록이 없습니다.</div>
+									</c:if>
+									
+									<c:if test="${not empty finv}">
+										<c:forEach var="i" items="${finv}">
+		                                    <ul>
+		                                        <li class="myhome-member-mng-uid">${i.askmid}</li>
+		                                        <li class="myhome-member-mng-name">${i.name}</li>
+		                                        <li class="myhome-member-mng-state">대기중</li>
+		                                        <li class="myhome-member-mng-date">
+													<fmt:formatDate value="${i.askregdate}" pattern="yyyy-MM-dd"/>
+												</li>
+		                                    </ul>
+	                                    </c:forEach>
+                                    </c:if>
                                 </fieldset>               
                             </div>
                         </div>
@@ -272,12 +293,20 @@
                                     </div>
                                     
                                     <div id="eoot-with-add-view">
-                                        <ul>
-                                            <li class="eoot-with-get-famname">나미네집!!!</li>
-                                            <li class="eoot-with-get-name">나미 타 커쇼 쭈구리비버</li>
-                                            <li class="eoot-with-get-msg">우리 이웃 맺어요!!~~!!</li>
-                                            <li class="waiting">대기중</li>
-                                        </ul>
+                                    	<c:if test="${empty neis}">
+                                    		이웃신청 기록이 없습니다.
+                                    	</c:if>
+                                    	
+                                    	<c:if test="${not empty neis}">
+                                    		<c:forEach var="n" items="${neis}">
+	                                    		<ul>
+		                                            <li class="eoot-with-get-famname">${n.famname}</li>
+		                                            <li class="eoot-with-get-name">${n.name}</li>
+		                                            <li class="eoot-with-get-msg">${n.askmsg}</li>
+		                                            <li class="waiting">대기중</li>
+	                                        	</ul>
+                                        	</c:forEach>
+                                    	</c:if>
                                     </div>
                                 </div>
                             </div>

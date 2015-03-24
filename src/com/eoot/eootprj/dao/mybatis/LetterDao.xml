@@ -11,8 +11,13 @@
 	
 	<select id = "getLetters" resultType="LetterJoinMember">
 		SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.WRITER=M."MID" 
-		WHERE (L.READER = #{param1}) AND (L.TITLE LIKE '%${param2}%' OR L.CONTENT LIKE '%${param2}%') 
+		WHERE (L.READER = #{param1}) AND (M.NAME LIKE '%${param2}%' OR L.TITLE LIKE '%${param2}%' OR L.CONTENT LIKE '%${param2}%') 
 		ORDER BY L.SENDDATE DESC;
+	</select>
+	
+	<select id = "getNewLetters" resultType="LetterJoinMember">
+		SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.READER=M."MID" 
+		WHERE (L.READER = #{mid}) AND (L."READ" = 0);
 	</select>
 	
 			<!-- 이거 고쳐야함 -->
@@ -28,5 +33,8 @@
 			<delete id = "delete" parameterType="String">
 				DELETE LETTERS WHERE CODE =#{code}
 			</delete>	
-		
+			
+	<update id="updateRead" parameterType="Letter">
+		UPDATE LETTERS SET "READ" = 1 WHERE CODE = #{code}
+	</update>		
 </mapper>

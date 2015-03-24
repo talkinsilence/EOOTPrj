@@ -1,47 +1,58 @@
 ﻿$(document).ready(function () {
-
-	//===========< profile >==============================================
-    $('.profile-family-members').mouseover(function () {
-        var divLoc = $(this).offset();
-        var left = divLoc.left + 26;
-        var top = divLoc.top + 35;
-        $('.info-wrapper').css({
-            "opacity": "1",
-            "visibility": "visible",
-            "left": left,
-            "top": top
-        }).show();
-    });
-
-    $('.profile-family-members').mouseout(function () {
-        $('.info-wrapper').hide();
-    });
-
-    $('.info-wrapper').mouseover(function () {
-        $(this).show();
-    });
-
-    $('.info-wrapper').mouseout(function () {
-        $(this).hide();
-    });
-
-    //===========< letter >==============================================
+	/*===========< lower-right >========================================*/
+	$('.preview-pic').each(function(){
+		if($(this).height() >= $(this).width()){
+			$(this).css({
+			    "width": "100%",
+				"height": "auto",
+			    "left": "0",
+				"top": "50%",
+		    	"-webkit-transform": "translate(0, -50%)"
+			})
+		}
+	});
+	
+    /*===========< letter >=============================================*/
     $('.alarm.let').click(function () {
-        $('.letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
+        $('.letter-view-wrapper, .letter-type-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-box-wrapper').fadeIn(200);
     });
     
-/*    $('.letter-title').click(function(){
+    $('.btn-close, .letter-transp-bg').click(function () {
+    	location.reload();
+        $('.letter').fadeOut(10);
+    });
+    
+    $('.btn-close-letter-view, .letter-view-transp-bg').click(function () {
+        $('.letter-view-wrapper').fadeOut(10);
+    });
+    
+    $('.letter-search').click(function(){
+    	$(this).select();
+    });
+    
+    $('#letter-search').click(function(){
+    	var input = $(this).parent().find('.letter-search');
     	
-    });*/
+    	var lbox = $('.letter-item-box');
+    	lbox.empty();
+    	lbox.load("letter.jsp?query="+input.val());
+    });
+
+    $('.letter-title').click(function(){    	
+    	var lvbox = $('.letter-view-box');
+    	lvbox.empty();
     	
+    	var lcode = $(this).parent().find('.letter-code').html();
+    	lvbox.load("letter_view.jsp?code="+lcode, function(){
+    		$('.letter-view-wrapper').show();
+    	});
+		$(this).css("color", "#000");
+    });
+
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
-    });
-
-    $('.btn-close, .letter-transp-bg').click(function () {
-        $('.letter').fadeOut(10);
     });
 
     if ($('.letter-write-box').height() >= 400)
@@ -53,6 +64,14 @@
         $('.letter-type-wrapper').hide(10, function () {
             $('.letter-write-wrapper').fadeIn(200);
         });
+    });
+    
+    $('.letter-type.voice').click(function () {
+        alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");
+    });
+    
+    $('.letter-type.video').click(function () {
+        alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");
     });
 
     $('.delete').click(function () {
@@ -117,5 +136,20 @@
             });
         }
     });
-    
+
+    /*===========< newsFeed >=============================================*/
+    $('.alarm.news').click(function () {
+    	$(this).unbind('click');
+        //alert($('.main').height());
+        //alert($('.lower').height());
+        
+        var pushMain = $('.main').height() + $('.lower').height();
+        //alert(pushMain);
+    	
+        $('.main').animate({
+        	'marginTop': -pushMain + 'px'
+        }, 600, function(){
+        	location.href="../newsFeed/newsFeed.jsp";
+        });
+    }); 	
 })
