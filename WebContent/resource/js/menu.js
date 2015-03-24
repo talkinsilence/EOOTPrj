@@ -30,7 +30,7 @@
 
     // 하위 메뉴 클릭시 페이지 이동
     $("#menu1-myhome").click(function () {
-        $(location).attr("href", "");
+        $(location).attr("href", "../main/main.jsp");
     });
 
     $("#menu2-calendar").click(function () {
