@@ -10,6 +10,14 @@ select * from ADMINS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 select * from FamInvitations;
 
+
+
+SELECT *
+FROM (SELECT * FROM FAMPOSTS F ORDER BY F.REGDATE DESC)
+FULL OUTER JOIN VILPOSTS V
+ON F.WRITER = V.WRITER
+ORDER BY REGDATE DESC;
+
 insert into FamInvitations(askmid, acceptmid, askregdate,askmsg,state)
 values('ddd@ddd.dd','cskn2@naver.com',getDate(),'드루dddd와',0);
 

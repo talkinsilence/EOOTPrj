@@ -288,8 +288,6 @@
                                             </c:forEach>
                                             
                                             <div class="post-comment-wrapper">
-
-
 											<div class="post-comment">
 												<c:forEach var="c" items="${cList}">
 													<c:if test="${i.getCode() == c.getVilPostCode()}">

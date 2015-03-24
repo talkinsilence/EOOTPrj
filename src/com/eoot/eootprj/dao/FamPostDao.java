@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 
@@ -23,9 +24,15 @@ public interface FamPostDao {
 	@Select("SELECT * "
 			+ "FROM (SELECT M.NAME, M.PROFILEPIC, F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
 			+ "FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER "
-			+ "WHERE F.${param2} LIKE '%${param1}%') MJOINF "
+			+ "WHERE (F.TITLE LIKE '%${query}%') AND (F.CONTENT LIKE '%${query}%')) MJOINF "
 			+ "WHERE MJOINF.NUM BETWEEN 1 AND 30;")
-	public List<FamPostJoinMember> getFamPosts(String query, String field);
+	public List<FamPostJoinMember> getFamPosts(@Param("query")String query);
+
+	/*@Select("SELECT * "
+         + "FROM (SELECT M.NAME, M.PROFILEPIC, F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
+         + "FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER "
+         + "WHERE F.${param2} LIKE '%${param1}%') MJOINF "
+         + "WHERE MJOINF.NUM BETWEEN 1 AND 30;")*/
 	
 	public int update(FamPost famPost);
 

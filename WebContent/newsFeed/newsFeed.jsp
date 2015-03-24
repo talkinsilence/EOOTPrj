@@ -1,4 +1,17 @@
-﻿<%@page import="com.eoot.eootprj.model.VilPost"%>
+﻿<%@page import="com.eoot.eootprj.model.VilPostFile"%>
+<%@page import="com.eoot.eootprj.model.FamPostFile"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostFileDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostFileDao"%>
+<%@page import="com.eoot.eootprj.dao.VilPostFileDao"%>
+<%@page import="com.eoot.eootprj.dao.FamPostFileDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostCommentDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostCommentDao"%>
+<%@page import="com.eoot.eootprj.model.FamPostCommentJoinMember"%>
+<%@page import="com.eoot.eootprj.model.VilPostCommentJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.FamPostCommentDao"%>
+<%@page import="com.eoot.eootprj.dao.VilPostCommentDao"%>
+<%@page import="com.eoot.eootprj.model.VilPostJoinMember"%>
+<%@page import="com.eoot.eootprj.model.VilPost"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
 <%@page import="com.eoot.eootprj.dao.VilPostDao"%>
 <%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
@@ -15,17 +28,46 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <% 
+	String query = "";
+	String _query = request.getParameter("query");
+	String famPostCode = "";
+	String _famPostCode = request.getParameter("famPostCode");
+	
+	if(_query != null && !_query.equals(""))
+		query = _query;
+
+	if(_famPostCode != null && !_famPostCode.equals(""))
+		famPostCode = _famPostCode;
+	
 	String uid = (String) session.getAttribute("uid");
 	String code = request.getParameter("code");
 
 	MemberDao memberDao = new MyBMemberDao();
 	Member m = memberDao.getMember(uid);
 	
-	/* FamPostDao famPostDao = new MyBFamPostDao();
-	List<FamPostJoinMember> fps = famPostDao.getFamPosts();  */
+	FamPostDao famPostDao = new MyBFamPostDao();
+	VilPostDao vilPostDao = new MyBVilPostDao();
+	FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
+	VilPostFileDao vilPostFileDao = new MyBVilPostFileDao();
+	FamPostCommentDao famPostCommentDao = new MyBFamPostCommentDao();
+	VilPostCommentDao vilPostCommentDao = new MyBVilPostCommentDao();
+	
+	List<FamPostJoinMember> fps = famPostDao.getFamPosts(query);
+	List<VilPostJoinMember> vps = vilPostDao.getVilPosts(query, "TITLE");
+	//List<FamPostFile> ff = famPostFileDao.getFamPostFiles();
+	List<VilPostFile> vf = vilPostFileDao.getVilPostFiles();
+	List<FamPostCommentJoinMember> fList = famPostCommentDao.getFamPostComments(famPostCode);
+	List<VilPostCommentJoinMember> vList = vilPostCommentDao.getVilPostComments();
 	
 	pageContext.setAttribute("m", m);
-	//pageContext.setAttribute("fps", fps);
+	pageContext.setAttribute("fps", fps);
+	pageContext.setAttribute("vps", vps);
+	//pageContext.setAttribute("ff", ff);
+	pageContext.setAttribute("vf", vf);
+	pageContext.setAttribute("fList", fList);
+	pageContext.setAttribute("vList", vList);
+	
+	System.out.println(vf.get(0).getSrc());
 %>
 
 <!DOCTYPE html>
@@ -118,7 +160,11 @@
                         </div>
                     </div>
                 </div>
-                <img class="post-main-img" src="images/bobby1.jpg" />
+                <c:forEach var="f" items="${fList}">
+                	<c:if test="${i.getCode() == f.getFamPostCode()}">
+                		<img class="post-main-img" src="${f.getSrc()}" />
+                	</c:if>
+                </c:forEach>
                 <!--<img class="post-main-img hidden">(동영상대표이미지)</img>-->
                 <div class="post-popularity-wrapper">
                     <div class="post-popularity">
@@ -147,56 +193,35 @@
                 </div>
                 <div class="post-comment-wrapper">
                     <div class="post-comment">
-                        <ul class="post-comment-list">
-                            <li> 
-                                <div class="profile-pic-box-s">
-                                    <h1 class="hidden">댓글작성자프로필사진</h1>
-                                    <img class="thumbnail" src="images/hjw.jpg" />
-                                </div>
-                                <div class="comment-info">
-                                    <div class="comment-info-writer">
-                                        <h1 class="hidden">댓글작성자이름</h1>
-                                        <p>남명이</p>
-                                    </div>
-                                    <div class="comment-info-date">
-                                        <h1 class="hidden">댓글작성일(또는 작성시간)</h1>
-                                        <p>3일 전</p>
-                                    </div>
-                                    <div class="comment-like">
-                                        <h1 class="hidden">댓글좋아요개수</h1>
-                                        <img class="comment-like-btn" src="../resource/images/btn-like-s.png" />
-                                        <div class="comment-like-cnt clearfix">1</div>
-                                    </div>   
-                                </div>      
-                                <p class="comment-content">
-                                    댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
-                                </p>
-                            </li>
-                            <li>
-                                <div class="profile-pic-box-s">
-                                    <h1 class="hidden">댓글작성자프로필사진</h1>
-                                    <img class="thumbnail" src="images/dog.png" />
-                                </div>
-                                <div class="comment-info">
-                                    <div class="comment-info-writer">
-                                        <h1 class="hidden">댓글작성자이름</h1>
-                                        <p>무니무니</p>
-                                    </div>
-                                    <div class="comment-info-date">
-                                        <h1 class="hidden">댓글작성일(또는 작성시간)</h1>
-                                        <p>어제</p>
-                                    </div>
-                                    <div class="comment-like">
-                                        <h1 class="hidden">댓글좋아요개수</h1>
-                                        <img class="comment-like-btn" src="../resource/images/btn-like-s.png" />
-                                        <div class="comment-like-cnt clearfix">2</div>
-                                    </div>
-                                </div>
-                                <p class="comment-content">
-                                    댓글내용
-                                </p>
-                            </li>
-                        </ul>
+                    	<c:forEach var="cL" items="${cList}">
+                    		<c:if test="${i.getCode() == cL.getFamPostCode()}">
+								<ul class="post-comment-list">
+									<li>
+										<div class="profile-pic-box-s">
+											<h1 class="hidden">댓글작성자프로필사진</h1>
+											<img class="thumbnail" src="${cL.profilepic}" />
+										</div>
+										<div class="comment-info">
+											<div class="comment-info-writer">
+												<h1 class="hidden">댓글작성자이름</h1>
+												<p>${cL.name}</p>
+											</div>
+											<div class="comment-info-date">
+												<h1 class="hidden">댓글작성일(또는 작성시간)</h1>
+												<p>${cL.regdate}</p>
+											</div>
+											<div class="comment-like">
+												<h1 class="hidden">댓글좋아요개수</h1>
+												<img class="comment-like-btn"
+													src="../resource/images/btn-like-s.png" />
+												<div class="comment-like-cnt clearfix">1</div>
+											</div>
+										</div>
+										<p class="comment-content">${cL.content}</p>
+									</li>
+								</ul>
+								</c:if>
+							</c:forEach>
                         <div class="post-comment-write">
                             <div class="profile-pic-box-s">
                                 <h1 class="hidden">댓글작성자프로필사진</h1>
@@ -208,6 +233,117 @@
                     </div>
                 </div>
             </div>
+            </c:forEach>
+            
+            <c:forEach var="j" items="${vps}" >
+	            <div class="post">
+	                <div class="post-header-wrapper">
+	                    <div class="post-header">
+	                        <div class="profile-pic-box">
+	                            <h1 class="hidden">프로필사진</h1>
+	                            <img class="thumbnail" src="images/suzy1.jpg" />
+	                        </div>
+	                        <div class="post-info">
+	                            <div class="post-info-writer">
+	                                <h1 class="hidden">작성자이름</h1>
+	                                <p>${j.name}</p>
+	                            </div>
+	                            <div class="post-info-wrapper">
+	                                <div class="post-info-sharing-details">
+	                                    <h1 class="hidden">공유범위</h1>
+	                                    <div>마을에 게시</div>
+	                                </div>
+	                                <div class="post-info-date">
+	                                    <h1 class="hidden">작성일(또는 작성시간)</h1>
+	                                    <div><fmt:formatDate value="${j.regdate}" pattern="yyyy년 MM월 dd일  HH:mm:ss" /></div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="post-main-wrapper">
+	                    <div class="post-main">
+	                        <div class="post-content">
+	                            <div>
+	                                ${j.content}
+	                            </div>
+	                            <div class="post-content-more">(더 보기)</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <c:forEach var="vf" items="${vf}">
+	                	<%-- <c:if test="${vf.getVilPostCode() == j.getCode()}"> --%>
+	                		<img class="post-main-img" src="${vf.getSrc()}" />
+	                	<%-- </c:if> --%>
+	                </c:forEach>
+	                <!--<img class="post-main-img hidden">(동영상대표이미지)</img>-->
+	                <div class="post-popularity-wrapper">
+	                    <div class="post-popularity">
+	                        <div class="post-popularity-item like">
+	                            <h1 class="hidden">좋아요 개수</h1>
+	                            <img class="post-popularity-btn" src="../resource/images/btn-like.png" />
+	                            <div class="post-popularity-cnt clearfix">${j.likeCnt}</div>
+	                        </div>
+	                        <div class="post-popularity-item scrap">
+	                            <h1 class="hidden">스크랩 횟수</h1>
+	                            <img class="post-popularity-btn" src="../resource/images/btn-scrap.png" />
+	                            <div class="post-popularity-cnt clearfix">${j.clipCnt}</div>
+	                        </div>
+	                        <div class="post-popularity-item comment">
+	                            <h1 class="hidden">댓글 개수</h1>
+	                            <img class="post-popularity-btn" src="../resource/images/btn-comment.png" />
+	                            <div class="post-popularity-cnt clearfix">${j.commentCnt}</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="post-footer-wrapper">
+	                    <div class="post-footer">                   
+	                        <ul class="post-like-list hidden"><li>(좋아요한 사람)</li></ul>
+	                        <ul class="post-scrap-list hidden"><li>(스크랩한 사람)</li></ul>
+	                    </div>
+	                </div>
+	                <div class="post-comment-wrapper">
+	                    <div class="post-comment">
+	                    	<c:forEach var="vL" items="${vList}">
+	                    		<c:if test="${j.getCode() == vL.getVilPostCode()}">
+									<ul class="post-comment-list">
+										<li>
+											<div class="profile-pic-box-s">
+												<h1 class="hidden">댓글작성자프로필사진</h1>
+												<img class="thumbnail" src="${vL.profilepic}" />
+											</div>
+											<div class="comment-info">
+												<div class="comment-info-writer">
+													<h1 class="hidden">댓글작성자이름</h1>
+													<p>${vL.name}</p>
+												</div>
+												<div class="comment-info-date">
+													<h1 class="hidden">댓글작성일(또는 작성시간)</h1>
+													<p>${vL.regdate}</p>
+												</div>
+												<div class="comment-like">
+													<h1 class="hidden">댓글좋아요개수</h1>
+													<img class="comment-like-btn"
+														src="../resource/images/btn-like-s.png" />
+													<div class="comment-like-cnt clearfix">1</div>
+												</div>
+											</div>
+											<p class="comment-content">${vL.content}</p>
+										</li>
+									</ul>
+									</c:if>
+								</c:forEach>
+	                        <div class="post-comment-write">
+	                            <div class="profile-pic-box-s">
+	                                <h1 class="hidden">댓글작성자프로필사진</h1>
+	                                <img class="thumbnail" src="../resource/images/img-profile-default.png" />
+	                            </div>
+	                            <input type="text" placeholder="댓글을 남겨주세요." />
+	                            <input type="button" class="comment-submit" value="등록" />
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
             </c:forEach>
             
                     
