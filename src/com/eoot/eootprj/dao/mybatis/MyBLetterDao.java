@@ -47,6 +47,8 @@ public class MyBLetterDao implements LetterDao {
 
 	@Override
 	public int delete(String code) {
-		return 0;
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
+		return letterDao.delete(code);
 	}
 }

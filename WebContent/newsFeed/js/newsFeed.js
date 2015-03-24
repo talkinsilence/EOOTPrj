@@ -20,8 +20,10 @@
 	
 	$('.user.log-out-toolbar').click(function(){
 		var con = confirm("로그아웃 하시겠습니까?");
-		if(con == true)
+		if(con == true){
+			alert("안녕히가세요~ o(^▽^)o");
 			location.href="../logout.jsp";
+		}
 	});
     /*
 	function logout(){
