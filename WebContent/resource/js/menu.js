@@ -46,6 +46,6 @@
     });
 
     $("#menu2-setting").click(function () {
-        $(location).attr("href", "");
+        $(location).attr("href", "../settings/settings.jsp");
     });
 });
