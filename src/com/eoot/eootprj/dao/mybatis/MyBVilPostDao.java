@@ -47,12 +47,12 @@ public class MyBVilPostDao implements VilPostDao{
 		return 0;
 	}
 
-	/*@Override
+	@Override
 	public int insert(VilPost vilPost) {
-		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		/*SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
-		return vilPostDao.insert(vilPost);
+		return vilPostDao.insert(vilPost);*/
 		return 0;
-	}*/
+	}
 
 }

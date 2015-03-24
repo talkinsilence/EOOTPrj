@@ -30,12 +30,12 @@ public interface VilPostDao {
 	@Delete("DELETE FROM VilPosts WHERE CODE = #{code}")
 	public int delete(VilPost vilPost);
 
-	/*@SelectKey(before = true
+	@SelectKey(before = true
 			, keyColumn = "code"
 			, statement = "SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM VilPosts"
 			, resultType = java.lang.String.class
 			, keyProperty = "String")
 	@Insert("INSERT INTO VilPosts(CODE,SORT,TITLE,CONTENT,WRITER,REGDATE,HIT,LIKECNT,CLIPCNT,COMMENTCNT) "
 			+ "VALUES(code,#{sort},#{title},#{content},#{writer},getDate(),0,0,0,0)")
-	public int insert(VilPost vilPost);*/
+	public int insert(VilPost vilPost);
 }

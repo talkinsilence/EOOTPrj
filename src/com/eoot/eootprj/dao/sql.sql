@@ -26,7 +26,7 @@ SELECT * FROM FAMINVITATIONS WHERE ASKMID = 'viovio@eoot.com' AND STATE = 0;
 
 SELECT * from (select * from faminvitations where state = 0) faminvitations
 where acceptmid = 'cskn2@naver.com';
-SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FamPostcomments
+
 
 delete from members;
 delete from neighbors;
@@ -113,8 +113,8 @@ left outer JOIN VilPostFiles on VilPosts.code = VilPostfiles.vilpostcode;
          
 CREATE VIEW VilPostView
 AS
-	SELECT  V.*, M.*, VF.*, VC.*
-	FROM VilPosts V INNER JOIN Members M ON V.Writer = M.Mid 
+   SELECT  V.*, M.*, VF.*, VC.*
+   FROM VilPosts V INNER JOIN Members M ON V.Writer = M.Mid 
     left outer JOIN VilPostFiles VF on V.code = VF.vilpostcode
     left outer JOIN vilpostcomments VC on V.code = VC.vilpostcode;
 
@@ -260,7 +260,6 @@ SELECT FC.*, M.NAME, M.PROFILEPIC, (ROW_NUMBER() OVER (ORDER BY Fc.REGDATE DESC)
 
 
 SELECT F.*, M.NAME, M.PROFILEPIC, (ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM FROM FAMPOSTS F INNER JOIN MEMBERS M ON F.WRITER = M.MID WHERE F.CODE = 'code'
-
 
 
 
