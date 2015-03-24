@@ -4,7 +4,17 @@ public class NeighborJoinMember extends Neighbor {
 	private String address;
 	private String name;
 	private String famname;
-	 
+	private String famcode;
+	
+	
+	public String getFamcode() {
+		return famcode;
+	}
+
+	public void setFamcode(String famcode) {
+		this.famcode = famcode;
+	}
+
 	public String getName() {
 		return name;
 	}

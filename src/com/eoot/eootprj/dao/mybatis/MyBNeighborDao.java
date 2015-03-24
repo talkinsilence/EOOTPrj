@@ -18,10 +18,31 @@ public class MyBNeighborDao implements NeighborDao{
 	}
 
 	@Override
-	public List<NeighborJoinMember> getNeis(String acceptmid) {
+	public List<NeighborJoinMember> getNeiInvs(String acceptmid) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		NeighborDao neighborDao = sqlSession.getMapper(NeighborDao.class);
-		return neighborDao.getNeis(acceptmid);
+		return neighborDao.getNeiInvs(acceptmid);
+	}
+
+	@Override
+	public List<NeighborJoinMember> getNeiInvsMe(String uid) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		NeighborDao neighborDao = sqlSession.getMapper(NeighborDao.class);
+		return neighborDao.getNeiInvsMe(uid);
+	}
+
+	@Override
+	public List<NeighborJoinMember> getNeighbors(String uid) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		NeighborDao neighborDao = sqlSession.getMapper(NeighborDao.class);
+		return neighborDao.getNeighbors(uid);
+	}
+
+	@Override
+	public int deleteInvMe(String uid, String acceptmid) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		NeighborDao neighborDao = sqlSession.getMapper(NeighborDao.class);
+		return neighborDao.deleteInvMe(uid, acceptmid);
 	}
 
 }
