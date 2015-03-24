@@ -10,6 +10,14 @@ select * from ADMINS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 select * from FamInvitations;
 
+
+
+SELECT *
+FROM (SELECT * FROM FAMPOSTS F ORDER BY F.REGDATE DESC)
+FULL OUTER JOIN VILPOSTS V
+ON F.WRITER = V.WRITER
+ORDER BY REGDATE DESC;
+
 insert into FamInvitations(askmid, acceptmid, askregdate,askmsg,state)
 values('ddd@ddd.dd','cskn2@naver.com',getDate(),'드루dddd와',0);
 
@@ -32,6 +40,7 @@ VALUES(1, '../village/refimg/img00.jpg', 1, 1);
 
 INSERT INTO VILPOSTCommentS(CODE, content, writer, VilPostCode, Regdate)
 VALUES(1, '댓글댓글댓글', 'nami@eoot.com', 1, getDate());
+
 INSERT INTO VILPOSTCommentS(CODE, content, writer, VilPostCode, Regdate)
 VALUES(2, '댓글댓글댓글2번째', 'nami@eoot.com', 2, getDate());
 INSERT INTO VILPOSTCommentS(CODE, content, writer, VilPostCode, Regdate)
@@ -57,6 +66,7 @@ select * from letterfiles;
 INSERT INTO LETTERS VALUES('lettercode12', 'cskn2@naver.com', GETDATE(), '누나누나누나누나누나누나누나누나누나누나누나', '남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여', 0, 'viovio@eoot.com', 0);
 UPDATE LETTERS SET CONTENT='content' WHERE CONTENT='title';
 UPDATE LETTERS SET "READ"=0;
+DELETE LETTERS WHERE CODE = 'letterceode5';
 
 SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ACCEPTMID = 'viovio@eoot.com' AND state = 0;
 SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ASKMID = 'viovio@eoot.com' AND state = 0;

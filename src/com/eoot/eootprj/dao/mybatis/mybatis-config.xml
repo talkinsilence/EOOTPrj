@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <typeAlias alias="FamPost" type="com.eoot.eootprj.model.FamPost" />
       <typeAlias alias="FamInv" type="com.eoot.eootprj.model.FamInvitation"/>
       <typeAlias alias="FamInvJoinMember" type="com.eoot.eootprj.model.FamInvitationJoinMember"/>
+
    </typeAliases>
 
    <environments default="development">

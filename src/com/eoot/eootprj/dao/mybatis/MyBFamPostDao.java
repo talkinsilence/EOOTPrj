@@ -18,10 +18,10 @@ public class MyBFamPostDao implements FamPostDao{
 	}
 
 	@Override
-	public List<FamPostJoinMember> getFamPosts(String query, String field) {
+	public List<FamPostJoinMember> getFamPosts(String query) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		FamPostDao famPostDao = sqlSession.getMapper(FamPostDao.class);
-		return famPostDao.getFamPosts(query, field);
+		return famPostDao.getFamPosts(query);
 	}
 
 	@Override

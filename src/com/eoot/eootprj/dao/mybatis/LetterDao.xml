@@ -29,10 +29,9 @@
 					VALUES(#{code}, #{mid}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
 			</insert>
 	
-			<!-- 이거 고쳐야함 -->
-			<delete id = "delete" parameterType="String">
-				DELETE LETTERS WHERE CODE =#{code}
-			</delete>	
+	<delete id = "delete" parameterType="String">
+		DELETE LETTERS WHERE CODE =#{code}
+	</delete>	
 			
 	<update id="updateRead" parameterType="Letter">
 		UPDATE LETTERS SET "READ" = 1 WHERE CODE = #{code}
