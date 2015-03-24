@@ -82,6 +82,7 @@ body {
 	height: 65px;
 	padding-top: 40px;
 	padding-left: 105px;
+	cursor: pointer;
 }
 
 .profile-pic-box-main {
@@ -113,6 +114,7 @@ body {
 	top: 220px;
 	left: 50%;
 	transform: translateX(-50%);
+	cursor: default;
 	
 	overflow-x: hidden;
 	white-space: nowrap;
@@ -127,35 +129,72 @@ body {
 	top: 230px;
 	left: 50%;
 	transform: translateX(-50%);
+	cursor: default;
 	
 	overflow-x: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
-.user-menu {
+.user-menu-btn {
 	display: block;
-	/* 	visibility: hidden; */
-	position: relative;
 	width: 23px;
 	height: 23px;
-	float: right;
-	left: 20px;
-	top: 230px;
+	margin-left: 340px;
+	margin-top: 206px;
 	background: url("../images/btn-user.png") no-repeat center;
-
+	cursor: pointer;
 }
 
-.profile-name:hover .user-menu {
+	.user-menu-btn:hover {
+		opacity: 0.7;
+	}
+
+.user-menu-wrapper-bg {
 	display: block;
+	position: fixed;
+	background: none;
+	left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;	
 }
+
+.user-menu-wrapper {
+	display: block;
+	position: fixed;
+	left: 426px;
+    top: 384px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    z-index: 3;	
+}
+
+.user-menu {
+    display: block;
+    padding: 8px 12px;
+    cursor: pointer;
+    
+    font-size: 12px;
+    color: #9f9f9f;
+    text-align: center;	
+}
+
+.user-menu.settings-main {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+    .user-menu:hover {
+        background: #f9f9f9;
+    }
 
 .profile-family-members-wrapper {
 	display: inline-block;
 	position: relative;
 	min-width: 50px;
 	min-height: 50px;
-	top: 230px;
+	top: 16px;
 	left: 50%;
 	margin-right: -50%;
 	transform: translateX(-50%);
@@ -171,6 +210,7 @@ body {
 	border-radius: 50%;
 	float: left;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 /* .info-wrapper {

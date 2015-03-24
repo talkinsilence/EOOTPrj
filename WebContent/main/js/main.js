@@ -1,4 +1,30 @@
 ﻿$(document).ready(function () {
+
+	/*===========< upper-left >========================================*/
+	$('.user-menu-btn').click(function () {
+	    $('.user-menu-area').toggle();
+	});
+	
+	$('.user-menu').click(function(){
+		$(this).parent().hide();
+	});
+	
+	$('.user-menu-wrapper-bg').click(function(){
+		$(this).parent().hide();
+	});
+	
+	$('.user-menu.settings-main').click(function(){
+		location.href="../settings/settings.jsp";
+	});
+	
+	$('.user-menu.log-out-main').click(function(){
+		var con = confirm("로그아웃 하시겠습니까?");
+		if(con == true){
+			alert("안녕히가세요~ o(^▽^)o");
+			location.href="../logout.jsp";
+		}
+	});
+
 	/*===========< lower-right >========================================*/
 	$('.preview-pic').each(function(){
 		if($(this).height() >= $(this).width()){
@@ -45,6 +71,7 @@
     	
     	var lcode = $(this).parent().find('.letter-code').html();
     	lvbox.load("letter_view.jsp?code="+lcode, function(){
+    		alert("main에서 클릭");
     		$('.letter-view-wrapper').show();
     	});
 		$(this).css("color", "#000");

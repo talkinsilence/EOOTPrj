@@ -96,7 +96,14 @@
                         <!--이름-->
                         ${m.name}
                     </div>
-                    <div class="user-menu"></div>
+                    <div class="user-menu-btn"></div>
+                    <div class="user-menu-area hidden">
+	                    <div class="user-menu-wrapper-bg"></div>
+	                    <div class="user-menu-wrapper">
+		                	<div class="user-menu settings-main">설정</div>
+		                	<div class="user-menu log-out-main">로그아웃</div>
+	                	</div>
+                	</div>
                     <div class="profile-family-members-wrapper">
                         <!--가족구성원-->
                         <c:forEach var="i" items="${fms}" >
@@ -233,7 +240,8 @@
 			<div class="letter-view-transp-bg"></div>
 			<div class="btn-close-letter-view"></div>
 			<div class="letter-view-box">
-				<div class="letter-view"></div>
+				<div class="letter-view">
+				</div>
 			</div>
 		</div>
         
