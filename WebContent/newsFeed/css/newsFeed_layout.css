@@ -289,6 +289,10 @@ html {
     z-index: 3;	
 }
 
+.post-user-menu-wrapper.you{
+	height: 32px;
+}
+
 .post-user-menu {
     display: block;
     padding: 8px 12px;
