@@ -139,7 +139,7 @@
 
     /*===========< newsFeed >=============================================*/
     $('.alarm.news').click(function () {
-
+    	$(this).unbind('click');
         //alert($('.main').height());
         //alert($('.lower').height());
         
@@ -148,8 +148,8 @@
     	
         $('.main').animate({
         	'marginTop': -pushMain + 'px'
-        }, 800, function(){
-        	$('.newsFeed').load("../newsFeed/newsFeed.jsp");
+        }, 600, function(){
+        	location.href="../newsFeed/newsFeed.jsp";
         });
-    });
+    }); 	
 })

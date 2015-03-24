@@ -27,33 +27,25 @@
 	pageContext.setAttribute("m", m);
 	//pageContext.setAttribute("fps", fps);
 %>
-<script>
-	var toolbar = $('#toolbar');
-	
-	$(window).scroll(function () {
-	    if (toolbar.offset().top !== 0) {
-	        if (!toolbar.hasClass('shadow')) {
-	            toolbar.addClass('shadow');
-	        }
-	    } else {
-	        toolbar.removeClass('shadow');
-	    }
-	});
-	
-	$('.toolbar-opt').click(function () {
-	    $('.opt-wrapper').toggle();
-	});
-	$('.opt').click(function(){
-		$(this).parent().hide();
-	});
-	
-/* 	var logout = $('.user.log-out');
-	function logout(){
-		
-	}
-	logout.click(logout()); */
-</script>
 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />    
+    <link href="css/bind_newsFeed.css" rel="stylesheet" type="text/css" />
+    <script src="../resource/js/modernizr.js" type="text/javascript"></script>
+    <script src="../resource/js/jquery-2.1.3.js"></script>
+    <script src="../resource/js/menu.js" type="text/javascript"></script>
+    <script src="js/newsFeed.js" type="text/javascript"></script>
+</head>
+<body>
+
+<!--===========< 메뉴영역 >===============================================-->
+	<jsp:include page="../resource/inc/menu.jsp"></jsp:include>
+<!--===========< 뉴스피드 툴바 >=============================================-->
     <section>
         <h1 class="hidden">뉴스피드 툴바</h1>
 
@@ -75,7 +67,7 @@
                     <div class="toolbar-info">
                         <span class="user name">${m.name}</span>
                         <span class="user id">${m.mid}</span>
-                        <span class="user log-out">로그아웃</span>
+                        <span class="user log-out-toolbar">로그아웃</span>
                     </div>
                 </div>
                 <div class="toolbar-opt"></div>
@@ -89,7 +81,6 @@
 <!--===========< 뉴스피드 >===============================================-->
     <div class="main">
         <div class="wrapper">
-        
         
 			<c:forEach var="i" items="${fps}" >
             <div class="post">
@@ -222,3 +213,6 @@
                     
         </div>
     </div>
+    
+</body>
+</html>

@@ -59,12 +59,10 @@
     <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />    
     <link href="css/bind_main.css" rel="stylesheet" type="text/css" />
     <link href="css/bind_letter.css" rel="stylesheet" type="text/css" />
-    <link href="../newsFeed/css/bind_newsFeed.css" rel="stylesheet" type="text/css" />
     <script src="../resource/js/modernizr.js" type="text/javascript"></script>
     <script src="../resource/js/jquery-2.1.3.js"></script>
     <script src="../resource/js/menu.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
-    <script src="../newsFeed/js/newsFeed.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -98,6 +96,7 @@
                         <!--이름-->
                         ${m.name}
                     </div>
+                    <div class="user-menu hidden"></div>
                     <div class="profile-family-members-wrapper">
                         <!--가족구성원-->
                         <c:forEach var="i" items="${fms}" >
@@ -306,6 +305,6 @@
 	        
         </div>
 	</div>
-	<div class="newsFeed"></div>
+
 </body>
 </html>
