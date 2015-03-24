@@ -261,7 +261,7 @@
 
 }
 
-.filed {
+.field {
     display: block;
     float: right;
     height: 50px;
@@ -273,26 +273,27 @@
     border: 1px solid #cccccc;
     color: #1a1a1a;
     font-family: 'Arial';
-    font-size: 18px;
+    font-size: 15px;
     text-align: center;
     text-decoration: none;
     text-shadow: 0px 1px 0px #ffffff;
     cursor: pointer;
     outline:none;
+    text-indent:2px;
 }
 
-.filed:hover {
+.field:hover {
     background: linear-gradient(to bottom, #f1f1f1 5%, #ffffff 100%);
     background-color: #f6f6f6;
     color:#A9B1C6;
 }
 
-.filed:active {
+.field:active {
     position: relative;
     top: 1px;
 }
 
-.filed-list-wrapper{
+/* .field-list-wrapper{
     display:none;
     position:absolute;
     top:68px;
@@ -300,13 +301,13 @@
     z-index:1;
 }
 
-.filed-list{
+.field-list{
     border:1px solid #cccccc;
     border-radius:6px;
     background:#ffffff;
 }
 
-.filed-list-item1{
+.field-list-item1{
     display:block;
     height:38px;
     line-height:35px;
@@ -321,7 +322,7 @@
     outline:none;
 }
 
-.filed-list-item2{
+.field-list-item2{
     display:block;
     height:38px;
     line-height:35px;
@@ -336,13 +337,13 @@
     outline:none;
 }
 
-.filed-list-item1:hover{
+.field-list-item1:hover{
     color:#A9B1C6;
 }
 
-.filed-list-item12:hover{
+.field-list-item2:hover{
     color:#A9B1C6;
-}
+} */
 
 .upload {
     display: block;
@@ -358,7 +359,7 @@
     border-bottom-right-radius: 6px;
     color: #1a1a1a;
     font-family: 'Arial';
-    font-size: 18px;
+    font-size: 15px;
     text-align: center;
     text-decoration: none;
     text-shadow: 0px 1px 0px #ffffff;
@@ -480,4 +481,15 @@
 
 .media-list-item-comment{
 
+}
+
+.add-item-btn{
+	display:block;
+	height:35px;
+	padding-top:15px;
+	background: #D8D8D8;
+	text-align:center;
+	font-size:15px;
+	font-weight:bold;
+	color:#808080;
 }

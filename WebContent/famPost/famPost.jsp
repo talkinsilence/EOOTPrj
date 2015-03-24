@@ -95,13 +95,17 @@
 				upload
 			</button>
 
-			<input type="button" class="filed" value="filed" />
-			<div class="filed-list-wrapper">
-				<div class="filed-list">
-					<button class="filed-list-item1">my gallery</button>
-					<button class="filed-list-item2">fam gallery</button>
+			<select class="field">
+                <option selected>my gallery</option>
+                <option>fam gallery</option>
+            </select>
+			
+			<!-- <div class="field-list-wrapper">
+				<div class="field-list">
+					<button class="field-list-item1">my gallery</button>
+					<button class="field-list-item2">fam gallery</button>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="search">
 				<form>
@@ -121,9 +125,7 @@
 						<c:if test="${j*5+i < s}">
 							<div class="media-list-item-box">
 								<div class="media-list-item">
-									<form>
-										<input class="media-list-item-code" type="hidden" name="famPostCode" value="${fList.get(j*5+i).getFamPostCode()}" />
-									</form>
+									<div class="media-list-item-code hidden" >${fList.get(j*5+i).getFamPostCode()}</div>
 									<img class="media-list-item-img" src="${fList.get(j*5+i).getSrc()}">
 									<div class="media-list-item-mask"></div>
 									<div class="media-list-item-like">${fList.get(j*5+i).getLikeCnt()}</div>
@@ -135,6 +137,7 @@
 					</c:forEach>
 				</div>
 			</c:forEach>
+		<div class="add-item-btn">더보기</div>
 		</div>
 
 	</div>
@@ -164,7 +167,7 @@
 						<form>
 							<fieldset>
 								<input class="dv-reg-input" type="text" placeholder="댓글을 남기세요." />
-								<input class="dv-reg-btn" type="button" value="등록" />
+								<input class="dv-reg-btn" type="button"  value="등록" />	
 							</fieldset>
 						</form>
 					</div>
