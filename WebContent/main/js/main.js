@@ -71,7 +71,7 @@
     	
     	var lcode = $(this).parent().find('.letter-code').html();
     	lvbox.load("letter_view.jsp?code="+lcode, function(){
-    		alert("main에서 클릭");
+    		//alert("main에서 클릭");
     		$('.letter-view-wrapper').show();
     	});
 		$(this).css("color", "#000");

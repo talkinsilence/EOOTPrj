@@ -36,7 +36,7 @@ $('.letter-title').click(function(){
 	
 	var lcode = $(this).parent().find('.letter-code').html();
 	lvbox.load("letter_view.jsp?code="+lcode, function(){
-		alert("letter.jsp에서클릭");
+		//alert("letter.jsp에서클릭");
 		$('.letter-view-wrapper').fadeIn(10);
 	});
 	$(this).css("color", "#000");
