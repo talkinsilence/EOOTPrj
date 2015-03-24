@@ -19,6 +19,4 @@ public class VilPostCommentJoinMember extends VilPostComment{
 	public void setProfilepic(String profilepic) {
 		this.profilepic = profilepic;
 	}
-	
-	
 }

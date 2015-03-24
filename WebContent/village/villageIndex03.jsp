@@ -21,7 +21,7 @@
 	
 	if(_query != null && !_query.equals(""))
 		query = _query;
-	
+
 	VilPostDao vilPostDao = new MyBVilPostDao();
 	VilPostFileDao vilPostFileDao = new MyBVilPostFileDao();
 	VilPostCommentDao vilPostCommentDao = new MyBVilPostCommentDao();
@@ -37,8 +37,6 @@
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("fList", fList);
 	pageContext.setAttribute("cList", cList);
-	
-	//System.out.println(cList.get(0).getVilPostCode());
 %>
 
 <!DOCTYPE html>
@@ -52,6 +50,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="js/map.js" type="text/javascript"></script>
     <script src="js/btn.js" type="text/javascript"></script>
+    <script src="js/insert.js" type="text/javascript"></script>
     <script src="js/jquery-1.11.2.js" type="text/javascript"></script>
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
     <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">-->
@@ -289,16 +288,16 @@
                                             </c:forEach>
                                             
                                             <div class="post-comment-wrapper">
-											
-												
-													<div class="post-comment">
-													<c:forEach var="c" items="${cList}">
+
+
+											<div class="post-comment">
+												<c:forEach var="c" items="${cList}">
 													<c:if test="${i.getCode() == c.getVilPostCode()}">
 														<div class="post-comment-list">
 															<div>
 																<div class="profile-pic-box-s">
 																	<h1 class="hidden">댓글작성자프로필사진</h1>
-																	<img class="thumbnail" src="refimg/hjw.jpg" />
+																	<img class="thumbnail" src="${c.profilepic}" />
 																</div>
 																<div class="comment-info">
 																	<div class="comment-info-writer">
@@ -319,20 +318,27 @@
 																<p class="comment-content">${c.content}</p>
 															</div>
 														</div>
-														</c:if>
-											</c:forEach>
-														<div class="post-comment-write">
-															<div class="profile-pic-box-s">
-																<h1 class="hidden">댓글작성자프로필사진</h1>
-																<img class="thumbnail"
-																	src="refimg/default-profile-pic.png" />
-															</div>
-															<input class="post-input-text" type="text"
-																placeholder="댓글을 남겨주세요." /> <input
-																class="post-input-button" type="button" value="등록" />
-														</div>
-													</div>
+														<input class="hidden" name="vilPostCode" value="${c.vilPostCode}"/>
+													</c:if>
+												</c:forEach>
+												</div>
 												
+											<form action="updateCommentProc.jsp" method="post"
+												enctype="multipart/form-data">
+												<fieldset>
+													<div class="post-comment-write">
+														<div class="profile-pic-box-s">
+															<h1 class="hidden">댓글작성자프로필사진</h1>
+															<img class="thumbnail"
+																src="refimg/default-profile-pic.png" />
+														</div>
+														<input class="post-input-text" type="text" name="content" placeholder="댓글을 남겨주세요." /> 
+														<input class="post-input-button" type="submit" value="등록" />
+													</div>
+
+												</fieldset>
+											</form>
+
 										</div>
                                         </div>
 

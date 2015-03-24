@@ -20,6 +20,7 @@ VALUES(1, '../village/refimg/img00.jpg', 1, 1);
 
 INSERT INTO VILPOSTCommentS(CODE, content, writer, VilPostCode, Regdate)
 VALUES(1, '댓글댓글댓글', 'nami@eoot.com', 1, getDate());
+
 INSERT INTO VILPOSTCommentS(CODE, content, writer, VilPostCode, Regdate)
 VALUES(2, '댓글댓글댓글2번째', 'nami@eoot.com', 2, getDate());
 INSERT INTO VILPOSTCommentS(CODE, content, writer, VilPostCode, Regdate)
