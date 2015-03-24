@@ -96,7 +96,7 @@
                         <!--이름-->
                         ${m.name}
                     </div>
-                    <div class="user-menu hidden"></div>
+                    <div class="user-menu"></div>
                     <div class="profile-family-members-wrapper">
                         <!--가족구성원-->
                         <c:forEach var="i" items="${fms}" >

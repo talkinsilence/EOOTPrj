@@ -133,12 +133,29 @@ body {
 	text-overflow: ellipsis;
 }
 
+.user-menu {
+	display: block;
+	/* 	visibility: hidden; */
+	position: relative;
+	width: 23px;
+	height: 23px;
+	float: right;
+	left: 20px;
+	top: 230px;
+	background: url("../images/btn-user.png") no-repeat center;
+
+}
+
+.profile-name:hover .user-menu {
+	display: block;
+}
+
 .profile-family-members-wrapper {
 	display: inline-block;
 	position: relative;
 	min-width: 50px;
 	min-height: 50px;
-	top: 246px;
+	top: 230px;
 	left: 50%;
 	margin-right: -50%;
 	transform: translateX(-50%);
