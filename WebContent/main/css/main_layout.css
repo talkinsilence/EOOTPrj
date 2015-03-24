@@ -1,143 +1,176 @@
 ﻿.hidden {
-    display: none;
+	display: none;
 }
 
 .clearfix {
-    overflow: auto;
+	overflow: auto;
 }
 
 html {
-    display: block;
-    background: #404148;
+	display: block;
+	background: #404148;
 }
 
 body {
-    display: block;
+	display: block;
 }
 
 .main {
-    display: block;
-    float: left;
-    margin-left: 70px;
+	display: block;
+	float: left;
+	margin-left: 70px;
 }
 /*////////< upper layout >///////////////////////////////////*/
 .upper {
-    display: block;
-    position: relative;
-    width: 1296px;
-    height: 500px;
+	display: block;
+	position: relative;
+	width: 1296px;
+	height: 500px;
 }
 
 @media screen and (max-width: 1280px) {
-    .upper {
-        width: 1210px;
-    }
+	.upper {
+		width: 1210px;
+	}
 }
 
 .profile-pic-box-bg {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #404148;
-    overflow: hidden;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #404148;
+	overflow: hidden;
 }
 
 .profile-pic-box-bg .thumbnail {
-    position: absolute;
-    margin: 0;
-    left: 50%;
-    top: 130px;
-    height: auto;
-    width: 100%;
-    transform: translate(-50%,-50%);
+	position: absolute;
+	margin: 0;
+	left: 50%;
+	top: 130px;
+	height: auto;
+	width: 100%;
+	transform: translate(-50%, -50%);
 }
 
 .upper-left {
-    width: 401px;
-    height: 100%;
-    position: relative;
+	width: 401px;
+	height: 100%;
+	position: relative;
 }
 
 .transp-bg {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: black;
-    opacity: 0.3;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: 0.3;
 }
 
 .profile {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
 }
 
 .logo {
-    display: block;
-    width: 185px;
-    height: 65px;
-    padding-top: 40px;
-    padding-left: 105px;
+	display: block;
+	width: 185px;
+	height: 65px;
+	padding-top: 40px;
+	padding-left: 105px;
 }
 
 .profile-pic-box-main {
-    display: block;
-    position: absolute;
-    width: 185px;
-    height: 185px;
-    margin-left: 105px;
-    overflow: hidden;
-    border: 3px solid #fff;
-    border-radius: 50%;
+	display: block;
+	position: absolute;
+	width: 185px;
+	height: 185px;
+	margin-left: 105px;
+	overflow: hidden;
+	border: 3px solid #fff;
+	border-radius: 50%;
 }
 
 .thumbnail {
-    position: absolute;
-    margin: 0;
-    left: 50%;
-    top: 50%;
-    height: 100%;
-    width: auto;
-    transform: translate(-50%,-50%);
+	position: absolute;
+	margin: 0;
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	width: auto;
+	transform: translate(-50%, -50%);
 }
 
 .profile-id {
-    display: block;
-    position: relative;
-    top: 220px;
+	display: block;
+	position: relative;
+	width: 320px;
+	height: 24px;
+	top: 220px;
+	left: 50%;
+	transform: translateX(-50%);
+	
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .profile-name {
-    display: block;
-    position: relative;
-    top: 230px;
+	display: block;
+	position: relative;
+	width: 280px;
+	height: 23px;
+	top: 230px;
+	left: 50%;
+	transform: translateX(-50%);
+	
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.user-menu {
+	display: block;
+	/* 	visibility: hidden; */
+	position: relative;
+	width: 23px;
+	height: 23px;
+	float: right;
+	left: 20px;
+	top: 230px;
+	background: url("../images/btn-user.png") no-repeat center;
+
+}
+
+.profile-name:hover .user-menu {
+	display: block;
 }
 
 .profile-family-members-wrapper {
-    display: inline-block;
-    position: relative;
-    min-width: 50px;
-    min-height: 50px;
-    top: 246px;
-    left: 50%;
-    margin-right: -50%;
-    transform: translateX(-50%);
+	display: inline-block;
+	position: relative;
+	min-width: 50px;
+	min-height: 50px;
+	top: 230px;
+	left: 50%;
+	margin-right: -50%;
+	transform: translateX(-50%);
 }
 
 .profile-family-members {
-    display: block;
-    position: relative;
-    margin: 10px;
-    width: 46px;
-    height: 46px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    float: left;
-    overflow: hidden;
+	display: block;
+	position: relative;
+	margin: 10px;
+	width: 46px;
+	height: 46px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	float: left;
+	overflow: hidden;
 }
 
 /* .info-wrapper {
@@ -157,148 +190,169 @@ body {
 
 /*////////< lower layout >///////////////////////////////////*/
 .lower {
-    display: block;
-    position: absolute;
-    width: 1296px;
-    height: calc(100% - 500px);
-    background: #fff;
+	display: block;
+	position: absolute;
+	width: 1296px;
+	height: calc(100% - 500px);
+	background: #fff;
 }
 
 @media screen and (max-width: 1280px) {
-    .lower {
-        width: 1210px;
-        overflow: hidden;
-    }
+	.lower {
+		width: 1210px;
+		overflow: hidden;
+	}
 }
 
 .lower-left {
-    display: block;
-    position: absolute;
-    width: 401px;
-    height: 100%;
-    min-height: 120px;
-    background: #E5E5E5;
+	display: block;
+	position: absolute;
+	width: 401px;
+	height: 100%;
+	min-height: 120px;
+	background: #E5E5E5;
 }
 
 .alarm-wrapper {
-    display: block;
-    width: 320px;
-    height: 320px;
-    margin: 0 auto;
-    margin-top: 40px;
-    background: #fff;
+	display: block;
+	width: 320px;
+	height: 320px;
+	margin: 0 auto;
+	margin-top: 40px;
+	background: #fff;
 }
 
 .alarm {
-    display: block;
-    padding: 10px;
-    width: 138px;
-    height: 138px;
-    border: 1px solid #e5e5e5;
-    float: left;
-    cursor: pointer;
+	display: block;
+	padding: 10px;
+	width: 138px;
+	height: 138px;
+	border: 1px solid #e5e5e5;
+	float: left;
+	cursor: pointer;
 }
 
-.alarm > p {
-    display: block;
-    width: 68px;
-    padding: 4px 0;
-    margin: 0 auto;
+.alarm>p {
+	display: block;
+	width: 68px;
+	padding: 4px 0;
+	margin: 0 auto;
 }
 
-.news > p {background: #47ccaf;}
-.let > p  {background: #ed5661;}
-.cal > p  {background: #7085e8;}
-.bday > p {background: #ffcb3a;}
+.news>p {
+	background: #47ccaf;
+}
+
+.let>p {
+	background: #ed5661;
+}
+
+.cal>p {
+	background: #7085e8;
+}
+
+.bday>p {
+	background: #ffcb3a;
+}
 
 .alarm-icon {
-    display: block;
-    width: 60px;
-    height: 60px;
-    margin: 4px auto;
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin: 4px auto;
 }
 
-.news > .alarm-icon {background: url("../images/main-news.png") no-repeat center;  }
-.let > .alarm-icon  {background: url("../images/main-letter.png") no-repeat center;}
-.cal > .alarm-icon  {background: url("../images/main-cal.png") no-repeat center;   }
-.bday > .alarm-icon {background: url("../images/main-bday.png") no-repeat center;  }
-
-@media screen and (max-height: 768px) {
-    .alarm-wrapper {
-        width: 320px;
-        height: 80px;
-    }
+.news>.alarm-icon {
+	background: url("../images/main-news.png") no-repeat center;
 }
 
-@media screen and (max-height: 768px) {
-    .alarm {
-        padding: 5px;
-        width: 68px;
-        height: 68px;
-        overflow-y: hidden;
-    }
+.let>.alarm-icon {
+	background: url("../images/main-letter.png") no-repeat center;
+}
+
+.cal>.alarm-icon {
+	background: url("../images/main-cal.png") no-repeat center;
+}
+
+.bday>.alarm-icon {
+	background: url("../images/main-bday.png") no-repeat center;
 }
 
 @media screen and (max-height: 768px) {
-    .alarm:hover.alarm > p {
-        margin: -40px auto;
-    }
-}
-
-@media screen and (max-height: 1024px) {
-    .alarm-icon {
-		margin-top: 14px;
-    }
+	.alarm-wrapper {
+		width: 320px;
+		height: 80px;
+	}
 }
 
 @media screen and (max-height: 768px) {
-    .alarm-icon {
-        margin-top: 4px;
-    }
-}
-
-@media screen and (max-height: 1024px) {
-    .lower-left {
+	.alarm {
+		padding: 5px;
+		width: 68px;
+		height: 68px;
 		overflow-y: hidden;
-    }
+	}
+}
+
+@media screen and (max-height: 768px) {
+	.alarm:hover.alarm>p {
+		margin: -40px auto;
+	}
+}
+
+@media screen and (max-height: 1024px) {
+	.alarm-icon {
+		margin-top: 14px;
+	}
+}
+
+@media screen and (max-height: 768px) {
+	.alarm-icon {
+		margin-top: 4px;
+	}
+}
+
+@media screen and (max-height: 1024px) {
+	.lower-left {
+		overflow-y: hidden;
+	}
 }
 
 .lower-right {
-    display: block;
-    position: absolute; 
-    left: 401px;
-    width: calc(100% - 401px);
-    height: 100%;
-    min-height: 120px;
+	display: block;
+	position: absolute;
+	left: 401px;
+	width: calc(100% - 401px);
+	height: 100%;
+	min-height: 120px;
 }
 
 .preview-wrapper {
-    display: block;
-    width: 728px;
-    height: 320px;
-    margin: 0 auto;
-    margin-top: 40px;
-    background: #fff;
-
-    font-size: 12px;
+	display: block;
+	width: 728px;
+	height: 320px;
+	margin: 0 auto;
+	margin-top: 40px;
+	background: #fff;
+	font-size: 12px;
 }
 
 .preview-fampost-wrapper {
 	display: block;
-    width: 504px;
-    height: 318px;
-    border: 1px solid #fff;
-    float: left;
+	width: 504px;
+	height: 318px;
+	border: 1px solid #fff;
+	float: left;
 }
 
 .preview-fampost {
-    display: block;
-    position: relative;
-    width: 166px;
-    height: 157px;
-    border: 1px solid #fff;
-    float: left;
-    overflow: hidden;
+	display: block;
+	position: relative;
+	width: 166px;
+	height: 157px;
+	border: 1px solid #fff;
+	float: left;
+	overflow: hidden;
 }
 
 .fampost-text-box {
@@ -307,26 +361,24 @@ body {
 	height: 137px; /* 157-20 */
 	margin: 10px;
 	background: #E5E5E5;
-	
-    word-wrap: break-word;
+	word-wrap: break-word;
 }
 
 .preview-vilpost-wrapper {
 	display: block;
 	margin-left: 6px;
-    width: 214px;
-    height: 318px;
-    border: 1px solid #fff;
-    float: right;
+	width: 214px;
+	height: 318px;
+	border: 1px solid #fff;
+	float: right;
 }
 
-.preview-vilpost-wrapper > span {
+.preview-vilpost-wrapper>span {
 	display: block;
 	padding-top: 5px;
 	padding-bottom: 4px;
 	background: #9C9C9C;
 	border: 1px solid #fff;
-	
 	color: #fff;
 	text-align: center;
 }
@@ -334,37 +386,47 @@ body {
 .preview-vilpost {
 	display: block;
 	position: relative;
-    width: 212px;
-    height: 71px;
-    border: 1px solid #fff;
-    overflow: hidden;
+	width: 212px;
+	height: 71px;
+	border: 1px solid #fff;
+	overflow: hidden;
 }
 
-.village-board-label
-{
-    display: block;
-    width: 5px;
-    height: 71px;
-    float: left;
-    background: #9C9C9C;
+.village-board-label {
+	display: block;
+	width: 5px;
+	height: 71px;
+	float: left;
+	background: #9C9C9C;
 }
 
-.village-board-label.1 {background: #3bc0c3;}
-.village-board-label.2 {background: #f6902e;}
-.village-board-label.3 {background: #e55175;}
-.village-board-label.4 {background: #7eca56;}
+.village-board-label.1 {
+	background: #3bc0c3;
+}
+
+.village-board-label.2 {
+	background: #f6902e;
+}
+
+.village-board-label.3 {
+	background: #e55175;
+}
+
+.village-board-label.4 {
+	background: #7eca56;
+}
 
 .pic-box {
-    background: #404148;
+	background: #404148;
 }
 
 .preview-pic {
-    position: absolute;
-    width: auto;
-    height: 100%;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    /*
+	position: absolute;
+	width: auto;
+	height: 100%;
+	left: 50%;
+	-webkit-transform: translate(-50%, 0);
+	/*
     width: 100%;
     height: auto;
     top: 50%;
@@ -375,10 +437,9 @@ body {
 /* .preview-pic:hover.preview-pic-dscrp{
 	display: block;
 } */
-
 .text-box {
-    background: #E5E5E5;
-    word-wrap: break-word;
+	background: #E5E5E5;
+	word-wrap: break-word;
 }
 
 .text-box-title {
@@ -387,10 +448,9 @@ body {
 	height: 15px;
 	margin: 4px 10px;
 	padding-right: 4px;
-	
 	overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .text-box-content {
@@ -400,29 +460,27 @@ body {
 	margin: 4px 10px;
 	border: 1px solid #FFF;
 	background: #F4F4F4;
-	
 	line-height: 1.8;
-    overflow-y: hidden;
-    word-wrap: break-word;
+	overflow-y: hidden;
+	word-wrap: break-word;
 }
 
 @media screen and (max-height: 768px) {
-    .preview-wrapper {
-        width: 814px;
-    	height: 80px;
-    	overflow-y:auto;
-    }
-}  
+	.preview-wrapper {
+		width: 814px;
+		height: 80px;
+		overflow-y: auto;
+	}
+}
 
 @media screen and (max-height: 768px) {
-    .preview-vilpost-wrapper {
-        margin-right: 36px;
-    }
-}  
+	.preview-vilpost-wrapper {
+		margin-right: 36px;
+	}
+}
 
 @media screen and (max-height: 1024px) {
-    .lower-right {
+	.lower-right {
 		overflow-y: hidden;
-    }
-}    
-
+	}
+}
