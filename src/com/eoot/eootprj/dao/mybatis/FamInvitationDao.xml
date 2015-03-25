@@ -25,4 +25,8 @@
     	<select id="getInv" parameterType="String" resultType="FamInv">
     		SELECT * FROM FAMINVITATIONS WHERE ASKMID = #{param1} AND ACCEPTMID = #{param2}
     	</select>
+    	
+    	<update id="updateFamAccept" parameterType="String">
+    		UPDATE FAMINVITATIONS SET ACCEPTREGDATE = GETDATE(), STATE = 1 WHERE ASKMID = #{param1} AND ACCEPTMID = #{param2}
+    	</update>
     </mapper>

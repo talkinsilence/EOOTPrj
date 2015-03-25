@@ -16,8 +16,6 @@
 	MemberDao memberDao = new MyBMemberDao();
 	FamInvitationDao famInvDao = new MyBFamInvitationDao();
 	
-	
-	
 	if(memberDao.getMember(askmid) != null){
 		
 		if(famInvDao.getInv(uid, askmid) == null){

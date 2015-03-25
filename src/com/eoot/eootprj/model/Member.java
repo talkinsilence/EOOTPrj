@@ -13,7 +13,14 @@ public class Member {
 	private Date regdate;
 	private String famcode;
 	private String famname;
+	private String profilebg;
 	
+	public String getProfilebg() {
+		return profilebg;
+	}
+	public void setProfilebg(String profilebg) {
+		this.profilebg = profilebg;
+	}
 	public String getFamname() {
 		return famname;
 	}
