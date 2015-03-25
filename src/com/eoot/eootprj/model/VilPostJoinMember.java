@@ -8,7 +8,6 @@ public class VilPostJoinMember extends VilPost{
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}

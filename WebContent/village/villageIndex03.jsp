@@ -35,7 +35,6 @@
 	
 	FamPostDao famPostDao = new MyBFamPostDao();
 	List<FamPostJoinMember> famList = famPostDao.getFamPosts(query);
-	
 
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("fList", fList);
@@ -46,30 +45,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="css/bind03.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/modernizr.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="js/menubar.js" type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script src="js/map.js" type="text/javascript"></script>
-    <script src="js/btn.js" type="text/javascript"></script>
-    <script src="js/insert.js" type="text/javascript"></script>
-    <script src="js/jquery-1.11.2.js" type="text/javascript"></script>
-    <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">-->
-    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
-    <script>
-        $(function () {
-            $(".accordion").accordion({
-                collapsible: true
-                , active: false
-            });
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bind03.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/modernizr.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="js/menubar.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="js/map.js" type="text/javascript"></script>
+<script src="js/menu.js" type="text/javascript"></script>
+<script src="js/btn.js" type="text/javascript"></script>
+<script src="js/insert.js" type="text/javascript"></script>
+<script src="js/jquery-1.11.2.js" type="text/javascript"></script>
+<link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">-->
+<!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+
+<script>
+    $(function () {
+        $(".accordion").accordion({
+            collapsible: true
+            , active: false
         });
-    </script>
-    <title></title>
+    });
+</script>
+
+<title></title>
 </head>
 <body onload="initialize()">
     <div>
@@ -238,16 +240,16 @@
 							<div class="village-board-list">
 								<div class="village-board-item1">
 									<c:if test="${i.sort.equals('1')}">
-										<div class="village-board-label 1"></div>
+										<div class="village-board-label1"></div>
 									</c:if>
 									<c:if test="${i.sort.equals('2')}">
-										<div class="village-board-label 2"></div>
+										<div class="village-board-label2"></div>
 									</c:if>
 									<c:if test="${i.sort.equals('3')}">
-										<div class="village-board-label 3"></div>
+										<div class="village-board-label3"></div>
 									</c:if>
 									<c:if test="${i.sort.equals('4')}">
-										<div class="village-board-label 4"></div>
+										<div class="village-board-label4"></div>
 									</c:if>
 									<div class="village-board-item-img">
 										<img class="thumbnail2" src="${i.profilepic}" />
@@ -273,6 +275,28 @@
 											<div class="post-popularity-cnt clearfix">${i.commentCnt}</div>
 										</div>
 									</div>
+									
+<!-- ---------------------------------------------------------------------------------------------------------------- -->
+									<div class="post-header-wrapper">
+										<div class="post-user-menu-btn"></div>
+										<div class="post-user-menu-area hidden">
+											<div class="post-user-menu-wrapper-bg"></div>
+											<c:if test="${m.mid == j.writer}">
+												<div class="post-user-menu-wrapper me">
+													<div class="post-user-menu edit-post">수정하기</div>
+													<div class="post-user-menu delete-post">삭제하기</div>
+												</div>
+											</c:if>
+											<c:if test="${m.mid != j.writer}">
+												<div class="post-user-menu-wrapper you">
+													<div class="post-user-menu report-post">신고하기</div>
+												</div>
+											</c:if>
+										</div>
+									</div>
+
+									<!-- ---------------------------------------------------------------------------------------------------------------- -->
+                        	
 								</div>
 
 								<div class="accordion">
@@ -295,6 +319,7 @@
 											<div class="post-comment">
 												<c:forEach var="c" items="${cList}">
 													<c:if test="${i.getCode() == c.getVilPostCode()}">
+													
 														<div class="post-comment-list">
 															<div>
 																<div class="profile-pic-box-s">
@@ -320,24 +345,20 @@
 																<p class="comment-content">${c.content}</p>
 															</div>
 														</div>
-														<input class="hidden" name="vilPostCode" value="${c.vilPostCode}"/>
 													</c:if>
 												</c:forEach>
 												</div>
-												
-											<form action="updateCommentProc.jsp" method="post"
-												enctype="multipart/form-data">
+												<form>
+											<!-- <form action="updateCommentProc.jsp" method="post" enctype="multipart/form-data"> -->
 												<fieldset>
 													<div class="post-comment-write">
 														<div class="profile-pic-box-s">
 															<h1 class="hidden">댓글작성자프로필사진</h1>
-															<img class="thumbnail"
-																src="refimg/default-profile-pic.png" />
+															<img class="thumbnail" src="refimg/default-profile-pic.png" />
 														</div>
-														<input class="post-input-text" type="text" name="content" placeholder="댓글을 남겨주세요." /> 
-														<input class="post-input-button" type="submit" value="등록" />
+														<input class="post-input-text" type="text" placeholder="댓글을 남겨주세요." /> 
+														<input class="post-input-button" type="button" value="등록" />
 													</div>
-
 												</fieldset>
 											</form>
 
@@ -346,6 +367,7 @@
 
                                     </div>
 							</div>
+							<div class="vil-post-code hidden">${i.code}</div>
 						</c:forEach>
 					</div>
 					
