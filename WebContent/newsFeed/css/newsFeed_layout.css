@@ -1,4 +1,4 @@
-ï»¿
+
 .hidden {
     display: none;
 }
@@ -32,7 +32,7 @@
 {
   background: rgba(0, 0, 0, 0.4);
 } 
-/*////////íˆ´ë°” ë ˆì´ì•„ì›ƒ/////////////////////////////////////*/
+/*////////Åø¹Ù ·¹ÀÌ¾Æ¿ô/////////////////////////////////////*/
 
 #toolbar {
     position: fixed;
@@ -100,7 +100,7 @@
 }
 
     .news-search::-webkit-input-placeholder::before {
-        content: "ì´ì›ƒ ì†Œì‹ì„ ê²€ìƒ‰í•´ë³´ì„¸ìš”";
+        content: "ÀÌ¿ô ¼Ò½ÄÀ» °Ë»öÇØº¸¼¼¿ä";
     }
 
 #news-search {
@@ -119,9 +119,9 @@
 }
 
     @media screen and (max-width: 860px) {.toolbar-search {width: 120px;}}
-    @media screen and (max-width: 860px) {.news-search::-webkit-input-placeholder::before {content: "ê²€ìƒ‰";}}
+    @media screen and (max-width: 860px) {.news-search::-webkit-input-placeholder::before {content: "°Ë»ö";}}
     @media screen and (max-width: 750px) {.toolbar-logo {display: none;}}
-    @media screen and (max-width: 750px) {.news-search::-webkit-input-placeholder::before {content: "e-oot ê²€ìƒ‰";}}
+    @media screen and (max-width: 750px) {.news-search::-webkit-input-placeholder::before {content: "e-oot °Ë»ö";}}
     @media screen and (max-width: 590px) {.toolbar-search {width: 80px;}}
     @media screen and (max-width: 590px) {.news-search::-webkit-input-placeholder::before {content: "e-oot";}}
 
@@ -174,20 +174,20 @@
     }
 
 .opt-wrapper-bg {
-	display: block;
-	position: fixed;
-	background: none;
-	left: 0;
+   display: block;
+   position: fixed;
+   background: none;
+   left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 2;	
+    z-index: 2;   
 }
 
 .opt-wrapper {
-	display: none;
-	position: fixed;
-	right: 14px;
+   display: none;
+   position: fixed;
+   right: 14px;
     top: 56px;
     border: 1px solid #e5e5e5;
     background: #fff;
@@ -196,7 +196,7 @@
 .opt {
     display: block;
     padding: 8px 12px;
-    cursor: pointer;	
+    cursor: pointer;   
 }
 
 .opt.popular {
@@ -207,7 +207,7 @@
         background: #f9f9f9;
     }
 
-/*////////ë‰´ìŠ¤í”¼ë“œ ë ˆì´ì•„ì›ƒ/////////////////////////////////////*/
+/*////////´º½ºÇÇµå ·¹ÀÌ¾Æ¿ô/////////////////////////////////////*/
 html {
     /*background: #E5E5E5;*/
     background: #F2F2F2;
@@ -296,25 +296,25 @@ html {
 	height: 40px;
 	padding-top: 20px;
 	margin-bottom: 18px;
-	
 	font-size: 14px;
 	text-align: center;
 }
+
 .post.board-vil {
-	padding-top: 14px;
+	height: 40px; 
+	padding-top : 20px;
 	margin-bottom: 18px;
-	
 	font-size: 14px;
 	text-align: center;
 }
 
 #map-canvas {
-	display: block;
-	width: 340px;
-	height: 340px;
-	margin: 10px;
-	margin-top: 14px;
-	background: #F46969;
+   display: block;
+   width: 340px;
+   height: 340px;
+   margin: 10px;
+   margin-top: 14px;
+   background: #F46969;
 }
 
 /*=======< post-header >===================================*/
@@ -328,45 +328,45 @@ html {
 }
 
 .post-user-menu-btn {
-	display: none;
-	position: relative;
-	left: 308px;
-	top: 14px;
-	width: 14px;
-	height: 14px;
-	background: url("../images/btn-menu-post.png") no-repeat center;
-	cursor: pointer;
+   display: none;
+   position: relative;
+   left: 308px;
+   top: 14px;
+   width: 14px;
+   height: 14px;
+   background: url("../images/btn-menu-post.png") no-repeat center;
+   cursor: pointer;
 }
 
-	.post-user-menu-btn:hover {
-		opacity: 0.5;
-	}
+   .post-user-menu-btn:hover {
+      opacity: 0.5;
+   }
 
 .post-user-menu-wrapper-bg {
-	display: block;
-	position: fixed;
-	background: none;
-	left: 0;
+   display: block;
+   position: fixed;
+   background: none;
+   left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 2;	
+    z-index: 2;   
 }
 
 .post-user-menu-wrapper {
-	display: block;
-	position: relative;
-	width: 72px;
-	height: 63px;
-	left: 314px;
+   display: block;
+   position: relative;
+   width: 72px;
+   height: 63px;
+   left: 314px;
     top: 16px;
     border: 1px solid #e5e5e5;
     background: #fff;
-    z-index: 3;	
+    z-index: 3;   
 }
 
 .post-user-menu-wrapper.you{
-	height: 32px;
+   height: 32px;
 }
 
 .post-user-menu {
@@ -376,7 +376,7 @@ html {
     
     font-size: 12px;
     color: #9f9f9f;
-    text-align: center;	
+    text-align: center;   
 }
 
 .post-user-menu.edit-post {
@@ -471,7 +471,7 @@ html {
 .post-content {
     padding-bottom: 20px;
 
-    /*ê¸¸ì–´ì§€ë©´ ì©œì©œì©œ*/
+    /*±æ¾îÁö¸é ÂÀÂÀÂÀ*/
     /*overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;*/
@@ -674,6 +674,5 @@ input[type=text] {
     border-radius: 4px;
     background: #c1c1c1;
 }
-
 
 

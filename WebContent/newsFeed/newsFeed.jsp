@@ -1,4 +1,5 @@
-﻿<%@page import="com.eoot.eootprj.model.VilPostFile"%>
+﻿<%@page import="com.eoot.eootprj.model.FamPostFileJoinFamPost"%>
+<%@page import="com.eoot.eootprj.model.VilPostFile"%>
 <%@page import="com.eoot.eootprj.model.FamPostFile"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostFileDao"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostFileDao"%>
@@ -54,7 +55,7 @@
 	
 	List<FamPostJoinMember> fps = famPostDao.getFamPosts(query);
 	List<VilPostJoinMember> vps = vilPostDao.getVilPosts(query, "TITLE");
-	//List<FamPostFile> ff = famPostFileDao.getFamPostFiles();
+	List<FamPostFileJoinFamPost> ff = famPostFileDao.getFamPostFiles();
 	List<VilPostFile> vf = vilPostFileDao.getVilPostFiles();
 	List<FamPostCommentJoinMember> fList = famPostCommentDao.getFamPostComments(famPostCode);
 	List<VilPostCommentJoinMember> vList = vilPostCommentDao.getVilPostComments();
@@ -62,12 +63,12 @@
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fps", fps);
 	pageContext.setAttribute("vps", vps);
-	//pageContext.setAttribute("ff", ff);
+	pageContext.setAttribute("ff", ff);
 	pageContext.setAttribute("vf", vf);
 	pageContext.setAttribute("fList", fList);
 	pageContext.setAttribute("vList", vList);
 	
-	System.out.println(vf.get(0).getSrc());
+	System.out.println(ff.get(0).getFamPostCode());
 %>
 
 <!DOCTYPE html>
@@ -120,7 +121,6 @@
             </div>
         </div>
     </section>
-
 <!--===========< 뉴스피드 >===============================================-->
     <div class="main">
         <div class="wrapper">
@@ -154,22 +154,22 @@
                             </div>
                         </div>
                         <div class="post-user-menu-btn"></div>
-                		<div class="post-user-menu-area hidden">
-                 		    <div class="post-user-menu-wrapper-bg"></div>
-                 		    <c:if test="${m.mid == i.writer}">
-	                 		    <div class="post-user-menu-wrapper me">
-			                	    <div class="post-user-menu edit-post">수정하기</div>
-			                	    <div class="post-user-menu delete-post">삭제하기</div>
-	                		    </div>
-                		    </c:if>
-                		    <c:if test="${m.mid != i.writer}">
-	                 		    <div class="post-user-menu-wrapper you">
-			                	    <div class="post-user-menu report-post">신고하기</div>
-	                		    </div>
-                		    </c:if>
-               			</div>
-                    </div>
-                </div>
+                      <div class="post-user-menu-area hidden">
+                           <div class="post-user-menu-wrapper-bg"></div>
+                           <c:if test="${m.mid == i.writer}">
+                              <div class="post-user-menu-wrapper me">
+                                <div class="post-user-menu edit-post">수정하기</div>
+                                <div class="post-user-menu delete-post">삭제하기</div>
+                             </div>
+                          </c:if>
+                          <c:if test="${m.mid != i.writer}">
+                              <div class="post-user-menu-wrapper you">
+                                <div class="post-user-menu report-post">신고하기</div>
+                             </div>
+                          </c:if>
+                        </div>
+                        </div>
+                        </div>
                 <div class="post-main-wrapper">
                     <div class="post-main">
                         <div class="post-content">
@@ -180,9 +180,9 @@
                         </div>
                     </div>
                 </div>
-                <c:forEach var="f" items="${fList}">
-                	<c:if test="${i.getCode() == f.getFamPostCode()}">
-                		<img class="post-main-img" src="${f.getSrc()}" />
+                <c:forEach var="ff" items="${ff}">
+                	<c:if test="${i.getCode() == ff.getFamPostCode()}">
+                		<img class="post-main-img" src="${ff.getSrc()}" />
                 	</c:if>
                 </c:forEach>
                 <!--<img class="post-main-img hidden">(동영상대표이미지)</img>-->
@@ -213,22 +213,22 @@
                 </div>
                 <div class="post-comment-wrapper">
                     <div class="post-comment">
-                    	<c:forEach var="cL" items="${cList}">
-                    		<c:if test="${i.getCode() == cL.getFamPostCode()}">
+                    	<c:forEach var="fL" items="${fList}">
+                    		<c:if test="${i.getCode() == fL.getFamPostCode()}">
 								<ul class="post-comment-list">
 									<li>
 										<div class="profile-pic-box-s">
 											<h1 class="hidden">댓글작성자프로필사진</h1>
-											<img class="thumbnail" src="${cL.profilepic}" />
+											<img class="thumbnail" src="${fL.profilepic}" />
 										</div>
 										<div class="comment-info">
 											<div class="comment-info-writer">
 												<h1 class="hidden">댓글작성자이름</h1>
-												<p>${cL.name}</p>
+												<p>${fL.name}</p>
 											</div>
 											<div class="comment-info-date">
 												<h1 class="hidden">댓글작성일(또는 작성시간)</h1>
-												<p>${cL.regdate}</p>
+												<p>${fL.regdate}</p>
 											</div>
 											<div class="comment-like">
 												<h1 class="hidden">댓글좋아요개수</h1>
@@ -237,7 +237,7 @@
 												<div class="comment-like-cnt clearfix">1</div>
 											</div>
 										</div>
-										<p class="comment-content">${cL.content}</p>
+										<p class="comment-content">${fL.content}</p>
 									</li>
 								</ul>
 								</c:if>
@@ -254,13 +254,13 @@
                 </div>
             </div>
             </c:forEach>
-        </div>
-        
-        <div class="wrapper-vil">
+            </div>
+            <div class="wrapper-vil">
         <div class="post board-vil">
         우리 마을 소식
-        	<div id="map-canvas"></div>
-        </div>    
+           <!-- <div id="map-canvas"></div> -->
+        </div> 
+            
             <c:forEach var="j" items="${vps}" >
 	            <div class="post">
 	                <div class="post-header-wrapper">
@@ -285,6 +285,21 @@
 	                                </div>
 	                            </div>
 	                        </div>
+	                        <div class="post-user-menu-btn"></div>
+                      		<div class="post-user-menu-area hidden">
+                          		<div class="post-user-menu-wrapper-bg"></div>
+                           		<c:if test="${m.mid == j.writer}">
+                              		<div class="post-user-menu-wrapper me">
+                                		<div class="post-user-menu edit-post">수정하기</div>
+                                		<div class="post-user-menu delete-post">삭제하기</div>
+                             		</div>
+                          		</c:if>
+                          		<c:if test="${m.mid != j.writer}">
+                              		<div class="post-user-menu-wrapper you">
+                                		<div class="post-user-menu report-post">신고하기</div>
+                             		</div>
+                          		</c:if>
+                        	</div>
 	                    </div>
 	                </div>
 	                <div class="post-main-wrapper">
@@ -371,10 +386,8 @@
 	                </div>
 	            </div>
             </c:forEach>
-        </div> 
-                      
         </div>
     </div>
-    
+    </div>
 </body>
 </html>
