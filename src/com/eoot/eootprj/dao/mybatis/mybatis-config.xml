@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <typeAlias alias="FamPost" type="com.eoot.eootprj.model.FamPost" />
       <typeAlias alias="FamInv" type="com.eoot.eootprj.model.FamInvitation"/>
       <typeAlias alias="FamInvJoinMember" type="com.eoot.eootprj.model.FamInvitationJoinMember"/>
+      <typeAlias alias="FamCalendar" type="com.eoot.eootprj.model.FamCalendar"/>
 
    </typeAliases>
 
@@ -45,5 +46,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostFileDao.xml" />
       <mapper resource="com/eoot/eootprj/dao/mybatis/FamPostCommentDao.xml" />
+      <mapper resource="com/eoot/eootprj/dao/mybatis/FamCalendarDao.xml" />
    </mappers>
 </configuration>  
