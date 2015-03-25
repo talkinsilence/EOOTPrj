@@ -90,10 +90,10 @@
 				upload
 			</button>
 
-			<select class="field">
+			<!-- <select class="field">
                 <option selected>my gallery</option>
                 <option>fam gallery</option>
-            </select>
+            </select> -->
 			
 			<!-- <div class="field-list-wrapper">
 				<div class="field-list">
@@ -162,7 +162,7 @@
 						<form>
 							<fieldset>
 								<input class="dv-reg-input" type="text" placeholder="댓글을 남기세요." />
-								<input class="dv-reg-btn" type="button"  value="등록" />	
+								<div class="dv-reg-btn" >등록</div>	
 							</fieldset>
 						</form>
 					</div>

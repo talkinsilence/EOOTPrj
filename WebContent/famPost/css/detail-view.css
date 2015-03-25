@@ -44,7 +44,7 @@
 .dv-btn-wrapper {
     display: block;
     height: 100%;
-    width: 1180px;
+    width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -88,7 +88,7 @@
 }
 
 /*-------뷰------------------------------------------*/
-#detail-view {
+.detail-view {
     display: block;
     float: left;
     height: 100%;
@@ -498,7 +498,9 @@
 .dv-reg-btn{
     display: inline-block;
     float: right;
-    height: 38px;
+    font-weight:bold;
+    height: 35px;
+    line-height:35px;
     width: 50px;
     margin-top: 7px;
     margin-left:2px;
@@ -511,8 +513,7 @@
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
 	cursor:pointer;
-    overflow:hidden;
-    outline:none;
+	text-indent:12px;
 }
 
 .dv-reg-btn:hover {
