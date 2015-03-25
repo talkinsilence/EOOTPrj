@@ -11,13 +11,8 @@ import com.eoot.eootprj.model.FamPostCommentJoinMember;
 
 public interface FamPostCommentDao {
 	
-	@SelectKey(before = true
-			, keyColumn = "code"
-			, statement = "SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FAMPOSTCOMMENTS"
-			, resultType = java.lang.String.class
-			, keyProperty = "String")
-	@Insert("INSERT INTO FAMPOSTCOMMENTS(CODE, TITLE, CONTENT, WRITER, REGDATE, SHARENEI, SHAREVIL, HIT, LIKECNT, CLIPCNT, COMMENTCNT)"
-			+ "VALUES(#{CODE}, #{CONTENT}, #{WRITER}, #{FAMPOSTCODE}, GETDATE())")
+	@Insert("INSERT INTO FAMPOSTCOMMENTS(CODE, CONTENT, WRITER, FAMPOSTCODE, REGDATE)"
+			+ "VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FAMPOSTCOMMENTS), #{content}, #{writer}, #{famPostCode}, getDate())")
 	public int insert(FamPostComment famPostComment);
 	
 	@Select("SELECT "

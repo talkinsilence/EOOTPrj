@@ -39,20 +39,15 @@
 <%    
 	String famPostCode ="";
 	String query = "";
-	String field = "Title";
 	
 	String _famPostCode = request.getParameter("famPostCode");
 	String _query = request.getParameter("query");
-	String _field = request.getParameter("filed");
 
 	if (_query != null && !_query.equals(""))
 		query = _query;
 
-	if (_field != null && !_field.equals(""))
-		field = _field;
-
 	FamPostDao famPostDao = new MyBFamPostDao();
-	List<FamPostJoinMember> list = famPostDao.getFamPosts(query, field);
+	List<FamPostJoinMember> list = famPostDao.getFamPosts(query);
 
 	FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
 	List<FamPostFileJoinFamPost> fList = famPostFileDao.getFamPostFiles();
