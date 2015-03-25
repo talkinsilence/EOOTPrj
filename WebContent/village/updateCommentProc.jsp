@@ -1,41 +1,31 @@
-<%@page import="com.eoot.eootprj.model.VilPostCommentJoinMember"%>
+<%@page import="org.json.simple.JSONObject"%>
 <%@page import="com.eoot.eootprj.model.VilPostComment"%>
-<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
-<%@page import="com.eoot.eootprj.dao.VilPostDao"%>
-<%@page import="com.eoot.eootprj.model.VilPost"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostCommentDao"%>
 <%@page import="com.eoot.eootprj.dao.VilPostCommentDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	try {
+		String vilPostCode = request.getParameter("vilPostCode");
+		String content = request.getParameter("content");
+		//String uid = (String) session.getAttribute("uid");
+		
+		VilPostCommentDao vilPostCommentDao = new MyBVilPostCommentDao();
+		VilPostComment vilPostComment = new VilPostComment();
+		vilPostComment.setVilPostCode(vilPostCode);
+		vilPostComment.setContent(content);
+		vilPostComment.setWriter("nami@eoot.com");
+		vilPostCommentDao.insert(vilPostComment);////쿼리
+		
+		System.out.println(vilPostCode);
+		System.out.println(content);
 
-	String content = "";
-	String _content = request.getParameter("content");
-	System.out.println(_content);
-	String vilPostCode = "";
-	String _vilPostCode = request.getParameter("vilPostCode");
-	VilPostCommentJoinMember vcj = new VilPostCommentJoinMember();
-	
-	if(_content != null && !_content.equals("")){
-		content = _content;
+	} catch (Exception e) {
+		e.printStackTrace();
+		response.getWriter().println("{result : FAIL}");
 	}
-	
-	System.out.println(content);
-	
-	if(_vilPostCode != null && !_vilPostCode.equals("")){
-		vilPostCode = _vilPostCode;
-	}
-	
-	System.out.println(vilPostCode);
-	
-	vcj.setWriter("pcm");
-	vcj.setContent(content);
-	vcj.setVilPostCode(vilPostCode);
-	/* VilPostComment vilPostComment = new VilPostComment(); */
-	/* vilPostComment.setContent(content); */
-	
-	VilPostCommentDao vilPostCommentDao = new MyBVilPostCommentDao();
-	vilPostCommentDao.insert(vcj);
-	
-/* 	response.sendRedirect("villageIndex03.jsp"); */
+
+	JSONObject jo = new JSONObject();
+	jo.put("result", "SUCC");
+	response.getWriter().println(jo.toString());
 %>
