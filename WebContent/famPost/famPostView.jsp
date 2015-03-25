@@ -28,11 +28,6 @@
 			}
 		});
    	});
-   	
-   	/* $('.dv-reg-btn').click(function () {
-    	var dvImgCode = $('.media-list-item-code').val();
-    	alert(dvImgCode);
-   	}); */
 </script>
 
 <%	

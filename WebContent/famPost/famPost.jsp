@@ -159,12 +159,8 @@
 					
 					<div class="dv-reg-box">
 						<div class="dv-reg-pic"></div>
-						<form>
-							<fieldset>
-								<input class="dv-reg-input" type="text" placeholder="댓글을 남기세요." />
-								<div class="dv-reg-btn" >등록</div>	
-							</fieldset>
-						</form>
+						<input class="dv-reg-input" type="text" placeholder="댓글을 남기세요." />
+						<div class="dv-reg-btn" >등록</div>
 					</div>
 				</div>
 				<div class="dv-btn-next"></div>

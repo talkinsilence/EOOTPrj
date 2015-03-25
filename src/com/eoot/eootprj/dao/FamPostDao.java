@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 
+import com.eoot.eootprj.model.FMJoinFamPostFile;
 import com.eoot.eootprj.model.FamPost;
 import com.eoot.eootprj.model.FamPostJoinMember;
 
@@ -24,28 +24,37 @@ public interface FamPostDao {
 	@Select("SELECT * "
 			+ "FROM (SELECT M.NAME, M.PROFILEPIC, F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
 			+ "FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER "
-			+ "WHERE (F.TITLE LIKE '%${query}%') AND (F.CONTENT LIKE '%${query}%')) MJOINF "
+			+ "WHERE (F.TITLE LIKE '%${query}%') OR (F.CONTENT LIKE '%${query}%')) MJOINF "
 			+ "WHERE MJOINF.NUM BETWEEN 1 AND 30;")
 	public List<FamPostJoinMember> getFamPosts(@Param("query")String query);
 
-	/*@Select("SELECT * "
-         + "FROM (SELECT M.NAME, M.PROFILEPIC, F.* ,(ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
-         + "FROM MEMBERS M INNER JOIN FAMPOSTS F ON M.MID=F.WRITER "
-         + "WHERE F.${param2} LIKE '%${param1}%') MJOINF "
-         + "WHERE MJOINF.NUM BETWEEN 1 AND 30;")*/
-	
 	public int update(FamPost famPost);
 
 	@Delete("DELETE FROM FamPosts WHERE CODE = #{code}")
-	public int delete(FamPost famPost);
+	public int delete(String code);
 
-	/*@SelectKey(before = true
-			, keyColumn = "code"
-			, statement = "SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FamPosts"
-			, resultType = java.lang.String.class
-			, keyProperty = "String")*/
-	@Insert("INSERT INTO FamPosts(CODE, TITLE, CONTENT, WRITER, REGDATE, SHARENEI, SHAREVIL, HIT, LIKECNT, CLIPCNT, COMMENTCNT)"
+	@Insert("INSERT INTO FAMPOSTS(CODE, TITLE, CONTENT, WRITER, REGDATE, SHARENEI, SHAREVIL, HIT, LIKECNT, CLIPCNT, COMMENTCNT)"
 			+ "VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FamPosts), #{title}, #{content}, #{writer}, getDate(), 0, 0, 0, 0, 0, 0)")
 	public int insert(FamPost fampost);
+	
+	@Select("SELECT M.NAME, M.PROFILEPIC, F.*, FPF.SRC, (ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
+			+ "FROM MEMBERS M INNER JOIN FAMPOSTS F "
+			+ "ON F.WRITER = M.MID "
+			+ "LEFT OUTER JOIN FAMPOSTFILES FPF "
+			+ "ON F.CODE = FPF.FAMPOSTCODE "
+			+ "WHERE F.CODE = "
+			+ "(SELECT TOP 1 code FROM FAMPOSTS WHERE REGDATE < (SELECT REGDATE FROM FAMPOSTS WHERE CODE = '5') "
+			+ "ORDER BY REGDATE DESC)")
+	public FMJoinFamPostFile prevFamPost(String curCode);
+	
+	@Select("SELECT M.NAME, M.PROFILEPIC, F.*, FPF.SRC, (ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
+			+ "FROM MEMBERS M INNER JOIN FAMPOSTS F "
+			+ "ON F.WRITER = M.MID "
+			+ "LEFT OUTER JOIN FAMPOSTFILES FPF "
+			+ "ON F.CODE = FPF.FAMPOSTCODE "
+			+ "WHERE F.CODE = "
+			+ "(SELECT TOP 1 code FROM FAMPOSTS WHERE REGDATE > (SELECT REGDATE FROM FAMPOSTS WHERE CODE = '5') "
+			+ "ORDER BY REGDATE ASC)")
+	public FMJoinFamPostFile nextFamPost(String curCode);
 	
 }
