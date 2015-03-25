@@ -270,7 +270,7 @@
 	            <div class="letter-write-header">
 	                <div class="letter-to">받는 사람</div>
 	                <div class="letter-to-list-wrapper">
-	                	<ul>
+	                	<ul class="added">
 <!-- 		                	<li class="letter-to-list">
 		                    	<div class="reader-mid hidden">suzy</div>
 		                        <img class="thumbnail" src="images/suzy2.jpg" />
@@ -301,7 +301,7 @@
 	            </div>
 	            <div class="letter-add-list-box">
 	                <div class="letter-add-list-wrapper">
-	                <ul>
+	                <ul class="adding">
 	                	<li class="letter-add-list">
 	                    	<div class="reader-mid hidden">bobby</div>
 	                        <img class="thumbnail" src="images/bobby1.jpg"/>
@@ -318,8 +318,7 @@
 	                    	<div class="reader-mid hidden">dragon</div>
 	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
 	                    </li>
-	                </ul>
-	                    
+	                </ul>  
 	                </div>
 	            </div>
 	            <button id="letter-add-cancel" type="submit">취소</button>
