@@ -23,4 +23,11 @@ public interface FamPostCommentDao {
 			+ "WHERE FC.FAMPOSTCODE = #{FAMPOSTCODE}")
 	public	List<FamPostCommentJoinMember> getFamPostComments(String famPostCode);
 	
+	@Select("SELECT "
+			+ "FC.*, M.NAME, M.PROFILEPIC, (ROW_NUMBER() OVER (ORDER BY FC.REGDATE DESC)) NUM "
+			+ "FROM FAMPOSTCOMMENTS FC "
+			+ "INNER JOIN MEMBERS M "
+			+ "ON FC.WRITER = M.MID ")
+	public	List<FamPostCommentJoinMember> getFamPostComments2();
+	
 }
