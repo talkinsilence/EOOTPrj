@@ -39,13 +39,13 @@ public interface FamPostDao {
 	@Delete("DELETE FROM FamPosts WHERE CODE = #{code}")
 	public int delete(FamPost famPost);
 
-	@SelectKey(before = true
+	/*@SelectKey(before = true
 			, keyColumn = "code"
 			, statement = "SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FamPosts"
 			, resultType = java.lang.String.class
-			, keyProperty = "String")
+			, keyProperty = "String")*/
 	@Insert("INSERT INTO FamPosts(CODE, TITLE, CONTENT, WRITER, REGDATE, SHARENEI, SHAREVIL, HIT, LIKECNT, CLIPCNT, COMMENTCNT)"
-			+ "VALUES(#{code}, #{title}, #{content}, #{writer}, getDate(), 0, 0, 0, 0, 0, 0)")
+			+ "VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FamPosts), #{title}, #{content}, #{writer}, getDate(), 0, 0, 0, 0, 0, 0)")
 	public int insert(FamPost fampost);
 	
 }
