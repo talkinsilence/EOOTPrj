@@ -16,4 +16,11 @@ public class MyBFamCalendarDao implements FamCalendarDao{
 		return famCalendarDao.getCals(famcode);
 	}
 
+	@Override
+	public int insertCal(FamCalendar famcalendar) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		FamCalendarDao famCalendarDao = sqlSession.getMapper(FamCalendarDao.class);
+		return famCalendarDao.insertCal(famcalendar);
+	}
+
 }

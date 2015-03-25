@@ -25,7 +25,11 @@ $(document).ready(function () {
 
     renderCalendar();
 
-    $("#datepicker").datepicker({
+    $("#datepickerStart").datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+    
+    $("#datepickerEnd").datepicker({
         dateFormat: 'yy-mm-dd'
     });
 
@@ -40,14 +44,36 @@ $(document).ready(function () {
     }).mouseout(function () {
         $(this).css("background", "#427fed");
     });
-
+    
+    $('#btn-calendar-write').click(function(){
+    	var start = $("#datepickerStart");
+    	var content = $("#calendar-content");
+    	
+    	if(start.val() == ""){
+    		start.css("border-color","red");
+    	}
+    	
+    	if(content.val() == ""){
+    		content.css("border-color","");
+    	}
+    	
+    	if(start.val() != "" && content.val() != ""){
+    		$("#calForm").submit();
+    	}
+    		
+    });
+    
     $('#btn-calendar-cancel').mousedown(function () {
         $(this).css("background", '#3b3b3b');
     }).mouseout(function () {
         $(this).css("background", "#808080");
     });
     $('#btn-calendar-cancel').click(function () {
-        $("#calendar-write-body").fadeOut(200);
+    	$("#calendar-write-body").fadeOut(200);
+        
+    	$("#datepickerStart").val("");
+    	$("#datepickerEnd").val("");
+        $("#calendar-content").val("");
     });
 });
 
