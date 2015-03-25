@@ -7,6 +7,31 @@
     overflow: auto;
 }
 
+::-webkit-scrollbar
+{
+  width: 14px;  /* for vertical scrollbars */
+  height: 14px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  /* background: rgba(0, 0, 0, 0.1); */
+  background: #F1F1F1;
+}
+
+::-webkit-scrollbar-thumb
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+/*   background: rgba(0, 0, 0, 0.2); */
+  background: #BCBCBC;
+  border: 2px solid #F1F1F1;
+} 
+
+::-webkit-scrollbar-thumb:ACTIVE
+{
+  background: rgba(0, 0, 0, 0.4);
+} 
 /*////////툴바 레이아웃/////////////////////////////////////*/
 
 #toolbar {
@@ -148,6 +173,17 @@
         opacity: 0.7;
     }
 
+.opt-wrapper-bg {
+	display: block;
+	position: fixed;
+	background: none;
+	left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;	
+}
+
 .opt-wrapper {
 	display: none;
 	position: fixed;
@@ -168,7 +204,7 @@
 }
 
     .opt:hover {
-        background: #e0f6f1;
+        background: #f9f9f9;
     }
 
 /*////////뉴스피드 레이아웃/////////////////////////////////////*/
@@ -194,6 +230,20 @@ html {
     background: #F2F2F2;
 }
 
+.wrapper-fam {
+    display: block;
+    position: absolute;
+    min-width: 380px;
+    float: left;
+}
+
+.wrapper-vil {
+    display: block;
+    position: absolute;
+    left: 380px;
+    min-width: 380px;
+}
+
 .post {
     display: block;
     position: relative;
@@ -214,7 +264,7 @@ html {
         float: left;
     }
 
-    .post:nth-child(2n) {
+/*     .post:nth-child(2n) {
         clear: right;
         float: right;
     }
@@ -224,7 +274,7 @@ html {
             clear: left;
             float: left;
         }
-    }
+    } */
 
     @media screen and (max-width: 960px) {
         .wrapper {
@@ -240,6 +290,32 @@ html {
     @media screen and (max-width: 640px) {.wrapper {left: 157px;}}
     @media screen and (max-width: 590px) {.wrapper {left: 140px;}}
     @media screen and (max-width: 548px) {.wrapper {left: 110px;}}
+
+/*=======< board >=========================================*/
+.post.board-fam {
+	height: 40px;
+	padding-top: 20px;
+	margin-bottom: 18px;
+	
+	font-size: 14px;
+	text-align: center;
+}
+.post.board-vil {
+	padding-top: 14px;
+	margin-bottom: 18px;
+	
+	font-size: 14px;
+	text-align: center;
+}
+
+#map-canvas {
+	display: block;
+	width: 340px;
+	height: 340px;
+	margin: 10px;
+	margin-top: 14px;
+	background: #F46969;
+}
 
 /*=======< post-header >===================================*/
 .post-header-wrapper {
@@ -289,6 +365,10 @@ html {
     z-index: 3;	
 }
 
+.post-user-menu-wrapper.you{
+	height: 32px;
+}
+
 .post-user-menu {
     display: block;
     padding: 8px 12px;
@@ -306,10 +386,6 @@ html {
     .post-user-menu:hover {
         background: #f9f9f9;
     }
-
-
-
-
 
 .post-header {
     display: block;

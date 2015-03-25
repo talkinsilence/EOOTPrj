@@ -14,10 +14,13 @@
 	});
 	
 	$('.toolbar-opt').click(function () {
-	    $('.opt-wrapper').toggle();
+	    $('.opt-area').toggle();
 	});
 	$('.opt').click(function(){
-		$(this).parent().hide();
+		$('.opt-area').hide();
+	});
+	$('.opt-wrapper-bg').click(function(){
+		$('.opt-area').hide();
 	});
 	
 	$('.user.log-out-toolbar').click(function(){

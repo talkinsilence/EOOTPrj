@@ -231,8 +231,8 @@
 			                    <div class="letter-mani-area">
 				                    <div class="letter-mani-wrapper-bg"></div>
 				                    <div class="letter-mani-wrapper">
-					                	<div class="letter-mani reply-letter">답장하기</div>
-					                	<div class="letter-mani delete-letter">삭제하기</div>
+					                	<div class="letter-mani reply-letter"></div>
+					                	<div class="letter-mani delete-letter"></div>
 				                	</div>
 			                	</div>
 		                    </li>

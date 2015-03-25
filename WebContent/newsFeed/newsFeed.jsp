@@ -120,10 +120,15 @@
             </div>
         </div>
     </section>
+
 <!--===========< 뉴스피드 >===============================================-->
     <div class="main">
         <div class="wrapper">
         
+        <div class="wrapper-fam">
+        <div class="post board-fam">
+        우리 가족과 이웃의 소식
+        </div>
 			<c:forEach var="i" items="${fps}" >
             <div class="post">
                 <div class="post-header-wrapper">
@@ -151,10 +156,17 @@
                         <div class="post-user-menu-btn"></div>
                 		<div class="post-user-menu-area hidden">
                  		    <div class="post-user-menu-wrapper-bg"></div>
-                 		    <div class="post-user-menu-wrapper">
-		                	    <div class="post-user-menu edit-post">수정하기</div>
-		                	    <div class="post-user-menu delete-post">삭제하기</div>
-                		    </div>
+                 		    <c:if test="${m.mid == i.writer}">
+	                 		    <div class="post-user-menu-wrapper me">
+			                	    <div class="post-user-menu edit-post">수정하기</div>
+			                	    <div class="post-user-menu delete-post">삭제하기</div>
+	                		    </div>
+                		    </c:if>
+                		    <c:if test="${m.mid != i.writer}">
+	                 		    <div class="post-user-menu-wrapper you">
+			                	    <div class="post-user-menu report-post">신고하기</div>
+	                		    </div>
+                		    </c:if>
                			</div>
                     </div>
                 </div>
@@ -242,7 +254,13 @@
                 </div>
             </div>
             </c:forEach>
-            
+        </div>
+        
+        <div class="wrapper-vil">
+        <div class="post board-vil">
+        우리 마을 소식
+        	<div id="map-canvas"></div>
+        </div>    
             <c:forEach var="j" items="${vps}" >
 	            <div class="post">
 	                <div class="post-header-wrapper">
@@ -353,8 +371,8 @@
 	                </div>
 	            </div>
             </c:forEach>
-            
-                    
+        </div> 
+                      
         </div>
     </div>
     
