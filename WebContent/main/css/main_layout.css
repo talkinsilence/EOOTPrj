@@ -166,9 +166,9 @@ body {
 
 .user-menu-wrapper {
 	display: block;
-	position: relative;
-	left: 10px;
-    top: 10px;
+	position: fixed;
+	left: 426px;
+    top: 384px;
     border: 1px solid #e5e5e5;
     background: #fff;
     z-index: 3;	
