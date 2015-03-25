@@ -26,7 +26,7 @@ SELECT * FROM FAMINVITATIONS WHERE ASKMID = 'viovio@eoot.com' AND STATE = 0;
 
 SELECT * from (select * from faminvitations where state = 0) faminvitations
 where acceptmid = 'cskn2@naver.com';
-
+SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FamPostcomments
 
 delete from members;
 delete from neighbors;

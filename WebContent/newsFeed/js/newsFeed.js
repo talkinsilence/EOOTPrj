@@ -1,4 +1,6 @@
 ﻿$(document).ready(function () {
+	
+	/*===========< toolbar >========================*/
 	var toolbar = $('#toolbar');
 	
 	$(window).scroll(function () {
@@ -12,10 +14,13 @@
 	});
 	
 	$('.toolbar-opt').click(function () {
-	    $('.opt-wrapper').toggle();
+	    $('.opt-area').toggle();
 	});
 	$('.opt').click(function(){
-		$(this).parent().hide();
+		$('.opt-area').hide();
+	});
+	$('.opt-wrapper-bg').click(function(){
+		$('.opt-area').hide();
 	});
 	
 	$('.user.log-out-toolbar').click(function(){
@@ -25,13 +30,26 @@
 			location.href="../logout.jsp";
 		}
 	});
-    /*
-	function logout(){
-		var confirm = confirm("로그아웃 하시겠습니까?");
-		if(confirm == true){
-			location.href="../main/logout.jsp";
-			//logout을 위해 세션을 제거하는 페이지 호출 
-		}else{}	
-	};  */
+
+	/*===========< post >========================*/
+	$('.post-header-wrapper').mouseover(function(){
+		$(this).find('.post-user-menu-btn').show();
+	});
+	
+	$('.post-header-wrapper').mouseout(function(){
+		$(this).find('.post-user-menu-btn').hide();
+	});
+	
+	$('.post-user-menu-btn').click(function () {
+	    $(this).parent().find('.post-user-menu-area').toggle();
+	});
+	
+	$('.post-user-menu').click(function(){
+		$('.post-user-menu-area').hide();
+	});
+	
+	$('.post-user-menu-wrapper-bg').click(function(){
+		$('.post-user-menu-area').hide();
+	});
 })
 

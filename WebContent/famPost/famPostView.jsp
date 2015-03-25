@@ -10,7 +10,7 @@
 	pageEncoding="UTF-8"%>
 
 <script>
-	 $(document).ready(function() {
+   	$(document).ready(function() {
 		$('.dv-content').click(function() {
 			if ($(this).css("word-break") == "normal") {
 				$(this).css("word-break", "break-all")
@@ -27,7 +27,12 @@
 				});
 			}
 		});
-	});
+   	});
+   	
+   	/* $('.dv-reg-btn').click(function () {
+    	var dvImgCode = $('.media-list-item-code').val();
+    	alert(dvImgCode);
+   	}); */
 </script>
 
 <%	
@@ -83,12 +88,13 @@
 </div>
 
 <div class="dv-comment-box-list">
-	<c:forEach var="c" items="${cList}">
+	<c:forEach var="cList" items="${cList}">
 		<div class="dv-comment-box">
-			<div class="dv-comment-writer-pic">${c.profilepic}</div>
-			<div class="dv-comment-writer-name">${c.name}</div>
-			<div class="dv-comment-regdate">${c.regdate}</div>
-			<div class="dv-comment">${c.content}</div>
+			<div class="dv-comment-writer-pic">${cList.profilepic}</div>
+			<div class="dv-comment-writer-name">${cList.name}</div>
+			<div class="dv-comment-regdate">${cList.regdate}</div>
+			<div class="dv-comment">${cList.content}</div>
 		</div>
 	</c:forEach>
+		
 </div>
