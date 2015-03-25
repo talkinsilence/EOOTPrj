@@ -457,8 +457,10 @@
     min-width: 350px;
     min-height: 500px;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+/*     top: 50%;
+    transform: translate(-50%, -50%); */
+    top: 40px;
     padding: 30px;
     background: #fff; 
     border-radius: 4px;
@@ -472,22 +474,35 @@
 
 .letter-to {
     display: block;
-    font-size: 14px;
+    
+    font-size: 13px;
+    color: #404148;
+}
+
+.letter-to-box {
+	display: block;
+	position: absolute;
+	left: calc(50% - 122px);
+	top: 25px;
+	width: 244px;
+	height: 82px;
+	float: left;
+	padding-right: 10px;
+	
+	overflow: auto;
 }
 
 .letter-to-list-wrapper {
     display: inline-block;
     position: relative;
-    margin-top: -20px;
-    min-width: 56px;
-    height: 56px;
+    min-width: 78px;
+    min-height: 56px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .added {
-/* 	width: 200px;
-	background: yellow; */
+	float: left;
 }
 
 .letter-to-list {
@@ -613,7 +628,8 @@
 
 /*======< letter add >==================*/
 .letter-add-wrapper {
-    display: none;
+    display: inline-block;
+    /* visibility: hidden; */
     position: absolute;
     padding: 30px;
     width: 115px;
@@ -621,6 +637,8 @@
     background: #fff; 
     border-radius: 4px;
     font-size: 13px;
+    left: calc(50% + 245px);
+    top: 40px;
 }
 
 .check-box {
@@ -637,7 +655,7 @@
     position: absolute;
     margin: 15px 0;
     width: 96px;
-    height: 38%;
+    height: 54%;
     left: 50%;
     transform: translateX(-50%);
     overflow: hidden;

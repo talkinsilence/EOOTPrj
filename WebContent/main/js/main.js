@@ -133,13 +133,13 @@
 
     $('.letter-to-list-add').click(function () {
     	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
-        $('.letter-write-wrapper').css("display", "block");
+        //$('.letter-write-wrapper').css("display", "block");
 
-        var loc = $('.letter-write-wrapper').offset();
-        var wid = $('.letter-write-wrapper').width();
-        $('.letter-add-wrapper').offset({ left: loc.left + wid + 70, top: loc.top });
+        //var loc = $('.letter-write-wrapper').offset();
+        //var wid = $('.letter-write-wrapper').width();
+        //$('.letter-add-wrapper').offset({ /*left: loc.left + wid + 70, */top: loc.top });
 
-        $('.letter-add-wrapper').fadeIn(100, 'linear');
+        $('.letter-add-wrapper').slideToggle();
     });
     
     var readerLists = [];
@@ -180,9 +180,9 @@
         $(this).parent().remove();
     });
     
-    $('#letter-add-cancel').click(function () {
-        $('.letter-add-wrapper').fadeOut(10);
-    });
+/*    $('#letter-add-cancel').click(function () {
+        $('.letter-add-wrapper').css("visibility", "hidden");
+    });*/
 
     $('#letter-send').click(function () {
         if ($('.letter-to-list-wrapper').find('img').length == 0)
