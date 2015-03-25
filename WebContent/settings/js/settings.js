@@ -180,7 +180,14 @@ $(document).ready(function () {
             view.text("자세히 보기");
         }
     });
-
+    
+    $("#btn-eoot-member-inv").click(function(){
+    	var acceptmid = $("#eoot-member-mng-txt").val();
+    	
+    	$("#eoot-with-add-view").load("insertNeiInvProc.jsp?acceptmid="+acceptmid);
+    	$("#eoot-member-mng-txt").val("");
+    });
+    
     // 이웃맺기
 
     $("#eoot-with-view").click(function () {

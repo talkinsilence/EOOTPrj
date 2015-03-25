@@ -10,17 +10,18 @@ public class Neighbor {
 	private String askmsg;
 	private int state;
 	
-	public String getAskmsg() {
-		return askmsg;
-	}
-	public void setAskmsg(String askmsg) {
-		this.askmsg = askmsg;
-	}
+	
 	public String getAskmid() {
 		return askmid;
 	}
 	public void setAskmid(String askmid) {
 		this.askmid = askmid;
+	}
+	public String getAskmsg() {
+		return askmsg;
+	}
+	public void setAskmsg(String askmsg) {
+		this.askmsg = askmsg;
 	}
 	public String getAcceptmid() {
 		return acceptmid;

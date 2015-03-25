@@ -6,7 +6,8 @@ import com.eoot.eootprj.model.Neighbor;
 import com.eoot.eootprj.model.NeighborJoinMember;
 
 public interface NeighborDao {
-	public int insertNei(Neighbor nei);
+	public int insertNei(Neighbor neighbor);
+	public Neighbor getInv(String askmid, String acceptmid);
 	public List<NeighborJoinMember> getNeighbors(String uid);
 	public List<NeighborJoinMember> getNeiInvs(String uid);
 	public List<NeighborJoinMember> getNeiInvsMe(String uid);
