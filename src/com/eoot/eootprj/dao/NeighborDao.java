@@ -7,6 +7,9 @@ import com.eoot.eootprj.model.NeighborJoinMember;
 
 public interface NeighborDao {
 	public int insertNei(Neighbor nei);
-	/*public List<NeighborJoinMember> getNeisMe(String uid);*/
-	public List<NeighborJoinMember> getNeis(String acceptmid);
+	public List<NeighborJoinMember> getNeighbors(String uid);
+	public List<NeighborJoinMember> getNeiInvs(String uid);
+	public List<NeighborJoinMember> getNeiInvsMe(String uid);
+	public int deleteInvMe(String askmid, String acceptmid);
+	public int updateNeiAccept(String askmid, String acceptmid);
 }
