@@ -63,11 +63,25 @@
     
     $('.letter-mani.delete-letter').click(function(){
     	var thisLetter = $(this).parent().parent().parent();
+    	alert(thisLetter.find('.letter-title').html());
+    	
+    	var lcode = thisLetter.find('.letter-code').html();
+    	
     	var con = confirm("이 편지를 삭제하시겠습니까?");
 		if(con == true){
+    		/*$.ajax({
+    			type:"post",
+    			url:"deleteLetterControl.jsp",
+    			data:{
+    				code:lcode
+    			},
+    			success:function(data){
+    				alert(data);
+    			}
+    		});
 			thisLetter.remove();
 			//deleteLetter();
-			alert("삭제되었습니다");
+			alert("삭제되었습니다");*/
 		}
     });
     

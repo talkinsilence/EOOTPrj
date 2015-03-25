@@ -231,8 +231,8 @@
 			                    <div class="letter-mani-area">
 				                    <div class="letter-mani-wrapper-bg"></div>
 				                    <div class="letter-mani-wrapper">
-					                	<div class="letter-mani reply-letter"></div>
-					                	<div class="letter-mani delete-letter"></div>
+					                	<div class="letter-mani reply-letter"><input type="button" value="답장" class="hidden" name="reply-letter"/></div>
+					                	<div class="letter-mani delete-letter"><input type="button" value="삭제" class="hidden" name="delete-letter"/></div>
 				                	</div>
 			                	</div>
 		                    </li>
