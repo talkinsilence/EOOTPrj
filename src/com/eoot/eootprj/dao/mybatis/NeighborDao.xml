@@ -10,19 +10,23 @@
     		INSERT INTO NEIGHBORS(ASKMID, ACCEPTMID, ASKREGDATE, STATE) VALUES(#{ASKID}, #{ACCEPTMID}, GETDATE(), 0);
     	</insert>
     	
-    	<select id="getNeiInvs" parameterType="String" resultType="NeighborJoinMember">
+    	<select id="getNeis" parameterType="String" resultType="NeighborJoinMember">
     		SELECT * FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ASKMID = M.MID WHERE N.ACCEPTMID = #{acceptmid} AND state = 0;
     	</select>
     	
-    	<select id="getNeiInvsMe" parameterType="String" resultType="NeighborJoinMember">
-    		SELECT * FROM NEIGHBORS F INNER JOIN MEMBERS M ON F.ACCEPTMID = M.MID WHERE F.ASKMID = #{uid} AND state = 0;
+    	<!-- <insert id="insertInv" parameterType="Faminv">
+    		insert into FamInvitations(askmid, acceptmid, askregdate, state) values(#{askmid}, #{acceptmid}, getDate(), 0);
+    	</insert>
+    	
+    	<select id="getInvsMe" parameterType="String" resultType="FamInvJoinMember">
+    		SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ACCEPTMID = M.MID WHERE F.ASKMID = #{mid} AND state = 0; 
     	</select>
     	
-    	<select id="getNeighbors" parameterType="String" resultType="NeighborJoinMember">
-    		SELECT * FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ASKMID = M.MID WHERE N.ACCEPTMID = #{uid} AND state = 1;
+    	<select id="getInvs" parameterType="String" resultType="FamInvJoinMember">
+    		SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ACCEPTMID = #{acceptmid} AND state = 0;
     	</select>
     	
-    	<delete id="deleteInvMe" parameterType="String">
-    		DELETE FROM NEIGHTBORS WHERE ASKMID = #{param1} AND ACCEPTMID = #{param2}
-    	</delete>
+    	<select id="getInv" parameterType="String" resultType="FamInv">
+    		SELECT * FROM (SELECT * FROM FAMINVITATIONS WHERE ACCEPTMID = #{param1}) FAMINVITATIONS WHERE ASKMID = #{param2}
+    	</select> -->
     </mapper>

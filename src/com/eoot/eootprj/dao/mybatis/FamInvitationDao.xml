@@ -10,10 +10,6 @@
     		insert into FamInvitations(askmid, acceptmid, askregdate, state) values(#{askmid}, #{acceptmid}, getDate(), 0);
     	</insert>
     	
-    	<delete id="deleteInv" parameterType="String">
-    		DELETE FROM FAMINVITATIONS WHERE ASKMID = #{param1} AND ACCEPTMID = #{param2}
-    	</delete>
-    	
     	<select id="getInvsMe" parameterType="String" resultType="FamInvJoinMember">
     		SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ACCEPTMID = M.MID WHERE F.ASKMID = #{mid} AND state = 0; 
     	</select>

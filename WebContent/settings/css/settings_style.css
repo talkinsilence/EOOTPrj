@@ -11,11 +11,6 @@ body {
     font-size:20px;
 }
 
-.link a{
-	text-decoration: none;
-	color:#427fed;
-}
-
 #profile-pic-box-main > div {
     font-weight:bold;
 }
@@ -161,11 +156,11 @@ a:hover {
 
 /* �̿� */
 
-main a {
+.eoot-member-famname a {
     color: #427fed;
     text-decoration:none;
 }
 
-main a:hover {
+.eoot-member-famname a:hover {
     text-decoration:underline;
 }

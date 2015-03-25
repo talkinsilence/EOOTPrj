@@ -2,7 +2,9 @@ package com.eoot.eootprj.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 
 import com.eoot.eootprj.model.VilPostCommentJoinMember;
 
@@ -14,4 +16,12 @@ public interface VilPostCommentDao {
 			+ "ON M.MID=V.WRITER;")
 	public List<VilPostCommentJoinMember> getVilPostComments();
 	
+	@SelectKey(before = true
+			, keyColumn = "code"
+			, statement = "SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM VilPostComments"
+			, resultType = java.lang.String.class
+			, keyProperty = "String")
+	@Insert("INSERT INTO VilPostComments(CODE, content, writer, VilPostCode, Regdate) "
+			+ "VALUES(code, #{content}, #{writer}, #{VilPostCode}, getDate()")
+	public int insert(VilPostCommentJoinMember vilPostCommentJoinMember);
 }

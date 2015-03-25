@@ -439,10 +439,12 @@
 .dv-comment-regdate {
     display: block;
     float: left;
-    height: 20px;
+    height: 17px;
+    padding-top:3px;
     line-height:20px;
     width: 288px;
     text-indent:10px;
+    font-size:12px;
 }
 
 .dv-comment {
@@ -488,6 +490,9 @@
     overflow: hidden;
     border-radius: 4px;
     border: 1px solid #cccccc;
+    text-indent:6px;'
+    outline:none;
+    font-size:13px;
 }
 
 .dv-reg-btn{
@@ -507,6 +512,7 @@
 	text-shadow:0px 1px 0px #ffffff;
 	cursor:pointer;
     overflow:hidden;
+    outline:none;
 }
 
 .dv-reg-btn:hover {

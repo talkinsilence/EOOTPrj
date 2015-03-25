@@ -489,11 +489,6 @@ body {
     padding: 0px 10px;
 }
 
-#eoot-with-get-view > div {
-	text-align: center;
-	line-height:50px;
-}
-
 #eoot-with-add-view {
     display:none;
     width:calc(100% - 20px);
@@ -501,15 +496,9 @@ body {
     padding: 0px 10px;
 }
 
-#eoot-with-add-view > div {
-	text-align: center;
-	line-height:50px;
-}
-
-
 .eoot-with-get-famname {
     float:left;
-    width:140px;
+    width:100px;
     padding: 0px 20px;
     line-height:50px;
     overflow-x: hidden;
@@ -520,7 +509,7 @@ body {
 .eoot-with-get-name {
     float:left;
     padding: 0px 10px;
-    width: 125px;
+    width: 165px;
     line-height:50px;
     overflow-x: hidden;
     white-space: nowrap;
