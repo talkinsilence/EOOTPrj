@@ -126,6 +126,9 @@ body {
 	position: relative;
 	width: 280px;
 	height: 23px;
+	/* padding-left: 26px; */
+	/* padding-right: 26px; */
+	/* background: url("../images/btn-user.png") no-repeat center right; */
 	top: 230px;
 	left: 50%;
 	transform: translateX(-50%);
@@ -163,9 +166,9 @@ body {
 
 .user-menu-wrapper {
 	display: block;
-	position: fixed;
-	left: 426px;
-    top: 384px;
+	position: relative;
+	left: 10px;
+    top: 10px;
     border: 1px solid #e5e5e5;
     background: #fff;
     z-index: 3;	

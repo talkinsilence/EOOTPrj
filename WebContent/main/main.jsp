@@ -305,22 +305,27 @@
                 	<li class="letter-add-list">
                     	<div class="reader-mid hidden">bobby</div>
                         <img class="thumbnail" src="images/bobby1.jpg"/>
+                        <div class="reader-name">김바비</div>
                     </li>
                     <li class="letter-add-list">
                     	<div class="reader-mid hidden">nami</div>
                         <img class="thumbnail" src="images/nami3.jpg"/>
+                        <div class="reader-name">장나미</div>
                     </li>
                     <li class="letter-add-list">
                     	<div class="reader-mid hidden">newlec</div>
                         <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+                        <div class="reader-name">뉴렉</div>
                     </li>
                     <li class="letter-add-list">
                     	<div class="reader-mid hidden">dragon</div>
                         <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+                        <div class="reader-name">용쌔미</div>
                     </li>
                     <li class="letter-add-list">
                     	<div class="reader-mid hidden">james</div>
                         <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+                        <div class="reader-name">우제임스</div>
                     </li>
                 </ul>  
                 </div>

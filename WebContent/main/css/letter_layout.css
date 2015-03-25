@@ -684,6 +684,18 @@
     cursor: pointer;
 }
 
+.reader-name {
+	display: block;
+	width: 50px;
+	overflow-x: hidden;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+	
+}
     .letter-add-list:hover {
         border: 2px solid #7F90F7;
     }
