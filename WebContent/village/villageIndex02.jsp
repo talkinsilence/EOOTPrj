@@ -42,15 +42,15 @@
 	List<VilPostFile> fList = vilPostFileDao.getVilPostFiles();
 	List<VilPostCommentJoinMember> cList = vilPostCommentDao.getVilPostComments();
 	List<FamPostJoinMember> FPJM = famPostDao.getFamPosts(query);
-	//List<FamPostFile> FPF = famPostFileDao.getFamPostFiles();
-	//List<FamPostCommentJoinMember> FPCJM = famPostCommentDao.getFamPostComments(famPostCode);
+	/* List<FamPostFile> FPF = famPostFileDao.getFamPostFiles();
+	List<FamPostCommentJoinMember> FPCJM = famPostCommentDao.getFamPostComments(famPostCode); */
 
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("fList", fList);
 	pageContext.setAttribute("cList", cList);
 	pageContext.setAttribute("FPJM", FPJM);
-	//pageContext.setAttribute("FPF", FPF);
-	//pageContext.setAttribute("FPCJM", FPCJM);
+	/* pageContext.setAttribute("FPF", FPF);
+	pageContext.setAttribute("FPCJM", FPCJM); */
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

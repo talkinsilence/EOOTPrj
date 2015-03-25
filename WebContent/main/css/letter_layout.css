@@ -1,22 +1,4 @@
-﻿/* .hidden {
-    display: none;
-}
-
-.clearfix {
-    overflow: auto;
-}
-
-html {
-    display: block;
-    background: #404148;
-}
-
-body {
-    display: block;
-}
- */
-
-::-webkit-scrollbar
+﻿::-webkit-scrollbar
 {
   width: 14px;  /* for vertical scrollbars */
   height: 14px; /* for horizontal scrollbars */
@@ -118,6 +100,10 @@ body {
     display: inline-block;
     margin-left: 8px;
     margin-top: 9px;
+}
+
+#lcnt {
+	display: inline-block;
 }
 
 .letter-box-search {
@@ -494,9 +480,14 @@ body {
     position: relative;
     margin-top: -20px;
     min-width: 56px;
-    min-height: 56px;
+    height: 56px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.added {
+/* 	width: 200px;
+	background: yellow; */
 }
 
 .letter-to-list {
@@ -585,7 +576,7 @@ body {
     border: 2px solid #e8eaed;
 }
 
-#write {
+#content {
     border: 0px;
     resize: none;
     padding: 5px 10px;

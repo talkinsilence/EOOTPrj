@@ -89,14 +89,6 @@ $(document).ready(function () {
     
     /////////////////////// 우리집 /////////////////////////
     // 가족 초대 영역
-    $(".btn-invited-reject").click(function(){
-    	alert($("#1").val());
-    	/*alert(test);
-    	$.ajax({
-    		type=""
-    		url:""
-    	});*/
-    });
     
     // 이름
     $('#myhome-name-edit').click(function () {
@@ -156,7 +148,7 @@ $(document).ready(function () {
 
     // 구성원 관리
     $("#btn-member-inv").click(function(){
-    	$("#myhome-member-mng-inv-view").load("insertInvProc.jsp?askmid="+$("#myhome-member-mng-txt").val());
+    	$("#myhome-member-mng-inv-view").load("insertFamInvProc.jsp?acceptmid="+$("#myhome-member-mng-txt").val());
     	$("#myhome-member-mng-txt").val("");
     });
     
@@ -325,3 +317,11 @@ function updateAddress(){
 	});
 }
 
+function famInvMeReject(askmid){
+	$(location).attr("href","deleteFamInvProc.jsp?askmid="+askmid);
+}
+
+function famInvMeAccept(askmid){
+	alert(askmid);
+	$(location).attr("href","updateFamAcceptProc.jsp?askmid="+askmid);
+}

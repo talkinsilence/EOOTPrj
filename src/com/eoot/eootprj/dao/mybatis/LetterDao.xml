@@ -20,14 +20,13 @@
 		WHERE (L.READER = #{mid}) AND (L."READ" = 0);
 	</select>
 	
-			<!-- 이거 고쳐야함 -->
-			<insert id = "insert" parameterType="Letter">
-				<selectKey keyColumn="code" resultType="String" order="BEFORE">
-					SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS
-				</selectKey>
-					INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, READ, READER, LETTERTYPE) 
-					VALUES(#{code}, #{mid}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
-			</insert>
+	<insert id = "insert" parameterType="Letter">
+		<selectKey keyColumn="code" resultType="String" order="BEFORE">
+			SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS
+		</selectKey>
+			INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, READ, READER, LETTERTYPE) 
+			VALUES(#{code}, #{mid}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
+	</insert>
 	
 	<delete id = "delete" parameterType="String">
 		DELETE LETTERS WHERE CODE =#{code}

@@ -38,4 +38,11 @@ public class MyBFamInvitationDao implements FamInvitationDao{
 		return famInvDao.getInv(acceptmid, askmid);
 	}
 
+	@Override
+	public int deleteInv(String askmid, String uid) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		FamInvitationDao famInvDao = sqlSession.getMapper(FamInvitationDao.class);
+		return famInvDao.deleteInv(askmid, uid);
+	}
+
 }

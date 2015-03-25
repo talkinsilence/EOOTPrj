@@ -26,23 +26,26 @@
 	List<Member> fms = memberDao.getFamMembers(uid, famcode);
 	List<FamInvitationJoinMember> famInvsMe = famInvDao.getInvsMe(uid);
 	List<FamInvitationJoinMember> finvs = famInvDao.getInvs(uid);
-	List<NeighborJoinMember> neis = neighborDao.getNeis(uid);
+	List<NeighborJoinMember> neis = neighborDao.getNeiInvs(uid);
+	List<NeighborJoinMember> neisMe = neighborDao.getNeiInvsMe(uid);
+	List<NeighborJoinMember> neighbors = neighborDao.getNeighbors(uid);
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
-	pageContext.setAttribute("famInvMe", famInvsMe);
-	pageContext.setAttribute("finv", finvs);
+	pageContext.setAttribute("famInvsMe", famInvsMe);
+	pageContext.setAttribute("finvs", finvs);
 	pageContext.setAttribute("neis", neis);
-	
+	pageContext.setAttribute("neisMe", neisMe);
+	pageContext.setAttribute("neighbors", neighbors);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>우리 함께 | e - oot</title>
+<link href="../resource/css/reset.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
-<link href="../resource/css/reset.css" rel="stylesheet">
 <script src="../resource/js/jquery-2.1.3.js"></script>
 <script src="../resource/js/modernizr.js" type="text/javascript"></script>
 <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css">
@@ -121,16 +124,15 @@
                 <div id="accordion">
                     <h3>우 리 집</h3>
                     <div>
-						<c:if test="${not empty famInvMe}">
-							<c:forEach var="i" items="${famInvMe}" varStatus="idx">
+						<c:if test="${not empty famInvsMe}">
+							<c:forEach var="fInvsMe" items="${famInvsMe}">
 		                        <div id="invited">
-		                        <input type="hidden" id="${idx.count}" value="${i.acceptmid}" />
 		                            <ul>
-		                                <li>
-		                                    <a href="">${i.name}</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
-		                                    <p>수락하시면 현재 가족페이지의 모든 자료는 삭제되고,<br />${i.name}님의 가족페이지에 있는 자료를 공유하게 됩니다.</p>
-		                                    <input type="button" class="btn-invited-accept" name="accept-fam" value="수락" />
-		                                    <input type="button" class="btn-invited-reject btn-cancel" name="reject-fam" value="거절" />
+		                                <li class="link">
+		                                    <a target="_blank" href="../main/main_e.jsp?fc=${fInvsMe.famcode}">${fInvsMe.name}</a>&nbsp;님이 나를 가족으로 초대하고 싶어합니다. 수락하시겠습니까?
+		                                    <p>수락하시면 현재 가족페이지의 모든 자료는 삭제되고,<br />${fInvsMe.name}님의 가족페이지에 있는 자료를 공유하게 됩니다.</p>
+		                                    <input type="button" class="btn-invited-accept" value="수락" onclick="famInvMeAccept('${fInvsMe.askmid}')" />
+		                                    <input type="button" class="btn-invited-reject btn-cancel" value="거절" onclick="famInvMeReject('${fInvsMe.askmid}')"/>
 		                                </li>
 		                            </ul>
 		                        </div>
@@ -224,18 +226,18 @@
                                 <fieldset id="myhome-member-mng-inv-view">
                                     <legend>가족 초대 현황</legend>
 									
-									<c:if test="${empty finv}">
+									<c:if test="${empty finvs}">
 										<div>가족 초대 기록이 없습니다.</div>
 									</c:if>
 									
-									<c:if test="${not empty finv}">
-										<c:forEach var="i" items="${finv}">
+									<c:if test="${not empty finvs}">
+										<c:forEach var="finvs" items="${finvs}">
 		                                    <ul>
-		                                        <li class="myhome-member-mng-uid">${i.askmid}</li>
-		                                        <li class="myhome-member-mng-name">${i.name}</li>
+		                                        <li class="myhome-member-mng-uid">${finvs.acceptmid}</li>
+		                                        <li class="myhome-member-mng-name">${finvs.name}</li>
 		                                        <li class="myhome-member-mng-state">대기중</li>
 		                                        <li class="myhome-member-mng-date">
-													<fmt:formatDate value="${i.askregdate}" pattern="yyyy-MM-dd"/>
+													<fmt:formatDate value="${finvs.askregdate}" pattern="yyyy-MM-dd"/>
 												</li>
 		                                    </ul>
 	                                    </c:forEach>
@@ -261,12 +263,38 @@
                                     <input type="button" id="btn-eoot-member-search" value="검색" />
                                 </div>
 
-                                <div id="eoot-member-view-wrapper2">                                    
-                                    <ul class="eoot-member-view-body">
-                                        <li class="eoot-member-famname"><a href="">나미네집!!</a></li>
-                                        <li class="eoot-member-name">꼬리999개 여우 | 쭈구리비버 | 갓쇼 | 나미타</li>
-                                        <li class="eoot-member-address">경기도 수원시 권선구 dfsdf</li>
-                                    </ul>
+                                <div id="eoot-member-view-wrapper2">
+                                	<c:if test="${empty neighbors}">
+                                   		<div>맺은 이웃이 없습니다.</div>
+                                   	</c:if>                                  
+                                    	
+                                   	<c:if test="${not empty neighbors}">
+                                   		<c:forEach var="neighbors" items="${neighbors}">
+                                   		<ul class="eoot-member-view-body">
+	                                        <li class="eoot-member-famname">
+	                                        	<c:if test="${empty neighbors.address}">
+	                                        		(가족명 없음)
+		                                        </c:if>
+		                                        
+		                                        <c:if test="${not empty neighbors.address}">
+		                                        	${neighbors.name}
+	                                        	</c:if>
+	                                        </li>
+	                                        <li class="eoot-member-name link">
+	                                        	<a target="_blank" href="../main/main_e.jsp?fc=${neighbors.famcode}">${neighbors.name}</a>
+	                                        </li>
+	                                        <li class="eoot-member-address">
+		                                        <c:if test="${empty neighbors.address}">
+		                                        	(주소 설정 안함)
+		                                        </c:if>
+		                                        
+		                                        <c:if test="${not empty neighbors.address}">
+		                                        	${neighbors.address}
+	                                        	</c:if>
+	                                        </li>
+	                                        </ul>
+                                        </c:forEach>
+                                       </c:if>
                                 </div>
                             </div>
                         </div>
@@ -283,26 +311,70 @@
 
                                 <div id="eoot-with-view-wrapper2">
                                     <div id="eoot-with-get-view">
-                                        <ul>
-                                            <li class="eoot-with-get-famname">서대문구 창천동 과일가게</li>
-                                            <li class="eoot-with-get-name">나미 타 커쇼 쭈구리비버</li>
-                                            <li class="eoot-with-get-msg">우리 이웃 맺어요!!~~!!</li>
-                                            <li class="accept">수락</li>
-                                            <li class="reject">거절</li>
-                                        </ul>
+	                                    <c:if test="${empty neisMe}">
+	                                		<div>이웃신청 기록이 없습니다.</div>
+	                                	</c:if>
+	                                	
+	                                	<c:if test="${not empty neisMe}">
+	                                		<c:forEach var="neisMe" items="${neisMe}">
+		                                        <ul>
+		                                            <li class="eoot-with-get-famname">
+		                                            	<c:if test="${empty neisMe.famname}">
+		                                            		(가족명 없음)
+		                                            	</c:if>
+		                                            	
+		                                            	<c:if test="${not empty neisMe.famname}">
+		                                            		${neisMe.famname}
+		                                            	</c:if>
+		                                            </li>
+		                                            <li class="eoot-with-get-name link">
+		                                            	<a target="_blank" href="../main/main_e.jsp?fc=${neisMe.famcode}">${neisMe.name}</a>
+		                                            </li>
+		                                            <li class="eoot-with-get-msg">
+		                                            	<c:if test="${empty neisMe.askmsg}">
+		                                            		우리 이웃 해요 ~^^
+		                                            	</c:if>
+		                                            	
+		                                            	<c:if test="${not empty neisMe.askmsg}">
+		                                            		${neisMe.askmsg}
+		                                            	</c:if>
+		                                            </li>
+		                                            <li class="accept"><a href="updateNeiAcceptProc.jsp?askmid=${neisMe.askmid}">수락</a></li>
+		                                            <li class="reject"><a href="deleteNeiInvProc.jsp?askmid=${neisMe.askmid}">거절</a></li>
+		                                        </ul>
+	                                        </c:forEach>
+	                                    </c:if>
                                     </div>
                                     
                                     <div id="eoot-with-add-view">
                                     	<c:if test="${empty neis}">
-                                    		이웃신청 기록이 없습니다.
+                                    		<div>이웃신청 기록이 없습니다.</div>
                                     	</c:if>
                                     	
                                     	<c:if test="${not empty neis}">
-                                    		<c:forEach var="n" items="${neis}">
+                                    		<c:forEach var="neis" items="${neis}">
 	                                    		<ul>
-		                                            <li class="eoot-with-get-famname">${n.famname}</li>
-		                                            <li class="eoot-with-get-name">${n.name}</li>
-		                                            <li class="eoot-with-get-msg">${n.askmsg}</li>
+		                                            <li class="eoot-with-get-famname">
+														<c:if test="${empty neis.famname}">
+		                                            		(가족명 없음)
+		                                            	</c:if>
+		                                            	
+		                                            	<c:if test="${not empty neis.famname}">
+		                                            		${neis.famname}
+		                                            	</c:if>
+													</li>
+		                                            <li class="eoot-with-get-name link">
+		                                            	<a target="_blank" href="../main/main_e.jsp?fc=${neis.famcode}">${neis.name}</a>
+		                                            </li>
+		                                            <li class="eoot-with-get-msg">
+		                                            	<c:if test="${empty neis.askmsg}">
+		                                            		우리 이웃 해요 ~^^
+		                                            	</c:if>
+		                                            	
+		                                            	<c:if test="${not empty neis.askmsg}">
+		                                            		${neis.askmsg}
+		                                            	</c:if>
+		                                            </li>
 		                                            <li class="waiting">대기중</li>
 	                                        	</ul>
                                         	</c:forEach>

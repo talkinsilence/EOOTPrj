@@ -11,19 +11,17 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String uid = (String) session.getAttribute("uid");
-	String askmid = request.getParameter("askmid");
+	String acceptmid = request.getParameter("accpetmid");
 	
 	MemberDao memberDao = new MyBMemberDao();
 	FamInvitationDao famInvDao = new MyBFamInvitationDao();
 	
-	
-	
-	if(memberDao.getMember(askmid) != null){
+	if(memberDao.getMember(acceptmid) != null){
 		
-		if(famInvDao.getInv(uid, askmid) == null){
+		if(famInvDao.getInv(uid, acceptmid) == null){
 			FamInvitation famInvitation = new FamInvitation();
-			famInvitation.setAskmid(askmid);
-			famInvitation.setAcceptmid(uid);
+			famInvitation.setAskmid(uid);
+			famInvitation.setAcceptmid(acceptmid);
 			
 			famInvDao.insertInv(famInvitation);
 		}
@@ -36,14 +34,13 @@
 <legend>가족 초대 현황</legend>
 									
 <c:if test="${empty finv}">
-	
 	<div>가족 초대 기록이 없습니다.</div>
 </c:if>
 
 <c:if test="${not empty finv}">
 	<c:forEach var="i" items="${finv}">
 		<ul>
-			<li class="myhome-member-mng-uid">${i.askmid}</li>
+			<li class="myhome-member-mng-uid">${i.acceptmid}</li>
 			<li class="myhome-member-mng-name">${i.name}</li>
 			<li class="myhome-member-mng-state">대기중</li>
 			<li class="myhome-member-mng-date">

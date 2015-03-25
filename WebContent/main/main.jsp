@@ -204,7 +204,7 @@
         <div class="letter-box-wrapper">
             <div class="letter-box-header">
                 <div class="letter-box-header-title">편지함</div>
-                <div class="letter-box-header-total">총 ${lsSize}개</div>
+                <div class="letter-box-header-total">총 <p id="lcnt">${lsSize}</p>개</div>
                 <div class="letter-box-search">
                     <input class="letter-search" type="text" name="query" value="${param.query}"/>
                     <div id="letter-search"></div>
@@ -270,24 +270,24 @@
 	            <div class="letter-write-header">
 	                <div class="letter-to">받는 사람</div>
 	                <div class="letter-to-list-wrapper">
-	                    <div class="letter-to-list">
-	                        <img class="thumbnail" src="images/suzy2.jpg" />
-	                        <div class="delete"></div>
-	                    </div>
-	                    <div class="letter-to-list">
-	                        <img class="thumbnail" src="images/taeyang.jpg" />
-	                        <div class="delete"></div>
-	                    </div>
-	                    <div class="letter-to-list">
-	                        <img class="thumbnail" src="images/cat.png" />
-	                        <div class="delete"></div>
-	                    </div>
+	                	<ul class="added">
+<!-- 		                	<li class="letter-to-list">
+		                    	<div class="reader-mid hidden">suzy</div>
+		                        <img class="thumbnail" src="images/suzy2.jpg" />
+		                        <div class="delete"></div>
+		                    </li>
+		                    <li class="letter-to-list">
+		                    	<div class="reader-mid hidden">taeyang</div>
+		                        <img class="thumbnail" src="images/taeyang.jpg" />
+		                        <div class="delete"></div>
+		                    </li> -->
+	                	</ul>
 	                    <div class="letter-to-list-add"></div>
 	                </div>
 	            </div>
 	            <textarea id="title" rows="1" placeholder="제목"></textarea>
 	            <div class="letter-write-box">
-	                <textarea id="write" placeholder="내용을 입력해주세요"></textarea>
+	                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
 	            </div>
 	            <button id="letter-send" type="submit">보내기</button>
 	        </div>
@@ -301,18 +301,24 @@
 	            </div>
 	            <div class="letter-add-list-box">
 	                <div class="letter-add-list-wrapper">
-	                    <div class="letter-add-list">
-	                        <img class="thumbnail" src="images/bobby1.jpg" name="밥이"/>
-	                    </div>
-	                    <div class="letter-add-list">
-	                        <img class="thumbnail" src="images/nami3.jpg" name="영남이"/>
-	                    </div>
-	                    <div class="letter-add-list">
-	                        <img class="thumbnail" src="../resource/images/img-profile-default.png" name="뉴렉이"/>
-	                    </div>
-	                    <div class="letter-add-list">
-	                        <img class="thumbnail" src="../resource/images/img-profile-default.png" name="제임스"/>
-	                    </div>
+	                <ul class="adding">
+	                	<li class="letter-add-list">
+	                    	<div class="reader-mid hidden">bobby</div>
+	                        <img class="thumbnail" src="images/bobby1.jpg"/>
+	                    </li>
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">nami</div>
+	                        <img class="thumbnail" src="images/nami3.jpg"/>
+	                    </li>
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">newlec</div>
+	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+	                    </li>
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">dragon</div>
+	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+	                    </li>
+	                </ul>  
 	                </div>
 	            </div>
 	            <button id="letter-add-cancel" type="submit">취소</button>

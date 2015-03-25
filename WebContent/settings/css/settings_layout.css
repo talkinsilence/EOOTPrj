@@ -416,6 +416,11 @@ body {
     padding: 0px 10px;
 }
 
+.eoot-member-view-body div {
+	text-align: center;
+	line-height: 50px;
+}
+
 .eoot-member-view-body:first-child {
     margin-top: 10px;
 }
@@ -489,6 +494,11 @@ body {
     padding: 0px 10px;
 }
 
+#eoot-with-get-view > div {
+	text-align: center;
+	line-height:50px;
+}
+
 #eoot-with-add-view {
     display:none;
     width:calc(100% - 20px);
@@ -496,9 +506,15 @@ body {
     padding: 0px 10px;
 }
 
+#eoot-with-add-view > div {
+	text-align: center;
+	line-height:50px;
+}
+
+
 .eoot-with-get-famname {
     float:left;
-    width:100px;
+    width:140px;
     padding: 0px 20px;
     line-height:50px;
     overflow-x: hidden;
@@ -509,7 +525,7 @@ body {
 .eoot-with-get-name {
     float:left;
     padding: 0px 10px;
-    width: 165px;
+    width: 125px;
     line-height:50px;
     overflow-x: hidden;
     white-space: nowrap;
@@ -526,7 +542,7 @@ body {
     text-overflow: ellipsis;
 }
 
-.accept {
+.accept a{
     float:left;
     padding: 0px 5px;
     line-height:50px;
@@ -535,11 +551,11 @@ body {
     color: #9b9b9b;
 }
 
-.accept:hover {
+.accept a:hover {
     color: #db407e;
 }
 
-.reject {
+.reject a{
     float:left;
     padding: 0px 5px;
     line-height:50px;
@@ -548,7 +564,7 @@ body {
     color: #9b9b9b;
 }
 
-.reject:hover {
+.reject a:hover {
     color: #4a4a4a;
 }
 

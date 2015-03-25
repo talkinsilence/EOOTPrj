@@ -8,7 +8,7 @@
 <%
 	ServletContext ctx = getServletContext();
 	String path = ctx.getRealPath("/upload/profilepic");
-	String uid = "viovio@eoot.com";	
+	String uid = (String) session.getAttribute("uid");
 	
 	System.out.print(path);
 	

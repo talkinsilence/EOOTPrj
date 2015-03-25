@@ -10,7 +10,7 @@ select * from ADMINS;
 SELECT * FROM VilPosts WHERE CODE = 1;
 select * from FamInvitations;
 
-
+INSERT INTO VILPOSTCOMMENTS(CODE, CONTENT, WRITER, VILPOSTCODE, REGDATE) VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM VIlPOSTCOMMENTS), 'hi', 'viovio@eoot.com', '3', getDate());
 
 SELECT *
 FROM (SELECT * FROM FAMPOSTS F ORDER BY F.REGDATE DESC)
@@ -66,7 +66,6 @@ select * from letterfiles;
 INSERT INTO LETTERS VALUES('lettercode12', 'cskn2@naver.com', GETDATE(), '누나누나누나누나누나누나누나누나누나누나누나', '남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여', 0, 'viovio@eoot.com', 0);
 UPDATE LETTERS SET CONTENT='content' WHERE CONTENT='title';
 UPDATE LETTERS SET "READ"=0;
-DELETE LETTERS WHERE CODE = 'letterceode5';
 
 SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ACCEPTMID = 'viovio@eoot.com' AND state = 0;
 SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ASKMID = 'viovio@eoot.com' AND state = 0;

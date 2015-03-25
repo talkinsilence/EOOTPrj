@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.eoot.eootprj.dao.VilPostCommentDao;
+import com.eoot.eootprj.model.FamPostComment;
 import com.eoot.eootprj.model.VilPostComment;
 import com.eoot.eootprj.model.VilPostCommentJoinMember;
 
@@ -18,9 +19,9 @@ public class MyBVilPostCommentDao implements VilPostCommentDao{
 	}
 
 	@Override
-	public int insert(VilPostCommentJoinMember vilPostCommentJoinMember) {
+	public int insert(VilPostComment vilPostComment) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		VilPostCommentDao vilPostCommentDao = sqlSession.getMapper(VilPostCommentDao.class);
-		return vilPostCommentDao.insert(vilPostCommentJoinMember);
+		return vilPostCommentDao.insert(vilPostComment);
 	}
 }

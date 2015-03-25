@@ -46,6 +46,7 @@
     
     $('.btn-close, .letter-transp-bg').click(function () {
     	location.reload();
+    	reset_writeForm();
         $('.letter').fadeOut(10);
     });
     
@@ -62,12 +63,27 @@
     });
     
     $('.letter-mani.delete-letter').click(function(){
+    	var lcnt = $('#lcnt');
+    	var lcntVal = lcnt.html();
+
     	var thisLetter = $(this).parent().parent().parent();
+    	var lcode = thisLetter.find('.letter-code').html();
+    	
     	var con = confirm("이 편지를 삭제하시겠습니까?");
 		if(con == true){
-			thisLetter.remove();
-			//deleteLetter();
-			alert("삭제되었습니다");
+    		$.ajax({
+    			type:"post",
+    			url:"deleteLetterControl.jsp",
+    			data:{
+    				code:lcode
+    			},
+    			success:function(){
+    				thisLetter.remove();
+    				alert("삭제되었습니다");
+    				lcnt.empty();
+    				lcnt.html(lcntVal - 1);
+    			}
+    		});
 		}
     });
     
@@ -95,15 +111,16 @@
 		$(this).css("color", "#000");
     });
 
+    /*===< letter-write >===*/
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
     });
 
     if ($('.letter-write-box').height() >= 400)
-        $('#write').attr("rows", "19");
+        $('#content').attr("rows", "19");
     else
-        $('#write').attr("rows", "17");
+        $('#content').attr("rows", "17");
 
     $('.letter-type.text').click(function () {
         $('.letter-type-wrapper').hide(10, function () {
@@ -111,17 +128,8 @@
         });
     });
     
-    $('.letter-type.voice').click(function () {
-        alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");
-    });
-    
-    $('.letter-type.video').click(function () {
-        alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");
-    });
-
-    $('.delete').click(function () {
-        $(this).parent().remove();
-    });
+    $('.letter-type.voice').click(function () {alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
+    $('.letter-type.video').click(function () {alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
 
     $('.letter-to-list-add').click(function () {
     	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
@@ -134,62 +142,69 @@
         $('.letter-add-wrapper').fadeIn(100, 'linear');
     });
     
+    var readerLists = [];
     $('.letter-add-list').each(function(){
-        
-        //var clicked = 0;
-        
         $(this).children("img").click(function(){
-           //alert($('.letter-to-list-wrapper > img ').attr("name"));
-           //clicked = 1;
-           //alert(clicked);
+        	
+        	var reader = $(this).parent().find('.reader-mid').html();
+            //alert(reader); //추가하려는 수신인의 mid
 
-           var name = $(this).attr("name");
-            alert(name);
-           
-           //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
-            if($('.letter-to-list-wrapper > .letter-add-list').find("*").attr("name")!=name){
-                             
-               //clicked = 0;
-               //alert(clicked);
-               
-               var clone = $(this).parent().clone().css("float", "left");
-               clone.append($('<div class="delete"></div>'));
-               clone.prependTo($('.letter-to-list-wrapper'));
-                             
+        	var lists = $('.letter-to-list-wrapper > ul li');
+        	lists.each(function(){
+        		if($(this).length != 0){
+        			readerLists.push($(this).find('.reader-mid').html());
+        		}
+        	});
+        	//alert(readerLists); //추가되기 전 왼쪽에 이미 추가되어있는 mid의 목록
+
+        	if(jQuery.inArray(reader, readerLists) == -1){
+            	var clone = $(this).parent().clone().css("float", "left");
+                clone.append($('<div class="delete"></div>'));
+                clone.prependTo($('.letter-to-list-wrapper'));
+                
+                readerLists.push(clone.find('.reader-mid').html());
+                //alert(readerLists); //추가된 후 
+       
                 $('.delete').click(function () {
                     $(this).parent().remove();
+                    var removeItem = $(this).parent().find('.reader-mid').html();
+                    readerLists = jQuery.grep(readerLists, function(n){
+                    	return n != removeItem;
+                    });
                 });
             }
-
-        });
-        
-     });
+        });  
+    });
+    
+    $('.delete').click(function () {
+        $(this).parent().remove();
+    });
     
     $('#letter-add-cancel').click(function () {
         $('.letter-add-wrapper').fadeOut(10);
     });
 
     $('#letter-send').click(function () {
-        if ($('.letter-to-list' || '.letter-add-list').length == 0)
+        if ($('.letter-to-list-wrapper').find('img').length == 0)
             alert("수신인을 한 명 이상 지정해야 합니다.");
-        else if (($('#write').val() == ""))
-            alert("편지 내용을 입력해주세요.");
-      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
+        else if (($('#title').val() == ""))
+            alert("제목을 입력해주세요.");
+        else if (($('#content').val() == ""))
+            alert("내용을 입력해주세요.");
         else {
-            $('.letter-write-wrapper, .letter-add-wrapper').hide(800, function () {
-                alert("편지가 전송되었습니다^ㅇ^");
-            });
+        	$('.btn-close, .letter-transp-bg').trigger("click");
+        	alert("편지가 전송되었습니다^___^");
+/*            $('.letter-write-wrapper, .letter-add-wrapper').hide(600, function () {
+            	alert("편지가 전송되었습니다^ㅇ^");
+            	$('.btn-close, .letter-transp-bg').trigger("click");
+            });*/
         }
     });
 
     /*===========< newsFeed >=============================================*/
     $('.alarm.news').click(function () {
     	$(this).unbind('click');
-        //alert($('.main').height());
-        //alert($('.lower').height());
-        
         var pushMain = $('.main').height() + $('.lower').height();
-        //alert(pushMain);
     	
         $('.main').animate({
         	'marginTop': -pushMain + 'px'
@@ -199,29 +214,12 @@
     }); 	
 })
 
-/*function deleteLetter(){
-	$.ajax({
-		type:"post",
-		url:"deleteLetterProc.jsp",
-		data:{
-			code:thisLetter.find('.letter-code').html()
-		},
-		success:function(data){
-			if($.trim(data) != ""){
-				$('.letter-code').html($.trim(data));
-			}
-		}
-	});	
-}*/
-/*function deleteLetter(){
-	$.ajax({
-		type:"post",
-		url:"deleteLetterProc.jsp",
-		data:{
-			code:thisLetter.find('.letter-code').html()
-		},
-		success:function(){
-			alert("wow!!!");
-		}
-	});	
-};*/
+function check_readerList(){
+
+}
+
+function reset_writeForm(){
+    $('.letter-to-list-wrapper').empty();
+    $('#title').empty();
+    $('#content').empty();
+}
