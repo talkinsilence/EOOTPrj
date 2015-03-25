@@ -58,7 +58,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/bind.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="modernizr.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="js/menubar.js" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -213,7 +213,7 @@
 						<img class="e-oot-newsfeed-background" src="refimg/b00.png" />
 						<div class="e-oot-newsfeed">
 							<p class="empty-space">이웃 뉴스피드</p>
-							<span><a href=""><img id="e-oot-newsfeed-board"
+							<span><a href="villageIndex02.jsp"><img id="e-oot-newsfeed-board"
 									src="refimg/e-oot-board.png" /></a></span>
 							<div class="e-oot-newsfeed-prev-btn">
 								<img id="e-oot-newsfeed-item-btn" src="refimg/btn-up.png" />
@@ -222,7 +222,7 @@
 								<ul class="e-oot-newsfeed-list">
 									<c:forEach var="fpjm" items="${FPJM}">
 										<li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img">
-											<img class="thumbnail" src="${fpjm.profilepic}" />												</div>
+											<img class="thumbnail" src="${fpjm.profilepic}" /></div>
 											<p id="e-oot-newsfeed-item-content1">${fpjm.name}</p>
 											<p id="e-oot-newsfeed-item-content2">${fpjm.title}</p></a>
 										</li>
@@ -238,15 +238,16 @@
 					<!------------------------------------------------------------- 서브 영역1 ------------------------------------------------------------------->
 
                         <div class="village-newsfeed">
-                            <img class="e-oot-newsfeed-background" src="refimg/b01.png" />
+                            <img class="village-newsfeed-background" src="refimg/b01.png" />
+                            
                             <p class="empty-space">마을 뉴스피드</p>
-                            <span><a href=""><img id="village-newsfeed-board" src="refimg/village-board.png" /></a></span>
+                            <span><a href="villageIndex03.jsp"><img id="village-newsfeed-board" src="refimg/village-board.png" /></a></span>
                             <div class="village-newsfeed-prev-btn"><img id="village-newsfeed-item-btn" src="refimg/btn-up.png" /></div>
                             <div class="village-newsfeed-clipper">
                                 <ul class="village-newsfeed-list">
 		                            <c:forEach var="i" items="${list}">
 									<li class="village-newsfeed-item">
-										<a href="">
+										<a href="villageIndex03.jsp">
 										<c:if test="${i.sort.equals('1')}">
 											<img id="village-newsfeed-item-img" src="refimg/village-board-normal.png" />
 										</c:if>
@@ -266,7 +267,8 @@
 								</ul>
                             </div>
                             <div class="village-newsfeed-next-btn"><img id="village-newsfeed-item-btn" src="refimg/btn-down.png" /></div>
-                        </div>                      
+                         
+                        </div>                   
 
         <!------------------------------------------------------------- 서브 영역2 ------------------------------------------------------------------->
 

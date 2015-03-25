@@ -11,6 +11,7 @@ body
 
 .village-main-area
 {
+	display: block;
     position: absolute;
     width: calc(100% - 30% - 70px);
     height: 100%;
@@ -34,6 +35,14 @@ body
     height: 50%;
 }
 
+.village-newsfeed
+{            
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50%;
+}
+
 .e-oot-newsfeed-background
 {
     position: absolute;
@@ -42,10 +51,10 @@ body
     transform: translateX(-50%);
 }
 
-.village-newsfeed
-{            
+.village-newsfeed-background
+{
     position: absolute;
-    bottom: 0px;
-    width: 100%;
-    height: 50%;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
 }

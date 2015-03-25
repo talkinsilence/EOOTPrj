@@ -277,7 +277,7 @@
 									</div>
 									
 <!-- ---------------------------------------------------------------------------------------------------------------- -->
-									<div class="post-header-wrapper">
+									<%-- <div class="post-header-wrapper">
 										<div class="post-user-menu-btn"></div>
 										<div class="post-user-menu-area hidden">
 											<div class="post-user-menu-wrapper-bg"></div>
@@ -293,7 +293,7 @@
 												</div>
 											</c:if>
 										</div>
-									</div>
+									</div> --%>
 
 									<!-- ---------------------------------------------------------------------------------------------------------------- -->
                         	
@@ -319,7 +319,7 @@
 											<div class="post-comment">
 												<c:forEach var="c" items="${cList}">
 													<c:if test="${i.getCode() == c.getVilPostCode()}">
-													
+													<%-- <div class="vil-post-code hidden">${c.getVilPostCode()}</div> --%>
 														<div class="post-comment-list">
 															<div>
 																<div class="profile-pic-box-s">
@@ -366,8 +366,8 @@
                                         </div>
 
                                     </div>
-							</div>
 							<div class="vil-post-code hidden">${i.code}</div>
+							</div>
 						</c:forEach>
 					</div>
 					
@@ -393,13 +393,13 @@
                     <img class="e-oot-newsfeed-background" src="refimg/b00.png" />
                         <div class="e-oot-newsfeed">
                             <p class="empty-space">이웃 뉴스피드</p>
-                            <span><a href=""><img id="e-oot-newsfeed-board" src="refimg/e-oot-board.png" /></a></span>
+                            <span><a href="villageIndex02.jsp"><img id="e-oot-newsfeed-board" src="refimg/e-oot-board.png" /></a></span>
                             <div class="e-oot-newsfeed-prev-btn"><img id="e-oot-newsfeed-item-btn" src="refimg/btn-up.png" /></div>
                             <div class="e-oot-newsfeed-clipper">
                                 <ul class="e-oot-newsfeed-list">
                                 <c:forEach var="fL" items="${famList}">
                                     <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="${fL.profilepic}" /></div><p id="e-oot-newsfeed-item-content1">${fL.name}</p><p id="e-oot-newsfeed-item-content2">${fL.title}</p></a></li>
-                                    </c:forEach>
+                                </c:forEach>
                                 </ul>
                             </div>
                             <div class="e-oot-newsfeed-next-btn"><img id="e-oot-newsfeed-item-btn" src="refimg/btn-down.png" /></div>
