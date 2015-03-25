@@ -62,9 +62,11 @@
     });
     
     $('.letter-mani.delete-letter').click(function(){
+    	var thisLetter = $(this).parent().parent().parent();
     	var con = confirm("이 편지를 삭제하시겠습니까?");
 		if(con == true){
-			$(this).parent().parent().parent().remove();
+			thisLetter.remove();
+			//deleteLetter();
 			alert("삭제되었습니다");
 		}
     });
@@ -196,3 +198,30 @@
         });
     }); 	
 })
+
+/*function deleteLetter(){
+	$.ajax({
+		type:"post",
+		url:"deleteLetterProc.jsp",
+		data:{
+			code:thisLetter.find('.letter-code').html()
+		},
+		success:function(data){
+			if($.trim(data) != ""){
+				$('.letter-code').html($.trim(data));
+			}
+		}
+	});	
+}*/
+/*function deleteLetter(){
+	$.ajax({
+		type:"post",
+		url:"deleteLetterProc.jsp",
+		data:{
+			code:thisLetter.find('.letter-code').html()
+		},
+		success:function(){
+			alert("wow!!!");
+		}
+	});	
+};*/
