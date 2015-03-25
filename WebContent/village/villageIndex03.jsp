@@ -1,4 +1,7 @@
-﻿<%@page import="com.eoot.eootprj.model.VilPostCommentJoinMember"%>
+﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
+<%@page import="com.eoot.eootprj.dao.FamPostDao"%>
+<%@page import="com.eoot.eootprj.model.VilPostCommentJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostCommentDao"%>
 <%@page import="com.eoot.eootprj.dao.VilPostCommentDao"%>
 <%@page import="com.eoot.eootprj.dao.VilPostFileDao"%>
@@ -30,13 +33,14 @@
 	List<VilPostFile> fList = vilPostFileDao.getVilPostFiles();
 	List<VilPostCommentJoinMember> cList = vilPostCommentDao.getVilPostComments();
 	
-	/* System.out.println(list.get(0).getCode());
-	System.out.println(fList.get(0).getVilPostCode()); */
-	/* List<VilPostJoinVilPostFile> fList = vilPostFileDao.getVilPostFiles("1"); */
+	FamPostDao famPostDao = new MyBFamPostDao();
+	List<FamPostJoinMember> famList = famPostDao.getFamPosts(query);
+	
 
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("fList", fList);
 	pageContext.setAttribute("cList", cList);
+	pageContext.setAttribute("famList", famList);
 %>
 
 <!DOCTYPE html>
@@ -215,7 +219,7 @@
                                 </div>
                                 <div>
                                     <span class="vilPosts-icon-color4"></span>
-                                    <img class="vilPosts-icon" src="refimg/village-board-normal.png" />
+                                    <img class="vilPosts-icon" src="refimg/village-board-post.png" />
                                 </div>
                             </div>
 
@@ -362,6 +366,7 @@
             <div>
                 <h1 class="hidden">뉴스피드</h1>
                 <div class="village-sub-area">
+                    
                     <div class="e-oot-newsfeed">
                     <img class="e-oot-newsfeed-background" src="refimg/b00.png" />
                         <div class="e-oot-newsfeed">
@@ -370,19 +375,15 @@
                             <div class="e-oot-newsfeed-prev-btn"><img id="e-oot-newsfeed-item-btn" src="refimg/btn-up.png" /></div>
                             <div class="e-oot-newsfeed-clipper">
                                 <ul class="e-oot-newsfeed-list">
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="refimg/suzy1.jpg" /></div><p id="e-oot-newsfeed-item-content1">배수지</p><p id="e-oot-newsfeed-item-content2">이웃을 응원합니다.</p></a></li>
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="refimg/img00.jpg" /></div><p id="e-oot-newsfeed-item-content1">하연수</p><p id="e-oot-newsfeed-item-content2">이웃 뉴스피드 화면입니다.</p></a></li>
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="refimg/img01.jpg" /></div><p id="e-oot-newsfeed-item-content1">하연수</p><p id="e-oot-newsfeed-item-content2">서브 레이아웃의 이웃 뉴스피드 화면입니다.</p></a></li>
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="refimg/hjw.jpg" /></div><p id="e-oot-newsfeed-item-content1">하정우</p><p id="e-oot-newsfeed-item-content2">안녕하세요. 하정우입니다. 반갑습니다.</p></a></li>
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="refimg/dog.png" /></div><p id="e-oot-newsfeed-item-content1">Kakao Talk Dog</p><p id="e-oot-newsfeed-item-content2">카카오톡개. 옐로우카드</p></a></li>
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="refimg/ljh.jpg" /></div><p id="e-oot-newsfeed-item-content1">넌 이름이 뭐냐</p><p id="e-oot-newsfeed-item-content2">종진이 수수께끼 고맙습니다.</p></a></li>
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="refimg/bobby1.jpg" /></div><p id="e-oot-newsfeed-item-content1">바비</p><p id="e-oot-newsfeed-item-content2">쇼미더머니, 언프리티 랩스타 종샴</p></a></li>
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="refimg/suzy1.jpg" /></div><p id="e-oot-newsfeed-item-content1">배수지</p><p id="e-oot-newsfeed-item-content2">이웃을 응원합니다.</p></a></li>
+                                <c:forEach var="fL" items="${famList}">
+                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="${fL.profilepic}" /></div><p id="e-oot-newsfeed-item-content1">${fL.name}</p><p id="e-oot-newsfeed-item-content2">${fL.title}</p></a></li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                             <div class="e-oot-newsfeed-next-btn"><img id="e-oot-newsfeed-item-btn" src="refimg/btn-down.png" /></div>
                         </div>
                     </div>
+                    
 
                     <div class="village-newsfeed">
                         <div id="map_canvas"></div>

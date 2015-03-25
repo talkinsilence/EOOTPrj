@@ -1,4 +1,4 @@
-ï»¿@font-face {
+@font-face {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 400;
@@ -26,7 +26,7 @@
 }
 
 .news-search::-webkit-input-placeholder {
-	color: #47ccaf;
+   color: #47ccaf;
 }
 
 .news-search::-webkit-input-placeholder::before {
@@ -49,7 +49,7 @@
 }
 
 .post {
-    font-family: Montserrat, Nanum Gothic;	
+    font-family: Montserrat, Nanum Gothic;   
 }
 
 /*=======< post-header STYLE >===================================*/
@@ -68,7 +68,7 @@
 }
 /*=======< post-main STYLE >===================================*/
 .post-content {
-	font-family: Nanum Gothic;
+   font-family: Nanum Gothic;
     font-size: 13px;
     line-height: 1.4;
     word-wrap: break-word;
@@ -82,7 +82,7 @@
 
 /*=======< post-footer STYLE >===================================*/
 .post-popularity-cnt {
-    font-family: ë§‘ì€ ê³ ë”•, ê³ ë”•, sans-serif;
+    font-family: ¸¼Àº °íµñ, °íµñ, sans-serif;
     font-size: 17px;
     font-weight: bold;
 }
@@ -100,7 +100,7 @@
 }
 
 .comment-like {
-    font-family:  ë§‘ì€ ê³ ë”•, ê³ ë”•, sans-serif;
+    font-family:  ¸¼Àº °íµñ, °íµñ, sans-serif;
     font-size: 11px;
     color: #999;
 }
@@ -122,14 +122,14 @@ input[type=button] {
 /*#menu1 .vertical_text{
     word-wrap: break-word;
     width: 14px;
-    font-family: ë§‘ì€ ê³ ë”•, ê³ ë”•, sans-serif;
+    font-family: ¸¼Àº °íµñ, °íµñ, sans-serif;
     font-size: 15px;
     display: inline-block;
     line-height: 25px;
 }
 
 #menu2 .vertical_text{
-    font-family: ë§‘ì€ ê³ ë”•, ê³ ë”•, sans-serif;
+    font-family: ¸¼Àº °íµñ, °íµñ, sans-serif;
     font-size: 15px;
     display: inline-block;
     line-height: 25px;

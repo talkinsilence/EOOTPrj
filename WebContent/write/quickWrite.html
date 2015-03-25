@@ -50,14 +50,14 @@
                     </div>
                     <div class="date">
                         <h1 class="hidden">현재날짜</h1>
-                        <script src="js/outdate.js"></script>
+                        <script src="js/outDate.js"></script>
                     </div>
                 </div>
                 <div class="writeStyle">
                     <div class="styleSelect">
                         <div class="selectStyle">
                             <select id="size" onchange="fontSize()">
-                                <option>Font-Size</option>
+                                <option>글자크기</option>
                                 <option>1px</option>
                                 <option >2px</option>
                                 <option >3px</option>
@@ -76,7 +76,7 @@
                         <div class="color">
                             <!--<input type="color" id="colors" onclick="fontColors()" style="border: none;" />-->
                             <select id="colors" onchange="fontColors()">
-                                <option>font-color</option>
+                                <option>글자색</option>
                                 <option style="background-color:black;">black</option>
                                 <option style="background-color:red;">red</option>
                                 <option style ="background-color: blue;">blue</option>
@@ -94,19 +94,25 @@
                         <div class="fileUpload">
                             <input type=file name='file1' style='display: none;' id="imgInp">
                             <img src='image/파일.jpg' border='0' onclick='document.all.file1.click(); document.all.file2.value=document.all.file1.value'> 
-                            <a href="cal.html" style="padding-left:12px;" target=""><img src="image/칼렌더.png"></a>                      
+                            <a href="cal.html" style="padding-left:12px;" target="textfield2"><img src="image/칼렌더.png"></a>                      
                         </div>
                     </div>
                 </div>
                 <div class="selectEoot">
-                    <input type="checkbox" id="checkbox2" />
-                    <label for="checkbox2"></label>우리가족만
-                    <input type="checkbox" id="checkbox3" />
-                    <label for="checkbox3"></label>이웃과 공유
-                    <input type="checkbox" id="checkbox4" />
-                    <label for="checkbox4"></label>마을에 게시
+                    <input type="checkbox" checked="checked"/>
+                   <!--  <label for="checkbox2"></label> -->우리가족만
+                    <input type="checkbox" />
+                    <!-- <label for="checkbox3"></label> -->이웃과 공유
+                    <div>
+                    <input type="checkbox" />
+                    <!-- <label for="checkbox4"></label> -->마을에 게시
+                    	<select>
+                    		<option>일반</option>
+                    		<option>장터</option>
+                    		<option>모델</option>
+                    	</select>
+                    </div>
                 </div>
-                <!--<button class="btn" type="submit"><img class="btn-img" src="image/작성완료.png"></button>-->
                 <input type="button" class="btn">
             </section>
         </article>
