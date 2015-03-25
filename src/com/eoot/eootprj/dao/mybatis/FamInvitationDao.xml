@@ -10,15 +10,19 @@
     		insert into FamInvitations(askmid, acceptmid, askregdate, state) values(#{askmid}, #{acceptmid}, getDate(), 0);
     	</insert>
     	
+    	<delete id="deleteInv" parameterType="String">
+    		DELETE FROM FAMINVITATIONS WHERE ASKMID = #{param1} AND ACCEPTMID = #{param2}
+    	</delete>
+    	
     	<select id="getInvsMe" parameterType="String" resultType="FamInvJoinMember">
-    		SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ACCEPTMID = M.MID WHERE F.ASKMID = #{mid} AND state = 0; 
+    		SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ACCEPTMID = #{mid} AND state = 0; 
     	</select>
     	
     	<select id="getInvs" parameterType="String" resultType="FamInvJoinMember">
-    		SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ACCEPTMID = #{acceptmid} AND state = 0;
+    		SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ACCEPTMID = M.MID WHERE F.ASKMID = #{askmid} AND state = 0;
     	</select>
     	
     	<select id="getInv" parameterType="String" resultType="FamInv">
-    		SELECT * FROM (SELECT * FROM FAMINVITATIONS WHERE ACCEPTMID = #{param1}) FAMINVITATIONS WHERE ASKMID = #{param2}
+    		SELECT * FROM FAMINVITATIONS WHERE ASKMID = #{param1} AND ACCEPTMID = #{param2}
     	</select>
     </mapper>
