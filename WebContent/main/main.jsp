@@ -204,7 +204,7 @@
         <div class="letter-box-wrapper">
             <div class="letter-box-header">
                 <div class="letter-box-header-title">편지함</div>
-                <div class="letter-box-header-total">총 ${lsSize}개</div>
+                <div class="letter-box-header-total">총 <p id="lcnt">${lsSize}</p>개</div>
                 <div class="letter-box-search">
                     <input class="letter-search" type="text" name="query" value="${param.query}"/>
                     <div id="letter-search"></div>
@@ -231,8 +231,8 @@
 			                    <div class="letter-mani-area">
 				                    <div class="letter-mani-wrapper-bg"></div>
 				                    <div class="letter-mani-wrapper">
-					                	<div class="letter-mani reply-letter"><input type="button" value="답장" class="hidden" name="reply-letter"/></div>
-					                	<div class="letter-mani delete-letter"><input type="button" value="삭제" class="hidden" name="delete-letter"/></div>
+					                	<div class="letter-mani reply-letter"></div>
+					                	<div class="letter-mani delete-letter"></div>
 				                	</div>
 			                	</div>
 		                    </li>
