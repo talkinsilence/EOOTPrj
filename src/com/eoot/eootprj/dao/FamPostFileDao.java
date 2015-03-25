@@ -21,6 +21,9 @@ public interface FamPostFileDao {
 			+ "ON F.CODE = FPF.FAMPOSTCODE ")
 	public	List<FamPostFileJoinFamPost> getFamPostFiles();
 	
+	@Select("SELECT * FROM FAMPOSTFILES")
+	public	List<FamPostFile> getFamPostFiles2();
+	
 	@Select("SELECT COUNT(*) FROM FAMPOSTFILES") 
 	public int getSize();
 	

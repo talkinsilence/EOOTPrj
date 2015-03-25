@@ -11,10 +11,10 @@ import com.eoot.eootprj.model.NeighborJoinMember;
 public class MyBNeighborDao implements NeighborDao{
 
 	@Override
-	public int insertNei(Neighbor nei) {
+	public int insertNei(Neighbor neighbor) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		NeighborDao neighborDao = sqlSession.getMapper(NeighborDao.class);
-		return neighborDao.insertNei(nei);
+		return neighborDao.insertNei(neighbor);
 	}
 
 	@Override
@@ -50,6 +50,13 @@ public class MyBNeighborDao implements NeighborDao{
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
 		NeighborDao neighborDao = sqlSession.getMapper(NeighborDao.class);
 		return neighborDao.updateNeiAccept(askmid, acceptmid);
+	}
+
+	@Override
+	public Neighbor getInv(String askmid, String acceptmid) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		NeighborDao neighborDao = sqlSession.getMapper(NeighborDao.class);
+		return neighborDao.getInv(askmid, acceptmid);
 	}
 
 }

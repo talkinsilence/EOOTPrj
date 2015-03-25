@@ -300,10 +300,16 @@
                         </div>
 
                         <div id="eoot-with">
-                           	 이웃맺기 현황
+                           	 이웃 관리
                             <label id="eoot-with-view" class="view">자세히 보기</label>
-
+                           
                             <div id="eoot-with-view-wrapper">
+                            	<div id="eoot-member-mng-wrapper">
+	                                <span>이웃 초대하기</span>
+	                                <input type="text" id="eoot-member-mng-txt"/>
+	                                <input type="button" id="btn-eoot-member-inv" value="초대"/>
+                           		</div>
+                            
                                 <div id="eoot-with-request-wrapper">
                                     <input type="radio" name="eoot-with-request" value="get" checked />내가 받은 이웃신청&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input type="radio" name="eoot-with-request" value="add" />내가 보낸 이웃신청

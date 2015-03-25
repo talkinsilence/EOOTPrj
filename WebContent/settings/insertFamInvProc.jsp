@@ -1,3 +1,4 @@
+<%@page import="com.eoot.eootprj.model.Member"%>
 <%@page import="com.eoot.eootprj.dao.MemberDao"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@page import="com.eoot.eootprj.model.FamInvitation"%>
@@ -11,21 +12,27 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String uid = (String) session.getAttribute("uid");
-	String acceptmid = request.getParameter("accpetmid");
+	String acceptmid = request.getParameter("acceptmid");
 	
 	MemberDao memberDao = new MyBMemberDao();
+	Member m = memberDao.getMember(uid);
+	Member macpt = memberDao.getMember(acceptmid);
+	
 	FamInvitationDao famInvDao = new MyBFamInvitationDao();
 	
-	if(memberDao.getMember(acceptmid) != null){
-		
-		if(famInvDao.getInv(uid, acceptmid) == null){
-			FamInvitation famInvitation = new FamInvitation();
-			famInvitation.setAskmid(uid);
-			famInvitation.setAcceptmid(acceptmid);
-			
-			famInvDao.insertInv(famInvitation);
+	if(macpt != null){
+		if(!m.getFamcode().equals(macpt.getFamcode())){
+			if(famInvDao.getInv(uid, acceptmid) == null){
+				
+				FamInvitation famInvitation = new FamInvitation();
+				famInvitation.setAskmid(uid);
+				famInvitation.setAcceptmid(acceptmid);
+				
+				famInvDao.insertInv(famInvitation);
+			}
 		}
 	}
+	
 	List<FamInvitationJoinMember> finv = famInvDao.getInvs(uid);
 	
 	pageContext.setAttribute("finv", finv);

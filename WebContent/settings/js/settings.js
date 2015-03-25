@@ -148,7 +148,8 @@ $(document).ready(function () {
 
     // 구성원 관리
     $("#btn-member-inv").click(function(){
-    	$("#myhome-member-mng-inv-view").load("insertFamInvProc.jsp?acceptmid="+$("#myhome-member-mng-txt").val());
+    	var acceptmid = $("#myhome-member-mng-txt").val();
+    	$("#myhome-member-mng-inv-view").load("insertFamInvProc.jsp?acceptmid="+acceptmid);
     	$("#myhome-member-mng-txt").val("");
     });
     
@@ -179,7 +180,14 @@ $(document).ready(function () {
             view.text("자세히 보기");
         }
     });
-
+    
+    $("#btn-eoot-member-inv").click(function(){
+    	var acceptmid = $("#eoot-member-mng-txt").val();
+    	
+    	$("#eoot-with-add-view").load("insertNeiInvProc.jsp?acceptmid="+acceptmid);
+    	$("#eoot-member-mng-txt").val("");
+    });
+    
     // 이웃맺기
 
     $("#eoot-with-view").click(function () {
@@ -322,6 +330,8 @@ function famInvMeReject(askmid){
 }
 
 function famInvMeAccept(askmid){
-	alert(askmid);
-	$(location).attr("href","updateFamAcceptProc.jsp?askmid="+askmid);
+	var check = confirm("정말 수락하시겠습니까?");
+	
+	if(check)
+		$(location).attr("href","updateFamAcceptProc.jsp?askmid="+askmid);
 }

@@ -84,9 +84,13 @@ div.calendar-trash{
     z-index:5;
 }
 
-#datepicker {
+.datepicker {
     cursor:pointer;
 }
+
+/* #datepickerStart {
+    cursor:pointer;
+} */
 
 .calendar-wrapper {
     padding-bottom:10px;
