@@ -18,7 +18,7 @@ public interface FamPostDao {
 			+ "FROM FAMPOSTS F "
 			+ "INNER JOIN MEMBERS M "
 			+ "ON F.WRITER = M.MID "
-			+ "WHERE F.CODE = #{CODE}")
+			+ "WHERE F.CODE = #{code}")
 	public FamPostJoinMember getFamPost(String code);
 	
 	@Select("SELECT * "
