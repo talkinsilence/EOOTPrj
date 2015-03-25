@@ -66,7 +66,6 @@ select * from letterfiles;
 INSERT INTO LETTERS VALUES('lettercode12', 'cskn2@naver.com', GETDATE(), '누나누나누나누나누나누나누나누나누나누나누나', '남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여남영버그조심좀여', 0, 'viovio@eoot.com', 0);
 UPDATE LETTERS SET CONTENT='content' WHERE CONTENT='title';
 UPDATE LETTERS SET "READ"=0;
-DELETE LETTERS WHERE CODE = 'letterceode5';
 
 SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ACCEPTMID = 'viovio@eoot.com' AND state = 0;
 SELECT * FROM FAMINVITATIONS F INNER JOIN MEMBERS M ON F.ASKMID = M.MID WHERE F.ASKMID = 'viovio@eoot.com' AND state = 0;

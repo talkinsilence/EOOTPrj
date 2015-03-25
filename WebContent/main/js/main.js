@@ -46,6 +46,7 @@
     
     $('.btn-close, .letter-transp-bg').click(function () {
     	location.reload();
+    	reset_writeForm();
         $('.letter').fadeOut(10);
     });
     
@@ -110,15 +111,16 @@
 		$(this).css("color", "#000");
     });
 
+    /*===< letter-write >===*/
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
     });
 
     if ($('.letter-write-box').height() >= 400)
-        $('#write').attr("rows", "19");
+        $('#content').attr("rows", "19");
     else
-        $('#write').attr("rows", "17");
+        $('#content').attr("rows", "17");
 
     $('.letter-type.text').click(function () {
         $('.letter-type-wrapper').hide(10, function () {
@@ -126,17 +128,8 @@
         });
     });
     
-    $('.letter-type.voice').click(function () {
-        alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");
-    });
-    
-    $('.letter-type.video').click(function () {
-        alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");
-    });
-
-    $('.delete').click(function () {
-        $(this).parent().remove();
-    });
+    $('.letter-type.voice').click(function () {alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
+    $('.letter-type.video').click(function () {alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
 
     $('.letter-to-list-add').click(function () {
     	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
@@ -148,63 +141,80 @@
 
         $('.letter-add-wrapper').fadeIn(100, 'linear');
     });
-    
-    $('.letter-add-list').each(function(){
-        
-        //var clicked = 0;
-        
-        $(this).children("img").click(function(){
-           //alert($('.letter-to-list-wrapper > img ').attr("name"));
-           //clicked = 1;
-           //alert(clicked);
 
-           var name = $(this).attr("name");
-            alert(name);
-           
-           //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
-            if($('.letter-to-list-wrapper > .letter-add-list').find("*").attr("name")!=name){
-                             
-               //clicked = 0;
-               //alert(clicked);
-               
-               var clone = $(this).parent().clone().css("float", "left");
-               clone.append($('<div class="delete"></div>'));
-               clone.prependTo($('.letter-to-list-wrapper'));
+    $('.letter-add-list').each(function(){
+        $(this).children("img").click(function(){
+        	
+        	var reader = $(this).parent().find('.reader-mid').html();
+            alert(reader);
+
+        	var readerLists = [];
+        	var lists = $('.letter-to-list-wrapper > ul li');
+        	lists.each(function(){
+        		if($(this).length != 0){
+        			readerLists.push($(this).find('.reader-mid').html());
+        		}
+        	});
+        	
+        	alert(readerLists);
+
+        	if(jQuery.inArray(reader, readerLists) == -1){
+            	var clone = $(this).parent().clone().css("float", "left");
+                clone.append($('<div class="delete"></div>'));
+                clone.prependTo($('.letter-to-list-wrapper'));
+                
+                readerLists.push(clone.find('.reader-mid').html());
+                
+                alert(readerLists);
+                
+                //readerLists = readerLists;
                              
                 $('.delete').click(function () {
                     $(this).parent().remove();
                 });
             }
 
-        });
-        
-     });
+            /*if($('.letter-to-list-wrapper').find('.reader-mid').html() != reader){
+            	var clone = $(this).parent().clone().css("float", "left");
+                clone.append($('<div class="delete"></div>'));
+                clone.prependTo($('.letter-to-list-wrapper'));
+                             
+                $('.delete').click(function () {
+                    $(this).parent().remove();
+                });
+            }*/
+        });  
+    });
+    
+    $('.delete').click(function () {
+        $(this).parent().remove();
+    });
     
     $('#letter-add-cancel').click(function () {
         $('.letter-add-wrapper').fadeOut(10);
     });
 
     $('#letter-send').click(function () {
-        if ($('.letter-to-list' || '.letter-add-list').length == 0)
+        if ($('.letter-to-list-wrapper').find('img').length == 0)
             alert("수신인을 한 명 이상 지정해야 합니다.");
-        else if (($('#write').val() == ""))
-            alert("편지 내용을 입력해주세요.");
-      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
+        else if (($('#title').val() == ""))
+            alert("제목을 입력해주세요.");
+        else if (($('#content').val() == ""))
+            alert("내용을 입력해주세요.");
         else {
-            $('.letter-write-wrapper, .letter-add-wrapper').hide(800, function () {
-                alert("편지가 전송되었습니다^ㅇ^");
-            });
+        	$('.btn-close, .letter-transp-bg').trigger("click");
+        	alert("편지가 전송되었습니다^___^");
+/*            $('.letter-write-wrapper, .letter-add-wrapper').hide(600, function () {
+            	alert("편지가 전송되었습니다^ㅇ^");
+            	$('.btn-close, .letter-transp-bg').trigger("click");
+            });*/
         }
     });
 
     /*===========< newsFeed >=============================================*/
     $('.alarm.news').click(function () {
     	$(this).unbind('click');
-        //alert($('.main').height());
-        //alert($('.lower').height());
-        
         var pushMain = $('.main').height() + $('.lower').height();
-        //alert(pushMain);
     	
         $('.main').animate({
         	'marginTop': -pushMain + 'px'
@@ -214,29 +224,12 @@
     }); 	
 })
 
-/*function deleteLetter(){
-	$.ajax({
-		type:"post",
-		url:"deleteLetterProc.jsp",
-		data:{
-			code:thisLetter.find('.letter-code').html()
-		},
-		success:function(data){
-			if($.trim(data) != ""){
-				$('.letter-code').html($.trim(data));
-			}
-		}
-	});	
-}*/
-/*function deleteLetter(){
-	$.ajax({
-		type:"post",
-		url:"deleteLetterProc.jsp",
-		data:{
-			code:thisLetter.find('.letter-code').html()
-		},
-		success:function(){
-			alert("wow!!!");
-		}
-	});	
-};*/
+function check_readerList(){
+
+}
+
+function reset_writeForm(){
+    $('.letter-to-list-wrapper').empty();
+    $('#title').empty();
+    $('#content').empty();
+}
