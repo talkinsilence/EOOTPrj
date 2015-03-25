@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String uid = "viovio@eoot.com";
+	String uid = (String) session.getAttribute("uid");
 	String askmid = request.getParameter("askmid");
 	
 	NeighborDao nei = new MyBNeighborDao();

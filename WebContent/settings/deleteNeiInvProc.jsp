@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String askmid = request.getParameter("askmid");
-	String uid = "viovio@eoot.com";
+	String uid = (String) session.getAttribute("uid");
 	
 	NeighborDao nei = new MyBNeighborDao();
 	

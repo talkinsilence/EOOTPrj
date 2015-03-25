@@ -7,7 +7,7 @@
 
 	String data = "";
 	String nametxt = request.getParameter("nametxt");
-	String uid = "viovio@eoot.com";
+	String uid = (String) session.getAttribute("uid");
 	
 	if(nametxt != ""){
 		Member m = new Member();

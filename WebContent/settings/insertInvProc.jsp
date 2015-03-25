@@ -10,7 +10,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
-	String uid = "viovio@eoot.com";
+	String uid = (String) session.getAttribute("uid");
 	String askmid = request.getParameter("askmid");
 	
 	MemberDao memberDao = new MyBMemberDao();

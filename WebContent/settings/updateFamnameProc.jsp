@@ -7,7 +7,7 @@
 <%
 	String data = "";
 	String famnameTxt = request.getParameter("famnametxt");
-	String uid = "viovio@eoot.com";
+	String uid = (String) session.getAttribute("uid");
 	
 	if(famnameTxt != ""){
 		MemberDao memberDao = new MyBMemberDao();
