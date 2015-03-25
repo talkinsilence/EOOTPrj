@@ -141,22 +141,21 @@
 
         $('.letter-add-wrapper').fadeIn(100, 'linear');
     });
-
+    
+    var readerLists = [];
     $('.letter-add-list').each(function(){
         $(this).children("img").click(function(){
         	
         	var reader = $(this).parent().find('.reader-mid').html();
-            alert(reader);
+            //alert(reader); //추가하려는 수신인의 mid
 
-        	var readerLists = [];
         	var lists = $('.letter-to-list-wrapper > ul li');
         	lists.each(function(){
         		if($(this).length != 0){
         			readerLists.push($(this).find('.reader-mid').html());
         		}
         	});
-        	
-        	alert(readerLists);
+        	//alert(readerLists); //추가되기 전 왼쪽에 이미 추가되어있는 mid의 목록
 
         	if(jQuery.inArray(reader, readerLists) == -1){
             	var clone = $(this).parent().clone().css("float", "left");
@@ -164,25 +163,16 @@
                 clone.prependTo($('.letter-to-list-wrapper'));
                 
                 readerLists.push(clone.find('.reader-mid').html());
-                
-                alert(readerLists);
-                
-                //readerLists = readerLists;
-                             
+                //alert(readerLists); //추가된 후 
+       
                 $('.delete').click(function () {
                     $(this).parent().remove();
+                    var removeItem = $(this).parent().find('.reader-mid').html();
+                    readerLists = jQuery.grep(readerLists, function(n){
+                    	return n != removeItem;
+                    });
                 });
             }
-
-            /*if($('.letter-to-list-wrapper').find('.reader-mid').html() != reader){
-            	var clone = $(this).parent().clone().css("float", "left");
-                clone.append($('<div class="delete"></div>'));
-                clone.prependTo($('.letter-to-list-wrapper'));
-                             
-                $('.delete').click(function () {
-                    $(this).parent().remove();
-                });
-            }*/
         });  
     });
     

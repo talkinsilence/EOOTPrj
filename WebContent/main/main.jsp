@@ -271,7 +271,7 @@
 	                <div class="letter-to">받는 사람</div>
 	                <div class="letter-to-list-wrapper">
 	                	<ul>
-		                	<li class="letter-to-list">
+<!-- 		                	<li class="letter-to-list">
 		                    	<div class="reader-mid hidden">suzy</div>
 		                        <img class="thumbnail" src="images/suzy2.jpg" />
 		                        <div class="delete"></div>
@@ -280,7 +280,7 @@
 		                    	<div class="reader-mid hidden">taeyang</div>
 		                        <img class="thumbnail" src="images/taeyang.jpg" />
 		                        <div class="delete"></div>
-		                    </li>
+		                    </li> -->
 	                	</ul>
 	                    <div class="letter-to-list-add"></div>
 	                </div>
