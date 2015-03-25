@@ -32,7 +32,7 @@
 {
   background: rgba(0, 0, 0, 0.4);
 } 
-/*////////Åø¹Ù ·¹ÀÌ¾Æ¿ô/////////////////////////////////////*/
+/*////////toolbar layout/////////////////////////////////////*/
 
 #toolbar {
     position: fixed;
@@ -100,7 +100,7 @@
 }
 
     .news-search::-webkit-input-placeholder::before {
-        content: "ÀÌ¿ô ¼Ò½ÄÀ» °Ë»öÇØº¸¼¼¿ä";
+        content: "ì£¼ë³€ ì†Œì‹ì„ ê²€ìƒ‰í•´ ë³´ì„¸ìš”";
     }
 
 #news-search {
@@ -119,9 +119,9 @@
 }
 
     @media screen and (max-width: 860px) {.toolbar-search {width: 120px;}}
-    @media screen and (max-width: 860px) {.news-search::-webkit-input-placeholder::before {content: "°Ë»ö";}}
+    @media screen and (max-width: 860px) {.news-search::-webkit-input-placeholder::before {content: "ê²€ìƒ‰";}}
     @media screen and (max-width: 750px) {.toolbar-logo {display: none;}}
-    @media screen and (max-width: 750px) {.news-search::-webkit-input-placeholder::before {content: "e-oot °Ë»ö";}}
+    @media screen and (max-width: 750px) {.news-search::-webkit-input-placeholder::before {content: "e-oot ê²€ìƒ‰";}}
     @media screen and (max-width: 590px) {.toolbar-search {width: 80px;}}
     @media screen and (max-width: 590px) {.news-search::-webkit-input-placeholder::before {content: "e-oot";}}
 
@@ -207,7 +207,7 @@
         background: #f9f9f9;
     }
 
-/*////////´º½ºÇÇµå ·¹ÀÌ¾Æ¿ô/////////////////////////////////////*/
+/*////////ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ ï¿½ï¿½ï¿½Ì¾Æ¿ï¿½/////////////////////////////////////*/
 html {
     /*background: #E5E5E5;*/
     background: #F2F2F2;
@@ -471,7 +471,7 @@ html {
 .post-content {
     padding-bottom: 20px;
 
-    /*±æ¾îÁö¸é ÂÀÂÀÂÀ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     /*overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;*/
