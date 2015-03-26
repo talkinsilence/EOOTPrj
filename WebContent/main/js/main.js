@@ -46,7 +46,7 @@
     
     $('.btn-close, .letter-transp-bg').click(function () {
     	location.reload();
-    	reset_writeForm();
+    	/*reset_writeForm();*/
         $('.letter').fadeOut(10);
     });
     
@@ -110,95 +110,164 @@
     	});
 		$(this).css("color", "#000");
     });
+    
+    /*===< 답장하기 >===*/
+    $('.letter-mani.reply-letter').click(function(){
+    	
+    	var thisLetter = $(this).parent().parent().parent();
+    	var lwriter = thisLetter.find('.letter-from-mid').html();
+    	var lwriterName = thisLetter.find('.letter-from-name').html();
+    	var lwriterPic = thisLetter.find('.letter-from-pic').html();
+    	
+    	var con = confirm("이 편지에 답장하시겠습니까?");
+    	if(con == true){
+    		
+    		$('#title').val("");
+        	$('#content').val("");
+            $('.letter-box-wrapper').css("display", "none");
+            $('.letter-type-wrapper').fadeIn(200);
+    		
+            $('.letter-type.text').click(function () {
+                $('.letter-type-wrapper').hide(10, function () {
+                    $('.letter-write-wrapper').fadeIn(200);
+                });
+            });
+            $('.letter-type.voice').click(function () {alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
+            $('.letter-type.video').click(function () {alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
+            
+    		$('.letter-to-list-add').hide();
+    		$('.reply-to-name').html(lwriterName);
+    		$('.letter-reply-to').children('img').attr("src", lwriterPic);
+    		$('.letter-reply-to').css("display", "block");
+    		$('.letter-reply-to').hover(function(){
+    			$('.reply-to-name').toggle();
+    		});
+    		
+    		$('#letter-send').click(function () {
+    		    if (($('#title').val() == ""))
+    		        alert("제목을 입력해주세요.");
+    		    else if (($('#content').val() == ""))
+    		        alert("내용을 입력해주세요.");
+    		    else {
+    		    	var ltitle = $('textarea#title').val();
+    		    	var lcontent = $('textarea#content').val().replace(/\n/g, "<br />");
 
-    /*===< letter-write >===*/
+    		    	$.ajax({
+    	    			type:"post",
+    	    			url:"replyLetterControl.jsp",
+    	    			data:{
+    	    				writer:lwriter,
+    	    				title:ltitle,
+    	    				content:lcontent
+    	    			},
+    	    			success:function(){
+    	    				alert("답장전송!!!");
+    	    				$('.letter-to-list-add').show();
+    	    	    		$('.reply-to-name').html("");
+    	    	    		$('.letter-reply-to').children('img').attr("src", "");
+    	    	    		$('.letter-reply-to').css("display", "none");
+    	    				$('.letter').fadeOut(200);
+    	    			}
+    		    	});	
+    		    }
+    	    });
+    	}
+    });
+    
+    /*===< 편지쓰기 >===*/
     $('#letter-write').click(function () {
+    	$('#title').val("");
+    	$('#content').val("");
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
-    });
+        
+        if ($('.letter-write-box').height() >= 400)
+            $('#content').attr("rows", "19");
+        else
+            $('#content').attr("rows", "17");
 
-    if ($('.letter-write-box').height() >= 400)
-        $('#content').attr("rows", "19");
-    else
-        $('#content').attr("rows", "17");
-
-    $('.letter-type.text').click(function () {
-        $('.letter-type-wrapper').hide(10, function () {
-            $('.letter-write-wrapper').fadeIn(200);
+        $('.letter-type.text').click(function () {
+            $('.letter-type-wrapper').hide(10, function () {
+                $('.letter-write-wrapper').fadeIn(200);
+            });
         });
-    });
-    
-    $('.letter-type.voice').click(function () {alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
-    $('.letter-type.video').click(function () {alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
+        
+        $('.letter-type.voice').click(function () {alert("음성편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
+        $('.letter-type.video').click(function () {alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
 
-    $('.letter-to-list-add').click(function () {
-    	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
-        $('.letter-write-wrapper').css("display", "block");
+        $('.letter-to-list-add').click(function () {
+            $('.letter-add-wrapper').slideToggle();
+        });
+        
+        var readerLists = [];
+        $('.letter-add-list').each(function(){
+            $(this).children("img").click(function(){
+            	
+            	var reader = $(this).parent().find('.reader-mid').html();
+            	//추가하려는 수신인의 mid
 
-        var loc = $('.letter-write-wrapper').offset();
-        var wid = $('.letter-write-wrapper').width();
-        $('.letter-add-wrapper').offset({ left: loc.left + wid + 70, top: loc.top });
+            	var lists = $('.letter-to-list-wrapper > .letter-add-list');
+            	lists.each(function(){
+            		if($(this).length != 0){
+            			readerLists.push($(this).find('.reader-mid').html());
+            		}
+            	});
+            	//추가되기 전 왼쪽에 이미 추가되어있는 mid의 목록
 
-        $('.letter-add-wrapper').fadeIn(100, 'linear');
-    });
-    
-    var readerLists = [];
-    $('.letter-add-list').each(function(){
-        $(this).children("img").click(function(){
-        	
-        	var reader = $(this).parent().find('.reader-mid').html();
-            //alert(reader); //추가하려는 수신인의 mid
-
-        	var lists = $('.letter-to-list-wrapper > ul li');
-        	lists.each(function(){
-        		if($(this).length != 0){
-        			readerLists.push($(this).find('.reader-mid').html());
-        		}
-        	});
-        	//alert(readerLists); //추가되기 전 왼쪽에 이미 추가되어있는 mid의 목록
-
-        	if(jQuery.inArray(reader, readerLists) == -1){
-            	var clone = $(this).parent().clone().css("float", "left");
-                clone.append($('<div class="delete"></div>'));
-                clone.prependTo($('.letter-to-list-wrapper'));
-                
-                readerLists.push(clone.find('.reader-mid').html());
-                //alert(readerLists); //추가된 후 
-       
-                $('.delete').click(function () {
-                    $(this).parent().remove();
-                    var removeItem = $(this).parent().find('.reader-mid').html();
-                    readerLists = jQuery.grep(readerLists, function(n){
-                    	return n != removeItem;
+            	if(jQuery.inArray(reader, readerLists) == -1){
+                	var clone = $(this).parent().clone().css("float", "left");
+                    clone.append($('<div class="delete"></div>'));
+                    clone.prependTo($('.added'));
+                    
+                    readerLists.push(clone.find('.reader-mid').html());
+                    //추가된 후 
+           
+                    $('.delete').click(function () {
+                        $(this).parent().remove();
+                        var removeItem = $(this).parent().find('.reader-mid').html();
+                        readerLists = jQuery.grep(readerLists, function(n){
+                        	return n != removeItem;
+                        });
                     });
-                });
-            }
-        });  
-    });
-    
-    $('.delete').click(function () {
-        $(this).parent().remove();
-    });
-    
-    $('#letter-add-cancel').click(function () {
-        $('.letter-add-wrapper').fadeOut(10);
-    });
+                } else {
+                	alert("이미 추가되어 있습니다");
+                }
+            });  
+        });
+        
+        $('.delete').click(function () {
+            $(this).parent().remove();
+        });
 
-    $('#letter-send').click(function () {
-        if ($('.letter-to-list-wrapper').find('img').length == 0)
-            alert("수신인을 한 명 이상 지정해야 합니다.");
-        else if (($('#title').val() == ""))
-            alert("제목을 입력해주세요.");
-        else if (($('#content').val() == ""))
-            alert("내용을 입력해주세요.");
-        else {
-        	$('.btn-close, .letter-transp-bg').trigger("click");
-        	alert("편지가 전송되었습니다^___^");
-/*            $('.letter-write-wrapper, .letter-add-wrapper').hide(600, function () {
-            	alert("편지가 전송되었습니다^ㅇ^");
-            	$('.btn-close, .letter-transp-bg').trigger("click");
-            });*/
-        }
+        $('#letter-send').click(function(){
+        	if (readerLists.length == 0)
+                alert("수신인을 한 명 이상 지정해야 합니다.");
+        	else if (($('#title').val() == ""))
+                alert("제목을 입력해주세요.");
+        	else if (($('#content').val() == ""))
+                alert("내용을 입력해주세요.");
+            else {            	
+            	var ltitle = $('textarea#title').val();
+        		var lcontent = $('textarea#content').val().replace(/\n/g, "<br />");
+        		
+        		for(var i = 0; i < readerLists.length; i++){
+        			$.ajax({
+        				type:"post",
+        				url:"writeLetterControl.jsp",
+        				data:{
+        					reader:readerLists[i],
+        					title:ltitle,
+        					content:lcontent
+        				},
+        				success:function(){
+        					alert("편지전송!!!");
+        					$('.added').empty();
+        					$('.letter').fadeOut(200);
+        				}
+        	    	});	
+        		}        	
+            }
+        });
     });
 
     /*===========< newsFeed >=============================================*/
@@ -214,12 +283,4 @@
     }); 	
 })
 
-function check_readerList(){
 
-}
-
-function reset_writeForm(){
-    $('.letter-to-list-wrapper').empty();
-    $('#title').empty();
-    $('#content').empty();
-}

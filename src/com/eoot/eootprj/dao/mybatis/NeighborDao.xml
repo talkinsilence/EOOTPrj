@@ -11,9 +11,9 @@
     	</insert>
     	
     	<select id="getNeighbors" parameterType="String" resultType="NeighborJoinMember">
-    		SELECT mid, name, address, famcode, famname FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ASKMID = M.MID WHERE N.ACCEPTMID = #{uid} AND state = 1
+    		SELECT mid, name, address, famcode, famname, profilepic FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ASKMID = M.MID WHERE N.ACCEPTMID = #{uid} AND state = 1
 			UNION
-			SELECT mid, name, address, famcode, famname FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ACCEPTMID = M.MID WHERE N.ASKMID = #{uid} AND state = 1;
+			SELECT mid, name, address, famcode, famname, profilepic FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ACCEPTMID = M.MID WHERE N.ASKMID = #{uid} AND state = 1;
     	</select>
     	
     	<select id="getNeiInvs" parameterType="String" resultType="NeighborJoinMember">
