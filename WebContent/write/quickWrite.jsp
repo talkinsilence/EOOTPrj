@@ -1,20 +1,14 @@
-<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
-<%@page import="com.eoot.eootprj.dao.VilPostDao"%>
-<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
-<%@page import="com.eoot.eootprj.dao.FamPostDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />   
-    <link href="css/quickWrite_layout.css" type="text/css" rel="stylesheet" />
+    <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
     <script src="../resource/js/modernizr.js" type="text/javascript"></script>
     <script src="../resource/js/jquery-2.1.3.js"></script>
+    <link href="css/quickWrite_layout.css" type="text/css" rel="stylesheet" />
     <script src="js/quickWrite.js"></script>
     <script src="js/quickWriteSend.js"></script>
 </head>

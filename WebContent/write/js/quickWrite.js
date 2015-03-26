@@ -1,4 +1,16 @@
-﻿function iframeOn() {
+﻿
+$(document).ready(function(){
+	
+	$(".qw-btn-close").click(function(){
+		$("#qw").css("display","none");
+	});
+	
+	$(".qw-transp-bg").click(function(){
+		$("#qw").css("display","none");
+	});
+});
+
+function iframeOn() {
     textfield1.document.designMode = 'on';
     textfield2.document.designMode = 'on';
 }

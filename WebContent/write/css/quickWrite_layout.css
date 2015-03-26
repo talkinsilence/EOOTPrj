@@ -1,4 +1,4 @@
-ï»¿::-webkit-scrollbar
+::-webkit-scrollbar
 {
   width: 14px;  /* for vertical scrollbars */
   height: 14px; /* for horizontal scrollbars */
@@ -556,7 +556,7 @@ html {
 }
 
 #imgInp {
-    background:url(../image/ë™ì˜ìƒ.jpg) no-repeat;
+    background:url(../image/µ¿¿µ»ó.jpg) no-repeat;
     border: none;
     width: 32px;
     height: 32px;
