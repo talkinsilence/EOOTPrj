@@ -34,7 +34,7 @@
     });
 
     $("#menu2-calendar").click(function () {
-        $(location).attr("href", "");
+        $(location).attr("href", "../calendar/calendar.jsp");
     });
 
     $("#menu2-album").click(function () {

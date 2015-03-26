@@ -89,16 +89,6 @@
 
                 <div class="visual"></div>
 
-                <div class="button" id="menu2-letter">
-                    <div class="vertical-field1">
-                        <div class="vertical-field2">
-                            <span class="vertical_text">편 지</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visual"></div>
-
                 <div class="button" id="menu2-setting">
                     <div class="vertical-field1">
                         <div class="vertical-field2">

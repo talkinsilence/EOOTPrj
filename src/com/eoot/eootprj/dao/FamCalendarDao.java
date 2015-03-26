@@ -7,4 +7,5 @@ import com.eoot.eootprj.model.FamCalendar;
 public interface FamCalendarDao {
 	public int insertCal(FamCalendar famcalendar);
 	public List<FamCalendar> getCals(String famcode);
+	public int deleteCal(String code);
 }
