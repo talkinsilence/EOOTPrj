@@ -297,17 +297,19 @@
                 <span>수신인을 추가하세요</span>
             </div>
             <div class="check-box">
-                <input id="check-box" type="checkbox" />가족 모두에게
+                <input id="check-box-all-fam" type="checkbox" />가족 모두에게
             </div>
             <div class="letter-add-list-box">
                 <div class="letter-add-list-wrapper">
                 <ul class="adding">
-                	<li class="letter-add-list">
-                    	<div class="reader-mid hidden">bobby</div>
-                        <img class="thumbnail" src="images/bobby1.jpg"/>
-                        <div class="reader-name">김바비</div>
-                    </li>
-                    <li class="letter-add-list">
+	                <c:forEach var="i" items="${fms}" >
+	                	<li class="letter-add-list">
+	                    	<div class="reader-mid hidden">${i.mid}</div>
+	                        <img class="thumbnail" src="${i.profilepic}"/>
+	                        <div class="reader-name">${i.name}</div>
+	                    </li>
+	                </c:forEach>    
+                    <!-- <li class="letter-add-list">
                     	<div class="reader-mid hidden">nami</div>
                         <img class="thumbnail" src="images/nami3.jpg"/>
                         <div class="reader-name">장나미</div>
@@ -326,7 +328,7 @@
                     	<div class="reader-mid hidden">james</div>
                         <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
                         <div class="reader-name">우제임스</div>
-                    </li>
+                    </li> -->
                 </ul>  
                 </div>
             </div>

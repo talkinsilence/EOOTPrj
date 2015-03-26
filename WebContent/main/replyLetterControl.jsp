@@ -6,12 +6,15 @@
     pageEncoding="UTF-8"%>
     
 <%
-/* 	try {
-		String type = request.getParameter("type");
+/*  	try {
+		String code = request.getParameter("code");
+		String writer = request.getParameter("uid");
+		String reader = request.getParameter("rid");
 		
-		Letter letter = new Letter();
+		//Letter letter = new Letter();
 		LetterDao letterDao = new MyBLetterDao();
-		letterDao.insert(letter);
+		
+		//letterDao.insert(letter);
 
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -21,5 +24,5 @@
 	JSONObject jo = new JSONObject();
 	jo.put("result", "SUCC");
 	System.out.println("@@" + jo.toString());
-	response.getWriter().println(jo.toString()); */
+	response.getWriter().println(jo.toString());  */
 %>
