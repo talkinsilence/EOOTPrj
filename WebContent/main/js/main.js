@@ -196,7 +196,7 @@
         		}
         	});
         	//alert(readerLists); //추가되기 전 왼쪽에 이미 추가되어있는 mid의 목록
-        	
+
         	if(jQuery.inArray(reader, readerLists) == -1){
             	var clone = $(this).parent().clone().css("float", "left");
                 clone.append($('<div class="delete"></div>'));
@@ -212,8 +212,6 @@
                     	return n != removeItem;
                     });
                 });
-            } else {
-            	alert("이미 추가되어 있습니다");
             }
         });  
     });

@@ -34,7 +34,7 @@ public interface FamPostDao {
 	public int delete(String code);
 
 	@Insert("INSERT INTO FAMPOSTS(CODE, TITLE, CONTENT, WRITER, REGDATE, SHARENEI, SHAREVIL, HIT, LIKECNT, CLIPCNT, COMMENTCNT)"
-			+ "VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FamPosts), #{title}, #{content}, #{writer}, getDate(), 0, 0, 0, 0, 0, 0)")
+			+ "VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FamPosts), #{title}, #{content}, #{writer}, getDate(), #{shareNei}, #{shareVil}, 0, 0, 0, 0)")
 	public int insert(FamPost fampost);
 	
 	@Select("SELECT M.NAME, M.PROFILEPIC, F.*, FPF.SRC, (ROW_NUMBER() OVER (ORDER BY F.REGDATE DESC)) NUM "
