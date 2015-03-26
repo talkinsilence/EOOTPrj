@@ -136,6 +136,8 @@
             $('.letter-type.video').click(function () {alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
             
           $('.letter-to-list-add').hide();
+          $('#letter-send').hide();
+          $('#letter-send-reply').show();
           $('.reply-to-name').html(lwriterName);
           $('.letter-reply-to').children('img').attr("src", lwriterPic);
           $('.letter-reply-to').css("display", "block");
@@ -143,7 +145,7 @@
              $('.reply-to-name').toggle();
           });
           
-          $('#letter-send').click(function () {
+          $('#letter-send-reply').click(function () {
               if (($('#title').val() == ""))
                   alert("제목을 입력해주세요.");
               else if (($('#content').val() == ""))
@@ -161,8 +163,10 @@
                        content:lcontent
                     },
                     success:function(){
-                       alert("답장전송!!!");
+                       alert("답장이 전송되었습니다");
                        $('.letter-to-list-add').show();
+                       $('#letter-send').show();
+                       $('#letter-send-reply').hide();
                         $('.reply-to-name').html("");
                         $('.letter-reply-to').children('img').attr("src", "");
                         $('.letter-reply-to').css("display", "none");
@@ -178,6 +182,8 @@
     $('#letter-write').click(function () {
        $('#title').val("");
        $('#content').val("");
+       $('#letter-send-reply').hide();
+       $('#letter-send').show();
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
         
@@ -240,14 +246,15 @@
         });
 
         $('#letter-send').click(function(){
+        	alert(readerLists);
            if (readerLists.length == 0)
                 alert("수신인을 한 명 이상 지정해야 합니다.");
            else if (($('#title').val() == ""))
                 alert("제목을 입력해주세요.");
            else if (($('#content').val() == ""))
                 alert("내용을 입력해주세요.");
-            else {               
-               var ltitle = $('textarea#title').val();
+           else {               
+              var ltitle = $('textarea#title').val();
               var lcontent = $('textarea#content').val().replace(/\n/g, "<br />");
               
               for(var i = 0; i < readerLists.length; i++){
@@ -260,13 +267,15 @@
                        content:lcontent
                     },
                     success:function(){
-                       alert("편지전송!!!");
                        $('.added').empty();
                        $('.letter').fadeOut(200);
                     }
-                  });   
-              }           
-            }
+                 });
+             	if(i == readerLists.length){
+             		alert("편지가 전송되었습니다");
+                }
+              }          
+           }
         });
     });
 

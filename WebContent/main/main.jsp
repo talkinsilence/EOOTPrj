@@ -295,6 +295,7 @@
                 <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
             </div>
             <button id="letter-send" type="submit">보내기</button>
+            <button id="letter-send-reply" type="submit">보내기</button>
         </div>
    
         <div class="letter-add-wrapper">

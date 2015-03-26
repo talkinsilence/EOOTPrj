@@ -6,23 +6,28 @@
     pageEncoding="UTF-8"%>
     
 <%
-/*  	try {
-		String code = request.getParameter("code");
-		String writer = request.getParameter("uid");
-		String reader = request.getParameter("rid");
+  	try {
+  		String writer = (String) session.getAttribute("uid");
+		String reader = request.getParameter("writer");
+		int type = 0;
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
-		//Letter letter = new Letter();
+		Letter letter = new Letter();
+		letter.setWriter(writer);
+		letter.setReader(reader);
+		letter.setType(type);
+		letter.setTitle(title);
+		letter.setContent(content);
+		
 		LetterDao letterDao = new MyBLetterDao();
-		
-		//letterDao.insert(letter);
-
+		letterDao.insert(letter);
 	} catch (Exception e) {
 		e.printStackTrace();
 		response.getWriter().println("{result : FAIL}");
 	}
-
 	JSONObject jo = new JSONObject();
 	jo.put("result", "SUCC");
 	System.out.println("@@" + jo.toString());
-	response.getWriter().println(jo.toString());  */
+	response.getWriter().println(jo.toString());  
 %>

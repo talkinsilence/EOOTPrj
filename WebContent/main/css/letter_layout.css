@@ -616,6 +616,28 @@
    transform: translateY(3px);
 }
 
+#letter-send-reply {
+   position: absolute;
+   left: calc(50% - 42px);
+   bottom: 40px;
+   border: 0;
+   background: #ed5661;
+   border-radius: 4px;
+   box-shadow: 0 5px 0 #c3222e;
+   cursor: pointer;
+   font: inherit;
+   font-size: 14px;
+   color: #fff;
+   margin: 0;
+   outline: 0;
+   padding: 12px 20px;
+   transition: all .1s linear;
+}
+
+#letter-send-reply:active {
+   box-shadow: 0 2px 0 #c3222e;
+   transform: translateY(3px);
+}
 /*======< letter add >==================*/
 .letter-add-wrapper {
    display: inline-block;
