@@ -82,7 +82,13 @@
                     </div>
                 </div>
             </div>           
-
+			
+			<div id="myhome-edit">
+				<div id="myhome-edit-body">
+				
+				</div>
+			</div>
+			
             <div id="settings-body">   
 
                 <div id="title">
@@ -254,15 +260,6 @@
                         		<div id="myhome-profilebgc-box-main">
                         			<img id="myhome-background-thumbnail" src="../main/images/white.jpg"<%-- src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" --%> />
                    				</div>
-                   				
-                   				<div id="myhome-background-upload-form">
-                        			<form method="post" enctype="multipart/form-data" action="updateProfileBg.jsp">
-			                            <input type="file" name="file-bg" id="myhome-background-file"/>
-			                            <div id="myhome-background-upload-select-wrapper">
-			                            
-			                            </div>
-                        			</form>
-                    			</div>
                         	</div>
                         </div>
                     </div>
