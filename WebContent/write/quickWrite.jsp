@@ -84,7 +84,7 @@
 	                    <h1 class="hidden">파일 업로드및 링크</h1>
 	                    <div class="upload">
 	                        <h1 class="hidden">업로드및 링크</h1>
-	                         <form id="form"  method="post" enctype="multipart/form-data">
+	                         <form id="form"  action="fanPostControl.jsp" method="post"  enctype="multipart/form-data">
 		                        <div class="fileUpload">
 		                            <input type=file name='file1' style='display: none;' id="imgInp" multiple="multiple">
 		                            <img src='image/파일.jpg' border='0' onclick='document.all.file1.click();'> 		                         
