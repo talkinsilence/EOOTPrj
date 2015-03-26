@@ -82,7 +82,7 @@
         <div class="upper">
             <div class="profile-pic-box-bg">
                 <!--배경이미지-->
-                <img class="thumbnail" src="images/white.jpg">
+                <img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilebg/${m.profilebg}">
             </div>
             <aside class="upper-left">
                 <div class="transp-bg">
@@ -94,7 +94,7 @@
                     </div>
                     <div class="profile-pic-box-main">
                         <!--프로필사진-->
-                        <img class="thumbnail" src="${m.profilepic}" />
+                        <img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
                     </div>
                     <div class="profile-id">
                         <!--이메일-->
@@ -116,7 +116,7 @@
                         <!--가족구성원-->
                         <c:forEach var="i" items="${fms}" >
                            <div class="profile-family-members">
-                               <img class="thumbnail" src="${i.profilepic}" />
+                               <img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}" />
                            </div>
                         </c:forEach>
                     </div>
@@ -237,7 +237,7 @@
                               <div class="letter-from">from: ${i.name}</div>
                               <div class="letter-from-mid hidden">${i.writer}</div>
                               <div class="letter-from-name hidden">${i.name}</div>
-                              <div class="letter-from-pic hidden">${i.profilepic}</div>
+                              <div class="letter-from-pic hidden">${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}</div>
                               <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
                              <div class="letter-mani-area">
                                 <div class="letter-mani-wrapper-bg"></div>
@@ -312,7 +312,7 @@
                    <c:forEach var="i" items="${fms}" >
                       <li class="letter-add-list">
                           <div class="reader-mid hidden">${i.mid}</div>
-                           <img class="thumbnail" src="${i.profilepic}"/>
+                           <img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}"/>
                            <div class="reader-name">${i.name}</div>
                        </li>
                    </c:forEach>    
@@ -326,7 +326,7 @@
                    <c:forEach var="j" items="${nms}" >
                       <li class="letter-add-list">
                           <div class="reader-mid hidden">${j.mid}</div>
-                           <img class="thumbnail" src="${j.profilepic}"/>
+                           <img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${j.profilepic}"/>
                            <div class="reader-name">${j.name}</div>
                        </li>
                    </c:forEach>    
