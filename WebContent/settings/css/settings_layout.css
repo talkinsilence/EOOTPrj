@@ -394,6 +394,7 @@ body {
 }
 
 #myhome-background-wrapper {
+	display:none;
     width:calc(100% - 40px);
     margin-top: 8px;
     margin-bottom:5px;
