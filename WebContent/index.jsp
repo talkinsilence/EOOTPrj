@@ -59,7 +59,7 @@
                     </form>
                 </div>
 
-                <div id="reg-box">                         
+                <div id="reg-box">
                     <div id="reg-close-box">
                         <a></a>
                     </div>

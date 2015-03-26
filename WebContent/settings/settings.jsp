@@ -219,7 +219,7 @@
                             		<c:forEach var="i" items="${fms}">
 		                                <ul class="myhome-member-view-body">
 		                                    <li class="myhome-member-pic">
-		                                        <img class="myhome-member-pic-thumbnail" src="${i.profilepic}"/>
+		                                        <img class="myhome-member-pic-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}"/>
 		                                    </li>
 		
 		                                    <li class="myhome-member-uid">${i.mid}</li>
@@ -271,7 +271,7 @@
                         	
                         	<div id="myhome-background-wrapper">
                         		<div id="myhome-profilebgc-box-main">
-                        			<img id="myhome-background-thumbnail" src="../main/images/white.jpg"<%-- src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" --%> />
+                        			<img id="myhome-background-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilebg/${m.profilebg}" />
                    				</div>
                         	</div>
                         </div>

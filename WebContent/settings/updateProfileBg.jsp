@@ -19,16 +19,16 @@
             , "UTF-8"
             , new DefaultFileRenamePolicy());
 	
-	String fileName = req.getFilesystemName("file");
+	String fileName = req.getFilesystemName("file-bg");
 	
-	if(req.getFile("file") != null){
+	if(req.getFile("file-bg") != null){
 		MemberDao memberDao = new MyBMemberDao();
 		
 		Member m = memberDao.getMember(uid);
 		
 		famcode = m.getFamcode();
 		
-		memberDao.updateProfilePic(fileName, famcode);
+		memberDao.updateProfileBg(fileName, famcode);
 	}
 
 	response.sendRedirect("settings.jsp");

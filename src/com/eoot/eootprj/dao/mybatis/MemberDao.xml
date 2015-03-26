@@ -8,8 +8,8 @@
 	<insert id="insert" parameterType="Member">		
 		<!-- INSERT INTO MEMBERS(MID, NAME, REGDATE) 
 		VALUES(#{mid}, #{name}, GETDATE()) -->
-		INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, REGDATE, FAMCODE)
-		VALUES(#{mid}, #{pwd}, #{name}, #{birthday}, #{profilepic}, GETDATE(), #{mid});
+		INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, PROFILEBG, REGDATE, FAMCODE)
+		VALUES(#{mid}, #{pwd}, #{name}, #{birthday}, #{profilepic}, #{profilebg}, GETDATE(), #{mid});
 	</insert>
 	
 	<select id="getMember" parameterType="String" resultType="Member">
@@ -40,7 +40,7 @@
 		UPDATE MEMBERS SET ADDRESS = #{address}, FAMCODE = #{famcode}, FAMNAME = #{famname}, PROFILEBG = #{profilebg} WHERE MID = #{mid}
 	</update>
 	
-	<update id="updateProfilePic" parameterType="String">
+	<update id="updateProfileBg" parameterType="String">
 		UPDATE MEMBERS SET PROFILEBG = #{param1} WHERE FAMCODE = #{param2}
 	</update>
 </mapper>
