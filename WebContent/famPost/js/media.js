@@ -1,7 +1,8 @@
 ﻿$(document).ready(function () {
 	
 	var dvImgCode;
-	var dvCommentContainer
+	var dvCommentContainer;
+	var detailView;
 
     //-----------------상세보기---------------------
 	
@@ -65,14 +66,15 @@
     	});
     });
     
-    $('.dv-btn-n').click(function(){
-    	/*dvCommentContainer.load(
-    		  	"famPostView.jsp?famPostCode=" + dvImgCode, 
-    		  	function(){
-    		  		$(".dv-media-box-img").attr("src", dvImgSrc);
-    		  		$(".dv-mask").fadeIn(800);
-    			});
-*/    });
+    $('.dv-btn-next').click(function(){
+    	detailView = $('.detail-view');
+    	detailView.load("pre_nextView.jsp?curCode=" + dvImgCode);
+    });
+    
+    $('.dv-btn-pre').click(function(){
+    	detailView = $('.detail-view');
+    	detailView.load("pre_nextView.jsp?curCode=" + dvImgCode);
+    });
     
     // ------------------등록-------------------------
     $(".upload").click(function () {
