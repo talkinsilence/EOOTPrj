@@ -21,7 +21,16 @@
 
  String file = req.getFilesystemName("file1");
  
- if(req.getFile("file1") != null){
+out.println(file);
+
+if(req.getFile("file1") !=null){
+	FamPost fampost = new FamPost();
+	   FamPostDao famPostDao = new MyBFamPostDao();
+	  
+	   fampost.setSrc(file);
+	   out.println(fampost.getSrc());
+}
+/*  if(req.getFile("file1") != null){
 	 
 	   FamPost fampost = new FamPost();
 	   FamPostDao famPostDao = new MyBFamPostDao();
@@ -29,6 +38,8 @@
 	   fampost.setSrc(file);
 	   
 	   famPostDao.insert(fampost);
+ } */
+ 
 	 	/* FamPostFile famPostFile = new FamPostFile();
 	 	FamPostDao famPostDao = new MyBFamPostDao();
 	 	
@@ -42,6 +53,6 @@
 	 	
 	 	FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
 	 	famPostFileDao.insert(famPostFile); */
-	}
+	
 /*  response.sendRedirect("../quickWrite.jsp"); */
  %>
