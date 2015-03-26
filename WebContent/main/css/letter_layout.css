@@ -488,8 +488,7 @@
 }
 
 .added {
-/* 	width: 200px;
-	background: yellow; */
+	float: left;
 }
 
 .letter-reply-to {
@@ -591,7 +590,6 @@
 	word-wrap: break-word;
 	outline: none;
 	line-height: 1.4;
-	white-space: pre;
 	/*background: #566ced;*/
 }
 

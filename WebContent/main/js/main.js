@@ -149,7 +149,8 @@
     	    			},
     	    			success:function(){
     	    				alert("답장전송!!!");
-    	    				reset_writeForm();
+    	    				$('#title').empty();
+    	    			    $('#content').empty();
     	    				$('.letter').fadeOut(200);
     	    			}
     		    	});	
@@ -200,7 +201,7 @@
         	if(jQuery.inArray(reader, readerLists) == -1){
             	var clone = $(this).parent().clone().css("float", "left");
                 clone.append($('<div class="delete"></div>'));
-                clone.prependTo($('.letter-to-list-wrapper'));
+                clone.prependTo($('.added'));
                 
                 readerLists.push(clone.find('.reader-mid').html());
                 //alert(readerLists); //추가된 후 
@@ -265,7 +266,6 @@
 
 function reset_writeForm(){
     $('.added').empty();
-    $('.letter-reply-to').css("display", "none");
     $('#title').empty();
     $('#content').empty();
 }
