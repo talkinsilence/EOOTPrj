@@ -3,8 +3,8 @@ $(document).ready(function () {
 		  var checked= '';
 		  $("input:checkbox[name^=check]:checked").each(function(){
 			  checked+=$(this).val();
-		  });
-		  if(checked==1){
+	 });
+		  	  if(checked==1){
 			  var content =$("#textContent").contents().find("body").html();
 			  var title =$("#textTop").contents().find("body").html();
 			  var shareNei =1;
@@ -61,8 +61,8 @@ $(document).ready(function () {
 			  var title =$("#textTop").contents().find("body").html();
 			  var shareNei =0;
 			  var shareVil = 0;
-			 /* alert(title);
-			  alert(content);*/
+			  alert(title);
+			  alert(content);
 			     $.ajax({
 			        type:"post",
 			        url:"fanPostControl.jsp",
@@ -91,4 +91,13 @@ $(document).ready(function () {
   $("#imgInp").change(function () {
       readURL(this);
   });
+  $("#btn").click(function(){
+	 $("#form").submit(); 
+	 console.log($('#imgInp')).val();
+	 var realPath = document.getElementById('imgInp').baseURI;
+	 alert(realPath);
+  });
+    $(window.document).on("contextmenu", function(event){return false;});	//우클릭방지
+	$(window.document).on("selectstart", function(event){return false;});	//더블클릭을 통한 선택방지
+	$(window.document).on("dragstart"	, function(event){return false;});	//드래그
 });  

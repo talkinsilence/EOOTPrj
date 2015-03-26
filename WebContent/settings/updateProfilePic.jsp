@@ -10,6 +10,8 @@
 	String path = ctx.getRealPath("/upload/profilepic");
 	String uid = (String) session.getAttribute("uid");
 	
+	System.out.print(path);
+	
 	MultipartRequest req = new MultipartRequest(request
             , path
             , 1024*1024*10

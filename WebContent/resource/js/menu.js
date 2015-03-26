@@ -32,28 +32,20 @@
     $("#menu1-myhome").click(function () {
         $(location).attr("href", "../main/main.jsp");
     });
-    
-    $("#menu1-village").click(function(){
-    	$(location).attr("href", "../village/villageIndex.jsp");
-    });
-    
+
     $("#menu2-calendar").click(function () {
-        $(location).attr("href", "../calendar/calendar.jsp");
+        $(location).attr("href", "");
     });
 
     $("#menu2-album").click(function () {
-        $(location).attr("href", "../famPost/famPost.jsp");
+        $(location).attr("href", "");
+    });
+
+    $("#menu2-letter").click(function () {
+        $(location).attr("href", "");
     });
 
     $("#menu2-setting").click(function () {
         $(location).attr("href", "../settings/settings.jsp");
     });
-    
-    $("#img-scrapped").click(function (){
-    	alert("준비중 입니다 ^^");
-    });
 });
-
-function eootLink(famcode){
-	$(location).attr("href","../main/main_e.jsp?fc="+famcode);
-}

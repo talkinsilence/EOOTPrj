@@ -4,7 +4,7 @@ var currentMousePos = {
 };
 
 $(document).ready(function () {
-	
+
     $(document).on("mousemove", function (event) {
         currentMousePos.x = event.pageX;
         currentMousePos.y = event.pageY;
@@ -22,9 +22,9 @@ $(document).ready(function () {
             }
         }
     });
-    
-    calData();
-    
+
+    renderCalendar();
+
     $("#datepickerStart").datepicker({
         dateFormat: 'yy-mm-dd'
     });
@@ -49,17 +49,13 @@ $(document).ready(function () {
     	var start = $("#datepickerStart");
     	var content = $("#calendar-content");
     	
-    	
     	if(start.val() == ""){
-    		start.css("border-color","#FFA2A2");
-    	} else 
-    		start.css("border-color","#a9a9a9");
-    		
+    		start.css("border-color","red");
+    	}
     	
     	if(content.val() == ""){
-    		content.css("border-color","#FFA2A2");
-    	} else
-    		content.css("border-color","#a9a9a9");
+    		content.css("border-color","");
+    	}
     	
     	if(start.val() != "" && content.val() != ""){
     		$("#calForm").submit();
@@ -75,40 +71,14 @@ $(document).ready(function () {
     $('#btn-calendar-cancel').click(function () {
     	$("#calendar-write-body").fadeOut(200);
         
-    	reset();
+    	$("#datepickerStart").val("");
+    	$("#datepickerEnd").val("");
+        $("#calendar-content").val("");
     });
 });
 
-function reset(){
-	var start = $("#datepickerStart");
-	var end = $("#datepickerEnd");
-	var content = $("#calendar-content");
-	
-	start.css("border-color","#a9a9a9");
-	end.css("border-color","#a9a9a9");
-	content.css("border-color","#a9a9a9");
-	start.val("");
-	end.val("");
-    content.val("");
-}
 
-function calData(){
-	var data;
-	
-	$.ajax({
-		url:"data.jsp",
-		data: {
-			
-		},
-		success:function(data){
-			data = eval(data);
-			
-			renderCalendar(data);
-		}
-	});
-}
-
-function renderCalendar(data) {
+function renderCalendar() {
     $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
@@ -121,9 +91,8 @@ function renderCalendar(data) {
         selectable: true,
         eventDragStop: function (event, jsEvent, ui, view) {
             if (isElemOverDiv()) {
-            	deleteCal(event.id);
                 $('#calendar').fullCalendar('removeEvents', event.id);
-                
+
                 var trashEl = $('#calendarTrash');
 
                 if (trashEl.hasClass("to-trash")) {
@@ -138,9 +107,73 @@ function renderCalendar(data) {
         //        $('.fc-left').prependTo('<div id="calendarTrash" class="calendar-trash"><img src="/images/cal-trash.png"></img></div>');
         //    }
         //},
-        editable: true,
+        //editable: true,
         eventLimit: true, // allow "more" link when too many events               
-        events: data
+        events: "data.jsp",/*[{
+            id: "1",
+            title: '123123',
+            start: '2015-02-01',
+            end : null
+        }],*//*[
+            {
+                id: 14,
+                title: 'All Day Event',
+                start: '2015-02-01'
+            },
+            {
+                id: 31,
+                title: 'Repeating Event',
+                start: '2015-02-09T16:00:00'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2015-02-16T16:00:00'
+            },
+            {
+                id: 2,
+                title: 'Conference',
+                start: '2015-02-11',
+                end: '2015-02-13'
+            },
+            {
+                id: 1,
+                title: 'Meeting',
+                start: '2015-02-12T10:30:00',
+                end: '2015-02-12T12:30:00'
+            },
+            {
+                id: 'Choi',
+                title: 'Lunch',
+                start: '2015-02-12T12:00:00'
+            },
+            {
+                id: 12,
+                title: 'Meeting',
+                start: '2015-02-12T14:30:00'
+            },
+            {
+                id: 16,
+                title: 'Happy Hour',
+                start: '2015-02-12T17:30:00'
+            },
+            {
+                id: 1563,
+                title: 'Dinner',
+                start: '2015-02-12T20:00:00'
+            },
+            {
+                id: 1653,
+                title: 'Birthday Party',
+                start: '2015-02-13T07:00:00'
+            },
+            {
+                id: 145,
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2015-02-28'
+            }
+        ]*/
     });
 }
 
@@ -159,17 +192,4 @@ function isElemOverDiv() {
         return true;
     }
     return false;
-}
-
-function deleteCal(eventId){
-	$.ajax({
-		type:"post",
-		url:"deleteCalProc.jsp",
-		data:{
-			code: eventId
-		},
-		seccess:function(){
-			alert("dd");
-		}
-	})
 }

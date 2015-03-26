@@ -29,7 +29,7 @@
                     <iframe id="textContent" class="contents" name="textfield2" >
                     </iframe>
                     <div class="preView">
-                        삽입하실 위치에 드래그 해주세요
+                        미리 보기
                         <img id="img" />
                     </div> 
                 </div>
@@ -84,10 +84,10 @@
 	                    <h1 class="hidden">파일 업로드및 링크</h1>
 	                    <div class="upload">
 	                        <h1 class="hidden">업로드및 링크</h1>
-	                         <form action="quickWrite.jsp" method="post" enctype="multipart/form-data">
+	                         <form id="form"  method="post" enctype="multipart/form-data">
 		                        <div class="fileUpload">
-		                            <input type=file name='file1' style='display: none;' id="imgInp">
-		                            <img src='image/파일.jpg' border='0' onclick='document.all.file1.click();'> 
+		                            <input type=file name='file1' style='display: none;' id="imgInp" multiple="multiple">
+		                            <img src='image/파일.jpg' border='0' onclick='document.all.file1.click();'> 		                         
 		                            <a href="cal.html" style="padding-left:12px;" target="textfield2"><img src="image/칼렌더.png"></a>                      
 		                        </div>
 	                        </form>
@@ -110,7 +110,7 @@
                     	</select>
                     </div>
                 </div>
-                <input type="submit" class="btn">
+                <input type="button" class="btn" id="btn">
             </section>
         </article>
     </div>

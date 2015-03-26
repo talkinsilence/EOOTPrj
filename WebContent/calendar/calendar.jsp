@@ -53,7 +53,7 @@
 	                            
 	                            <div class="calendar-wrapper">
 	                                내용 : 
-	                                <textarea name="calendar-content" id="calendar-content" rows="8"></textarea>
+	                                <textarea id="calendar-content" rows="8"></textarea>
 	                            </div>
 	                            <div id="calendar-btn-wrapper">
 	                                <input type="button" id="btn-calendar-write" value="작성"/>

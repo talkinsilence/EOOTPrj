@@ -3,11 +3,6 @@
 
 }*/
 
-input {
-	width:157px;
-	border: 1px solid #a9a9a9;
-}
-
 #main {
     position: fixed;
     width: 100%;
@@ -76,7 +71,7 @@ div.calendar-trash{
     border-radius: 5em;
 }
 
-/* Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+/* Ä¶¸°´õ ÀÛ¼º ¿µ¿ª */
 
 #calendar-write-body {
     display:none;

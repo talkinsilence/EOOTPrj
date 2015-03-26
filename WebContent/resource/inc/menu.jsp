@@ -1,18 +1,5 @@
-<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
-<%@page import="java.util.List"%>
-<%@page import="com.eoot.eootprj.dao.mybatis.MyBNeighborDao"%>
-<%@page import="com.eoot.eootprj.dao.NeighborDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String menuUid = (String) session.getAttribute("uid");
-	NeighborDao menuNei = new MyBNeighborDao();	
-
-	List<NeighborJoinMember> menuList = menuNei.getNeighbors(menuUid);
-	
-	pageContext.setAttribute("menuList", menuList);
-%>
 	<section>
         <h1 class="hidden">회원 메뉴</h1>
 
@@ -58,7 +45,7 @@
                 <div class="img-button">
                     <div class="vertical-field1">
                         <div class="img-vertical-field2">
-                            <a href=""><img id="img-scrapped" src="../resource/images/btn-scrapped.png" /></a>
+                            <a href=""><img src="../resource/images/btn-scrapped.png" /></a>
                         </div>
                     </div>
                 </div>
@@ -102,6 +89,16 @@
 
                 <div class="visual"></div>
 
+                <div class="button" id="menu2-letter">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">편 지</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
                 <div class="button" id="menu2-setting">
                     <div class="vertical-field1">
                         <div class="vertical-field2">
@@ -124,32 +121,38 @@
             </div>
             
             <div id="buttons">
-            	<c:if test="${empty menuList}">
-					<div>맺은 이웃이 없습니다.</div>
-				</c:if>
-				
-				<c:if test="${not empty menuList}">
-					<c:forEach var="menuList" items="${menuList}">
-						<div class="button" onclick="eootLink('${menuList.famcode}')">
-		                    <div class="vertical-field1">
-		                        <div class="vertical-field2">
-		                            <span class="vertical_text">
-										<c:if test="${empty menuList.famname}">
-											(가족명 없음)
-										</c:if>
-										
-										<c:if test="${not empty menuList.famname}">
-											${menuList.famname}
-										</c:if>
-									</span>
-		                            <div id="family">${menuList.name}</div>
-		                        </div>
-		                    </div>
-	                	</div>
-	
-	                	<div class="visual"></div>
-	                </c:forEach>
-				</c:if>
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">남명이네</span>
+                            <div id="family">니승 나미 비버 커쇼</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">전우조</span>
+                            <div id="family">찬문 상수 종인 승관이</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
+
+                <div class="button">
+                    <div class="vertical-field1">
+                        <div class="vertical-field2">
+                            <span class="vertical_text">레알 마드리드</span>
+                            <div id="family">한솥 이삭 토마토</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visual"></div>
             </div>
         </nav>
     </section>

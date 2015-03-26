@@ -18,19 +18,6 @@
     line-height: 25px;
 }
 
-#menu3 .vertical_text{
-    font-family: Montserrat, Nanum Gothic;
-    font-size: 15px;
-    display: inline-block;
-    line-height: 25px;
-    overflow-x: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
 #menu3 #family {
     font-size:12px;
-    overflow-x: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }

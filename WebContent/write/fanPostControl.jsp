@@ -28,6 +28,7 @@
       fampost.setShareNei(Integer.parseInt(shareNei));
       fampost.setShareVil(Integer.parseInt(shareVil));
       fampost.setWriter("ddddd3");
+      fampost.setSrc("sdf");
       famPostDao.insert(fampost);
       
       System.out.println(shareNei);

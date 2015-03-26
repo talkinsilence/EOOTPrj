@@ -227,9 +227,6 @@
 		                        <div class="letter-read hidden">${i.read}</div>
 		                        <div class="letter-title">${i.title}</div>
 		                        <div class="letter-from">from: ${i.name}</div>
-		                        <div class="letter-from-mid hidden">${i.writer}</div>
-		                        <div class="letter-from-name hidden">${i.name}</div>
-		                        <div class="letter-from-pic hidden">${i.profilepic}</div>
 		                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
 			                    <div class="letter-mani-area">
 				                    <div class="letter-mani-wrapper-bg"></div>
@@ -266,52 +263,68 @@
                 <input class="letter-type-btn hidden" type="button" value="영상" />
             </div>
         </div>
-
-        <div class="letter-write-wrapper">
-            <div class="letter-write-header">
-                <div class="letter-to">받는 사람</div>
-                <div class="letter-to-box">
+        
+        <div class="write-and-add">
+        
+	        <div class="letter-write-wrapper">
+	            <div class="letter-write-header">
+	                <div class="letter-to">받는 사람</div>
 	                <div class="letter-to-list-wrapper">
 	                	<ul class="added">
-	                		<li class="letter-reply-to">
-		                        <img class="thumbnail" src="" />
-		                        <div class="reply-to-name"></div>
-	                    	</li>
+<!-- 		                	<li class="letter-to-list">
+		                    	<div class="reader-mid hidden">suzy</div>
+		                        <img class="thumbnail" src="images/suzy2.jpg" />
+		                        <div class="delete"></div>
+		                    </li>
+		                    <li class="letter-to-list">
+		                    	<div class="reader-mid hidden">taeyang</div>
+		                        <img class="thumbnail" src="images/taeyang.jpg" />
+		                        <div class="delete"></div>
+		                    </li> -->
 	                	</ul>
 	                    <div class="letter-to-list-add"></div>
 	                </div>
-                </div>
-            </div>
-            <textarea id="title" rows="1" placeholder="제목"></textarea>
-            <div class="letter-write-box">
-                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
-            </div>
-            <button id="letter-send" type="submit">보내기</button>
-        </div>
+	            </div>
+	            <textarea id="title" rows="1" placeholder="제목"></textarea>
+	            <div class="letter-write-box">
+	                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
+	            </div>
+	            <button id="letter-send" type="submit">보내기</button>
+	        </div>
 	
-        <div class="letter-add-wrapper">
-            <div>
-                <span>수신인을 추가하세요</span>
-            </div>
-            <div class="check-box">
-                <input id="check-box-all-fam" type="checkbox" />가족 모두에게
-            </div>
-            <div class="letter-add-list-box">
-                <div class="letter-add-list-wrapper">
-                <ul class="adding">
-	                <c:forEach var="i" items="${fms}" >
+	        <div class="letter-add-wrapper">
+	            <div>
+	                <span>수신인을 추가하세요</span>
+	            </div>
+	            <div class="check-box">
+	                <input id="check-box" type="checkbox" />가족 모두에게
+	            </div>
+	            <div class="letter-add-list-box">
+	                <div class="letter-add-list-wrapper">
+	                <ul class="adding">
 	                	<li class="letter-add-list">
-	                    	<div class="reader-mid hidden">${i.mid}</div>
-	                        <img class="thumbnail" src="${i.profilepic}"/>
-	                        <div class="reader-name">${i.name}</div>
+	                    	<div class="reader-mid hidden">bobby</div>
+	                        <img class="thumbnail" src="images/bobby1.jpg"/>
 	                    </li>
-	                </c:forEach>    
-                </ul>  
-                </div>
-            </div>
-            <!-- <button id="letter-add-cancel" type="submit">취소</button> -->
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">nami</div>
+	                        <img class="thumbnail" src="images/nami3.jpg"/>
+	                    </li>
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">newlec</div>
+	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+	                    </li>
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">dragon</div>
+	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+	                    </li>
+	                </ul>  
+	                </div>
+	            </div>
+	            <button id="letter-add-cancel" type="submit">취소</button>
+	        </div>
+	        
         </div>
-
 	</div>
 
 </body>
