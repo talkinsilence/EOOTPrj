@@ -1,4 +1,8 @@
-﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
+﻿<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBNeighborDao"%>
+<%@page import="com.eoot.eootprj.dao.NeighborDao"%>
+<%@page import="com.eoot.eootprj.model.Neighbor"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
 <%@page import="com.eoot.eootprj.dao.VilPostDao"%>
 <%@page import="com.eoot.eootprj.model.VilPost"%>
 <%@page import="com.eoot.eootprj.model.LetterJoinMember"%>
@@ -15,39 +19,43 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <% 
-	String uid = (String) session.getAttribute("uid");
+   String uid = (String) session.getAttribute("uid");
 
-	String query = "";
-	String _query = request.getParameter("query");
-	if(_query != null && !_query.equals(""))
-		query = _query;
-	
-	MemberDao memberDao = new MyBMemberDao();
-	LetterDao letterDao = new MyBLetterDao();
-	//VilPostDao vilPostDao = new MyBVilPostDao();
-	
-	Member m = memberDao.getMember(uid);
-	String famcode = m.getFamcode();
-	List<Member> fms = memberDao.getFamMembers(uid, famcode);
-	
-	List<LetterJoinMember> ls = letterDao.getLetters(uid, query);
-	int lsSize = ls.size();
-	
-	List<LetterJoinMember> nls = letterDao.getNewLetters(uid);
-	int nlsSize = nls.size();
+   String query = "";
+   String _query = request.getParameter("query");
+   if(_query != null && !_query.equals(""))
+      query = _query;
+   
+   MemberDao memberDao = new MyBMemberDao();
+   LetterDao letterDao = new MyBLetterDao();
+   //VilPostDao vilPostDao = new MyBVilPostDao();
+   
+   Member m = memberDao.getMember(uid);
+   String famcode = m.getFamcode();
+   List<Member> fms = memberDao.getFamMembers(uid, famcode);
+   
+   List<LetterJoinMember> ls = letterDao.getLetters(uid, query);
+   int lsSize = ls.size();
+   
+   List<LetterJoinMember> nls = letterDao.getNewLetters(uid);
+   int nlsSize = nls.size();
 
-	//List<VilPost> tvps = vilPostDao.getTopVilPosts(vcode);
-	
-	/* for( Member ms : fms)
-		System.out.println(ms.getFamcode()); */
-	//System.out.println("가족 구성원 : " + fms.size());
-	
-	pageContext.setAttribute("m", m);
-	pageContext.setAttribute("fms", fms);
-	pageContext.setAttribute("ls", ls);
-	pageContext.setAttribute("lsSize", lsSize);
-	pageContext.setAttribute("nlsSize", nlsSize);
-	//pageContext.setAttribute("tvps", tvps);
+   NeighborDao neighborDao = new MyBNeighborDao();
+   List<NeighborJoinMember> nms = neighborDao.getNeighbors(uid);
+   
+   //List<VilPost> tvps = vilPostDao.getTopVilPosts(vcode);
+   
+   /* for( Member ms : fms)
+      System.out.println(ms.getFamcode()); */
+   //System.out.println("가족 구성원 : " + fms.size());
+   
+   pageContext.setAttribute("m", m);
+   pageContext.setAttribute("fms", fms);
+   pageContext.setAttribute("nms", nms);
+   pageContext.setAttribute("ls", ls);
+   pageContext.setAttribute("lsSize", lsSize);
+   pageContext.setAttribute("nlsSize", nlsSize);
+   //pageContext.setAttribute("tvps", tvps);
 %>
 
 <!DOCTYPE html>
@@ -67,7 +75,7 @@
 <body>
 
 <!--===========< 메뉴영역 >===============================================-->
-	<jsp:include page="../resource/inc/menu.jsp"></jsp:include>
+   <jsp:include page="../resource/inc/menu.jsp"></jsp:include>
 <!--===========< 메인영역 >===============================================-->
     <div class="main">
 
@@ -98,18 +106,18 @@
                     </div>
                     <div class="user-menu-btn"></div>
                     <div class="user-menu-area hidden">
-	                    <div class="user-menu-wrapper-bg"></div>
-	                    <div class="user-menu-wrapper">
-		                	<div class="user-menu settings-main">설정</div>
-		                	<div class="user-menu log-out-main">로그아웃</div>
-	                	</div>
-                	</div>
+                       <div class="user-menu-wrapper-bg"></div>
+                       <div class="user-menu-wrapper">
+                         <div class="user-menu settings-main">설정</div>
+                         <div class="user-menu log-out-main">로그아웃</div>
+                      </div>
+                   </div>
                     <div class="profile-family-members-wrapper">
                         <!--가족구성원-->
                         <c:forEach var="i" items="${fms}" >
-	                        <div class="profile-family-members">
-	                            <img class="thumbnail" src="${i.profilepic}" />
-	                        </div>
+                           <div class="profile-family-members">
+                               <img class="thumbnail" src="${i.profilepic}" />
+                           </div>
                         </c:forEach>
                     </div>
                 </div>
@@ -138,57 +146,57 @@
                 </div>
             </aside>
             <aside class="lower-right">
-            	<div class="preview-wrapper">
-	            	<div class="preview-fampost-wrapper">
-	            		<div class="preview-fampost pic-box">
-		                    <img class="preview-pic" src="images/byul2.jpg"/>
-		                    <div class="preview-pic-dscrp hidden"></div>
-		                </div>
-		                <div class="preview-fampost pic-box">
-		                    <img class="preview-pic" src="images/byul22.jpg"/>
-		                    <div class="preview-pic-dscrp hidden"></div>
-		                </div>
-		                <div class="preview-fampost text-box">
-		                    <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
-		                </div>
-		                <div class="preview-fampost pic-box">
-		                    <img class="preview-pic" src="images/byul222.png"/>
-		                    <div class="preview-pic-dscrp hidden"></div>
-		                </div>
-		                <div class="preview-fampost text-box">
-		                    <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
-		                </div>
-		                <div class="preview-fampost pic-box">
-		                    <img class="preview-pic" src="images/byul2222.jpg"/>
-		                    <div class="preview-pic-dscrp hidden"></div>
-		                </div>
-	            	</div>
-	            	<div class="preview-vilpost-wrapper">
-	            		<span>주변 인기게시물</span>
-	            		<%-- <c:forEach var="i" items="${tvps}" > --%>
-		            		<div class="preview-vilpost pic-box">
-			                    <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
-			                    <div class="preview-pic-dscrp hidden"></div>
-			                </div>
-			                <div class="preview-vilpost text-box">
-			                	<%-- <c:if test="${i.sort.equals('1')}">
-									<div class="village-board-label 1"></div>
-								</c:if>
-								<c:if test="${i.sort.equals('2')}">
-									<div class="village-board-label 2"></div>
-								</c:if>
-								<c:if test="${i.sort.equals('3')}">
-									<div class="village-board-label 3"></div>
-								</c:if>
-								<c:if test="${i.sort.equals('4')}">
-									<div class="village-board-label 4"></div>
-								</c:if> --%>
-								<div class="village-board-label"></div>
-			                    <p class="text-box-title">${i.title}</p>
-			                    <p class="text-box-content">${i.content}</p>
-			                </div>
-		                <%-- </c:forEach> --%>
-	            	</div>
+               <div class="preview-wrapper">
+                  <div class="preview-fampost-wrapper">
+                     <div class="preview-fampost pic-box">
+                          <img class="preview-pic" src="images/byul2.jpg"/>
+                          <div class="preview-pic-dscrp hidden"></div>
+                      </div>
+                      <div class="preview-fampost pic-box">
+                          <img class="preview-pic" src="images/byul22.jpg"/>
+                          <div class="preview-pic-dscrp hidden"></div>
+                      </div>
+                      <div class="preview-fampost text-box">
+                          <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
+                      </div>
+                      <div class="preview-fampost pic-box">
+                          <img class="preview-pic" src="images/byul222.png"/>
+                          <div class="preview-pic-dscrp hidden"></div>
+                      </div>
+                      <div class="preview-fampost text-box">
+                          <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
+                      </div>
+                      <div class="preview-fampost pic-box">
+                          <img class="preview-pic" src="images/byul2222.jpg"/>
+                          <div class="preview-pic-dscrp hidden"></div>
+                      </div>
+                  </div>
+                  <div class="preview-vilpost-wrapper">
+                     <span>주변 인기게시물</span>
+                     <%-- <c:forEach var="i" items="${tvps}" > --%>
+                        <div class="preview-vilpost pic-box">
+                             <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
+                             <div class="preview-pic-dscrp hidden"></div>
+                         </div>
+                         <div class="preview-vilpost text-box">
+                            <%-- <c:if test="${i.sort.equals('1')}">
+                           <div class="village-board-label 1"></div>
+                        </c:if>
+                        <c:if test="${i.sort.equals('2')}">
+                           <div class="village-board-label 2"></div>
+                        </c:if>
+                        <c:if test="${i.sort.equals('3')}">
+                           <div class="village-board-label 3"></div>
+                        </c:if>
+                        <c:if test="${i.sort.equals('4')}">
+                           <div class="village-board-label 4"></div>
+                        </c:if> --%>
+                        <div class="village-board-label"></div>
+                             <p class="text-box-title">${i.title}</p>
+                             <p class="text-box-content">${i.content}</p>
+                         </div>
+                      <%-- </c:forEach> --%>
+                  </div>
                 </div>
             </aside>
         </div>
@@ -211,46 +219,49 @@
                 </div>
             </div>
             <c:if test="${empty ls}">
-            	<div class="letter-item-box-empty">편지함에 편지가 없습니다</div>
+               <div class="letter-item-box-empty">편지함에 편지가 없습니다</div>
             </c:if>
             <c:if test="${not empty ls}">
-	            <div class="letter-item-box">
-	                <ul class="letter-items">
-	                	<c:forEach var="i" items="${ls}" >
-	                	<c:if test="${i.read == 1}">
-		                    <li class="letter-item">
-		                </c:if>
-		                <c:if test="${i.read == 0}">
-		                    <li class="letter-item red">
-		                </c:if>
-		                        <div class="letter-code hidden">${i.code}</div>
-		                        <div class="letter-read hidden">${i.read}</div>
-		                        <div class="letter-title">${i.title}</div>
-		                        <div class="letter-from">from: ${i.name}</div>
-		                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
-			                    <div class="letter-mani-area">
-				                    <div class="letter-mani-wrapper-bg"></div>
-				                    <div class="letter-mani-wrapper">
-					                	<div class="letter-mani reply-letter"></div>
-					                	<div class="letter-mani delete-letter"></div>
-				                	</div>
-			                	</div>
-		                    </li>
-	                    </c:forEach>
-	                </ul>
-	            </div>
+               <div class="letter-item-box">
+                   <ul class="letter-items">
+                      <c:forEach var="i" items="${ls}" >
+                      <c:if test="${i.read == 1}">
+                          <li class="letter-item">
+                      </c:if>
+                      <c:if test="${i.read == 0}">
+                          <li class="letter-item red">
+                      </c:if>
+                              <div class="letter-code hidden">${i.code}</div>
+                              <div class="letter-read hidden">${i.read}</div>
+                              <div class="letter-title">${i.title}</div>
+                              <div class="letter-from">from: ${i.name}</div>
+                              <div class="letter-from-mid hidden">${i.writer}</div>
+                              <div class="letter-from-name hidden">${i.name}</div>
+                              <div class="letter-from-pic hidden">${i.profilepic}</div>
+                              <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
+                             <div class="letter-mani-area">
+                                <div class="letter-mani-wrapper-bg"></div>
+                                <div class="letter-mani-wrapper">
+                                  <div class="letter-mani reply-letter"></div>
+                                  <div class="letter-mani delete-letter"></div>
+                               </div>
+                            </div>
+                          </li>
+                       </c:forEach>
+                   </ul>
+               </div>
             </c:if>
             <button id="letter-write" type="submit">편지쓰기</button>
         </div>
-		
-		<div class="letter-view-wrapper">
-			<div class="letter-view-transp-bg"></div>
-			<div class="btn-close-letter-view"></div>
-			<div class="letter-view-box">
-				<div class="letter-view">
-				</div>
-			</div>
-		</div>
+      
+      <div class="letter-view-wrapper">
+         <div class="letter-view-transp-bg"></div>
+         <div class="btn-close-letter-view"></div>
+         <div class="letter-view-box">
+            <div class="letter-view">
+            </div>
+         </div>
+      </div>
         
         <div class="letter-type-wrapper">
             <div class="letter-type text">
@@ -263,69 +274,68 @@
                 <input class="letter-type-btn hidden" type="button" value="영상" />
             </div>
         </div>
-        
-        <div class="write-and-add">
-        
-	        <div class="letter-write-wrapper">
-	            <div class="letter-write-header">
-	                <div class="letter-to">받는 사람</div>
-	                <div class="letter-to-list-wrapper">
-	                	<ul class="added">
-<!-- 		                	<li class="letter-to-list">
-		                    	<div class="reader-mid hidden">suzy</div>
-		                        <img class="thumbnail" src="images/suzy2.jpg" />
-		                        <div class="delete"></div>
-		                    </li>
-		                    <li class="letter-to-list">
-		                    	<div class="reader-mid hidden">taeyang</div>
-		                        <img class="thumbnail" src="images/taeyang.jpg" />
-		                        <div class="delete"></div>
-		                    </li> -->
-	                	</ul>
-	                    <div class="letter-to-list-add"></div>
-	                </div>
-	            </div>
-	            <textarea id="title" rows="1" placeholder="제목"></textarea>
-	            <div class="letter-write-box">
-	                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
-	            </div>
-	            <button id="letter-send" type="submit">보내기</button>
-	        </div>
-	
-	        <div class="letter-add-wrapper">
-	            <div>
-	                <span>수신인을 추가하세요</span>
-	            </div>
-	            <div class="check-box">
-	                <input id="check-box" type="checkbox" />가족 모두에게
-	            </div>
-	            <div class="letter-add-list-box">
-	                <div class="letter-add-list-wrapper">
-	                <ul class="adding">
-	                	<li class="letter-add-list">
-	                    	<div class="reader-mid hidden">bobby</div>
-	                        <img class="thumbnail" src="images/bobby1.jpg"/>
-	                    </li>
-	                    <li class="letter-add-list">
-	                    	<div class="reader-mid hidden">nami</div>
-	                        <img class="thumbnail" src="images/nami3.jpg"/>
-	                    </li>
-	                    <li class="letter-add-list">
-	                    	<div class="reader-mid hidden">newlec</div>
-	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-	                    </li>
-	                    <li class="letter-add-list">
-	                    	<div class="reader-mid hidden">dragon</div>
-	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-	                    </li>
-	                </ul>  
-	                </div>
-	            </div>
-	            <button id="letter-add-cancel" type="submit">취소</button>
-	        </div>
-	        
+
+        <div class="letter-write-wrapper">
+            <div class="letter-write-header">
+                <div class="letter-to">받는 사람</div>
+                <div class="letter-to-box">
+                   <div class="letter-to-list-wrapper">
+                      <ul class="added">
+                         <li class="letter-reply-to">
+                              <img class="thumbnail" src="" />
+                              <div class="reply-to-name"></div>
+                          </li>
+                      </ul>
+                       <div class="letter-to-list-add"></div>
+                   </div>
+                </div>
+            </div>
+            <textarea id="title" rows="1" placeholder="제목"></textarea>
+            <div class="letter-write-box">
+                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
+            </div>
+            <button id="letter-send" type="submit">보내기</button>
         </div>
-	</div>
+   
+        <div class="letter-add-wrapper">
+            <div>
+                <span>수신인을 추가하세요</span>
+            </div>
+<!--             <div class="check-box">
+                <input id="check-box-all-fam" type="checkbox" />가족 모두에게
+            </div> -->
+            <p class="add-list-fam">가족</p>
+            <div class="letter-add-list-box">
+                <div class="letter-add-list-wrapper">
+                <ul class="adding">
+                   <c:forEach var="i" items="${fms}" >
+                      <li class="letter-add-list">
+                          <div class="reader-mid hidden">${i.mid}</div>
+                           <img class="thumbnail" src="${i.profilepic}"/>
+                           <div class="reader-name">${i.name}</div>
+                       </li>
+                   </c:forEach>    
+                </ul>  
+                </div>
+            </div>
+            <p class="add-list-eoot">이웃</p>
+            <div class="letter-add-list-box eoot">
+                <div class="letter-add-list-wrapper">
+                <ul class="adding">
+                   <c:forEach var="j" items="${nms}" >
+                      <li class="letter-add-list">
+                          <div class="reader-mid hidden">${j.mid}</div>
+                           <img class="thumbnail" src="${j.profilepic}"/>
+                           <div class="reader-name">${j.name}</div>
+                       </li>
+                   </c:forEach>    
+                </ul>  
+                </div>
+            </div>
+            <!-- <button id="letter-add-cancel" type="submit">취소</button> -->
+        </div>
+
+   </div>
 
 </body>
 </html>

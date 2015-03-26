@@ -1,7 +1,7 @@
 ﻿
 
 $(document).ready(function () {
-    var profileThum = $("#profile-thumbnail");
+    var profileThum = $("#profile-pic-box-main");
     var btnUploadSet = $("#btn-upload-set");
     var element_wrap = document.getElementById("myhome-address-search-wrapper");
     
@@ -29,10 +29,10 @@ $(document).ready(function () {
         $(this).css("background", "#427fed");
     });
 
-    $('input[type="button"].btn-cancel').mousedown(function () {
-        $(this).css("background", '#3b3b3b');
+    $('#accordion input[type="button"].btn-cancel').mousedown(function () {
+    	$(this).css("background", '#5D5D5D');
     }).mouseout(function () {
-        $(this).css("background", "#808080");
+    	$(this).css("background", "#808080");
     });
 
 
@@ -56,6 +56,8 @@ $(document).ready(function () {
     btnUploadSet.mouseout(function () {
         btnUploadSet.css("background", "#3079ed");
     });
+    
+   
     $("#btn-upload-cancel").click(function () {
         $('#profile-edit').fadeOut(400);
     });
@@ -79,6 +81,16 @@ $(document).ready(function () {
         $("#profile-name-edit").css("display", "inline");
     });
     
+    /*$('#btn-name-cancel').mousedown(function () {
+        $(this).css("background", '#5D5D5D');
+    }).mouseout(function () {
+        $(this).css("background", "#808080");
+    })*/
+    $('#btn-name-cancel').mousedown(function () {
+    	$(this).css("background", '#5D5D5D');
+    }).mouseout(function () {
+    	$(this).css("background", "#808080");
+    });
     $('#btn-name-cancel').click(function(){
     	$("#profile-name-wrapper").css("display", "none");
         $("#profile-name-edit").css("display", "inline");
@@ -95,6 +107,12 @@ $(document).ready(function () {
         $("#myhome-name-wrapper").css("display", "inline-block");
         $("#myhome-name-edit").css("display", "none");
     });
+    
+    $("#btn-myhome-name").mousedown(function () {
+        $(this).css("background", '#2457BD');
+    }).mouseout(function () {
+        $(this).css("background", "#427fed");
+    });
 
     $("#btn-myhome-name").click(function () {
     	updateFamname();
@@ -103,6 +121,11 @@ $(document).ready(function () {
         $("#myhome-name-edit").css("display", "inline");
     });
     
+    /*$('#btn-homename-cancel').mousedown(function () {
+        $(this).css("background", '#5D5D5D');
+    }).mouseout(function () {
+        $(this).css("background", "#808080");
+    })*/
     $('#btn-homename-cancel').click(function(){
     	$("#myhome-name-wrapper").css("display", "none");
         $("#myhome-name-edit").css("display", "inline");
@@ -118,6 +141,12 @@ $(document).ready(function () {
     	sample3_execDaumPostcode();
     });
     
+    /*$("#btn-myhome-address").mousedown(function () {
+        $(this).css("background", '#2457BD');
+    }).mouseout(function () {
+        $(this).css("background", "#427fed");
+    });*/
+    
     $("#btn-myhome-address").click(function(){
     	updateAddress();
     	
@@ -126,6 +155,11 @@ $(document).ready(function () {
         $('#myhome-address-edit').css('display', 'inline-block');
     });
     
+    /*$('#btn-address-cancel').mousedown(function () {
+        $(this).css("background", '#5D5D5D');
+    }).mouseout(function () {
+        $(this).css("background", "#EAEAEA");
+    })*/
     $('#btn-address-cancel').click(function () {
     	$("#myhome-address-search-wrapper").css("display","none");
     	$("#myhome-address-txt").val("");
@@ -164,7 +198,30 @@ $(document).ready(function () {
             view.text("자세히 보기");
         }
     });
-
+    
+    $("#myhome-background-edit").click(function(){
+    	var wrapper = $("#myhome-background-edit");
+    	
+    	if(wrapper.text() == "설정"){
+    		$("#myhome-background-wrapper").css("display", "block");
+    		wrapper.text("닫기");
+    	} else if(wrapper.text() == "닫기"){
+    		$("#myhome-background-wrapper").css("display", "none");
+    		wrapper.text("설정");
+    	}
+    });
+    
+    // 배경화면
+    $("#btn-myhome-upload-select").click(function () {
+        $("#myhome-background-file").trigger("click");
+    });
+    $("#btn-myhome-upload-set").mouseover(function () {
+    	$("#btn-myhome-upload-set").css("background", "#0054FF");
+    });
+    $("#btn-myhome-upload-set").mouseout(function () {
+    	$("#btn-myhome-upload-set").css("background", "#3079ed");
+    });
+    
     ///////////////////// 이웃 ////////////////////////
 
     // 목록

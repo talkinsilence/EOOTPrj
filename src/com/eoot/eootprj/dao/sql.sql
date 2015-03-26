@@ -11,8 +11,10 @@ SELECT * FROM VilPosts WHERE CODE = 1;
 select * from FamInvitations;
 
 DELETE FROM VILPOSTCOMMENTS
+DELETE FROM FAMPOSTCOMMENTS
 
 INSERT INTO VILPOSTCOMMENTS(CODE, CONTENT, WRITER, VILPOSTCODE, REGDATE) VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM VIlPOSTCOMMENTS), 'hi', 'viovio@eoot.com', '3', getDate());
+INSERT INTO FAMPOSTCOMMENTS(CODE, CONTENT, WRITER, FAMPOSTCODE, REGDATE) VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM FAMPOSTCOMMENTS), 'hi', 'viovio@eoot.com', '3', getDate());
 
 SELECT *
 FROM (SELECT * FROM FAMPOSTS F ORDER BY F.REGDATE DESC)
@@ -38,7 +40,7 @@ SELECT V.*, VF.* FROM VilPosts V LEFT OUTER JOIN VilPostFiles VF ON VF.VilPostCo
 SELECT * FROM VilPostFiles WHERE VilPostCode = '1';
 
 INSERT INTO VILPOSTFILES(CODE, SRC, VILPOSTCODE, TYPE)
-VALUES(1, '../village/refimg/img00.jpg', 1, 1);
+VALUES(2, '../village/refimg/bobby1.jpg', 5, 1);
 
 INSERT INTO VILPOSTCommentS(CODE, content, writer, VilPostCode, Regdate)
 VALUES(1, '댓글댓글댓글', 'nami@eoot.com', 1, getDate());
@@ -52,7 +54,7 @@ VALUES(4, '댓글댓글댓글4번째', 'nami@eoot.com', 1, getDate());
 
 SELECT * FROM (SELECT M.NAME, M.MID, M.PROFILEPIC, M.ADDRESS, V.* ,(ROW_NUMBER() OVER (ORDER BY V.REGDATE DESC)) NUM FROM MEMBERS M INNER JOIN VILPOSTS V ON M.MID=V.WRITER WHERE V.${field} LIKE '%${query}%') MJOINV WHERE MJOINV.NUM BETWEEN 1 AND 30;
 
-UPDATE VilPOSTFILES SET SRC = '../village/refimg/img00.jpg' WHERE code=1;
+UPDATE FAMPOSTFILES SET SRC = 'images/suzy1.jpg' WHERE FAMPOSTCODE=10;
 
 INSERT INTO MEMBERS(MID, PWD, NAME, BIRTHDAY, PROFILEPIC, REGDATE, FAMCODE) 
 VALUES('qq3', 'ddfd', 'dfasdf', '19910101', 'default.jpg', GETDATE(), 'tete');
@@ -130,6 +132,8 @@ FROM FamPosts INNER JOIN Members ON FamPosts.Writer = Members.Mid
          left outer JOIN fampostcomments on famposts.code = fampostcomments.fampostcode;   
 
 UPDATE FAMPOSTFILES SET src = 'images/kim3.jpg' WHERE code='11';
+
+UPDATE VILPOSTS SET SORT='4' WHERE code='5';
 
 UPDATE MEMBERS SET PROFILEPIC = '/EOOTPrj/main/images/nami3.jpg' WHERE MID = 'talkinsilence21@gmail.com';
 

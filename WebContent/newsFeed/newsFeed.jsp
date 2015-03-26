@@ -83,6 +83,7 @@
     <script src="../resource/js/jquery-2.1.3.js"></script>
     <script src="../resource/js/menu.js" type="text/javascript"></script>
     <script src="js/newsFeed.js" type="text/javascript"></script>
+    <script src="js/insertNews.js" type="text/javascript"></script>
 </head>
 <body>
 
