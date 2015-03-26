@@ -271,10 +271,8 @@
                        $('.letter').fadeOut(200);
                     }
                  });
-             	if(i == readerLists.length){
-             		alert("편지가 전송되었습니다");
-                }
-              }          
+              }
+              alert("편지가 전송되었습니다");
            }
         });
     });
