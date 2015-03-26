@@ -1,4 +1,4 @@
-﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
+﻿﻿<%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
 <%@page import="com.eoot.eootprj.dao.FamPostDao"%>
 <%@page import="com.eoot.eootprj.model.VilPostCommentJoinMember"%>
@@ -49,10 +49,10 @@
 <link href="css/bind03.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="js/menubar.js" type="text/javascript"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="js/map.js" type="text/javascript"></script>
-<script src="js/menu.js" type="text/javascript"></script>
+<link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css" />
+<script src="../resource/js/menu.js" type="text/javascript"></script>
 <script src="js/btn.js" type="text/javascript"></script>
 <script src="js/insert.js" type="text/javascript"></script>
 <script src="js/jquery-1.11.2.js" type="text/javascript"></script>
@@ -75,129 +75,8 @@
 </head>
 <body onload="initialize()">
     <div>
-        <header id="header">
-            <section>
-                <h1 class="hidden">회원 메뉴</h1>
-
-                <!-- Menu 1 -->
-                <nav id="menu1">
-                    <h1 class="hidden">메뉴 1</h1>
-
-                    <div id="menu_button"></div>
-
-                    <div id="buttons">
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">우리집</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">이 웃</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">마 을</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div id="separator"></div>
-
-                        <div class="img-button">
-                            <div class="vertical-field1">
-                                <div class="img-vertical-field2">
-                                    <a href=""><img src="refimg/btn-scrapped.png" /></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="img-button">
-                            <div class="vertical-field1">
-                                <div class="img-vertical-field2">
-                                    <a href=""><img src="refimg/btn_write.png" /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-
-                <!--Menu 2-->
-                <nav id="menu2">
-                    <h1 class="hidden">메뉴 2</h1>
-
-                    <div id="menu_button"><input type="button" value="닫기" id="menu2_hide" /></div>
-
-                    <div id="buttons">
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">달 력</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">앨 범</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">편 지 함</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">택 배</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">설 정</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                    </div>
-                </nav>
-            </section>
-        </header>
-
+        <!--===========< 메뉴영역 >===============================================-->
+   		<jsp:include page="../resource/inc/menu.jsp"></jsp:include>
         <!------------------------------------------------------------- 메뉴(헤더) 영역 ------------------------------------------------------------------->
 
         <div>
@@ -232,7 +111,7 @@
                                     <input id="search-button" type="submit" />
                                 </fieldset>
                             </form>
-                            <input id="write-button" type="button" value="글 쓰기" />
+                            <input id="write-button" type="button" value="Search" />
                         </div>
                         
                         <div class="village-board-list-wrapper">
@@ -319,7 +198,6 @@
 											<div class="post-comment">
 												<c:forEach var="c" items="${cList}">
 													<c:if test="${i.getCode() == c.getVilPostCode()}">
-													<%-- <div class="vil-post-code hidden">${c.getVilPostCode()}</div> --%>
 														<div class="post-comment-list">
 															<div>
 																<div class="profile-pic-box-s">
@@ -360,13 +238,11 @@
 														<input class="post-input-button" type="button" value="등록" />
 													</div>
 												</fieldset>
-											</form>
-
-										</div>
+												</form>
+											</div>
                                         </div>
-
                                     </div>
-							<div class="vil-post-code hidden">${i.code}</div>
+								<div class="vil-post-code hidden">${i.code}</div>
 							</div>
 						</c:forEach>
 					</div>

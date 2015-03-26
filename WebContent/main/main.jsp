@@ -1,4 +1,8 @@
-﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
+﻿<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBNeighborDao"%>
+<%@page import="com.eoot.eootprj.dao.NeighborDao"%>
+<%@page import="com.eoot.eootprj.model.Neighbor"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
 <%@page import="com.eoot.eootprj.dao.VilPostDao"%>
 <%@page import="com.eoot.eootprj.model.VilPost"%>
 <%@page import="com.eoot.eootprj.model.LetterJoinMember"%>
@@ -36,6 +40,9 @@
 	List<LetterJoinMember> nls = letterDao.getNewLetters(uid);
 	int nlsSize = nls.size();
 
+	NeighborDao neighborDao = new MyBNeighborDao();
+	List<NeighborJoinMember> nms = neighborDao.getNeighbors(uid);
+	
 	//List<VilPost> tvps = vilPostDao.getTopVilPosts(vcode);
 	
 	/* for( Member ms : fms)
@@ -44,6 +51,7 @@
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
+	pageContext.setAttribute("nms", nms);
 	pageContext.setAttribute("ls", ls);
 	pageContext.setAttribute("lsSize", lsSize);
 	pageContext.setAttribute("nlsSize", nlsSize);
@@ -266,62 +274,67 @@
                 <input class="letter-type-btn hidden" type="button" value="영상" />
             </div>
         </div>
-        
-        <div class="write-and-add">
-        
-	        <div class="letter-write-wrapper">
-	            <div class="letter-write-header">
-	                <div class="letter-to">받는 사람</div>
+
+        <div class="letter-write-wrapper">
+            <div class="letter-write-header">
+                <div class="letter-to">받는 사람</div>
+                <div class="letter-to-box">
 	                <div class="letter-to-list-wrapper">
 	                	<ul class="added">
+	                		<li class="letter-reply-to">
+		                        <img class="thumbnail" src="" />
+		                        <div class="reply-to-name"></div>
+	                    	</li>
 	                	</ul>
-	                	<div class="letter-reply-to">
-	                        <img class="thumbnail" src="" />
-	                        <div class="reply-to-name"></div>
-	                    </div>
 	                    <div class="letter-to-list-add"></div>
 	                </div>
-	            </div>
-	            <textarea id="title" rows="1" placeholder="제목"></textarea>
-	            <div class="letter-write-box">
-	                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
-	            </div>
-	            <button id="letter-send" type="submit">보내기</button>
-	        </div>
-	
-	        <div class="letter-add-wrapper">
-	            <div>
-	                <span>수신인을 추가하세요</span>
-	            </div>
-	            <div class="check-box">
-	                <input id="check-box" type="checkbox" />가족 모두에게
-	            </div>
-	            <div class="letter-add-list-box">
-	                <div class="letter-add-list-wrapper">
-	                <ul class="adding">
-	                	<li class="letter-add-list">
-	                    	<div class="reader-mid hidden">bobby</div>
-	                        <img class="thumbnail" src="images/bobby1.jpg"/>
-	                    </li>
-	                    <li class="letter-add-list">
-	                    	<div class="reader-mid hidden">nami</div>
-	                        <img class="thumbnail" src="images/nami3.jpg"/>
-	                    </li>
-	                    <li class="letter-add-list">
-	                    	<div class="reader-mid hidden">newlec</div>
-	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-	                    </li>
-	                    <li class="letter-add-list">
-	                    	<div class="reader-mid hidden">dragon</div>
-	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-	                    </li>
-	                </ul>  
-	                </div>
-	            </div>
-	            <button id="letter-add-cancel" type="submit">취소</button>
-	        </div>
-	        
+                </div>
+            </div>
+            <textarea id="title" rows="1" placeholder="제목"></textarea>
+            <div class="letter-write-box">
+                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
+            </div>
+            <button id="letter-send" type="submit">보내기</button>
         </div>
+	
+        <div class="letter-add-wrapper">
+            <div>
+                <span>수신인을 추가하세요</span>
+            </div>
+<!--             <div class="check-box">
+                <input id="check-box-all-fam" type="checkbox" />가족 모두에게
+            </div> -->
+            <p class="add-list-fam">가족</p>
+            <div class="letter-add-list-box">
+                <div class="letter-add-list-wrapper">
+                <ul class="adding">
+	                <c:forEach var="i" items="${fms}" >
+	                	<li class="letter-add-list">
+	                    	<div class="reader-mid hidden">${i.mid}</div>
+	                        <img class="thumbnail" src="${i.profilepic}"/>
+	                        <div class="reader-name">${i.name}</div>
+	                    </li>
+	                </c:forEach>    
+                </ul>  
+                </div>
+            </div>
+            <p class="add-list-eoot">이웃</p>
+            <div class="letter-add-list-box eoot">
+                <div class="letter-add-list-wrapper">
+                <ul class="adding">
+	                <c:forEach var="j" items="${nms}" >
+	                	<li class="letter-add-list">
+	                    	<div class="reader-mid hidden">${j.mid}</div>
+	                        <img class="thumbnail" src="${j.profilepic}"/>
+	                        <div class="reader-name">${j.name}</div>
+	                    </li>
+	                </c:forEach>    
+                </ul>  
+                </div>
+            </div>
+            <!-- <button id="letter-add-cancel" type="submit">취소</button> -->
+        </div>
+
 	</div>
 
 </body>

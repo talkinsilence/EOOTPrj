@@ -57,11 +57,6 @@
 	pageContext.setAttribute("FPJM", FPJM);
 	pageContext.setAttribute("FPF", FPF);
 	pageContext.setAttribute("FPCJM", FPCJM);
-	
-	System.out.println(list.get(0).getContent());
-	System.out.println(FPJM.get(0).getProfilepic());
-	System.out.println(FPJM.get(0).getName());
-	System.out.println(FPCJM.get(0).getContent());
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -69,139 +64,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/bind02.css" rel="stylesheet" type="text/css" />
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="js/menubar.js" type="text/javascript"></script>
+    <link href="../resource/css/bind_menu.css" rel="stylesheet" type="text/css"/>
+	<script src="../resource/js/menu.js" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="js/modernizr.js"></script>
     <script src="js/map.js" type="text/javascript"></script>
     <script src="js/btn.js" type="text/javascript"></script>
-    <script src="js/insert.js" type="text/javascript"></script>
+    <script src="js/insertFam.js" type="text/javascript"></script>
     <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
     <title></title>   
 </head>
 <body onload="initialize()">
     <div class="body">
-        <header id="header">
-            <section>
-                <h1 class="hidden">회원 메뉴</h1>
-
-                <!-- Menu 1 -->
-                <nav id="menu1">
-                    <h1 class="hidden">메뉴 1</h1>
-
-                    <div id="menu_button"></div>
-
-                    <div id="buttons">
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">우리집</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">이 웃</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">마 을</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div id="separator"></div>
-
-                        <div class="img-button">
-                            <div class="vertical-field1">
-                                <div class="img-vertical-field2">
-                                    <a href=""><img src="refimg/btn-scrapped.png" /></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="img-button">
-                            <div class="vertical-field1">
-                                <div class="img-vertical-field2">
-                                    <a href=""><img src="refimg/btn_write.png" /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-
-                <!--Menu 2-->
-                <nav id="menu2">
-                    <h1 class="hidden">메뉴 2</h1>
-
-                    <div id="menu_button"><input type="button" value="닫기" id="menu2_hide" /></div>
-
-                    <div id="buttons">
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">달 력</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">앨 범</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">편 지 함</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">택 배</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                        <div class="button">
-                            <div class="vertical-field1">
-                                <div class="vertical-field2">
-                                    <span class="vertical_text">설 정</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="visual"></div>
-
-                    </div>
-                </nav>
-            </section>
-        </header>
+        <!--===========< 메뉴영역 >===============================================-->
+   		<jsp:include page="../resource/inc/menu.jsp"></jsp:include>
 
         <!------------------------------------------------------------- 메뉴(헤더) 영역 ------------------------------------------------------------------->
 
@@ -215,12 +91,11 @@
                             <input id="search-button" type="submit" value="검색" />
                         </fieldset>
                     </form>
-                    <input id="write-button" type="button" value="글 쓰기" />
+                    <input id="write-button" type="button" value="Search" />
                 </div>
                 <div class="wrapper">
-                <c:forEach var="i" items="FPJM"> 
+                <c:forEach var="i" items="${FPJM}"> 
                     <div class="post">
-
                         <div class="post-header-wrapper">
                             <div class="post-header">
                                 <div class="profile-pic-box">
@@ -249,12 +124,12 @@
                         <div class="post-main-wrapper">
                             <div class="post-main">
                                 <div class="post-content-wrapper">
-                                    <div class="post-content"></div>
-                                    <div class="post-content-more">(더 보기)</div>
+                                    <div class="post-content">${i.content}</div>
+                                   <!--  <div class="post-content-more">(더 보기)</div> -->
                                 </div>
                             </div>
                         </div>
-						<c:forEach var="j" items="FPF">
+						<c:forEach var="j" items="${FPF}">
 							<c:if test="${i.getCode() == j.getFamPostCode()}">
                         		<img class="post-main-img" src="${j.getSrc()}" />
                        		</c:if>
@@ -265,17 +140,17 @@
                                 <div class="post-popularity-item like">
                                     <h1 class="hidden">좋아요 개수</h1>
                                     <img class="post-popularity-btn" src="refimg/btn-like.png" />
-                                    <div class="post-popularity-cnt clearfix">${i.likeCnt}</div>
+                                    <div class="post-popularity-cnt clearfix">${i.getLikeCnt()}</div>
                                 </div>
                                 <div class="post-popularity-item scrap">
                                     <h1 class="hidden">스크랩 횟수</h1>
                                     <img class="post-popularity-btn" src="refimg/btn-scrap.png" />
-                                    <div class="post-popularity-cnt clearfix">${i.cilpCnt}</div>
+                                    <div class="post-popularity-cnt clearfix">${i.getClipCnt()}</div>
                                 </div>
                                 <div class="post-popularity-item comment">
                                     <h1 class="hidden">댓글 개수</h1>
                                     <img class="post-popularity-btn" src="refimg/btn-comment.png" />
-                                    <div class="post-popularity-cnt clearfix">${i.commentCnt}</div>
+                                    <div class="post-popularity-cnt clearfix">${i.getCommentCnt()}</div>
                                 </div>
                             </div>
                         </div>
@@ -292,7 +167,7 @@
                             <div class="post-comment">
                             
                                 <ul class="post-comment-list">
-									<c:forEach var="k" items="FPCJM">
+									<c:forEach var="k" items="${FPCJM}">
 										<c:if test="${i.getCode() == k.getFamPostCode()}">
 											<li>
 												<div class="profile-pic-box-s">
