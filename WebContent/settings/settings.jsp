@@ -89,10 +89,9 @@
                     <h1>설 정</h1>
                 </div>
                 
-                <div id="profile">                 
+                <div id="profile">             
                     <div id="profile-pic-box-main">
                         <img id="profile-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
-                        <div>사진 변경</div>
                     </div>
 
                     <div id="profile-wrapper">
@@ -244,6 +243,27 @@
                                     </c:if>
                                 </fieldset>               
                             </div>
+                        </div>
+                        
+                        <div id="myhome-background">
+                        	우리집 배경화면 설정
+                        	
+                        	<label id="myhome-background-edit" class="edit">설정</label>
+                        	
+                        	<div id="myhome-background-wrapper">
+                        		<div id="myhome-profilebgc-box-main">
+                        			<img id="myhome-background-thumbnail" src="../main/images/white.jpg"<%-- src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" --%> />
+                   				</div>
+                   				
+                   				<div id="myhome-background-upload-form">
+                        			<form method="post" enctype="multipart/form-data" action="updateProfileBg.jsp">
+			                            <input type="file" name="file-bg" id="myhome-background-file"/>
+			                            <div id="myhome-background-upload-select-wrapper">
+			                            
+			                            </div>
+                        			</form>
+                    			</div>
+                        	</div>
                         </div>
                     </div>
 
