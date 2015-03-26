@@ -273,11 +273,11 @@
                 <div class="letter-to-box">
 	                <div class="letter-to-list-wrapper">
 	                	<ul class="added">
+	                		<li class="letter-reply-to">
+		                        <img class="thumbnail" src="" />
+		                        <div class="reply-to-name"></div>
+	                    	</li>
 	                	</ul>
-	                	<div class="letter-reply-to">
-	                        <img class="thumbnail" src="" />
-	                        <div class="reply-to-name"></div>
-	                    </div>
 	                    <div class="letter-to-list-add"></div>
 	                </div>
                 </div>
@@ -306,26 +306,6 @@
 	                        <div class="reader-name">${i.name}</div>
 	                    </li>
 	                </c:forEach>    
-                    <!-- <li class="letter-add-list">
-                    	<div class="reader-mid hidden">nami</div>
-                        <img class="thumbnail" src="images/nami3.jpg"/>
-                        <div class="reader-name">장나미</div>
-                    </li>
-                    <li class="letter-add-list">
-                    	<div class="reader-mid hidden">newlec</div>
-                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-                        <div class="reader-name">뉴렉</div>
-                    </li>
-                    <li class="letter-add-list">
-                    	<div class="reader-mid hidden">dragon</div>
-                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-                        <div class="reader-name">용쌔미</div>
-                    </li>
-                    <li class="letter-add-list">
-                    	<div class="reader-mid hidden">james</div>
-                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-                        <div class="reader-name">우제임스</div>
-                    </li> -->
                 </ul>  
                 </div>
             </div>
