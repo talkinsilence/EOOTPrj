@@ -1,3 +1,4 @@
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostCommentDao"%>
 <%@page import="com.eoot.eootprj.model.FamPostComment"%>
 <%@page import="com.eoot.eootprj.dao.FamPostCommentDao"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -9,6 +10,7 @@
 <%
 	try {
 		String vilPostCode = request.getParameter("vilPostCode");
+		String famPostCode = request.getParameter("famPostCode");
 		String content = request.getParameter("content");
 		//String uid = (String) session.getAttribute("uid");
 		
@@ -19,6 +21,13 @@
 		vilPostComment.setWriter("nami@eoot.com");
 		vilPostCommentDao.insert(vilPostComment);////쿼리
 	
+		FamPostCommentDao famPostCommentDao = new MyBFamPostCommentDao();
+		FamPostComment famPostComment = new FamPostComment();
+		famPostComment.setFamPostCode(famPostCode);
+		famPostComment.setContent(content);
+		famPostComment.setWriter("viovio@eoot.com");
+		famPostCommentDao.insert(famPostComment);
+		
 		System.out.println(vilPostCode);
 		System.out.println(content);
 

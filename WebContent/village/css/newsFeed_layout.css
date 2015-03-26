@@ -108,6 +108,7 @@
     display: block;
     position: relative;
     width: 700px;
+    margin-bottom: 15px;
     /*width: 358px;*/
     background: white;
     border: 1px solid #d8d8d8;
