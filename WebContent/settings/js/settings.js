@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
     var profileThum = $("#profile-pic-box-main");
+    var myhomeThum = $("#myhome-profilebgc-box-main");
     var btnUploadSet = $("#btn-upload-set");
     var element_wrap = document.getElementById("myhome-address-search-wrapper");
     
@@ -46,7 +47,18 @@ $(document).ready(function () {
     profileThum.click(function () {
         $('#profile-edit').fadeIn(300);
     });
-
+    
+    // 우리집
+    myhomeThum.mouseover(function(){
+    	myhomeThum.css("opacity","0.3");
+    });
+    myhomeThum.mouseout(function(){
+    	myhomeThum.css("opacity","1");
+    });
+    myhomeThum.click(function(){
+    	$("#myhome-edit").fadeIn(300);
+    });
+    
     $("#btn-upload-select").click(function () {
         $("#profile-edit-file").trigger("click");
     });
