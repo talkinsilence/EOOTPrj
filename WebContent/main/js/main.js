@@ -112,7 +112,7 @@
     });
     
     /*===< 답장하기 >===*/
-    $('.letter-mani.reply-letter').one("click", function(){
+    $('.letter-mani.reply-letter').click(function(){
     	
     	var thisLetter = $(this).parent().parent().parent();
     	var lwriter = thisLetter.find('.letter-from-mid').html();
@@ -162,6 +162,10 @@
     	    			},
     	    			success:function(){
     	    				alert("답장전송!!!");
+    	    				$('.letter-to-list-add').show();
+    	    	    		$('.reply-to-name').html("");
+    	    	    		$('.letter-reply-to').children('img').attr("src", "");
+    	    	    		$('.letter-reply-to').css("display", "none");
     	    				$('.letter').fadeOut(200);
     	    			}
     		    	});	
@@ -171,7 +175,7 @@
     });
     
     /*===< 편지쓰기 >===*/
-    $('#letter-write').one("click", function () {
+    $('#letter-write').click(function () {
     	$('#title').val("");
     	$('#content').val("");
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
@@ -202,7 +206,7 @@
             	var reader = $(this).parent().find('.reader-mid').html();
             	//추가하려는 수신인의 mid
 
-            	var lists = $('.letter-to-list-wrapper > ul li');
+            	var lists = $('.letter-to-list-wrapper > .letter-add-list');
             	lists.each(function(){
             		if($(this).length != 0){
             			readerLists.push($(this).find('.reader-mid').html());
@@ -236,14 +240,14 @@
         });
 
         $('#letter-send').click(function(){
-        	alert("일반적인편지쓰기");
-        	if ($('.letter-to-list-wrapper').find('img').length == 0)
+        	alert(readerLists);
+        	if (readerLists.length == 0)
                 alert("수신인을 한 명 이상 지정해야 합니다.");
         	else if (($('#title').val() == ""))
                 alert("제목을 입력해주세요.");
         	else if (($('#content').val() == ""))
                 alert("내용을 입력해주세요.");
-            else {
+            else {            	
             	var ltitle = $('textarea#title').val();
         		var lcontent = $('textarea#content').val().replace(/\n/g, "<br />");
         		
@@ -258,6 +262,7 @@
         				},
         				success:function(){
         					alert("편지전송!!!");
+        					$('.added').empty();
         					$('.letter').fadeOut(200);
         				}
         	    	});	
