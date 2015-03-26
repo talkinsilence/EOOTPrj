@@ -1,4 +1,8 @@
-﻿<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
+﻿<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBNeighborDao"%>
+<%@page import="com.eoot.eootprj.dao.NeighborDao"%>
+<%@page import="com.eoot.eootprj.model.Neighbor"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
 <%@page import="com.eoot.eootprj.dao.VilPostDao"%>
 <%@page import="com.eoot.eootprj.model.VilPost"%>
 <%@page import="com.eoot.eootprj.model.LetterJoinMember"%>
@@ -36,6 +40,9 @@
 	List<LetterJoinMember> nls = letterDao.getNewLetters(uid);
 	int nlsSize = nls.size();
 
+	NeighborDao neighborDao = new MyBNeighborDao();
+	List<NeighborJoinMember> nms = neighborDao.getNeighbors(uid);
+	
 	//List<VilPost> tvps = vilPostDao.getTopVilPosts(vcode);
 	
 	/* for( Member ms : fms)
@@ -44,6 +51,7 @@
 	
 	pageContext.setAttribute("m", m);
 	pageContext.setAttribute("fms", fms);
+	pageContext.setAttribute("nms", nms);
 	pageContext.setAttribute("ls", ls);
 	pageContext.setAttribute("lsSize", lsSize);
 	pageContext.setAttribute("nlsSize", nlsSize);
@@ -293,9 +301,10 @@
             <div>
                 <span>수신인을 추가하세요</span>
             </div>
-            <div class="check-box">
+<!--             <div class="check-box">
                 <input id="check-box-all-fam" type="checkbox" />가족 모두에게
-            </div>
+            </div> -->
+            <p class="add-list-fam">가족</p>
             <div class="letter-add-list-box">
                 <div class="letter-add-list-wrapper">
                 <ul class="adding">
@@ -304,6 +313,20 @@
 	                    	<div class="reader-mid hidden">${i.mid}</div>
 	                        <img class="thumbnail" src="${i.profilepic}"/>
 	                        <div class="reader-name">${i.name}</div>
+	                    </li>
+	                </c:forEach>    
+                </ul>  
+                </div>
+            </div>
+            <p class="add-list-eoot">이웃</p>
+            <div class="letter-add-list-box eoot">
+                <div class="letter-add-list-wrapper">
+                <ul class="adding">
+	                <c:forEach var="j" items="${nms}" >
+	                	<li class="letter-add-list">
+	                    	<div class="reader-mid hidden">${j.mid}</div>
+	                        <img class="thumbnail" src="${j.profilepic}"/>
+	                        <div class="reader-name">${j.name}</div>
 	                    </li>
 	                </c:forEach>    
                 </ul>  

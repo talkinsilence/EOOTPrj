@@ -623,7 +623,7 @@
 	position: absolute;
 	padding: 30px;
 	width: 115px;
-	min-height: 200px;
+	height: 360px;
 	background: #fff;
 	border-radius: 4px;
 	font-size: 13px;
@@ -631,7 +631,7 @@
 	top: 40px;
 }
 
-.check-box {
+/* .check-box {
 	margin-top: 6px;
 }
 
@@ -639,19 +639,42 @@
 	width: 14px;
 	height: 14px;
 	margin: 3px;
+} */
+
+.add-list-fam {
+	margin-top: 8px;
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 2px;
+	text-align: center;	
+	background: #f6f6f6;
+}
+
+.add-list-eoot {
+	margin-top: 152px;
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 2px;
+	text-align: center;	
+	background: #f6f6f6;
 }
 
 .letter-add-list-box {
 	display: block;
 	position: absolute;
-	margin: 15px 0;
+	margin-top: 12px;
 	width: 96px;
-	height: 54%;
+	height: 120px;
 	left: 50%;
 	transform: translateX(-50%);
 	overflow: hidden;
 	overflow-y: auto;
 }
+
+.letter-add-list-box.eoot {
+	top: 246px;
+}
+
 
 .letter-add-list-wrapper {
 	display: block;

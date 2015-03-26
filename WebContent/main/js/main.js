@@ -240,7 +240,6 @@
         });
 
         $('#letter-send').click(function(){
-        	alert(readerLists);
         	if (readerLists.length == 0)
                 alert("수신인을 한 명 이상 지정해야 합니다.");
         	else if (($('#title').val() == ""))
