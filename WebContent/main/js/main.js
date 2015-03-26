@@ -110,8 +110,55 @@
     	});
 		$(this).css("color", "#000");
     });
+    
+    /*===< 답장하기 >===*/
+    $('.letter-mani.reply-letter').click(function(){
+    	
+    	var thisLetter = $(this).parent().parent().parent();
+    	var lwriter = thisLetter.find('.letter-from-mid').html();
+    	var lwriterName = thisLetter.find('.letter-from-name').html();
+    	var lwriterPic = thisLetter.find('.letter-from-pic').html();
+    	
+    	var con = confirm("이 편지에 답장하시겠습니까?");
+    	if(con == true){
+    		$('#letter-write').trigger("click");
+    		$('.letter-to-list-add').hide();
+    		$('.reply-to-name').html(lwriterName);
+    		$('.letter-reply-to').children('img').attr("src", lwriterPic);
+    		$('.letter-reply-to').css("display", "block");
+    		$('.letter-reply-to').hover(function(){
+    			$('.reply-to-name').toggle();
+    		});
+    		
+    		$('#letter-send').click(function () {
+    		    if (($('#title').val() == ""))
+    		        alert("제목을 입력해주세요.");
+    		    else if (($('#content').val() == ""))
+    		        alert("내용을 입력해주세요.");
+    		    else {
+    		    	var ltitle = $('textarea#title').val();
+        			var lcontent = $('textarea#content').val();
 
-    /*===< letter-write >===*/
+    		    	$.ajax({
+    	    			type:"post",
+    	    			url:"replyLetterControl.jsp",
+    	    			data:{
+    	    				writer:lwriter,
+    	    				title:ltitle,
+    	    				content:lcontent
+    	    			},
+    	    			success:function(){
+    	    				alert("답장전송!!!");
+    	    				reset_writeForm();
+    	    				$('.letter').fadeOut(200);
+    	    			}
+    		    	});	
+    		    }
+    	    });
+    	}
+    });
+    
+    /*===< 편지쓰기 >===*/
     $('#letter-write').click(function () {
         $('.letter-box-wrapper, .letter-write-wrapper, .letter-add-wrapper').css("display", "none");
         $('.letter, .letter-type-wrapper').fadeIn(200);
@@ -132,11 +179,6 @@
     $('.letter-type.video').click(function () {alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
 
     $('.letter-to-list-add').click(function () {
-    	//bug!!!
-        //$('.letter-write-wrapper').css("display", "block");
-        //var loc = $('.letter-write-wrapper').offset();
-        //var wid = $('.letter-write-wrapper').width();
-        //$('.letter-add-wrapper').offset({ /*left: loc.left + wid + 70, */top: loc.top });
         $('.letter-add-wrapper').slideToggle();
     });
     
@@ -179,25 +221,34 @@
     $('.delete').click(function () {
         $(this).parent().remove();
     });
-    
-/*    $('#letter-add-cancel').click(function () {
-        $('.letter-add-wrapper').css("visibility", "hidden");
-    });*/
 
-    $('#letter-send').click(function () {
-        if ($('.letter-to-list-wrapper').find('img').length == 0)
+    $('#letter-send').click(function(){
+    	if ($('.letter-to-list-wrapper').find('li').length == 0)
             alert("수신인을 한 명 이상 지정해야 합니다.");
-        else if (($('#title').val() == ""))
+    	else if (($('#title').val() == ""))
             alert("제목을 입력해주세요.");
-        else if (($('#content').val() == ""))
+    	else if (($('#content').val() == ""))
             alert("내용을 입력해주세요.");
         else {
-        	$('.btn-close, .letter-transp-bg').trigger("click");
-        	alert("편지가 전송되었습니다^___^");
-/*            $('.letter-write-wrapper, .letter-add-wrapper').hide(600, function () {
-            	alert("편지가 전송되었습니다^ㅇ^");
-            	$('.btn-close, .letter-transp-bg').trigger("click");
-            });*/
+        	var ltitle = $('textarea#title').val();
+    		var lcontent = $('textarea#content').val();
+    		
+    		for(var i = 0; i < readerLists.length; i++){
+    			$.ajax({
+    				type:"post",
+    				url:"writeLetterControl.jsp",
+    				data:{
+    					reader:readerLists[i],
+    					title:ltitle,
+    					content:lcontent
+    				},
+    				success:function(){
+    					alert("편지전송!!!");
+    					reset_writeForm();
+    					$('.letter').fadeOut(200);
+    				}
+    	    	});	
+    		}        	
         }
     });
 
@@ -214,12 +265,11 @@
     }); 	
 })
 
-function check_readerList(){
-
-}
-
 function reset_writeForm(){
-    $('.letter-to-list-wrapper').empty();
+    $('.added').empty();
+    $('.letter-reply-to').css("display", "none");
     $('#title').empty();
     $('#content').empty();
 }
+
+

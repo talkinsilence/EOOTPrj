@@ -227,6 +227,9 @@
 		                        <div class="letter-read hidden">${i.read}</div>
 		                        <div class="letter-title">${i.title}</div>
 		                        <div class="letter-from">from: ${i.name}</div>
+		                        <div class="letter-from-mid hidden">${i.writer}</div>
+		                        <div class="letter-from-name hidden">${i.name}</div>
+		                        <div class="letter-from-pic hidden">${i.profilepic}</div>
 		                        <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
 			                    <div class="letter-mani-area">
 				                    <div class="letter-mani-wrapper-bg"></div>
@@ -270,17 +273,11 @@
                 <div class="letter-to-box">
 	                <div class="letter-to-list-wrapper">
 	                	<ul class="added">
-						<!--<li class="letter-to-list">
-		                    	<div class="reader-mid hidden">suzy</div>
-		                        <img class="thumbnail" src="images/suzy2.jpg" />
-		                        <div class="delete"></div>
-		                    </li>
-		                    <li class="letter-to-list">
-		                    	<div class="reader-mid hidden">taeyang</div>
-		                        <img class="thumbnail" src="images/taeyang.jpg" />
-		                        <div class="delete"></div>
-		                    </li> -->
 	                	</ul>
+	                	<div class="letter-reply-to">
+	                        <img class="thumbnail" src="" />
+	                        <div class="reply-to-name"></div>
+	                    </div>
 	                    <div class="letter-to-list-add"></div>
 	                </div>
                 </div>
