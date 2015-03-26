@@ -132,12 +132,14 @@
     $('.letter-type.video').click(function () {alert("영상편지 기능은 아직 준비중입니다.\ne-oot ver.2에서 만나요!(^o^)");});
 
     $('.letter-to-list-add').click(function () {
-    	//bug!!!
-        //$('.letter-write-wrapper').css("display", "block");
-        //var loc = $('.letter-write-wrapper').offset();
-        //var wid = $('.letter-write-wrapper').width();
-        //$('.letter-add-wrapper').offset({ /*left: loc.left + wid + 70, */top: loc.top });
-        $('.letter-add-wrapper').slideToggle();
+    	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> bug!!!
+        $('.letter-write-wrapper').css("display", "block");
+
+        var loc = $('.letter-write-wrapper').offset();
+        var wid = $('.letter-write-wrapper').width();
+        $('.letter-add-wrapper').offset({ left: loc.left + wid + 70, top: loc.top });
+
+        $('.letter-add-wrapper').fadeIn(100, 'linear');
     });
     
     var readerLists = [];
@@ -154,7 +156,7 @@
         		}
         	});
         	//alert(readerLists); //추가되기 전 왼쪽에 이미 추가되어있는 mid의 목록
-        	
+
         	if(jQuery.inArray(reader, readerLists) == -1){
             	var clone = $(this).parent().clone().css("float", "left");
                 clone.append($('<div class="delete"></div>'));
@@ -170,8 +172,6 @@
                     	return n != removeItem;
                     });
                 });
-            } else {
-            	alert("이미 추가되어 있습니다");
             }
         });  
     });
@@ -180,9 +180,9 @@
         $(this).parent().remove();
     });
     
-/*    $('#letter-add-cancel').click(function () {
-        $('.letter-add-wrapper').css("visibility", "hidden");
-    });*/
+    $('#letter-add-cancel').click(function () {
+        $('.letter-add-wrapper').fadeOut(10);
+    });
 
     $('#letter-send').click(function () {
         if ($('.letter-to-list-wrapper').find('img').length == 0)

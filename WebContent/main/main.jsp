@@ -263,14 +263,15 @@
                 <input class="letter-type-btn hidden" type="button" value="영상" />
             </div>
         </div>
-
-        <div class="letter-write-wrapper">
-            <div class="letter-write-header">
-                <div class="letter-to">받는 사람</div>
-                <div class="letter-to-box">
+        
+        <div class="write-and-add">
+        
+	        <div class="letter-write-wrapper">
+	            <div class="letter-write-header">
+	                <div class="letter-to">받는 사람</div>
 	                <div class="letter-to-list-wrapper">
 	                	<ul class="added">
-						<!--<li class="letter-to-list">
+<!-- 		                	<li class="letter-to-list">
 		                    	<div class="reader-mid hidden">suzy</div>
 		                        <img class="thumbnail" src="images/suzy2.jpg" />
 		                        <div class="delete"></div>
@@ -283,58 +284,47 @@
 	                	</ul>
 	                    <div class="letter-to-list-add"></div>
 	                </div>
-                </div>
-            </div>
-            <textarea id="title" rows="1" placeholder="제목"></textarea>
-            <div class="letter-write-box">
-                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
-            </div>
-            <button id="letter-send" type="submit">보내기</button>
-        </div>
+	            </div>
+	            <textarea id="title" rows="1" placeholder="제목"></textarea>
+	            <div class="letter-write-box">
+	                <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
+	            </div>
+	            <button id="letter-send" type="submit">보내기</button>
+	        </div>
 	
-        <div class="letter-add-wrapper">
-            <div>
-                <span>수신인을 추가하세요</span>
-            </div>
-            <div class="check-box">
-                <input id="check-box-all-fam" type="checkbox" />가족 모두에게
-            </div>
-            <div class="letter-add-list-box">
-                <div class="letter-add-list-wrapper">
-                <ul class="adding">
-	                <c:forEach var="i" items="${fms}" >
+	        <div class="letter-add-wrapper">
+	            <div>
+	                <span>수신인을 추가하세요</span>
+	            </div>
+	            <div class="check-box">
+	                <input id="check-box" type="checkbox" />가족 모두에게
+	            </div>
+	            <div class="letter-add-list-box">
+	                <div class="letter-add-list-wrapper">
+	                <ul class="adding">
 	                	<li class="letter-add-list">
-	                    	<div class="reader-mid hidden">${i.mid}</div>
-	                        <img class="thumbnail" src="${i.profilepic}"/>
-	                        <div class="reader-name">${i.name}</div>
+	                    	<div class="reader-mid hidden">bobby</div>
+	                        <img class="thumbnail" src="images/bobby1.jpg"/>
 	                    </li>
-	                </c:forEach>    
-                    <!-- <li class="letter-add-list">
-                    	<div class="reader-mid hidden">nami</div>
-                        <img class="thumbnail" src="images/nami3.jpg"/>
-                        <div class="reader-name">장나미</div>
-                    </li>
-                    <li class="letter-add-list">
-                    	<div class="reader-mid hidden">newlec</div>
-                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-                        <div class="reader-name">뉴렉</div>
-                    </li>
-                    <li class="letter-add-list">
-                    	<div class="reader-mid hidden">dragon</div>
-                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-                        <div class="reader-name">용쌔미</div>
-                    </li>
-                    <li class="letter-add-list">
-                    	<div class="reader-mid hidden">james</div>
-                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
-                        <div class="reader-name">우제임스</div>
-                    </li> -->
-                </ul>  
-                </div>
-            </div>
-            <!-- <button id="letter-add-cancel" type="submit">취소</button> -->
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">nami</div>
+	                        <img class="thumbnail" src="images/nami3.jpg"/>
+	                    </li>
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">newlec</div>
+	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+	                    </li>
+	                    <li class="letter-add-list">
+	                    	<div class="reader-mid hidden">dragon</div>
+	                        <img class="thumbnail" src="../resource/images/img-profile-default.png"/>
+	                    </li>
+	                </ul>  
+	                </div>
+	            </div>
+	            <button id="letter-add-cancel" type="submit">취소</button>
+	        </div>
+	        
         </div>
-
 	</div>
 
 </body>

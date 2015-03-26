@@ -6,7 +6,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +15,6 @@
     <script src="js/quickWrite.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
     <script src="js/quickWriteSend.js"></script>
-    
 </head>
 <body onload="iframeOn()">
     <div id="wrap">
@@ -81,17 +79,21 @@
                         </div>                  
                     </div>
                 </div>
-                <div class="uploadSelect">
-                    <h1 class="hidden">파일 업로드및 링크</h1>
-                    <div class="upload">
-                        <h1 class="hidden">업로드및 링크</h1>
-                        <div class="fileUpload">
-                            <input type=file name='file1' style='display: none;' id="imgInp">
-                            <img src='image/파일.jpg' border='0' onclick='document.all.file1.click(); document.all.file2.value=document.all.file1.value'> 
-                            <a href="cal.html" style="padding-left:12px;" target="textfield2"><img src="image/칼렌더.png"></a>                      
-                        </div>
-                    </div>
-                </div>
+               
+	                <div class="uploadSelect">
+	                    <h1 class="hidden">파일 업로드및 링크</h1>
+	                    <div class="upload">
+	                        <h1 class="hidden">업로드및 링크</h1>
+	                         <form action="quickWrite.jsp" method="post" enctype="multipart/form-data">
+		                        <div class="fileUpload">
+		                            <input type=file name='file1' style='display: none;' id="imgInp">
+		                            <img src='image/파일.jpg' border='0' onclick='document.all.file1.click();'> 
+		                            <a href="cal.html" style="padding-left:12px;" target="textfield2"><img src="image/칼렌더.png"></a>                      
+		                        </div>
+	                        </form>
+	                    </div>
+	                </div>
+                
                 <div class="selectEoot">
                     <input type="checkbox" checked="checked" name="check"  id="check1" value="0"/>
                    <!--  <label for="checkbox2"></label> -->우리가족만
@@ -104,6 +106,7 @@
                     		<option>일반</option>
                     		<option>장터</option>
                     		<option>모임</option>
+                    		<option>구인구직(광고)</option>
                     	</select>
                     </div>
                 </div>

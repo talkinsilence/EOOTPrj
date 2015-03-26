@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-/* 	try {
+	try {
 		String type = request.getParameter("type");
 		
 		Letter letter = new Letter();
@@ -21,5 +21,5 @@
 	JSONObject jo = new JSONObject();
 	jo.put("result", "SUCC");
 	System.out.println("@@" + jo.toString());
-	response.getWriter().println(jo.toString()); */
+	response.getWriter().println(jo.toString());
 %>
