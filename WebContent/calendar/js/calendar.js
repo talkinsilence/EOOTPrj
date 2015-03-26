@@ -25,7 +25,11 @@ $(document).ready(function () {
 
     renderCalendar();
 
-    $("#datepicker").datepicker({
+    $("#datepickerStart").datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+    
+    $("#datepickerEnd").datepicker({
         dateFormat: 'yy-mm-dd'
     });
 
@@ -40,14 +44,36 @@ $(document).ready(function () {
     }).mouseout(function () {
         $(this).css("background", "#427fed");
     });
-
+    
+    $('#btn-calendar-write').click(function(){
+    	var start = $("#datepickerStart");
+    	var content = $("#calendar-content");
+    	
+    	if(start.val() == ""){
+    		start.css("border-color","red");
+    	}
+    	
+    	if(content.val() == ""){
+    		content.css("border-color","");
+    	}
+    	
+    	if(start.val() != "" && content.val() != ""){
+    		$("#calForm").submit();
+    	}
+    		
+    });
+    
     $('#btn-calendar-cancel').mousedown(function () {
         $(this).css("background", '#3b3b3b');
     }).mouseout(function () {
         $(this).css("background", "#808080");
     });
     $('#btn-calendar-cancel').click(function () {
-        $("#calendar-write-body").fadeOut(200);
+    	$("#calendar-write-body").fadeOut(200);
+        
+    	$("#datepickerStart").val("");
+    	$("#datepickerEnd").val("");
+        $("#calendar-content").val("");
     });
 });
 
@@ -59,41 +85,10 @@ function renderCalendar() {
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
-        defaultDate: '2015-02-12',
         lang: 'ko',
         buttonIcons: false, // show the prev/next text
         weekNumbers: true,
         selectable: true,
-        selectHelper: true,
-        select: function (start, end) {
-            var title = prompt('Event Title:');
-            var eventData;
-            if (title) {
-                eventData = {
-                    title: title,
-                    start: start,
-                    end: end
-                };
-                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-            }
-            $('#calendar').fullCalendar('unselect');
-        },
-        //eventMouseover: function (event, jsEvent, view) {
-        //    $(this).mousemove(function (e) {
-        //        var trashEl = $('#calendarTrash');
-
-        //        if (isElemOverDiv()) {
-
-        //            if (!trashEl.hasClass("to-trash")) {
-        //                trashEl.addClass("to-trash");
-        //            }
-        //        } else {
-        //            if (trashEl.hasClass("to-trash")) {
-        //                trashEl.removeClass("to-trash");
-        //            }
-        //        }
-        //    });
-        //},
         eventDragStop: function (event, jsEvent, ui, view) {
             if (isElemOverDiv()) {
                 $('#calendar').fullCalendar('removeEvents', event.id);
@@ -112,9 +107,14 @@ function renderCalendar() {
         //        $('.fc-left').prependTo('<div id="calendarTrash" class="calendar-trash"><img src="/images/cal-trash.png"></img></div>');
         //    }
         //},
-        editable: true,
+        //editable: true,
         eventLimit: true, // allow "more" link when too many events               
-        events: [
+        events: "data.jsp",/*[{
+            id: "1",
+            title: '123123',
+            start: '2015-02-01',
+            end : null
+        }],*//*[
             {
                 id: 14,
                 title: 'All Day Event',
@@ -173,7 +173,7 @@ function renderCalendar() {
                 url: 'http://google.com/',
                 start: '2015-02-28'
             }
-        ]
+        ]*/
     });
 }
 

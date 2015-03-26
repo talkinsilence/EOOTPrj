@@ -594,3 +594,15 @@ body {
 #share-scope-wrapper{
     padding-bottom:20px;
 }
+
+#eoot-member-mng-wrapper {
+    width:calc(100% - 40px);
+    margin-top: 8px;
+    margin-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+#eoot-member-mng-wrapper > span {
+    line-height:40px;
+}

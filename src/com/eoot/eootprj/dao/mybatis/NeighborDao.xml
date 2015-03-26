@@ -7,13 +7,13 @@
     <mapper namespace="com.eoot.eootprj.dao.NeighborDao">
     	
     	<insert id="insertNei" parameterType="Neighbor">
-    		INSERT INTO NEIGHBORS(ASKMID, ACCEPTMID, ASKREGDATE, STATE) VALUES(#{ASKID}, #{ACCEPTMID}, GETDATE(), 0);
+    		INSERT INTO NEIGHBORS(askmid, acceptmid, askregdate, STATE) VALUES(#{askmid}, #{acceptmid}, GETDATE(), 0);
     	</insert>
     	
     	<select id="getNeighbors" parameterType="String" resultType="NeighborJoinMember">
-    		SELECT mid, name, address, famname FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ASKMID = M.MID WHERE N.ACCEPTMID = #{uid} AND state = 1
+    		SELECT mid, name, address, famcode, famname FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ASKMID = M.MID WHERE N.ACCEPTMID = #{uid} AND state = 1
 			UNION
-			SELECT mid,name, address, famname FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ACCEPTMID = M.MID WHERE N.ASKMID = #{uid} AND state = 1;
+			SELECT mid,name, address, famcode, famname FROM NEIGHBORS N INNER JOIN MEMBERS M ON N.ACCEPTMID = M.MID WHERE N.ASKMID = #{uid} AND state = 1;
     	</select>
     	
     	<select id="getNeiInvs" parameterType="String" resultType="NeighborJoinMember">
@@ -31,4 +31,10 @@
     	<update id="updateNeiAccept">
     		UPDATE NEIGHBORS SET ACCEPTREGDATE = GETDATE(), STATE = 1 WHERE ASKMID = #{param1} AND ACCEPTMID = #{param2}
     	</update>
+    	
+    	<select id="getInv" parameterType="String" resultType="Neighbor">
+    		SELECT * FROM NEIGHBORS WHERE ASKMID = #{param1} AND ACCEPTMID = #{param2}
+    		UNION
+    		SELECT * FROM NEIGHBORS WHERE ASKMID = #{param2} AND ACCEPTMID = #{param1}
+    	</select>
     </mapper>

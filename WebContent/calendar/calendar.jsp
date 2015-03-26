@@ -42,17 +42,24 @@
                         </div>
 
                         <div id="calendar-write-body">
-                            <div class="calendar-wrapper">
-                                날짜 : <input type="text" id="datepicker" readonly="readonly" />
-                            </div>
-                            <div class="calendar-wrapper">
-                                내용 : 
-                                <textarea id="calendar-content" rows="8"></textarea>
-                            </div>
-                            <div id="calendar-btn-wrapper">
-                                <input type="button" id="btn-calendar-write" value="작성"/>
-                                <input type="button" id="btn-calendar-cancel" value="취소" />
-                            </div>
+                        	<form id="calForm" action="insertCalProc.jsp" method="post">
+	                            <div class="calendar-wrapper">
+	                                날짜 : <input type="text" id="datepickerStart" name="datepickerStart" class="datepicker" readonly="readonly" />
+	                            </div>
+	                            
+	                            <div class="calendar-wrapper">
+	                                <input type="text" id="datepickerEnd" name="datepickerEnd" class="datepicker" readonly="readonly" />
+	                            </div>
+	                            
+	                            <div class="calendar-wrapper">
+	                                내용 : 
+	                                <textarea id="calendar-content" rows="8"></textarea>
+	                            </div>
+	                            <div id="calendar-btn-wrapper">
+	                                <input type="button" id="btn-calendar-write" value="작성"/>
+	                                <input type="button" id="btn-calendar-cancel" value="취소" />
+	                            </div>
+                            </form>
                         </div>
 
                         <div id="calendar"></div>

@@ -1,7 +1,8 @@
 ﻿$(document).ready(function () {
 	
 	var dvImgCode;
-	var dvCommentContainer
+	var dvCommentContainer;
+	var detailView;
 
     //-----------------상세보기---------------------
 	
@@ -29,15 +30,23 @@
 		$(".dv-mask").fadeOut(300);
 	});
     
-    $(".dv-reg-input").keypress(function(e) { 
-    	
-    	if (e.keyCode == 13){
-    		alert(e.keyCode);
-    		$(".dv-reg-btn").click()
-            
+    $(".dv-reg-input").keypress(function(event) { 
+    	if (event.which == 13){
+    		var content =$(".dv-reg-input").val();
+        	$.ajax({
+        		type:"post",
+        		url:"famPostControl.jsp",
+        		data: { famPostCode : dvImgCode
+    					,content : content
+        		},
+        		dataType : "json",
+        		success:function(data){
+        			dvCommentContainer.load("famPostView.jsp?famPostCode=" + dvImgCode);
+        			$(".dv-reg-input").val("");
+        		}
+        	});
         }    
     });
-    
     
     //코멘트저장
     $(".dv-reg-btn").click(
@@ -52,10 +61,19 @@
     		dataType : "json",
     		success:function(data){
     			dvCommentContainer.load("famPostView.jsp?famPostCode=" + dvImgCode);
-    			alert("@@");
     			$(".dv-reg-input").val("");
     		}
     	});
+    });
+    
+    $('.dv-btn-next').click(function(){
+    	detailView = $('.detail-view');
+    	detailView.load("pre_nextView.jsp?curCode=" + dvImgCode);
+    });
+    
+    $('.dv-btn-pre').click(function(){
+    	detailView = $('.detail-view');
+    	detailView.load("pre_nextView.jsp?curCode=" + dvImgCode);
     });
     
     // ------------------등록-------------------------
