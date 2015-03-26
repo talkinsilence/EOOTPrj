@@ -46,6 +46,32 @@ body {
     cursor: pointer;
 }
 
+#btn-myhome-upload-select {
+	width: 174px;
+    height: 30px;
+    border: 1px solid #c6c6c6;
+    background:#f8f8f8;
+    cursor: pointer;
+}
+
+#btn-myhome-upload-set {
+	width: 100px;
+    height: 30px;
+    border: 1px solid #3079ed;
+    background:#357ae8;
+    font-weight:bold;
+    color:#fff;
+    cursor: pointer;
+}
+
+#btn-myhome-upload-cancel {
+	width: 70px;
+    height:30px;
+    border: 1px solid #c6c6c6;
+    background:#f8f8f8;
+    cursor: pointer;
+}
+
 #profile-name-txt {
     width:175px;
 }

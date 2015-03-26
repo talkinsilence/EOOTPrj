@@ -12,5 +12,6 @@ public interface MemberDao {
 	public int updateFamname(Member member);
 	public int updateAddress(Member member);
 	public int updateProfilePic(String fileName, String mid);
+	public int updateProfileBg(String fileName, String famcode);
 	public int updateFamAccept(Member member);
 }

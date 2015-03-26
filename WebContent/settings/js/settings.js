@@ -48,6 +48,30 @@ $(document).ready(function () {
         $('#profile-edit').fadeIn(300);
     });
     
+    $("#btn-upload-select").click(function () {
+        $("#profile-edit-file").trigger("click");
+    });
+    btnUploadSet.mouseover(function () {
+        btnUploadSet.css("background", "#0054FF");
+    });
+    btnUploadSet.mouseout(function () {
+        btnUploadSet.css("background", "#3079ed");
+    });
+    btnUploadSet.click(function(){
+    	var file = $("#profile-edit-file");
+    	
+    	if(file.val() == ""){
+    		alert("사진을 선택해주세요");
+    	} else
+    		$("#formProfile").submit();
+    });
+    
+    
+    $("#btn-upload-cancel").click(function () {
+    	$('#profile-edit-thumbnail').attr('src', '');
+        $('#profile-edit').fadeOut(400);
+    });
+    
     // 우리집
     myhomeThum.mouseover(function(){
     	myhomeThum.css("opacity","0.3");
@@ -59,19 +83,22 @@ $(document).ready(function () {
     	$("#myhome-edit").fadeIn(300);
     });
     
-    $("#btn-upload-select").click(function () {
-        $("#profile-edit-file").trigger("click");
-    });
-    btnUploadSet.mouseover(function () {
-        btnUploadSet.css("background", "#0054FF");
-    });
-    btnUploadSet.mouseout(function () {
-        btnUploadSet.css("background", "#3079ed");
+    $("#btn-myhome-upload-select").click(function () {
+        $("#myhome-edit-file").trigger("click");
     });
     
-   
-    $("#btn-upload-cancel").click(function () {
-        $('#profile-edit').fadeOut(400);
+    $("#btn-myhome-upload-set").click(function(){
+    	var file = $("#myhome-edit-file");
+    	
+    	if(file.val() == "")
+    		alert("사진을 선택해주세요");
+    	else
+    		$("#formMyhome").submit();
+    });
+    
+    $("#btn-myhome-upload-cancel").click(function(){
+    	$('#myhome-edit-thumbnail').attr('src', '');
+    	$("#myhome-edit").fadeOut(400);
     });
 
     // 프로필
@@ -403,4 +430,65 @@ function famInvMeAccept(askmid){
 	
 	if(check)
 		$(location).attr("href","updateFamAcceptProc.jsp?askmid="+askmid);
+}
+
+function profileReadURL(input) {
+	isCheck = false;
+    filename    = $("#profile-edit-file").val();
+    file_len    = filename.length;
+    file_gubun  = filename.substr(file_len - 3, file_len);
+
+    if (file_gubun.toLowerCase() == "jpg" || file_gubun.toLowerCase() == "gif")
+    {
+        isCheck = true;
+    }
+    if (isCheck == false)
+    {
+        alert("확장자가 jpg, gif 인 파일만 업로드가 가능합니다.");
+        
+        return false;
+    }
+    else
+    {
+    	if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#profile-edit-thumbnail').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    	
+        return true;
+    }
+	
+}
+
+function myHomeReadURL(input) {
+	isCheck = false;
+    filename    = $("#myhome-edit-file").val();
+    file_len    = filename.length;
+    file_gubun  = filename.substr(file_len - 3, file_len);
+
+    if (file_gubun.toLowerCase() == "jpg" || file_gubun.toLowerCase() == "gif")
+    {
+        isCheck = true;
+    }
+    if (isCheck == false)
+    {
+        alert("확장자가 jpg, gif 인 파일만 업로드가 가능합니다.");
+        
+        return false;
+    }
+    else
+    {
+    	if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#myhome-edit-thumbnail').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    	
+        return true;
+    }
 }

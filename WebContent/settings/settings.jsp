@@ -66,17 +66,17 @@
                 <div id="profile-edit-body">
                     <div id="profile-edit-viewer-wrapper">
                         <div id="profile-edit-viewer">
-                            <img id="profile-edit-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
+                            <img id="profile-edit-thumbnail" src="" />
                         </div>
                     </div>
 
                     <div id="profile-upload-form">
-                        <form method="post" enctype="multipart/form-data" action="updateProfilePic.jsp">
-                            <input type="file" name="file" id="profile-edit-file"/>
+                        <form id="formProfile" method="post" enctype="multipart/form-data" action="updateProfilePic.jsp">
+                            <input type="file" name="file" id="profile-edit-file" onchange="profileReadURL(this);"/>
                             <div id="profile-upload-select-wrapper">
                                 <input type="button" id="btn-upload-select" value="사진 선택" /><br />
                             </div>
-                            <input type="submit" id="btn-upload-set" value="사진 등록" />
+                            <input type="button" id="btn-upload-set" value="사진 등록" />
                             <input type="button" id="btn-upload-cancel" class="btn-cancel" value="취소" />
                         </form>
                     </div>
@@ -85,7 +85,20 @@
 			
 			<div id="myhome-edit">
 				<div id="myhome-edit-body">
-				
+					<div id="myhome-edit-viewer-wrapper">
+						<div id="myhome-edit-viewer">
+							<img id="myhome-edit-thumbnail" src="" />
+						</div>
+					</div>
+					
+					<div id="myhome-upload-form">
+						<form id="formMyhome" method="post" enctype="multipart/form-data" action="updateProfileBg.jsp">
+							<input type="file" name="file-bg" id="myhome-edit-file" onchange="myHomeReadURL(this);" />
+							<input type="button" id="btn-myhome-upload-select" value="사진 선택" />
+							<input type="button" id="btn-myhome-upload-set" value="사진 등록" />
+							<input type="button" id="btn-myhome-upload-cancel" value="취소">
+						</form>				
+					</div>
 				</div>
 			</div>
 			

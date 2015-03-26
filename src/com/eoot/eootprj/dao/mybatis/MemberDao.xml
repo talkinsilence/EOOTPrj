@@ -39,4 +39,8 @@
 	<update id="updateFamAccept" parameterType="Member">
 		UPDATE MEMBERS SET ADDRESS = #{address}, FAMCODE = #{famcode}, FAMNAME = #{famname}, PROFILEBG = #{profilebg} WHERE MID = #{mid}
 	</update>
+	
+	<update id="updateProfilePic" parameterType="String">
+		UPDATE MEMBERS SET PROFILEBG = #{param1} WHERE FAMCODE = #{param2}
+	</update>
 </mapper>

@@ -72,4 +72,11 @@ public class MyBMemberDao implements MemberDao {
 		return memberDao.updateFamAccept(member);
 	}
 
+	@Override
+	public int updateProfileBg(String fileName, String famcode) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.updateProfileBg(fileName, famcode);
+	}
+
 }
