@@ -22,12 +22,12 @@
 	            <section class="write"> 
 	                <h1 class="hidden">작성창</h1>
 	                <div class="writeHeader">
-	                	<div class="msg-title">제목을 입력하세요</div>
+	                	<!-- <div class="msg-title">제목을 입력하세요</div> -->
 	                    <iframe id="textTop" class="writeSearch" name="textfield1">
 	                    </iframe>            
 	                </div>
 	                <div class="writerContents">
-	                	<div class="msg-content">내용을 입력하세요</div>
+	                	<!-- <div class="msg-content">내용을 입력하세요</div> -->
 	                    <iframe id="textContent" class="contents" name="textfield2" >
 	                    </iframe>
 	                    <div class="preView">
@@ -53,27 +53,29 @@
 	                        <div class="selectStyle">
 	                            <select id="size" onchange="fontSize()">
 	                                <option>크기</option>
-	                                <option>작게</option>
-	                                <option>중간</option>
-	                                <option>크게</option>
+	                                <option>1px</option>
+	                                <option >2px</option>
+	                                <option >3px</option>
+	                                <option >4px</option>
+	                                <option>5px</option>
+	                                <option >6px</option>
+	                                <option >7px</option>
 	                            </select>
 	                        </div>
 	                        <div class="bold">
-	                            <input type="button" onclick="bold()" class="boldStyle hidden"/>
-	                            B
+	                            <input type="button" onclick="bold()" class="blodStyle"/>                       
 	                        </div>
 	                        <div class="italic">
-	                            <input type="button" onclick="italic()" class="italicStyle hidden" />
-	                            I
+	                            <input type="button" onclick="italic()" class="italicStyle" />
 	                        </div>   
 	                        <div class="color">
 	                            <select id="colors" onchange="fontColors()">
 	                                <option>색깔</option>
-	                                <option style="background-color:#000; color:#fff">검정</option>
-	                                <option style="background-color:#E34A4A;">빨강</option>
-	                                <option style ="background-color:#647AEA;">파랑</option>
-	                                <option style="background-color:#3FD4A8;">초록</option>
-	                                <option style="background-color:#F36BB7;">분홍</option>
+	                                 <option style="background-color:black;">black</option>
+	                                <option style="background-color:red;">red</option>
+	                                <option style ="background-color: blue;">blue</option>
+	                                <option style="background-color: green;">green</option>
+	                                <option style="background-color: pink;">pink</option>
 	      
 	                            </select>
 	                        </div>                  

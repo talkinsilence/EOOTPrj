@@ -89,6 +89,11 @@ html {
 }
 
 /* ================================================= */
+.writeHeader {
+    float: left;
+    width: 100%;
+    height: 15%;
+}
 #wrap {
 	display: block;
 	position: absolute;
@@ -246,6 +251,22 @@ html {
     font-weight: bold;
     font-size: 26px;
 }
+.blodStyle{
+    margin-top:5px;
+    background:url(../image/bold.png) no-repeat;
+    width:30px;
+    height:30px;
+    border: none;
+}
+
+.italicStyle{
+    margin-top:5px;
+    background:url(../image/italic.png) no-repeat;
+    width:30px;
+    height:30px;
+    border: none;
+}
+
 
 .italic{
     float: left;
@@ -556,7 +577,7 @@ html {
 }
 
 #imgInp {
-    background:url(../image/µ¿¿µ»ó.jpg) no-repeat;
+    background:url(../image/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.jpg) no-repeat;
     border: none;
     width: 32px;
     height: 32px;
@@ -586,6 +607,7 @@ html {
 #colors{
     height:30px;
     border: none;
+    width:50px;
 }
 
 select{
