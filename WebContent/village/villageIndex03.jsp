@@ -14,8 +14,8 @@
 <%@ page import="com.eoot.eootprj.dao.VilPostDao"%>
 <%@ page import="com.eoot.eootprj.model.VilPost"%>
 <%@ page import="com.eoot.eootprj.dao.mybatis.MyBVilPostDao"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -131,7 +131,7 @@
 										<div class="village-board-label4"></div>
 									</c:if>
 									<div class="village-board-item-img">
-										<img class="thumbnail2" src="${i.profilepic}" />
+										<img class="thumbnail2" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}" />
 									</div>
 									<div class="village-board-item-text00">
 										<p id="village-board-item-title">${i.regdate}</p>
@@ -190,7 +190,7 @@
                                             <p>${i.content}</p>
                                             <c:forEach var="f" items="${fList}">                                          
 	                                            <c:if test="${i.getCode() == f.getVilPostCode()}">
-	                                            	<img class="village-board-item2-img" src="${f.getSrc()}" />
+	                                            	<img class="village-board-item2-img" src="${pageContext.request.servletContext.contextPath}/upload/vilpostImage/${f.getSrc()}" />
 	                                            </c:if>
                                             </c:forEach>
                                             
@@ -202,7 +202,7 @@
 															<div>
 																<div class="profile-pic-box-s">
 																	<h1 class="hidden">댓글작성자프로필사진</h1>
-																	<img class="thumbnail" src="${c.profilepic}" />
+																	<img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${c.profilepic}" />
 																</div>
 																<div class="comment-info">
 																	<div class="comment-info-writer">
@@ -226,19 +226,21 @@
 													</c:if>
 												</c:forEach>
 												</div>
-												<form>
-											<!-- <form action="updateCommentProc.jsp" method="post" enctype="multipart/form-data"> -->
-												<fieldset>
-													<div class="post-comment-write">
-														<div class="profile-pic-box-s">
-															<h1 class="hidden">댓글작성자프로필사진</h1>
-															<img class="thumbnail" src="refimg/default-profile-pic.png" />
-														</div>
-														<input class="post-input-text" type="text" placeholder="댓글을 남겨주세요." /> 
-														<input class="post-input-button" type="button" value="등록" />
-													</div>
-												</fieldset>
-												</form>
+												
+													<form>
+												<!-- <form action="updateCommentProc.jsp" method="post" enctype="multipart/form-data"> -->
+														<fieldset>
+															<div class="post-comment-write">
+																<div class="profile-pic-box-s">
+																	<h1 class="hidden">댓글작성자프로필사진</h1>
+																	<img class="thumbnail" src="refimg/default-profile-pic.png" />
+																</div>
+																<input class="post-input-text" type="text" placeholder="댓글을 남겨주세요." /> 
+																<input class="post-input-button" type="button" value="등록" />
+															</div>
+														</fieldset>
+													</form>
+													
 											</div>
                                         </div>
                                     </div>
@@ -274,7 +276,7 @@
                             <div class="e-oot-newsfeed-clipper">
                                 <ul class="e-oot-newsfeed-list">
                                 <c:forEach var="fL" items="${famList}">
-                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="${fL.profilepic}" /></div><p id="e-oot-newsfeed-item-content1">${fL.name}</p><p id="e-oot-newsfeed-item-content2">${fL.title}</p></a></li>
+                                    <li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img"><img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${fL.profilepic}" /></div><p id="e-oot-newsfeed-item-content1">${fL.name}</p><p id="e-oot-newsfeed-item-content2">${fL.title}</p></a></li>
                                 </c:forEach>
                                 </ul>
                             </div>

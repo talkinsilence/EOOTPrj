@@ -100,7 +100,7 @@
                             <div class="post-header">
                                 <div class="profile-pic-box">
                                     <h1 class="hidden">프로필사진</h1>
-                                    <img class="thumbnail" src="${i.profilepic}" />
+                                    <img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}" />
                                 </div>
                                 <div class="post-info">
                                     <div class="post-info-writer">
@@ -131,7 +131,7 @@
                         </div>
 						<c:forEach var="j" items="${FPF}">
 							<c:if test="${i.getCode() == j.getFamPostCode()}">
-                        		<img class="post-main-img" src="${j.getSrc()}" />
+                        		<img class="post-main-img" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${j.getSrc()}" />
                        		</c:if>
                         </c:forEach>
                         <!--<img class="post-main-img hidden">(동영상대표이미지)</img>-->
@@ -172,7 +172,7 @@
 											<li>
 												<div class="profile-pic-box-s">
 													<h1 class="hidden">댓글작성자프로필사진</h1>
-													<img class="thumbnail" src="${k.profilepic}" />
+													<img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${k.profilepic}" />
 												</div>
 												<div class="comment-info">
 													<div class="comment-info-writer">
