@@ -360,7 +360,7 @@
 }
 
 .letter-view-box {
-   display: hidden;
+   
    position: absolute;
    width: 520px;
    height: 600px;
@@ -383,6 +383,15 @@
    background: white;
    text-align: center;
    word-wrap: break-word;
+}
+
+.letter-img01
+{
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    right: 30px;
+    top: 40px;
 }
 
 .letter-view-content {

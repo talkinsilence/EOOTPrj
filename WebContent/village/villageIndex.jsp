@@ -103,7 +103,7 @@
 								<ul class="e-oot-newsfeed-list">
 									<c:forEach var="fpjm" items="${FPJM}">
 										<li class="e-oot-newsfeed-item"><a href=""><div id="e-oot-newsfeed-item-img">
-											<img class="thumbnail" src="${fpjm.profilepic}" /></div>
+											<img class="thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${fpjm.profilepic}" /></div>
 											<p id="e-oot-newsfeed-item-content1">${fpjm.name}</p>
 											<p id="e-oot-newsfeed-item-content2">${fpjm.title}</p></a>
 										</li>

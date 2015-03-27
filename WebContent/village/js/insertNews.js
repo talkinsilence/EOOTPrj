@@ -8,9 +8,9 @@ var content;
 
 $(".post-input-button").click(function(){
        content = $(".post-input-text").val();
-       alert(content);
+       //alert(content);
        var vilPostCode = $(".vil-post-code").html();
-       alert(vilPostCode);
+       //alert(vilPostCode);
         $.ajax({
            type:"post",
            url:"updateNewsCommentProc.jsp",

@@ -12,24 +12,28 @@
     <script src="js/quickWrite.js"></script>
     <script src="js/quickWriteSend.js"></script>
 </head>
-<body onload="iframeOn()"> 
+<body> 
 	<div id="qw">
 		<div class="qw-transp-bg"></div>
     	<div class="qw-btn-close"></div>
     	
 	    <div id="wrap">
+	    <form id="form"  action="fanPostControl.jsp" method="post" enctype="multipart/form-data">
 	        <article>
-	            <section class="write"> 
+	            <section class="write" > 
 	                <h1 class="hidden">작성창</h1>
 	                <div class="writeHeader">
 	                	<!-- <div class="msg-title">제목을 입력하세요</div> -->
-	                    <iframe id="textTop" class="writeSearch" name="textfield1">
-	                    </iframe>            
+	                    <iframe id="textTop" class="writeSearch" >
+	                    </iframe>
+	                     <textarea id="textarea1" name="textfield1" hidden=""></textarea>
+	                   <!--  <input type="text" id="textTop" class="writeSearch" name="textfield1"/> -->
 	                </div>
 	                <div class="writerContents">
 	                	<!-- <div class="msg-content">내용을 입력하세요</div> -->
-	                    <iframe id="textContent" class="contents" name="textfield2" >
+	                    <iframe id="textContent" class="contents"  >
 	                    </iframe>
+	                    <textarea id="textarea2" name="textfield2"  hidden=""></textarea>
 	                    <div class="preView">
 	                        미리 보기
 	                        <img id="img" />
@@ -51,7 +55,7 @@
 	                <div class="writeStyle">
 	                    <div class="styleSelect">
 	                        <div class="selectStyle">
-	                            <select id="size" onchange="fontSize()">
+	                            <select id="size" >
 	                                <option>크기</option>
 	                                <option>1px</option>
 	                                <option >2px</option>
@@ -63,13 +67,13 @@
 	                            </select>
 	                        </div>
 	                        <div class="bold">
-	                            <input type="button" onclick="bold()" class="blodStyle"/>                       
+	                            <input type="button"  class="blodStyle"  id="bold"/>                       
 	                        </div>
 	                        <div class="italic">
-	                            <input type="button" onclick="italic()" class="italicStyle" />
+	                            <input type="button" class="italicStyle"  id="italic"//>
 	                        </div>   
 	                        <div class="color">
-	                            <select id="colors" onchange="fontColors()">
+	                            <select id="colors" >
 	                                <option>색깔</option>
 	                                 <option style="background-color:black;">black</option>
 	                                <option style="background-color:red;">red</option>
@@ -86,13 +90,13 @@
 		                    <h1 class="hidden">파일 업로드및 링크</h1>
 		                    <div class="upload">
 		                        <h1 class="hidden">업로드및 링크</h1>
-		                         <form id="form"  method="post" enctype="multipart/form-data">
+		                        <!--  <form id="form"  action="fanPostControl.jsp" method="post" enctype="multipart/form-data"> -->
 			                        <div class="fileUpload">
-			                            <input type=file name='file1' style='display: none;' id="imgInp" multiple="multiple">
+			                            <input type="file" name='file1' style='display: none;' id="imgInp">
 			                            <img src='image/파일.jpg' border='0' onclick='document.all.file1.click();'> 		                         
-			                            <a href="cal.html" style="padding-left:12px;" target="textfield2"><img src="image/칼렌더.png"></a>                      
+			                            <a href="cal.html" style="padding-left:12px;" target="textfield2"><img src="image/칼렌더.png"></a>      
 			                        </div>
-		                        </form>
+		                        <!-- </form> -->
 		                    </div>
 		                </div>
 	                
@@ -115,6 +119,7 @@
 	                <input type="button" class="btn" id="btn" value="작성완료"/>
 	            </section>
 	        </article>
+	        </form>
 	    </div>
 	</div>
 </body>

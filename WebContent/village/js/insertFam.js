@@ -8,9 +8,9 @@ var content;
 
 $(".post-input-button").click(function(){
        content = $(".post-input-text").val();
-       alert(content);
+       //alert(content);
        var famPostCode = $(".vil-post-code").html();
-       alert(famPostCode);
+       //alert(famPostCode);
         $.ajax({
            type:"post",
            url:"updateFamCommentProc.jsp",

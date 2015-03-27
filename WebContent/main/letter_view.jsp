@@ -24,4 +24,5 @@ pageContext.setAttribute("l", l);
 	<div class="letter-view-content">
 		<p>${l.content}</p>
 	</div>
+	<img class="letter-img01" src="images/balloon.png" />
 </div>
