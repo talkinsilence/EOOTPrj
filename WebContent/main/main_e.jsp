@@ -184,7 +184,7 @@
                      	<c:forEach var="v" items="${v}" >
 	                     	<li class="preview-vp-item">
 	                     		<div class="preview-vilpost pic-box">
-	                             <img class="preview-pic" src="${v.src}" />
+	                             <img class="preview-pic" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${j.profilepic}${v.src}" />
 	                             <div class="preview-pic-dscrp hidden"></div>
 		                         </div>
 		                         <div class="preview-vilpost text-box">
