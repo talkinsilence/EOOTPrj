@@ -47,6 +47,13 @@ public class MyBVilPostDao implements VilPostDao{
 		return 0;
 	}
 
+	@Override
+	public List<VilPost> getTop2VilPosts() {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		VilPostDao vilPostDao = sqlSession.getMapper(VilPostDao.class);
+		return vilPostDao.getTop2VilPosts();
+	}
+
 	/*@Override
 	public int insert(VilPost vilPost) {
 		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
