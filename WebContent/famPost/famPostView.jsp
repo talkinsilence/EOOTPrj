@@ -1,16 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="com.eoot.eootprj.model.FamPostCommentJoinMember"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
+<%@page import="com.eoot.eootprj.model.FamPostCommentJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostCommentDao"%>
 <%@page import="com.eoot.eootprj.dao.FamPostCommentDao"%>
 <%@page import="com.eoot.eootprj.model.FamPostJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostDao"%>
 <%@page import="com.eoot.eootprj.dao.FamPostDao"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 
 <script>
    	$(document).ready(function() {
+   		var cnt = 0;
+   		
 		$('.dv-content').click(function() {
 			if ($(this).css("word-break") == "normal") {
 				$(this).css("word-break", "break-all")
@@ -27,7 +29,13 @@
 				});
 			}
 		});
+   		
+		$(".dv-like-cnt").click(function(){
+			cnt++;
+			$(this).html(cnt);
+		});
    	});
+   	
 </script>
 
 <%	
@@ -65,7 +73,8 @@
 			<div class="dv-like-img">
 				<img src="images/btn-like.png" />
 			</div>
-			<div class="dv-like-cnt">${fp.getLikeCnt()}</div>
+			<div class="dv-like-cnt">0</div> 
+			<%-- <div class="dv-like-cnt">${fp.getLikeCnt()}</div> --%>
 		</button>
 		<button class="dv-scrap-cnt-btn">
 			<div class="dv-scrap-img">

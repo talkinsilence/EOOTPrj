@@ -20,7 +20,6 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
@@ -39,21 +38,29 @@
 <%    
 	String famPostCode ="";
 	String query = "";
-	
-	String _famPostCode = request.getParameter("famPostCode");
+	String uid = (String) session.getAttribute("uid");
 	String _query = request.getParameter("query");
-
+	
 	if (_query != null && !_query.equals(""))
 		query = _query;
-
+	
+	
+	MemberDao memberDao = new MyBMemberDao();
+	Member m = memberDao.getMember(uid);
+	
+	String famcode = m.getFamcode();
+	
+	List<Member> mList = memberDao.getFamMembers(uid, famcode);
+	
 	FamPostDao famPostDao = new MyBFamPostDao();
 	List<FamPostJoinMember> list = famPostDao.getFamPosts(query);
 
 	FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
 	List<FamPostFileJoinFamPost> fList = famPostFileDao.getFamPostFiles();
-	
+	fList.get(0).getWriter();
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("fList", fList);
+	pageContext.setAttribute("mList", mList);
 	pageContext.setAttribute("size", famPostFileDao.getSize());
 %>
 
@@ -66,11 +73,7 @@
 				<div class="main-media-box-L">
 
 					<img src="${fList.get(0).getSrc()}" />
-					<!-- <div class="mask"></div>
-                    <div class="title"></div>
-                    <div class="date">2015.2.28</div>
-                    <div class="content"></div>
-                    <div class="view"></div> -->
+
 				</div>
 
 				<div class="main-media-box-R">
@@ -86,6 +89,14 @@
 		</div>
 
 		<div class="my-menu">
+			<div class="blank"></div>
+			<c:if test="${not empty mList}">
+				<c:forEach var="i" items="${mList}">
+					<div class="fam-img">
+						<img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}">
+					</div>
+				</c:forEach>
+			</c:if>
 			<button class="upload">
 				upload
 			</button>
@@ -122,10 +133,11 @@
 								<div class="media-list-item">
 									<div class="media-list-item-code hidden" >${fList.get(j*5+i).getFamPostCode()}</div>
 									<img class="media-list-item-img" src="${fList.get(j*5+i).getSrc()}">
-									<div class="media-list-item-mask"></div>
-									<div class="media-list-item-like">${fList.get(j*5+i).getLikeCnt()}</div>
-									<div class="media-list-item-scrap">${fList.get(j*5+i).getClipCnt()}</div>
-									<div class="media-list-item-comment">${fList.get(j*5+i).getCommentCnt()}</div>
+									<div class="img-mask">
+										<div class="img-regdate">${fList.get(j*5+i).getRegdate()}</div>
+										<div class= "img-writer">${fList.get(j*5+i).getWriter()}</div>
+										<div class="img-title">${fList.get(j*5+i).getTitle()}</div>
+									</div>
 								</div>
 							</div>
 						</c:if>
@@ -187,7 +199,7 @@
 					</div>
 
 					<div class="text-add-box">
-						<div class="font-box">
+						<!-- <div class="font-box">
 							폰트선택버튼
 							<div class="font-style-select"></div>
 							<div class="font-size-select"></div>
@@ -200,7 +212,7 @@
 						<select class="folder-select">
 							<option value="my gallery">my gallery</option>
 							<option value="my gallery">fam gallery</option>
-						</select>
+						</select> -->
 
 						<div class="content-box">
 							<input type="text" class="text-title" placeholder="title" />

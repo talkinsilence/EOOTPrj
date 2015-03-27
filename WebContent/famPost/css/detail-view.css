@@ -1,4 +1,28 @@
-﻿.dv-mask{
+﻿::-webkit-scrollbar
+{
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track
+{
+  background: #F1F1F1;
+}
+
+::-webkit-scrollbar-thumb
+{
+  width: 12px;
+  height: 12px;
+  background: #BCBCBC;
+  border: 2px solid #F1F1F1;
+} 
+
+::-webkit-scrollbar-thumb:ACTIVE
+{
+  background: rgba(0, 0, 0, 0.4);
+} 
+
+.dv-mask{
     display: none;
     position: fixed;
     left: 0;
