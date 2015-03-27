@@ -365,6 +365,10 @@ html {
     z-index: 3;   
 }
 
+.post-user-menu-wrapper.me{
+   height: 32px;
+}
+
 .post-user-menu-wrapper.you{
    height: 32px;
 }
@@ -379,9 +383,9 @@ html {
     text-align: center;   
 }
 
-.post-user-menu.edit-post {
+/* .post-user-menu.edit-post {
     border-bottom: 1px solid #e5e5e5;
-}
+} */
 
     .post-user-menu:hover {
         background: #f9f9f9;

@@ -159,7 +159,7 @@
                            <div class="post-user-menu-wrapper-bg"></div>
                            <c:if test="${m.mid == i.writer}">
                               <div class="post-user-menu-wrapper me">
-                                <div class="post-user-menu edit-post">수정하기</div>
+                                <!-- <div class="post-user-menu edit-post">수정하기</div> -->
                                 <div class="post-user-menu delete-post">삭제하기</div>
                              </div>
                           </c:if>
