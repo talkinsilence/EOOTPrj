@@ -24,6 +24,5 @@
 
 	JSONObject jo = new JSONObject();
 	jo.put("result", "SUCC");
-	System.out.println("@@" + jo.toString());
 	response.getWriter().println(jo.toString());
 %>
