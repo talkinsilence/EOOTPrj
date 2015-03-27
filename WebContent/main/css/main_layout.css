@@ -508,6 +508,10 @@ body {
 	overflow: hidden;
 }
 
+.preview-vp-item {
+	cursor: pointer;	
+}
+
 .village-board-label {
 	display: block;
 	width: 5px;

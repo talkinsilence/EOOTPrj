@@ -186,27 +186,54 @@
                   <div class="preview-vilpost-wrapper">
                      <span>주변 인기게시물</span>
                      <%-- <c:forEach var="i" items="${tvps}" > --%>
-                        <div class="preview-vilpost pic-box">
+                     <ul>
+                     	<li class="preview-vp-item">
+                     		<div class="preview-vilpost pic-box">
                              <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
                              <div class="preview-pic-dscrp hidden"></div>
-                         </div>
-                         <div class="preview-vilpost text-box">
-                            <%-- <c:if test="${i.sort.equals('1')}">
-                           <div class="village-board-label 1"></div>
-                        </c:if>
-                        <c:if test="${i.sort.equals('2')}">
-                           <div class="village-board-label 2"></div>
-                        </c:if>
-                        <c:if test="${i.sort.equals('3')}">
-                           <div class="village-board-label 3"></div>
-                        </c:if>
-                        <c:if test="${i.sort.equals('4')}">
-                           <div class="village-board-label 4"></div>
-                        </c:if> --%>
-                        <div class="village-board-label"></div>
-                             <p class="text-box-title">${i.title}</p>
-                             <p class="text-box-content">${i.content}</p>
-                         </div>
+	                         </div>
+	                         <div class="preview-vilpost text-box">
+	                            <%-- <c:if test="${i.sort.equals('1')}">
+	                           <div class="village-board-label 1"></div>
+	                        </c:if>
+	                        <c:if test="${i.sort.equals('2')}">
+	                           <div class="village-board-label 2"></div>
+	                        </c:if>
+	                        <c:if test="${i.sort.equals('3')}">
+	                           <div class="village-board-label 3"></div>
+	                        </c:if>
+	                        <c:if test="${i.sort.equals('4')}">
+	                           <div class="village-board-label 4"></div>
+	                        </c:if> --%>
+	                        <div class="village-board-label"></div>
+	                             <p class="text-box-title"><%-- ${i.title} --%>제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</p>
+	                             <p class="text-box-content"><%-- ${i.content} --%>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</p>
+	                         </div>
+                     	</li>
+                     	<li class="preview-vp-item">
+                     		<div class="preview-vilpost pic-box">
+                             <img class="preview-pic" src="images/suzy2.jpg" />
+                             <div class="preview-pic-dscrp hidden"></div>
+	                         </div>
+	                         <div class="preview-vilpost text-box">
+	                            <%-- <c:if test="${i.sort.equals('1')}">
+	                           <div class="village-board-label 1"></div>
+	                        </c:if>
+	                        <c:if test="${i.sort.equals('2')}">
+	                           <div class="village-board-label 2"></div>
+	                        </c:if>
+	                        <c:if test="${i.sort.equals('3')}">
+	                           <div class="village-board-label 3"></div>
+	                        </c:if>
+	                        <c:if test="${i.sort.equals('4')}">
+	                           <div class="village-board-label 4"></div>
+	                        </c:if> --%>
+	                        <div class="village-board-label"></div>
+	                             <p class="text-box-title"><%-- ${i.title} --%>제목</p>
+	                             <p class="text-box-content"><%-- ${i.content} --%>그리고 내용ㅋ.ㅋ</p>
+	                         </div>
+                     	</li>
+                     </ul>
                       <%-- </c:forEach> --%>
                   </div>
                 </div>
