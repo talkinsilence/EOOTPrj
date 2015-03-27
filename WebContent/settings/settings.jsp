@@ -71,7 +71,7 @@
                     </div>
 
                     <div id="profile-upload-form">
-                        <form id="formProfile" method="post" enctype="multipart/form-data" action="updateProfilePic.jsp">
+                        <form name="formProfile" id="formProfile" method="post" enctype="multipart/form-data" action="updateProfilePic.jsp">
                             <input type="file" name="file" id="profile-edit-file" onchange="profileReadURL(this);"/>
                             <div id="profile-upload-select-wrapper">
                                 <input type="button" id="btn-upload-select" value="사진 선택" /><br />
@@ -92,7 +92,7 @@
 					</div>
 					
 					<div id="myhome-upload-form">
-						<form id="formMyhome" method="post" enctype="multipart/form-data" action="updateProfileBg.jsp">
+						<form name="formMyHome" id="formMyhome" method="post" enctype="multipart/form-data" action="updateProfileBg.jsp">
 							<input type="file" name="file-bg" id="myhome-edit-file" onchange="myHomeReadURL(this);" />
 							<input type="button" id="btn-myhome-upload-select" value="사진 선택" />
 							<input type="button" id="btn-myhome-upload-set" value="사진 등록" />
