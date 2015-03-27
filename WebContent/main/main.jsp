@@ -1,4 +1,7 @@
-﻿<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
+﻿<%@page import="com.eoot.eootprj.model.FamPostFile"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBFamPostFileDao"%>
+<%@page import="com.eoot.eootprj.dao.FamPostFileDao"%>
+<%@page import="com.eoot.eootprj.model.NeighborJoinMember"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBNeighborDao"%>
 <%@page import="com.eoot.eootprj.dao.NeighborDao"%>
 <%@page import="com.eoot.eootprj.model.Neighbor"%>
@@ -46,6 +49,10 @@
    VilPostDao vilDao = new MyBVilPostDao();
    
    List<VilPost> v = vilDao.getTop2VilPosts();
+   
+   FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
+	List<FamPostFile> fList = famPostFileDao.getMainFamPostFiles();
+   
    //List<VilPost> tvps = vilPostDao.getTopVilPosts(vcode);
    
    /* for( Member ms : fms)
@@ -58,6 +65,7 @@
    pageContext.setAttribute("ls", ls);
    pageContext.setAttribute("lsSize", lsSize);
    pageContext.setAttribute("nlsSize", nlsSize);
+   pageContext.setAttribute("fList", fList);
    //pageContext.setAttribute("tvps", tvps);
 %>
 
@@ -155,32 +163,32 @@
                   		<%-- <c:forEach var="i" items="${prvfps}" > --%>
 	                  		<li class="firstanimation">
 		                  		<div class="preview-fampost pic-box">
-	                            	<img class="preview-pic" src="images/byul22.jpg"/>
+	                            	<img class="preview-pic" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(0).getSrc()}" />
 	                            	<div class="preview-pic-dscrp hidden"></div>
 		                        </div>
 	                  		</li>
 							<li class="secondanimation">
 		                  		<div class="preview-fampost pic-box">
-	                            	<img class="preview-pic" src="images/dog.png"/>
+	                            	<img class="preview-pic" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(1).getSrc()}" />
 	                            	<div class="preview-pic-dscrp hidden"></div>
 		                        </div>
 	                  		</li>
 	                  		<li class="thirdanimation">
 		                  		<div class="preview-fampost pic-box">
-	                            	<img class="preview-pic" src="images/cat.png"/>
-	                            	<div class="preview-pic-dscrp hidden"></div>
+									<img class="preview-pic" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(2).getSrc()}" />	                            	
+									<div class="preview-pic-dscrp hidden"></div>
 		                        </div>
 	                  		</li>
 	                  		<li class="fourthanimation">
 		                  		<div class="preview-fampost pic-box">
-	                            	<img class="preview-pic" src="images/ljh.jpg"/>
-	                            	<div class="preview-pic-dscrp hidden"></div>
+									<img class="preview-pic" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(3).getSrc()}" />	                            	
+									<div class="preview-pic-dscrp hidden"></div>
 		                        </div>
 	                  		</li>
 	                  		<li class="fifthanimation">
 		                  		<div class="preview-fampost pic-box">
-	                            	<img class="preview-pic" src="images/taeyang.jpg"/>
-	                            	<div class="preview-pic-dscrp hidden"></div>
+									<img class="preview-pic" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(4).getSrc()}" />	                            	
+									<div class="preview-pic-dscrp hidden"></div>
 		                        </div>
 	                  		</li>
                   		<%-- </c:forEach> --%>

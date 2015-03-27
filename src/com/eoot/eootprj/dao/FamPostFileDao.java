@@ -21,7 +21,8 @@ public interface FamPostFileDao {
 			+ "ON F.CODE = FPF.FAMPOSTCODE ")
 	public	List<FamPostFileJoinFamPost> getFamPostFiles();
 	
-	
+	@Select("select top 5 * from famposts order by likecnt desc")
+	public	List<FamPostFile> getMainFamPostFiles();
 	
 	@Select("SELECT * FROM FAMPOSTFILES")
 	public	List<FamPostFile> getFamPostFiles2();
