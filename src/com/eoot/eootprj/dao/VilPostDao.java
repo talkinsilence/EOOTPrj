@@ -29,7 +29,9 @@ public interface VilPostDao {
 
 	@Delete("DELETE FROM VilPosts WHERE CODE = #{code}")
 	public int delete(VilPost vilPost);
-
+	
+	@Select("select top 2 * from vilposts order by likecnt desc;")
+	public List<VilPost> getTop2VilPosts();
 	/*@SelectKey(before = true
 			, keyColumn = "code"
 			, statement = "SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM VilPosts"
