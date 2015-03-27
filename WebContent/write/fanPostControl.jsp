@@ -22,18 +22,7 @@
 	String shareNei = req.getParameter("shareNei");
 	String shareVil = req.getParameter("shareVil");
 	String uid = (String) session.getAttribute("uid");
-	
-	out.println(title + "<br />");
-	out.println(content + "<br />");
-	out.println(shareNei + "<br />");
-	out.println(shareVil + "<br />"); 
 
-	out.println(title + "<br />");
-	out.println(content + "<br />");
-	out.println(shareNei + "<br />");
-	out.println(shareVil + "<br />"); 
-
-	
 	String fileName = req.getFilesystemName("file1");
 
 	out.println(fileName + "<br />");
@@ -108,5 +97,5 @@
 	  jo.put("result", "SUCC");
 	  System.out.println("@@" + jo.toString());
 	  response.getWriter().println(jo.toString());   */
-	/*  response.sendRedirect("quickWrite.jsp"); */
+	 response.sendRedirect("../newsFeed/newsFeed.jsp"); 
 %>
