@@ -22,17 +22,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
+<title>우리 함께 | e - oot</title>
+<link href="../resource/css/reset.css" rel="stylesheet" />
+<script src="../resource/js/jquery-2.1.3.js"></script>
+<script src="../resource/js/modernizr.js"></script>
 <link href="css/detail-view.css" rel="stylesheet" />
 <link href="css/media-add.css" rel="stylesheet" />
 <link href="css/media.css" rel="stylesheet" />
 <link href="../resource/css/bind_menu.css" rel="stylesheet" />
-<link href="../resource/css/reset.css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
 <script src="../resource/js/menu.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="../resource/js/jquery-2.1.3.js"></script>
-<script src="../resource/js/modernizr.js"></script>
 <script src="js/media.js"></script>
 
 <%    
