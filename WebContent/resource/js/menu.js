@@ -18,7 +18,11 @@
         $("#menu3").animate({ left: '-200px' });
         $("#menu1").animate({ left: '0px' });
     });
-
+    
+    $("#btn-write").click(function(){
+    	$(location).attr("href", "../write/quickWrite.jsp");
+    });
+    
     //마우스 롤오버, 아웃 효과
     $(".button").mouseover(function () {
         $(this).css("background", "#fff");

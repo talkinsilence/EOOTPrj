@@ -66,7 +66,7 @@
                 <div class="img-button">
                     <div class="vertical-field1">
                         <div class="img-vertical-field2">
-                            <a href=""><img src="../resource/images/btn_write.png" /></a>
+                            <img id="btn-write" src="../resource/images/btn_write.png" />
                         </div>
                     </div>
                 </div>
