@@ -20,42 +20,50 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
+<title>우리 함께 | e - oot</title>
+<link href="../resource/css/reset.css" rel="stylesheet" />
+<script src="../resource/js/jquery-2.1.3.js"></script>
+<script src="../resource/js/modernizr.js"></script>
 <link href="css/detail-view.css" rel="stylesheet" />
 <link href="css/media-add.css" rel="stylesheet" />
 <link href="css/media.css" rel="stylesheet" />
 <link href="../resource/css/bind_menu.css" rel="stylesheet" />
-<link href="../resource/css/reset.css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
 <script src="../resource/js/menu.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="../resource/js/jquery-2.1.3.js"></script>
-<script src="../resource/js/modernizr.js"></script>
 <script src="js/media.js"></script>
 
 <%    
 	String famPostCode ="";
 	String query = "";
-	
-	String _famPostCode = request.getParameter("famPostCode");
 	String _query = request.getParameter("query");
-
+	
+	String uid = (String) session.getAttribute("uid");
+	
 	if (_query != null && !_query.equals(""))
 		query = _query;
-
+	
+	
+	MemberDao memberDao = new MyBMemberDao();
+	Member m = memberDao.getMember(uid);
+	
+	String famcode = m.getFamcode();
+	
+	List<Member> mList = memberDao.getFamMembers(uid, famcode);
+	
 	FamPostDao famPostDao = new MyBFamPostDao();
 	List<FamPostJoinMember> list = famPostDao.getFamPosts(query);
 
 	FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
 	List<FamPostFileJoinFamPost> fList = famPostFileDao.getFamPostFiles();
-	
+
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("fList", fList);
+	pageContext.setAttribute("mList", mList);
 	pageContext.setAttribute("size", famPostFileDao.getSize());
 %>
+
 
 </head>
 
@@ -64,28 +72,30 @@
 		<div class="main-media">
 			<div class="main-media-box">
 				<div class="main-media-box-L">
-
-					<img src="${fList.get(0).getSrc()}" />
-					<!-- <div class="mask"></div>
-                    <div class="title"></div>
-                    <div class="date">2015.2.28</div>
-                    <div class="content"></div>
-                    <div class="view"></div> -->
+					<img src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(0).getSrc()}" />
 				</div>
 
 				<div class="main-media-box-R">
 					<div class="main-media-box-R-top">
-						<img src="${fList.get(1).getSrc()}" />
+						<img src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(1).getSrc()}" />
 					</div>
 
 					<div class="main-media-box-R-bottom">
-						<img src="${fList.get(2).getSrc()}" />
+						<img src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(2).getSrc()}" />
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="my-menu">
+			<div class="blank"></div>
+			<c:if test="${not empty mList}">
+				<c:forEach var="i" items="${mList}">
+					<div class="fam-img">
+						<img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}">
+					</div>
+				</c:forEach>
+			</c:if>
 			<button class="upload">
 				upload
 			</button>
@@ -121,11 +131,12 @@
 							<div class="media-list-item-box">
 								<div class="media-list-item">
 									<div class="media-list-item-code hidden" >${fList.get(j*5+i).getFamPostCode()}</div>
-									<img class="media-list-item-img" src="${fList.get(j*5+i).getSrc()}">
-									<div class="media-list-item-mask"></div>
-									<div class="media-list-item-like">${fList.get(j*5+i).getLikeCnt()}</div>
-									<div class="media-list-item-scrap">${fList.get(j*5+i).getClipCnt()}</div>
-									<div class="media-list-item-comment">${fList.get(j*5+i).getCommentCnt()}</div>
+									<img class="media-list-item-img" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(j*5+i).getSrc()}">
+									<div class="img-mask">
+										<div class="img-regdate">${fList.get(j*5+i).getRegdate()}</div>
+										<div class= "img-writer">${fList.get(j*5+i).getWriter()}</div>
+										<div class="img-title">${fList.get(j*5+i).getTitle()}</div>
+									</div>
 								</div>
 							</div>
 						</c:if>
@@ -158,7 +169,7 @@
 					</div>
 					
 					<div class="dv-reg-box">
-						<div class="dv-reg-pic"></div>
+						<div class="dv-reg-pic"><img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.getProfilepic()}${m.getProfilepic()}"/></div>
 						<input class="dv-reg-input" type="text" placeholder="댓글을 남기세요." />
 						<div class="dv-reg-btn" >등록</div>
 					</div>
@@ -175,19 +186,19 @@
 			<div class="media-add">
 				<div class="media-add-box">
 					<div class="media-add-box-bg"></div>
-					<button class="media-add-btn">사진추가</button>
+					<button class="media-add-btn"></button>
 					<!--<img src=""/>-->
 				</div>
 
 				<div class="media-add-writer-container">
 					<div class="media-writer-box">
-						<div class="media-writer-pic"></div>
-						<div class="media-writer-name">name</div>
+						<div class="media-writer-pic"><img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.getProfilepic()}"/></div>
+						<div class="media-writer-name">${m.getName()}</div>
 						<div class="media-regdate">regdate</div>
 					</div>
 
 					<div class="text-add-box">
-						<div class="font-box">
+						<!-- <div class="font-box">
 							폰트선택버튼
 							<div class="font-style-select"></div>
 							<div class="font-size-select"></div>
@@ -200,7 +211,7 @@
 						<select class="folder-select">
 							<option value="my gallery">my gallery</option>
 							<option value="my gallery">fam gallery</option>
-						</select>
+						</select> -->
 
 						<div class="content-box">
 							<input type="text" class="text-title" placeholder="title" />

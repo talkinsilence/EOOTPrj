@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	  $(".btn").click(function(){
+	  /*$(".btn").click(function(){
 		  var checked= '';
 		  $("input:checkbox[name^=check]:checked").each(function(){
 			  checked+=$(this).val();
@@ -78,7 +78,7 @@ $(document).ready(function () {
 			        }
 			     });
 		  }
-	   }); 
+	   }); */
   function readURL(input) {
       if (input.files && input.files[0]) {
           var reader = new FileReader();
@@ -93,11 +93,9 @@ $(document).ready(function () {
   });
   $("#btn").click(function(){
 	 $("#form").submit(); 
-	 console.log($('#imgInp')).val();
-	 var realPath = document.getElementById('imgInp').baseURI;
-	 alert(realPath);
+	 
   });
-   /* $(window.document).on("contextmenu", function(event){return false;});	//우클릭방지
+    $(window.document).on("contextmenu", function(event){return false;});	//우클릭방지
 	$(window.document).on("selectstart", function(event){return false;});	//더블클릭을 통한 선택방지
 	$(window.document).on("dragstart"	, function(event){return false;});	//드래그
-*/});  
+});  

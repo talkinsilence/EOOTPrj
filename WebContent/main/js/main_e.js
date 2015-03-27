@@ -32,7 +32,19 @@
     var infoWindowOptions = {content: "NAMI"};
     var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
 
-
+    /*===========< lower-right >========================================*/
+    $('.preview-pic').each(function(){
+       if($(this).height() >= $(this).width()){
+          $(this).css({
+              "width": "100%",
+             "height": "auto",
+              "left": "0",
+             "top": "50%",
+              "-webkit-transform": "translate(0, -50%)"
+          })
+       }
+    });
+    
     //===========< letter >==============================================
     $('.eoot-menu-letter').click(function () {
         $('.letter-write-wrapper, .letter-add-wrapper').css("display", "none");

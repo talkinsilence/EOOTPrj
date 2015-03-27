@@ -54,6 +54,6 @@
     });
 });
 
-function eootLink(famcode){
-	$(location).attr("href","../main/main_e.jsp?fc="+famcode);
+function eootLink(eid){
+	$(location).attr("href","../main/main_e.jsp?eid="+eid);
 }

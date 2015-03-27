@@ -23,13 +23,13 @@
  
 out.println(file);
 
-if(req.getFile("file1") !=null){
+/* if(req.getFile("file1") !=null){
 	FamPost fampost = new FamPost();
 	   FamPostDao famPostDao = new MyBFamPostDao();
 	  
 	   fampost.setSrc(file);
 	   out.println(fampost.getSrc());
-}
+} */
 /*  if(req.getFile("file1") != null){
 	 
 	   FamPost fampost = new FamPost();

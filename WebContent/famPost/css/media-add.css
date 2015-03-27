@@ -1,4 +1,28 @@
-﻿.ma-mask{
+﻿::-webkit-scrollbar
+{
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track
+{
+  background: #F1F1F1;
+}
+
+::-webkit-scrollbar-thumb
+{
+  width: 12px;
+  height: 12px;
+  background: #BCBCBC;
+  border: 2px solid #F1F1F1;
+} 
+
+::-webkit-scrollbar-thumb:ACTIVE
+{
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.ma-mask{
     display: none;
     position: fixed;
     left: 0;
@@ -33,7 +57,8 @@
 .media-add-container {
     display: block;
     position: absolute;
-    top: 30px;
+    top: 50%;
+    transform:translateY(-50%);
     height: 650px;
     width: 100%;
 }
@@ -207,7 +232,7 @@
     display:block;
     float:left;
     margin-top:2px;
-    height:386px;
+    height:463px;
     width: 338px;
     border:1px solid #cccccc;
     background:#ffffff;
