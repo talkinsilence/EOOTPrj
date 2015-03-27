@@ -1,5 +1,17 @@
+<%@page import="com.eoot.eootprj.model.Member"%>
+<%@page import="com.eoot.eootprj.dao.MemberDao"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String uid = (String) session.getAttribute("uid");
+
+MemberDao dao = new MyBMemberDao();
+
+Member m = dao.getMember(uid);
+
+pageContext.setAttribute("m", m);
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -45,7 +57,7 @@
 	                <div class="top">
 	                    <div class="profile">
 	                        <h1 class="hidden">프사</h1>
-	                        <img src="" class="thumbnail" alt="alt이거지우셈"/>
+	                        <img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" class="thumbnail" />
 	                    </div>
 	                    <div class="date">
 	                        <h1 class="hidden">현재날짜</h1>

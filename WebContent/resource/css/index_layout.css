@@ -58,12 +58,12 @@ nav#primary a:hover, nav#primary a.active {
 #area1 .separator {
     min-width:100%;
     height: 150px;
-    background:#e0ebe8;
+    background:#DCE8E5;
 }
 
 #area1 {
     min-width: 100%;
-    background: #e0ebe8;
+    background: #DCE8E5;
 }
 
 #area1 article {
@@ -72,14 +72,14 @@ nav#primary a:hover, nav#primary a.active {
 
 #visual-vill {
     height: 310px;
-    background:url("../images/village.PNG") center no-repeat;
+    background:url("../images/vil.png") center no-repeat;
 }
 
 #visual-bar {
     display: table;   
     width: 100%;
     height: 45px;
-    background: #21a97e;
+    background: #45AD95/* #45AD95 */;
 }
 
 #visual-bar-vertical {
@@ -94,7 +94,7 @@ nav#primary a:hover, nav#primary a.active {
     margin-left: 15%;
     width: 184px;
     height: 58px;
-    background: url(../images/cloud1.PNG) no-repeat;
+    background: url(../images/c1.png) no-repeat;
 }
 
 #visual-cloud2 {
@@ -102,7 +102,7 @@ nav#primary a:hover, nav#primary a.active {
     margin-left: 75%;
     width: 154px;
     height: 49px;
-    background: url(../images/cloud2.PNG) no-repeat;
+    background: url(../images/c2.png) no-repeat;
 }
 
 #reg-box {
@@ -146,7 +146,7 @@ nav#primary a:hover, nav#primary a.active {
     position: relative;    
     min-width: 100%;
     height: 1300px;
-    background: #e0ebe8;
+    background: #DCE8E5/* #e0ebe8 */;
     padding-top:90px;
 }
 

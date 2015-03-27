@@ -33,6 +33,10 @@
     background: #404148;
 }
 
+#btn-write{
+	cursor: pointer;
+}
+
 #menu1 .button{
     position: relative;
     float: left;

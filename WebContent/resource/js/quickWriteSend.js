@@ -1,4 +1,8 @@
 $(document).ready(function () {
+	$(".qw-btn-close").click(function(){ $("#qw").css("display","none"); });
+	 
+	 $(".qw-transp-bg").click(function(){ $("#qw").css("display","none"); });
+	
 	  /*$(".btn").click(function(){
 		  var checked= '';
 		  $("input:checkbox[name^=check]:checked").each(function(){

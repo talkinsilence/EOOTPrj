@@ -19,15 +19,10 @@
 
 	String title = req.getParameter("textfield1");
 	String content = req.getParameter("textfield2");
-	/* String shareNei = req.getParameter("shareNei");
-	String shareVil = req.getParameter("shareVil"); */
+	String shareNei = req.getParameter("shareNei");
+	String shareVil = req.getParameter("shareVil");
+	String uid = (String) session.getAttribute("uid");
 
-	out.println(title + "<br />");
-	out.println(content + "<br />");
-/* 	out.println(shareNei + "<br />");
-	out.println(shareVil + "<br />"); */
-
-	
 	String fileName = req.getFilesystemName("file1");
 
 	out.println(fileName + "<br />");
@@ -41,9 +36,9 @@
 	fampost.setCommentCnt(1);
 	fampost.setHit(1);
 	fampost.setLikeCnt(1);
-	fampost.setShareNei(1);
-	fampost.setShareVil(1);
-	fampost.setWriter("ddddd3");
+	fampost.setShareNei(0);
+    fampost.setShareVil(0);
+	fampost.setWriter(uid);
 	fampost.setSrc(fileName);
 	famPostDao.insert(fampost);
 	/* try {
@@ -102,5 +97,5 @@
 	  jo.put("result", "SUCC");
 	  System.out.println("@@" + jo.toString());
 	  response.getWriter().println(jo.toString());   */
-	 response.sendRedirect("quickWrite.jsp");
+	 response.sendRedirect("../newsFeed/newsFeed.jsp"); 
 %>
