@@ -11,6 +11,7 @@
 	String _month = request.getParameter("regMonth");
 	String _day = request.getParameter("regDay");
 	String profilepic = "default.jpg";
+	String profilebg = "default.jpg";
 	
 	String month = "";
 	String day = "";
@@ -34,6 +35,7 @@
 	member.setPwd(regPwd);
 	member.setBirthday(regBirthday);
 	member.setProfilepic(profilepic);
+	member.setProfilebg(profilebg);
 	
 	MemberDao dao = new MyBMemberDao();
 	dao.insert(member);

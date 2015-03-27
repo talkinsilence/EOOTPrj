@@ -42,7 +42,9 @@ public class MyBLetterDao implements LetterDao {
 
 	@Override
 	public int insert(Letter letter) {
-		return 0;
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		LetterDao letterDao = sqlSession.getMapper(LetterDao.class);
+		return letterDao.insert(letter);
 	}
 
 	@Override

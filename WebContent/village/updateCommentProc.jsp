@@ -1,3 +1,5 @@
+<%@page import="com.eoot.eootprj.model.FamPostComment"%>
+<%@page import="com.eoot.eootprj.dao.FamPostCommentDao"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="com.eoot.eootprj.model.VilPostComment"%>
 <%@page import="com.eoot.eootprj.dao.mybatis.MyBVilPostCommentDao"%>
@@ -16,7 +18,7 @@
 		vilPostComment.setContent(content);
 		vilPostComment.setWriter("nami@eoot.com");
 		vilPostCommentDao.insert(vilPostComment);////쿼리
-		
+	
 		System.out.println(vilPostCode);
 		System.out.println(content);
 

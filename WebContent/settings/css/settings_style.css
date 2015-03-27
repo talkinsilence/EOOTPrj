@@ -25,6 +25,7 @@ body {
     height: 30px;
     border: 1px solid #c6c6c6;
     background:#f8f8f8;
+    cursor: pointer;
 }
 
 #profile-upload-form #btn-upload-set{
@@ -34,6 +35,7 @@ body {
     background:#357ae8;
     font-weight:bold;
     color:#fff;
+    cursor: pointer;
 }
 
 #profile-upload-form #btn-upload-cancel {
@@ -41,6 +43,33 @@ body {
     height:30px;
     border: 1px solid #c6c6c6;
     background:#f8f8f8;
+    cursor: pointer;
+}
+
+#btn-myhome-upload-select {
+	width: 174px;
+    height: 30px;
+    border: 1px solid #c6c6c6;
+    background:#f8f8f8;
+    cursor: pointer;
+}
+
+#btn-myhome-upload-set {
+	width: 100px;
+    height: 30px;
+    border: 1px solid #3079ed;
+    background:#357ae8;
+    font-weight:bold;
+    color:#fff;
+    cursor: pointer;
+}
+
+#btn-myhome-upload-cancel {
+	width: 70px;
+    height:30px;
+    border: 1px solid #c6c6c6;
+    background:#f8f8f8;
+    cursor: pointer;
 }
 
 #profile-name-txt {
@@ -122,8 +151,8 @@ a:hover {
 
 .edit {
     color:#427fed;
-    font-size:14px;
-    cursor: pointer; s
+    font-size:12px;
+    cursor: pointer;
 }
 
 /* �츮�� �̸� */

@@ -1,6 +1,7 @@
-﻿function iframeOn() {
-    textfield1.document.designMode = 'on';
-    textfield2.document.designMode = 'on';
+﻿
+function iframeOn() {
+	textfield1.document.designMode = 'on';
+	textfield2.document.designMode = 'on';
 }
 
 function bold() {
@@ -21,3 +22,15 @@ function fontColors() {
     textfield1.document.execCommand('forecolor', false, color);
     textfield2.document.execCommand('forecolor', false, color);
 }
+
+
+$(document).ready(function(){
+	
+	$(".qw-btn-close").click(function(){
+		$("#qw").css("display","none");
+	});
+	
+	$(".qw-transp-bg").click(function(){
+		$("#qw").css("display","none");
+	});
+});

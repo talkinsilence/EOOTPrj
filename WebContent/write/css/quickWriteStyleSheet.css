@@ -1,12 +1,38 @@
-﻿.hidden
+﻿::-webkit-scrollbar
+{
+  width: 14px;  /* for vertical scrollbars */
+  height: 14px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  /* background: rgba(0, 0, 0, 0.1); */
+  background: #F1F1F1;
+}
+
+::-webkit-scrollbar-thumb
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+/*   background: rgba(0, 0, 0, 0.2); */
+  background: #BCBCBC;
+  border: 2px solid #F1F1F1;
+} 
+
+::-webkit-scrollbar-thumb:ACTIVE
+{
+  background: rgba(0, 0, 0, 0.4);
+} 
+.hidden
 {
     display:none;
 }
 
-#warp {
+#wrap {
     margin: 0 auto;
     width: 600px;
 }
+
 article {
     float: left;
     border: 1px solid rgba(102,102,102,1);

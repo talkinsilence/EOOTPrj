@@ -66,33 +66,51 @@
                 <div id="profile-edit-body">
                     <div id="profile-edit-viewer-wrapper">
                         <div id="profile-edit-viewer">
-                            <img id="profile-edit-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
+                            <img id="profile-edit-thumbnail" src="" />
                         </div>
                     </div>
 
                     <div id="profile-upload-form">
-                        <form method="post" enctype="multipart/form-data" action="updateProfilePic.jsp">
-                            <input type="file" name="file" id="profile-edit-file"/>
+                        <form name="formProfile" id="formProfile" method="post" enctype="multipart/form-data" action="updateProfilePic.jsp">
+                            <input type="file" name="file" id="profile-edit-file" onchange="profileReadURL(this);"/>
                             <div id="profile-upload-select-wrapper">
                                 <input type="button" id="btn-upload-select" value="사진 선택" /><br />
                             </div>
-                            <input type="submit" id="btn-upload-set" value="사진 등록" />
+                            <input type="button" id="btn-upload-set" value="사진 등록" />
                             <input type="button" id="btn-upload-cancel" class="btn-cancel" value="취소" />
                         </form>
                     </div>
                 </div>
             </div>           
-
+			
+			<div id="myhome-edit">
+				<div id="myhome-edit-body">
+					<div id="myhome-edit-viewer-wrapper">
+						<div id="myhome-edit-viewer">
+							<img id="myhome-edit-thumbnail" src="" />
+						</div>
+					</div>
+					
+					<div id="myhome-upload-form">
+						<form name="formMyHome" id="formMyhome" method="post" enctype="multipart/form-data" action="updateProfileBg.jsp">
+							<input type="file" name="file-bg" id="myhome-edit-file" onchange="myHomeReadURL(this);" />
+							<input type="button" id="btn-myhome-upload-select" value="사진 선택" />
+							<input type="button" id="btn-myhome-upload-set" value="사진 등록" />
+							<input type="button" id="btn-myhome-upload-cancel" value="취소">
+						</form>				
+					</div>
+				</div>
+			</div>
+			
             <div id="settings-body">   
 
                 <div id="title">
                     <h1>설 정</h1>
                 </div>
                 
-                <div id="profile">                 
+                <div id="profile">             
                     <div id="profile-pic-box-main">
                         <img id="profile-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.profilepic}" />
-                        <div>사진 변경</div>
                     </div>
 
                     <div id="profile-wrapper">
@@ -201,7 +219,7 @@
                             		<c:forEach var="i" items="${fms}">
 		                                <ul class="myhome-member-view-body">
 		                                    <li class="myhome-member-pic">
-		                                        <img class="myhome-member-pic-thumbnail" src="${i.profilepic}"/>
+		                                        <img class="myhome-member-pic-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}"/>
 		                                    </li>
 		
 		                                    <li class="myhome-member-uid">${i.mid}</li>
@@ -244,6 +262,18 @@
                                     </c:if>
                                 </fieldset>               
                             </div>
+                        </div>
+                        
+                        <div id="myhome-background">
+                        	우리집 배경화면 설정
+                        	
+                        	<label id="myhome-background-edit" class="edit">설정</label>
+                        	
+                        	<div id="myhome-background-wrapper">
+                        		<div id="myhome-profilebgc-box-main">
+                        			<img id="myhome-background-thumbnail" src="${pageContext.request.servletContext.contextPath}/upload/profilebg/${m.profilebg}" />
+                   				</div>
+                        	</div>
                         </div>
                     </div>
 

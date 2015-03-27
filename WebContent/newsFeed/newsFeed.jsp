@@ -83,6 +83,7 @@
     <script src="../resource/js/jquery-2.1.3.js"></script>
     <script src="../resource/js/menu.js" type="text/javascript"></script>
     <script src="js/newsFeed.js" type="text/javascript"></script>
+    <script src="js/insertNews.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -158,7 +159,7 @@
                            <div class="post-user-menu-wrapper-bg"></div>
                            <c:if test="${m.mid == i.writer}">
                               <div class="post-user-menu-wrapper me">
-                                <div class="post-user-menu edit-post">수정하기</div>
+                                <!-- <div class="post-user-menu edit-post">수정하기</div> -->
                                 <div class="post-user-menu delete-post">삭제하기</div>
                              </div>
                           </c:if>

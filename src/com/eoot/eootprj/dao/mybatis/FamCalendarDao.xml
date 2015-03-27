@@ -11,7 +11,15 @@
 		</select>
 		
 		<insert id="insertCal" parameterType="FamCalendar">
-			INSERT FAMCALENDARS(CODE, WRITER, STARTDATE, ENDDATE, TITLE, FAMCODE) values(#{code}, #{writer}, #{startdate}, #{enddate}, #{title}, #{famcode})
+			<selectKey keyProperty="code" resultType="int" order="BEFORE">
+				SELECT ISNULL(MAX(CAST(CODE AS INT)),0) + 1  CODE FROM FAMCALENDARS		
+			</selectKey>
+			
+			INSERT INTO FAMCALENDARS(CODE, WRITER, STARTDATE, ENDDATE, TITLE, FAMCODE) values(#{code}, #{writer}, #{startdate}, #{enddate}, #{title}, #{famcode})
 		</insert>
+		
+		<delete id="deleteCal" parameterType="String">
+			DELETE FROM FAMCALENDARS WHERE CODE = #{code}
+		</delete>
 		
 	</mapper>

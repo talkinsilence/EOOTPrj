@@ -161,7 +161,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: #c23a5b;
+    color: #5e5a5a;;
     margin-top: 5px;
 }
 
@@ -266,3 +266,29 @@
     width: 33.1%;
     border: 1px solid #ff0000;
 }
+
+::-webkit-scrollbar
+{
+  width: 14px;  /* for vertical scrollbars */
+  height: 14px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  /* background: rgba(0, 0, 0, 0.1); */
+  background: #F1F1F1;
+}
+
+::-webkit-scrollbar-thumb
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+/*   background: rgba(0, 0, 0, 0.2); */
+  background: #BCBCBC;
+  border: 2px solid #F1F1F1;
+} 
+
+::-webkit-scrollbar-thumb:ACTIVE
+{
+  background: rgba(0, 0, 0, 0.4);
+} 

@@ -1,7 +1,8 @@
 ﻿
 
 $(document).ready(function () {
-    var profileThum = $("#profile-thumbnail");
+    var profileThum = $("#profile-pic-box-main");
+    var myhomeThum = $("#myhome-profilebgc-box-main");
     var btnUploadSet = $("#btn-upload-set");
     var element_wrap = document.getElementById("myhome-address-search-wrapper");
     
@@ -29,10 +30,10 @@ $(document).ready(function () {
         $(this).css("background", "#427fed");
     });
 
-    $('input[type="button"].btn-cancel').mousedown(function () {
-        $(this).css("background", '#3b3b3b');
+    $('#accordion input[type="button"].btn-cancel').mousedown(function () {
+    	$(this).css("background", '#5D5D5D');
     }).mouseout(function () {
-        $(this).css("background", "#808080");
+    	$(this).css("background", "#808080");
     });
 
 
@@ -46,7 +47,7 @@ $(document).ready(function () {
     profileThum.click(function () {
         $('#profile-edit').fadeIn(300);
     });
-
+    
     $("#btn-upload-select").click(function () {
         $("#profile-edit-file").trigger("click");
     });
@@ -56,8 +57,52 @@ $(document).ready(function () {
     btnUploadSet.mouseout(function () {
         btnUploadSet.css("background", "#3079ed");
     });
+    btnUploadSet.click(function(){
+    	var file = $("#profile-edit-file");
+    	
+    	if(file.val() == ""){
+    		alert("사진을 선택해주세요");
+    	} else
+    		$("#formProfile").submit();
+    });
+    
+    
     $("#btn-upload-cancel").click(function () {
+    	$('#profile-edit-thumbnail').attr('src', '');
         $('#profile-edit').fadeOut(400);
+        
+        document.formProfile.reset();
+    });
+    
+    // 우리집
+    myhomeThum.mouseover(function(){
+    	myhomeThum.css("opacity","0.3");
+    });
+    myhomeThum.mouseout(function(){
+    	myhomeThum.css("opacity","1");
+    });
+    myhomeThum.click(function(){
+    	$("#myhome-edit").fadeIn(300);
+    });
+    
+    $("#btn-myhome-upload-select").click(function () {
+        $("#myhome-edit-file").trigger("click");
+    });
+    
+    $("#btn-myhome-upload-set").click(function(){
+    	var file = $("#myhome-edit-file");
+    	
+    	if(file.val() == "")
+    		alert("사진을 선택해주세요");
+    	else
+    		$("#formMyhome").submit();
+    });
+    
+    $("#btn-myhome-upload-cancel").click(function(){
+    	$('#myhome-edit-thumbnail').attr('src', '');
+    	$("#myhome-edit").fadeOut(400);
+    	
+    	document.formMyHome.reset();
     });
 
     // 프로필
@@ -79,6 +124,16 @@ $(document).ready(function () {
         $("#profile-name-edit").css("display", "inline");
     });
     
+    /*$('#btn-name-cancel').mousedown(function () {
+        $(this).css("background", '#5D5D5D');
+    }).mouseout(function () {
+        $(this).css("background", "#808080");
+    })*/
+    $('#btn-name-cancel').mousedown(function () {
+    	$(this).css("background", '#5D5D5D');
+    }).mouseout(function () {
+    	$(this).css("background", "#808080");
+    });
     $('#btn-name-cancel').click(function(){
     	$("#profile-name-wrapper").css("display", "none");
         $("#profile-name-edit").css("display", "inline");
@@ -95,6 +150,12 @@ $(document).ready(function () {
         $("#myhome-name-wrapper").css("display", "inline-block");
         $("#myhome-name-edit").css("display", "none");
     });
+    
+    $("#btn-myhome-name").mousedown(function () {
+        $(this).css("background", '#2457BD');
+    }).mouseout(function () {
+        $(this).css("background", "#427fed");
+    });
 
     $("#btn-myhome-name").click(function () {
     	updateFamname();
@@ -103,6 +164,11 @@ $(document).ready(function () {
         $("#myhome-name-edit").css("display", "inline");
     });
     
+    /*$('#btn-homename-cancel').mousedown(function () {
+        $(this).css("background", '#5D5D5D');
+    }).mouseout(function () {
+        $(this).css("background", "#808080");
+    })*/
     $('#btn-homename-cancel').click(function(){
     	$("#myhome-name-wrapper").css("display", "none");
         $("#myhome-name-edit").css("display", "inline");
@@ -118,6 +184,12 @@ $(document).ready(function () {
     	sample3_execDaumPostcode();
     });
     
+    /*$("#btn-myhome-address").mousedown(function () {
+        $(this).css("background", '#2457BD');
+    }).mouseout(function () {
+        $(this).css("background", "#427fed");
+    });*/
+    
     $("#btn-myhome-address").click(function(){
     	updateAddress();
     	
@@ -126,6 +198,11 @@ $(document).ready(function () {
         $('#myhome-address-edit').css('display', 'inline-block');
     });
     
+    /*$('#btn-address-cancel').mousedown(function () {
+        $(this).css("background", '#5D5D5D');
+    }).mouseout(function () {
+        $(this).css("background", "#EAEAEA");
+    })*/
     $('#btn-address-cancel').click(function () {
     	$("#myhome-address-search-wrapper").css("display","none");
     	$("#myhome-address-txt").val("");
@@ -164,7 +241,30 @@ $(document).ready(function () {
             view.text("자세히 보기");
         }
     });
-
+    
+    $("#myhome-background-edit").click(function(){
+    	var wrapper = $("#myhome-background-edit");
+    	
+    	if(wrapper.text() == "설정"){
+    		$("#myhome-background-wrapper").css("display", "block");
+    		wrapper.text("닫기");
+    	} else if(wrapper.text() == "닫기"){
+    		$("#myhome-background-wrapper").css("display", "none");
+    		wrapper.text("설정");
+    	}
+    });
+    
+    // 배경화면
+    $("#btn-myhome-upload-select").click(function () {
+        $("#myhome-background-file").trigger("click");
+    });
+    $("#btn-myhome-upload-set").mouseover(function () {
+    	$("#btn-myhome-upload-set").css("background", "#0054FF");
+    });
+    $("#btn-myhome-upload-set").mouseout(function () {
+    	$("#btn-myhome-upload-set").css("background", "#3079ed");
+    });
+    
     ///////////////////// 이웃 ////////////////////////
 
     // 목록
@@ -334,4 +434,65 @@ function famInvMeAccept(askmid){
 	
 	if(check)
 		$(location).attr("href","updateFamAcceptProc.jsp?askmid="+askmid);
+}
+
+function profileReadURL(input) {
+	isCheck = false;
+    filename    = $("#profile-edit-file").val();
+    file_len    = filename.length;
+    file_gubun  = filename.substr(file_len - 3, file_len);
+
+    if (file_gubun.toLowerCase() == "jpg" || file_gubun.toLowerCase() == "gif")
+    {
+        isCheck = true;
+    }
+    if (isCheck == false)
+    {
+        alert("확장자가 jpg, gif 인 파일만 업로드가 가능합니다.");
+        document.formProfile.reset();
+        return false;
+    }
+    else
+    {
+    	if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#profile-edit-thumbnail').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    	
+        return true;
+    }
+	
+}
+
+function myHomeReadURL(input) {
+	isCheck = false;
+    filename    = $("#myhome-edit-file").val();
+    file_len    = filename.length;
+    file_gubun  = filename.substr(file_len - 3, file_len);
+
+    if (file_gubun.toLowerCase() == "jpg" || file_gubun.toLowerCase() == "gif")
+    {
+        isCheck = true;
+    }
+    if (isCheck == false)
+    {
+        alert("확장자가 jpg, gif 인 파일만 업로드가 가능합니다.");
+        document.formMyHome.reset();
+        return false;
+    }
+    else
+    {
+    	if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#myhome-edit-thumbnail').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    	
+        return true;
+    }
 }

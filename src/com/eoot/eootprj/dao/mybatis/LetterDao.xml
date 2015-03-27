@@ -21,11 +21,8 @@
 	</select>
 	
 	<insert id = "insert" parameterType="Letter">
-		<selectKey keyColumn="code" resultType="String" order="BEFORE">
-			SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS
-		</selectKey>
-			INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, READ, READER, LETTERTYPE) 
-			VALUES(#{code}, #{mid}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
+			INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, "READ", READER, LETTERTYPE) 
+			VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS), #{writer}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
 	</insert>
 	
 	<delete id = "delete" parameterType="String">
