@@ -37,8 +37,9 @@
 <%    
 	String famPostCode ="";
 	String query = "";
-	String uid = (String) session.getAttribute("uid");
 	String _query = request.getParameter("query");
+	
+	String uid = (String) session.getAttribute("uid");
 	
 	if (_query != null && !_query.equals(""))
 		query = _query;
@@ -63,6 +64,7 @@
 	pageContext.setAttribute("size", famPostFileDao.getSize());
 %>
 
+
 </head>
 
 <body>
@@ -70,18 +72,16 @@
 		<div class="main-media">
 			<div class="main-media-box">
 				<div class="main-media-box-L">
-
-					<img src="${fList.get(0).getSrc()}" />
-
+					<img src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(0).getSrc()}" />
 				</div>
 
 				<div class="main-media-box-R">
 					<div class="main-media-box-R-top">
-						<img src="${fList.get(1).getSrc()}" />
+						<img src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(1).getSrc()}" />
 					</div>
 
 					<div class="main-media-box-R-bottom">
-						<img src="${fList.get(2).getSrc()}" />
+						<img src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(2).getSrc()}" />
 					</div>
 				</div>
 			</div>
@@ -131,7 +131,7 @@
 							<div class="media-list-item-box">
 								<div class="media-list-item">
 									<div class="media-list-item-code hidden" >${fList.get(j*5+i).getFamPostCode()}</div>
-									<img class="media-list-item-img" src="${fList.get(j*5+i).getSrc()}">
+									<img class="media-list-item-img" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(j*5+i).getSrc()}">
 									<div class="img-mask">
 										<div class="img-regdate">${fList.get(j*5+i).getRegdate()}</div>
 										<div class= "img-writer">${fList.get(j*5+i).getWriter()}</div>
@@ -169,7 +169,7 @@
 					</div>
 					
 					<div class="dv-reg-box">
-						<div class="dv-reg-pic"></div>
+						<div class="dv-reg-pic"><img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.getProfilepic()}${m.getProfilepic()}"/></div>
 						<input class="dv-reg-input" type="text" placeholder="댓글을 남기세요." />
 						<div class="dv-reg-btn" >등록</div>
 					</div>
@@ -186,14 +186,14 @@
 			<div class="media-add">
 				<div class="media-add-box">
 					<div class="media-add-box-bg"></div>
-					<button class="media-add-btn">사진추가</button>
+					<button class="media-add-btn"></button>
 					<!--<img src=""/>-->
 				</div>
 
 				<div class="media-add-writer-container">
 					<div class="media-writer-box">
-						<div class="media-writer-pic"></div>
-						<div class="media-writer-name">name</div>
+						<div class="media-writer-pic"><img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${m.getProfilepic()}"/></div>
+						<div class="media-writer-name">${m.getName()}</div>
 						<div class="media-regdate">regdate</div>
 					</div>
 

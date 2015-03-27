@@ -1,3 +1,6 @@
+<%@page import="com.eoot.eootprj.model.Member"%>
+<%@page import="com.eoot.eootprj.dao.mybatis.MyBMemberDao"%>
+<%@page import="com.eoot.eootprj.dao.MemberDao"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -41,6 +44,14 @@
 <%	
 	String famPostCode = "";
 	String _famPostCode = request.getParameter("famPostCode");
+	
+	String uid = (String) session.getAttribute("uid");
+	
+	MemberDao memberDao = new MyBMemberDao();
+	Member m = memberDao.getMember(uid);
+	
+	String famcode = m.getFamcode();
+	
 
 	if (_famPostCode != null && !_famPostCode.equals("")) {
 		famPostCode = _famPostCode;
@@ -54,11 +65,12 @@
 	
 	pageContext.setAttribute("fp", fp);
 	pageContext.setAttribute("cList", cList);
+
 %>
 
 
 <div class="dv-profile-box">
-	<div class="dv-profile-pic"></div>
+	<div class="dv-profile-pic"><img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${fp.getProfilepic()}"/></div>
 	<div class="dv-profile-name">${fp.getName()}</div>
 	<div class="dv-profile-regdate">${fp.getRegdate()}</div>
 	<div class="dv-profile-title">${fp.getTitle()}</div>
@@ -86,7 +98,7 @@
 			<div class="dv-comment-img">
 				<img src="images/btn-comment.png" />
 			</div>
-			<div class="dv-comment-cnt">${fp.getCommentCnt()}</div>
+			<div class="dv-comment-cnt">0</div>
 		</button>
 	</div>
 </div>
@@ -94,7 +106,7 @@
 <div class="dv-comment-box-list">
 	<c:forEach var="cList" items="${cList}">
 		<div class="dv-comment-box">
-			<div class="dv-comment-writer-pic">${cList.profilepic}</div>
+			<div class="dv-comment-writer-pic"><img src="${pageContext.request.servletContext.contextPath}/upload/profilepic/${cList.profilepic}"/></div>
 			<div class="dv-comment-writer-name">${cList.name}</div>
 			<div class="dv-comment-regdate">${cList.regdate}</div>
 			<div class="dv-comment">${cList.content}</div>

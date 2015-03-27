@@ -474,4 +474,9 @@ body {
     position: relative;
     top: 3px;
 }
+>img{
+	position: absolute;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
 }
