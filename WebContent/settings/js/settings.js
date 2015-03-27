@@ -70,6 +70,8 @@ $(document).ready(function () {
     $("#btn-upload-cancel").click(function () {
     	$('#profile-edit-thumbnail').attr('src', '');
         $('#profile-edit').fadeOut(400);
+        
+        document.formProfile.reset();
     });
     
     // 우리집
@@ -99,6 +101,8 @@ $(document).ready(function () {
     $("#btn-myhome-upload-cancel").click(function(){
     	$('#myhome-edit-thumbnail').attr('src', '');
     	$("#myhome-edit").fadeOut(400);
+    	
+    	document.formMyHome.reset();
     });
 
     // 프로필
@@ -445,7 +449,7 @@ function profileReadURL(input) {
     if (isCheck == false)
     {
         alert("확장자가 jpg, gif 인 파일만 업로드가 가능합니다.");
-        
+        document.formProfile.reset();
         return false;
     }
     else
@@ -476,7 +480,7 @@ function myHomeReadURL(input) {
     if (isCheck == false)
     {
         alert("확장자가 jpg, gif 인 파일만 업로드가 가능합니다.");
-        
+        document.formMyHome.reset();
         return false;
     }
     else
