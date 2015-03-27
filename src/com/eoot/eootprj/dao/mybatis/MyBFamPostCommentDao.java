@@ -23,6 +23,20 @@ public class MyBFamPostCommentDao implements FamPostCommentDao{
 		FamPostCommentDao famPostCommentDao= sqlSession.getMapper(FamPostCommentDao.class);
 		return famPostCommentDao.getFamPostComments(famPostCode);
 	}
+	
+	@Override
+	public List<FamPostCommentJoinMember> preFamPostComments(String curCode) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		FamPostCommentDao famPostCommentDao= sqlSession.getMapper(FamPostCommentDao.class);
+		return famPostCommentDao.preFamPostComments(curCode);
+	}
+
+	@Override
+	public List<FamPostCommentJoinMember> nextFamPostComments(String curCode) {
+		SqlSession sqlSession = MyBatisMain.getSqlSessionFactory().openSession(true);
+		FamPostCommentDao famPostCommentDao= sqlSession.getMapper(FamPostCommentDao.class);
+		return famPostCommentDao.nextFamPostComments(curCode);
+	}
 
 	@Override
 	public List<FamPostCommentJoinMember> getFamPostComments2() {

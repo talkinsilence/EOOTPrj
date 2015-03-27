@@ -14,7 +14,14 @@ public class VilPost {
 	private int likeCnt;
 	private int clipCnt;
 	private int commentCnt;
+	private String src;
 	
+	public String getSrc() {
+		return src;
+	}
+	public void setSrc(String src) {
+		this.src = src;
+	}
 	public String getCode() {
 		return code;
 	}

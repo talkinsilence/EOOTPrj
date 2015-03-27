@@ -41,64 +41,64 @@
    	});
 </script>
 
-<%	
-String curCode = "";
-String _curCode = request.getParameter("curCode");
-
-if (_curCode != null && !_curCode.equals("")) {
-	curCode = _curCode;
-}
+<%
+	String curCode = "";
+	String _curCode = request.getParameter("curCode");
+	
+	if (_curCode != null && !_curCode.equals("")) {
+		curCode = _curCode;
+	}
 
 	FamPostDao famPostDao = new MyBFamPostDao();
-	FMJoinFamPostFile fmf = famPostDao.nextFamPost(curCode);
+	FMJoinFamPostFile fmf = famPostDao.prevFamPost(curCode);
 
 	FamPostCommentDao famPostCommentDao = new MyBFamPostCommentDao();
-	List<FamPostCommentJoinMember> cList = famPostCommentDao.getFamPostComments(curCode);
-	
+	List<FamPostCommentJoinMember> cList = famPostCommentDao.preFamPostComments(curCode);
+
 	pageContext.setAttribute("fmf", fmf);
 	pageContext.setAttribute("cList", cList);
 	
-	fmf.getSrc();
 %>
 
 <div class="dv-media-box">
-	<img class="dv-media-box-img" src="${fmf.src}" />
+	<img class="dv-media-box-img" src="${fmf.getSrc()}" />
 	<div class="dv-edit">
 		<button class="dv-edit-btn">수정</button>
 		<button class="dv-edit-btn">삭제</button>
 	</div>
+	<div class="current-code hidden">${fmf.getCode()}</div>
 </div>
 
 <div class="dv-comment-container">
 	<div class="dv-profile-box">
 		<div class="dv-profile-pic"></div>
-		<div class="dv-profile-name">${fp.getName()}</div>
-		<div class="dv-profile-regdate">${fp.getRegdate()}</div>
-		<div class="dv-profile-title">${fp.getTitle()}</div>
+		<div class="dv-profile-name">${fmf.getName()}</div>
+		<div class="dv-profile-regdate">${fmf.getRegdate()}</div>
+		<div class="dv-profile-title">${fmf.getTitle()}</div>
 	</div>
 
 	<div class="dv-content-popularity-wrapper">
 		<div class="dv-content-box">
-			<div class="dv-content">${fp.getContent()}</div>
+			<div class="dv-content">${fmf.getContent()}</div>
 		</div>
 		<div class="dv-popularity-box">
 			<button class="dv-like-cnt-btn">
 				<div class="dv-like-img">
 					<img src="images/btn-like.png" />
 				</div>
-				<div class="dv-like-cnt">${fp.getLikeCnt()}</div>
+				<div class="dv-like-cnt">${fmf.getLikeCnt()}</div>
 			</button>
 			<button class="dv-scrap-cnt-btn">
 				<div class="dv-scrap-img">
 					<img src="images/btn-scrap.png" />
 				</div>
-				<div class="dv-scrap-cnt">${fp.getClipCnt()}</div>
+				<div class="dv-scrap-cnt">${fmf.getClipCnt()}</div>
 			</button>
 			<button class="dv-comment-cnt-btn">
 				<div class="dv-comment-img">
 					<img src="images/btn-comment.png" />
 				</div>
-				<div class="dv-comment-cnt">${fp.getCommentCnt()}</div>
+				<div class="dv-comment-cnt">${fmf.getCommentCnt()}</div>
 			</button>
 		</div>
 	</div>

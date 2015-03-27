@@ -7,4 +7,8 @@
 	<!-- <select id="getVilPost" parameterType="String" resultType="VilPost">
 		SELECT * FROM VilPosts WHERE CODE = #{code}
 	</select> -->
+	
+	<!-- <select id="getTop2VilPosts">
+		
+	</select> -->
 </mapper>

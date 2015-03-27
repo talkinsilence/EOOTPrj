@@ -130,7 +130,7 @@
 				
 				<c:if test="${not empty menuList}">
 					<c:forEach var="menuList" items="${menuList}">
-						<div class="button" onclick="eootLink('${menuList.famcode}')">
+						<div class="button" onclick="eootLink('${menuList.mid}')">
 		                    <div class="vertical-field1">
 		                        <div class="vertical-field2">
 		                            <span class="vertical_text">

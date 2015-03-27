@@ -43,12 +43,15 @@
    NeighborDao neighborDao = new MyBNeighborDao();
    List<NeighborJoinMember> nms = neighborDao.getNeighbors(uid);
    
+   VilPostDao vilDao = new MyBVilPostDao();
+   
+   List<VilPost> v = vilDao.getTop2VilPosts();
    //List<VilPost> tvps = vilPostDao.getTopVilPosts(vcode);
    
    /* for( Member ms : fms)
       System.out.println(ms.getFamcode()); */
    //System.out.println("가족 구성원 : " + fms.size());
-   
+   pageContext.setAttribute("v", v);
    pageContext.setAttribute("m", m);
    pageContext.setAttribute("fms", fms);
    pageContext.setAttribute("nms", nms);
@@ -148,54 +151,60 @@
             <aside class="lower-right">
                <div class="preview-wrapper">
                   <div class="preview-fampost-wrapper">
-                     <div class="preview-fampost pic-box">
-                          <img class="preview-pic" src="images/byul2.jpg"/>
-                          <div class="preview-pic-dscrp hidden"></div>
-                      </div>
-                      <div class="preview-fampost pic-box">
-                          <img class="preview-pic" src="images/byul22.jpg"/>
-                          <div class="preview-pic-dscrp hidden"></div>
-                      </div>
-                      <div class="preview-fampost text-box">
-                          <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
-                      </div>
-                      <div class="preview-fampost pic-box">
-                          <img class="preview-pic" src="images/byul222.png"/>
-                          <div class="preview-pic-dscrp hidden"></div>
-                      </div>
-                      <div class="preview-fampost text-box">
-                          <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
-                      </div>
-                      <div class="preview-fampost pic-box">
-                          <img class="preview-pic" src="images/byul2222.jpg"/>
-                          <div class="preview-pic-dscrp hidden"></div>
-                      </div>
+                  	<ul id="slider">
+                  		<%-- <c:forEach var="i" items="${prvfps}" > --%>
+	                  		<li class="firstanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/byul22.jpg"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+							<li class="secondanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/dog.png"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+	                  		<li class="thirdanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/cat.png"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+	                  		<li class="fourthanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/ljh.jpg"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+	                  		<li class="fifthanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/taeyang.jpg"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+                  		<%-- </c:forEach> --%>
+                  	</ul>
                   </div>
                   <div class="preview-vilpost-wrapper">
                      <span>주변 인기게시물</span>
-                     <%-- <c:forEach var="i" items="${tvps}" > --%>
-                        <div class="preview-vilpost pic-box">
-                             <img class="preview-pic" src="images/shakerbrand-thum.jpg" />
-                             <div class="preview-pic-dscrp hidden"></div>
-                         </div>
-                         <div class="preview-vilpost text-box">
-                            <%-- <c:if test="${i.sort.equals('1')}">
-                           <div class="village-board-label 1"></div>
-                        </c:if>
-                        <c:if test="${i.sort.equals('2')}">
-                           <div class="village-board-label 2"></div>
-                        </c:if>
-                        <c:if test="${i.sort.equals('3')}">
-                           <div class="village-board-label 3"></div>
-                        </c:if>
-                        <c:if test="${i.sort.equals('4')}">
-                           <div class="village-board-label 4"></div>
-                        </c:if> --%>
-                        <div class="village-board-label"></div>
-                             <p class="text-box-title">${i.title}</p>
-                             <p class="text-box-content">${i.content}</p>
-                         </div>
-                      <%-- </c:forEach> --%>
+                     
+                     <ul>
+	                     <c:forEach var="v" items="${v}" >
+	                     	<li class="preview-vp-item">
+	                     		<div class="preview-vilpost pic-box">
+	                             <img class="preview-pic" src="${pageContext.request.servletContext}/upload/vilpostImage${v.src}" />
+	                             <div class="preview-pic-dscrp hidden"></div>
+		                         </div>
+		                         <div class="preview-vilpost text-box">
+		                        <div class="village-board-label"></div>
+		                             <p class="text-box-title">${v.title}</p>
+		                             <p class="text-box-content">${v.content }</p>
+		                         </div>
+	                     	</li>
+	                     </c:forEach>
+                     </ul>
+                      
                   </div>
                 </div>
             </aside>
