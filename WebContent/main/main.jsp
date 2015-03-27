@@ -148,28 +148,40 @@
             <aside class="lower-right">
                <div class="preview-wrapper">
                   <div class="preview-fampost-wrapper">
-                     <div class="preview-fampost pic-box">
-                          <img class="preview-pic" src="images/byul2.jpg"/>
-                          <div class="preview-pic-dscrp hidden"></div>
-                      </div>
-                      <div class="preview-fampost pic-box">
-                          <img class="preview-pic" src="images/byul22.jpg"/>
-                          <div class="preview-pic-dscrp hidden"></div>
-                      </div>
-                      <div class="preview-fampost text-box">
-                          <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
-                      </div>
-                      <div class="preview-fampost pic-box">
-                          <img class="preview-pic" src="images/byul222.png"/>
-                          <div class="preview-pic-dscrp hidden"></div>
-                      </div>
-                      <div class="preview-fampost text-box">
-                          <p class="fampost-text-box">봄 봄 봄 봄이 왔어요 프로젝트 반드시 완성시킨다!!!!!!!!!!으랏챠챠챠챠챠챠챠챠챠 파이팅파이팅파이팅!!!!!★</p>
-                      </div>
-                      <div class="preview-fampost pic-box">
-                          <img class="preview-pic" src="images/byul2222.jpg"/>
-                          <div class="preview-pic-dscrp hidden"></div>
-                      </div>
+                  	<ul id="slider">
+                  		<%-- <c:forEach var="i" items="${prvfps}" > --%>
+	                  		<li class="firstanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/byul22.jpg"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+							<li class="secondanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/dog.png"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+	                  		<li class="thirdanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/cat.png"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+	                  		<li class="fourthanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/ljh.jpg"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+	                  		<li class="fifthanimation">
+		                  		<div class="preview-fampost pic-box">
+	                            	<img class="preview-pic" src="images/taeyang.jpg"/>
+	                            	<div class="preview-pic-dscrp hidden"></div>
+		                        </div>
+	                  		</li>
+                  		<%-- </c:forEach> --%>
+                  	</ul>
                   </div>
                   <div class="preview-vilpost-wrapper">
                      <span>주변 인기게시물</span>
