@@ -93,7 +93,14 @@ $(document).ready(function () {
   });
   $("#btn").click(function(){
 	 $("#form").submit(); 
-	 
+	 var checked= '';
+	  $("input:checkbox[name^=check]:checked").each(function(){
+		  checked+=$(this).val();
+	  });
+	  if(checked==1){
+		  var shareNei =1;
+		  var shareVil = 0;
+	  }
   });
     $(window.document).on("contextmenu", function(event){return false;});	//우클릭방지
 	$(window.document).on("selectstart", function(event){return false;});	//더블클릭을 통한 선택방지
