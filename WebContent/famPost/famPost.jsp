@@ -57,7 +57,7 @@
 
 	FamPostFileDao famPostFileDao = new MyBFamPostFileDao();
 	List<FamPostFileJoinFamPost> fList = famPostFileDao.getFamPostFiles();
-	fList.get(0).getWriter();
+
 	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("fList", fList);
 	pageContext.setAttribute("mList", mList);
