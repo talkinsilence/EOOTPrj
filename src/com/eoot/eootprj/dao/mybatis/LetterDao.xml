@@ -5,31 +5,38 @@
 
 <mapper namespace="com.eoot.eootprj.dao.LetterDao">
 	
+	<!-- 편지내용 조회 -->
 	<select id = "getLetter" parameterType="String" resultType="Letter">
 		SELECT * FROM LETTERS WHERE CODE =#{code}
 	</select>
 	
+	<!-- 전체 편지목록 조회 -->
 	<select id = "getLetters" resultType="LetterJoinMember">
 		SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.WRITER=M."MID" 
 		WHERE (L.READER = #{param1}) AND (M.NAME LIKE '%${param2}%' OR L.TITLE LIKE '%${param2}%' OR L.CONTENT LIKE '%${param2}%') 
 		ORDER BY L.SENDDATE DESC;
 	</select>
 	
+	<!-- 새로운 편지목록 조회 -->
 	<select id = "getNewLetters" resultType="LetterJoinMember">
 		SELECT * FROM LETTERS L INNER JOIN MEMBERS M ON L.READER=M."MID" 
 		WHERE (L.READER = #{mid}) AND (L."READ" = 0);
 	</select>
 	
+	<!-- 편지읽음 처리 -->		
+	<update id="updateRead" parameterType="Letter">
+		UPDATE LETTERS SET "READ" = 1 WHERE CODE = #{code}
+	</update>
+	
+	<!-- 편지 작성 -->
 	<insert id = "insert" parameterType="Letter">
-			INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, "READ", READER, LETTERTYPE) 
-			VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS), #{writer}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
+		INSERT INTO LETTERS(CODE, WRITER, SENDDATE, CONTENT, TITLE, "READ", READER, LETTERTYPE) 
+		VALUES((SELECT ISNULL(MAX(CAST(CODE AS INT)),0)+1 CODE FROM LETTERS), #{writer}, GetDate(), #{content}, #{title}, 0, #{reader}, #{type})
 	</insert>
 	
+	<!-- 편지 삭제 -->
 	<delete id = "delete" parameterType="String">
 		DELETE LETTERS WHERE CODE =#{code}
 	</delete>	
 			
-	<update id="updateRead" parameterType="Letter">
-		UPDATE LETTERS SET "READ" = 1 WHERE CODE = #{code}
-	</update>		
 </mapper>

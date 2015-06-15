@@ -112,7 +112,7 @@
                             <img class="thumbnail" src="images/suzy2.jpg" />
                         </div>-->
                         <div class="profile-family-members">
-                            <img class="thumbnail" src="images/nami3.jpg" />
+                            <img class="thumbnail" src="images/simpson2.JPG" />
                         </div>
                         <!--<div class="profile-family-members">
                             <img class="thumbnail" src="images/bobby1.jpg" />

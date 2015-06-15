@@ -5,14 +5,14 @@
     pageEncoding="UTF-8"%>
 
 <%
-String code = "";
-String _code = request.getParameter("code");
-if(_code != null && !_code.equals(""))
+String code = ""; //편지코드
+String _code = request.getParameter("code"); //편지코드 임시변수
+if(_code != null && !_code.equals("")) //편지코드 유효성 검사
 	code = _code;
 
-LetterDao letterDao = new MyBLetterDao();
-letterDao.updateRead(code);
-Letter l = letterDao.getLetter(code);
+LetterDao letterDao = new MyBLetterDao(); //LetterDao 객체 생성
+letterDao.updateRead(code); //편지읽음 처리
+Letter l = letterDao.getLetter(code); //편지내용 조회
 
 pageContext.setAttribute("l", l);
 %>

@@ -89,7 +89,7 @@
    <jsp:include page="../resource/inc/menu.jsp"></jsp:include>
 <!--===========< 메인영역 >===============================================-->
     <div class="main">
-
+		<!-- 상단 -->
         <div class="upper">
             <div class="profile-pic-box-bg">
                 <!--배경이미지-->
@@ -134,9 +134,10 @@
                 </div>
             </aside>
         </div>
-
+		<!-- 하단 -->
         <div class="lower">
             <aside class="lower-left">
+            <!-- new 알람 -->
                 <div class="alarm-wrapper">
                     <div class="alarm news">
                         <div class="alarm-icon"></div>
@@ -159,11 +160,11 @@
             <aside class="lower-right">
                <div class="preview-wrapper">
                   <div class="preview-fampost-wrapper">
-                  	<ul id="slider">
+                  	<ul id="slider"> <!-- 인기 게시물 미리보기 -->
                   		<%-- <c:forEach var="i" items="${prvfps}" > --%>
 	                  		<li class="firstanimation">
 		                  		<div class="preview-fampost pic-box">
-	                            	<img class="preview-pic" src="${pageContext.request.servletContext.contextPath}/upload/fampostImage/${fList.get(0).getSrc()}" />
+	                            	<img class="preview-pic" src="images/byul22.jpg" />
 	                            	<div class="preview-pic-dscrp hidden"></div>
 		                        </div>
 	                  		</li>
@@ -220,7 +221,7 @@
         
     </div>
 
-<!--===========< 편지  >===============================================-->
+<!--===========< 편지 >===============================================-->
     <div class="letter">
     
         <div class="letter-transp-bg"></div>
@@ -256,12 +257,12 @@
                               <div class="letter-from-name hidden">${i.name}</div>
                               <div class="letter-from-pic hidden">${pageContext.request.servletContext.contextPath}/upload/profilepic/${i.profilepic}</div>
                               <div class="letter-date"><fmt:formatDate value="${i.sendDate}" pattern="yyyy년 MM월 dd일 " /></div>
-                             <div class="letter-mani-area">
+                            <div class="letter-mani-area">
                                 <div class="letter-mani-wrapper-bg"></div>
                                 <div class="letter-mani-wrapper">
                                   <div class="letter-mani reply-letter"></div>
                                   <div class="letter-mani delete-letter"></div>
-                               </div>
+                                </div>
                             </div>
                           </li>
                        </c:forEach>
@@ -271,6 +272,7 @@
             <button id="letter-write" type="submit">편지쓰기</button>
         </div>
       
+      <!-- 편지읽기 -->
       <div class="letter-view-wrapper">
          <div class="letter-view-transp-bg"></div>
          <div class="btn-close-letter-view"></div>
@@ -280,6 +282,7 @@
          </div>
       </div>
         
+        <!-- 편지유형 -->
         <div class="letter-type-wrapper">
             <div class="letter-type text">
                 <input class="letter-type-btn hidden" type="button" value="글" />
@@ -291,7 +294,8 @@
                 <input class="letter-type-btn hidden" type="button" value="영상" />
             </div>
         </div>
-
+		
+		<!-- 편지작성 -->
         <div class="letter-write-wrapper">
             <div class="letter-write-header">
                 <div class="letter-to">받는 사람</div>
@@ -314,14 +318,11 @@
             <button id="letter-send" type="submit">보내기</button>
             <button id="letter-send-reply" type="submit">보내기</button>
         </div>
-   
+   		<!-- 수신인목록 추가 -->
         <div class="letter-add-wrapper">
             <div>
                 <span>수신인을 추가하세요</span>
             </div>
-<!--             <div class="check-box">
-                <input id="check-box-all-fam" type="checkbox" />가족 모두에게
-            </div> -->
             <p class="add-list-fam">가족</p>
             <div class="letter-add-list-box">
                 <div class="letter-add-list-wrapper">
@@ -350,7 +351,6 @@
                 </ul>  
                 </div>
             </div>
-            <!-- <button id="letter-add-cancel" type="submit">취소</button> -->
         </div>
 
    </div>
